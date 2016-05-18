@@ -1,0 +1,35 @@
+{
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/serverless-graphql-0.0.4.tgz_1460768832694_0.5603838413953781"
+  },
+  "author": {
+    "name": "me"
+  },
+  "bugs": {
+    "url": "https://github.com/serverless/serverless-graphql/issues"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.3.0",
+    "bluebird": "^3.3.4",
+    "jsonwebtoken": "^5.7.0",
+    "lodash": "^4.6.1",
+    "serverless-client-s3": "^2.0.0",
+    "serverless-cors-plugin": "^0.4.1",
+    "serverless-meta-sync": "^0.1.0",
+    "serverless-offline": "^2.2.4"
+  },
+  "description": "The Serverless GraphQL Application Boilerplate",
+  "devDependencies": {},
+  "homepage": "https://github.com/serverless/serverless-graphql#readme",
+  "license": "MIT",
+  "name": "serverless-graphql",
+  "optionalDependencies": {},
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/serverless/serverless-graphql.git"
+  },
+  "scripts": {},
+  "version": "0.0.4"
+}

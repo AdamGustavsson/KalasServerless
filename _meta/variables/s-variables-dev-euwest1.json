@@ -1,0 +1,7 @@
+{
+  "region": "eu-west-1",
+  "resourcesStackName": "serverless-graphql-dev-r",
+  "iamRoleArnLambda": "arn:aws:iam::940467099795:role/serverless-graphql-dev-r-IamRoleLambda-QJQAZF43KLJR",
+  "authTokenSecret": "876213812764fdejjfgrwhd8a12t531g87",
+  "apiGatewayApi": "serverless-graphql"
+}
