@@ -15,3 +15,6 @@ export const LOGOUT_USER = 'LOGOUT_USER';
 export const GET_PARTIES = 'GET_PARTIES';
 export const GET_PARTY = 'GET_PARTY';
 export const CREATE_PARTY = 'CREATE_PARTY';
+
+//invites
+export const GET_INVITES_FOR_PARTY = 'GET_INVITES_FOR_PARTY';

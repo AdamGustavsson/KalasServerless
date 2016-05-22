@@ -2,7 +2,6 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { getParty } from '../../actions/parties';
 import { Link } from 'react-router';
-import InvitesIndex from '../invites/index';
 
 class PartiesShow extends Component {
   componentWillMount() {
@@ -27,7 +26,6 @@ class PartiesShow extends Component {
           <p>{party.endDateTime}</p>
           <p>{party.partyLocation}</p>
           <Link to='/' className="button u-full-width">Back</Link>
-        <InvitesIndex/>
         </div>
       </div>
     );

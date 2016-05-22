@@ -9,7 +9,8 @@ const queries = {}, mutations = {};
 // add your collections here
 const collections = [
   'users',
-  'parties'
+  'parties',
+  'invites'
 ];
 
 // load collections queries and muataions

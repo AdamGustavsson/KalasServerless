@@ -1,10 +1,5 @@
 {
   "name": "serverless-graphql",
-  "version": "0.0.1",
-  "profile": "serverless-v0.4.2",
-  "location": "https://github.com/...",
-  "author": "",
-  "description": "A Slick New Serverless Project",
   "custom": {
     "meta": {
       "name": "${meta_bucket}",
@@ -29,5 +24,10 @@
     "serverless-client-s3",
     "serverless-offline",
     "./plugins/setupdb.js"
-  ]
+  ],
+  "version": "0.0.1",
+  "profile": "serverless-v0.4.2",
+  "location": "https://github.com/...",
+  "author": "",
+  "description": "A Slick New Serverless Project"
 }
