@@ -40,3 +40,5 @@ admin.env
 .env
 
 _meta
+
+client/src/app/js/actions/index.js
