@@ -9,29 +9,16 @@ let validate = {
   id: (id) => {
     return;
   },
-  header: (header) => {
-    return;
-  },
-  description: (description) => {
-   return;
-  },
-  hostUser: (hostUser) => {
+  mobileNumber: (number) => {
     return;
   },
   childName: (childName) => {
     return;
   },
-  startDateTime: (startDateTime) => {
-    return;
-  },
-  endDateTime: (endDateTime) => {
-    return;
-  },
-  partyLocation: (partyLocation) => {
+  partyId: (id) => {
     return;
   }
 };
-
 
 module.exports = (data) => {
   Object.keys(data).forEach((d) => {validate[d](data[d])});

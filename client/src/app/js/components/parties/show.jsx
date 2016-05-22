@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { getParty } from '../../actions/parties';
 import { Link } from 'react-router';
 import InvitesIndex from '../invites/index';
+import InvitesNew from '../invites/new';
 
 class PartiesShow extends Component {
   componentWillMount() {
@@ -28,6 +29,7 @@ class PartiesShow extends Component {
           <p>{party.partyLocation}</p>
           <Link to='/' className="button u-full-width">Back</Link>
         <InvitesIndex/>
+        <InvitesNew/>
         </div>
       </div>
     );
