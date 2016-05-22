@@ -1,6 +1,0 @@
-{
-  "project": "serverless-graphql",
-  "projectBucket": "serverless.eu-west-1.graphql-test-project",
-  "domain": "graphql-test-project",
-  "notificationEmail": "adam.gustavsson@gmail.com"
-}
