@@ -37,7 +37,6 @@ class InvitesIndex extends Component {
                   </tbody>
                 </table>
               ) : <div>There are currently no invited guests<hr /></div> }
-              <Link to={ 'invite/new' } className="button button-primary">Add guest</Link>
             </div>
           </div>
       );
@@ -51,5 +50,4 @@ function mapStateToProps(state) {
       return { party: state.parties.party, invites: state.invites.all, token: null};
   }
 }
-//export default connect(mapStateToProps, null)(InvitesIndex)
 export default connect(mapStateToProps, { getInvitesForParty })(InvitesIndex);

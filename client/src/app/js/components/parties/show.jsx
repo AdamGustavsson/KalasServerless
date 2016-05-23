@@ -28,10 +28,11 @@ class PartiesShow extends Component {
           <p>{party.endDateTime}</p>
           <p>{party.partyLocation}</p>
           <Link to='/' className="button u-full-width">Back</Link>
+        </div>
         <InvitesIndex/>
         <InvitesNew/>
-        </div>
       </div>
+
     );
   }
 }

@@ -5,6 +5,7 @@ import { push } from 'react-router-redux';
 import { API_URL } from './index';
 import {resetError} from './error';
 
+
 import {
   ERROR,
   GET_INVITES_FOR_PARTY,
@@ -68,10 +69,7 @@ export function createInvite(invite, partyId, token) {
     type: CREATE_INVITE,
     payload: json
   }))
-  .then(json => dispatch({
-    type: GET_INVITES_FOR_PARTY,
-    payload: json
-  }))
+  .then((dispatch) => getInvitesForParty(token,partyId))
   .catch(exception => dispatch({
     type: ERROR,
     payload: exception.message
