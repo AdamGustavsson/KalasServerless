@@ -19,3 +19,5 @@ export const CREATE_PARTY = 'CREATE_PARTY';
 //invites
 export const GET_INVITES_FOR_PARTY = 'GET_INVITES_FOR_PARTY';
 export const CREATE_INVITE = 'CREATE_INVITE';
+export const GET_INVITE = 'GET_INVITE';
+export const ACCEPT_INVITE = 'ACCEPT_INVITE';

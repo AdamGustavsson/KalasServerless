@@ -9,6 +9,9 @@ let validate = {
   id: (id) => {
     return;
   },
+  inviteId: (inviteId) => {
+    return;
+  },
   mobileNumber: (number) => {
     return;
   },

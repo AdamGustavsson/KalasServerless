@@ -18,7 +18,7 @@ module.exports = {
       TableName: invitesTable,
       FilterExpression: "partyId = :partyId",
       ExpressionAttributeValues: {':partyId':partyId},
-      ProjectionExpression: "id,childName,mobileNumber"
+      ProjectionExpression: "id,childName,mobileNumber,inviteStatus"
     }).then(reply => reply.Items);
   },
 
@@ -45,4 +45,26 @@ module.exports = {
         // finally return the invite record
         .then(() => invite);
   },
+  get(id) {
+    return db('get', {
+      TableName: invitesTable,
+      Key: {id},
+      AttributesToGet: [
+       'id',
+       'childName',
+       'inviteStatus',
+       'partyId'   
+      ]
+    }).then(reply => reply.Item);
+  },
+  accept(inviteId) {
+    console.log('accepting invite with id: ' + inviteId);
+    return db('update', {
+      TableName: invitesTable,
+      Key:{'id':inviteId},
+      UpdateExpression: 'set inviteStatus = :a',
+      ExpressionAttributeValues: {':a': 'ACCEPTED'},
+      ReturnValues:"ALL_NEW"
+    }).then(reply => reply.Attributes);
+  }   
 };

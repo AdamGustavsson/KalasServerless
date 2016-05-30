@@ -23,14 +23,20 @@ class InvitesIndex extends Component {
                     <tr>
                       <th>Name</th>
                       <th>Mobile number</th>
+                      <th>Status</th>
                     </tr>
                   </thead>
                   <tbody>
                   {invites.map((invite) => {
+                    const statusText = {CREATED: '',
+                                        INVITED: 'Invite sent',
+                                        ACCEPTED: 'Accepted',
+                                        REJECTED: 'Rejected'};
                     return (
                       <tr key={'invite-' + invite.id}>
                         <td>{invite.childName}</td>
                         <td>{invite.mobileNumber}</td>
+                        <td>{statusText[invite.inviteStatus]}</td>
                       </tr>
                     )}
                   )}

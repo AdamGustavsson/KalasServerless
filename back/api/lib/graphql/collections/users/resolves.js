@@ -15,7 +15,7 @@ const usersTable = projectName + '-users-' + stage;
 module.exports = {
   create(user) {
     user.id = uuid.v1();
-    user.permissions = ['UPDATE_USER', 'DELETE_USER','UPDATE_OWN_PARTY','LIST_OWN_PARTIES','CREATE_PARTY'];
+    user.permissions = ['UPDATE_USER', 'DELETE_USER','UPDATE_OWN_PARTY','LIST_OWN_PARTIES','CREATE_PARTY','ACCEPT_INVITE'];
 
     // generated salted hash with bcryptjs with 10 work factor
     user.password_hash = bcryptjs.hashSync(user.password, 10);

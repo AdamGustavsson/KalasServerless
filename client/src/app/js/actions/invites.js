@@ -9,11 +9,38 @@ import {resetError} from './error';
 import {
   ERROR,
   GET_INVITES_FOR_PARTY,
-  CREATE_INVITE
+  CREATE_INVITE,
+  GET_INVITE,
+  ACCEPT_INVITE
 } from './constants';
 
 
+export function getInvite(id) {
+  const query = { "query":
+    `{
+      invite(id: "${id}")
+      {
+        id,
+        childName,
+        inviteStatus
+      }
+    }`
+  };
 
+  return (dispatch) => fetch(`${API_URL}/data/`, {
+    method: 'POST',
+    body: JSON.stringify(query)
+  })
+  .then(response => response.json())
+  .then(json => dispatch({
+    type: GET_INVITE,
+    payload: json
+  }))
+  .catch(exception => dispatch({
+    type: ERROR,
+    payload: exception.message
+  }));
+}
 
 
 export function getInvitesForParty(token,partyId) {
@@ -25,7 +52,8 @@ export function getInvitesForParty(token,partyId) {
       {
         id,
         childName,
-        mobileNumber
+        mobileNumber,
+        inviteStatus
       }
     }`
   };
@@ -57,7 +85,8 @@ export function createInvite(invite, partyId, token) {
       {
         id,
         childName,
-        mobileNumber
+        mobileNumber,
+        inviteStatus
       }
     }`
   };
@@ -77,3 +106,32 @@ export function createInvite(invite, partyId, token) {
   }));
 }
   
+export function acceptInvite(id, token) {
+  const query = { "query":
+      `mutation acceptInvite {
+      invite: acceptInvite (
+        inviteId: "${id}",
+        token: "${token}"
+      )
+      {
+        id,
+        childName,
+        inviteStatus
+      }
+    }`
+  };
+
+  return (dispatch) => fetch(`${API_URL}/data/`, {
+    method: 'POST',
+    body: JSON.stringify(query)
+  })
+  .then(response => response.json())
+  .then(json => dispatch({
+    type: ACCEPT_INVITE,
+    payload: json
+  }))
+  .catch(exception => dispatch({
+    type: ERROR,
+    payload: exception.message
+  }));
+}

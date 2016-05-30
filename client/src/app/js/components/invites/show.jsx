@@ -1,31 +1,34 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { getParty } from '../../actions/parties';
-import { Link } from 'react-router';
+import { getInvite, acceptInvite, rejectInvite} from '../../actions/invites';
 
-class PartiesShow extends Component {
+class InviteShow extends Component {
   componentWillMount() {
-    this.props.getParty(this.props.params.id);
+    this.props.getInvite(this.props.params.id);
   }
 
+  onAcceptClick(event) {
+      this.props.acceptInvite(this.props.invite.id, this.props.token);
+  } 
+  onRejectClick(event) {
+      this.props.rejectInvite(this.props.invite.id, this.props.token);
+  }  
+    
+    
   render() {
-    const { party } = this.props;
+    const { invite } = this.props;
 
-    if (!party) {
+    if (!invite) {
       return <div className="row"><div className="twelve columns">Loading...</div></div>
     }
 
     return (
       <div className="row">
-        <div className="four columns offset-by-four">
-          <h1>{party.header}</h1>
-          <hr />
-          <p>{party.description}</p>
-          <p>{party.childName}</p>
-          <p>{party.startDateTime}</p>
-          <p>{party.endDateTime}</p>
-          <p>{party.partyLocation}</p>
-          <Link to='/' className="button u-full-width">Back</Link>
+        <div className="twelve columns">
+            <p>{invite.childName}</p>
+            <p>{invite.inviteStatus}</p>
+            <button onClick={this.onAcceptClick.bind(this)} className="button u-full-width">Accept</button>
+            <button onClick={this.onRejectClick.bind(this)} className="button u-full-width">Reject</button>
         </div>
       </div>
     );
@@ -33,7 +36,7 @@ class PartiesShow extends Component {
 }
 
 function mapStateToProps(state) {
-  return { party: state.parties.party };
+  return { invite: state.invites.invite, token: state.users.currentUser.token };
 }
 
-export default connect(mapStateToProps, { getParty })(PartiesShow);
+export default connect(mapStateToProps, { getInvite, acceptInvite, rejectInvite })(InviteShow);

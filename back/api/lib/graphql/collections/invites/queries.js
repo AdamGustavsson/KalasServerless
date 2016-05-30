@@ -20,5 +20,15 @@ module.exports = {
     resolve: function(source, args) {
       return authorize(args.token, ['LIST_OWN_PARTIES']).then((user) => resolves.getInvitesForParty(args.partyId));
     }
+  },
+  invite: {
+    type: InviteType,
+    description: 'Get an Invite by id',
+    args: {
+      id: {type: new GraphQLNonNull(GraphQLString)}
+    },
+    resolve: function(source, args) {
+      return validate(args).then(() => resolves.get(args.id));
+    }
   }
 }

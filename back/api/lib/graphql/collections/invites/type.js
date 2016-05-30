@@ -10,6 +10,7 @@ module.exports = new GraphQLObjectType({
     id: {type: GraphQLString},
     childName: {type: GraphQLString},
     mobileNumber: {type: GraphQLString},
+    inviteStatus: {type: GraphQLString},
     partyId: {type: GraphQLString}
   })
 });
