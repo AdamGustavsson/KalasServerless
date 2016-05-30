@@ -22,7 +22,7 @@ module.exports = {
     resolve(source, args) {
       return validate(args).then(() => authorize(args.token, ['CREATE_PARTY'])).then((user) => {
           args.hostUser=user.id; 
-          resolves.create(args);
+          return resolves.create(args);
       });
     }
   }

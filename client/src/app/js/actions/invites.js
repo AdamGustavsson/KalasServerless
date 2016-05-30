@@ -55,7 +55,9 @@ export function createInvite(invite, partyId, token) {
         token: "${token}"
       )
       {
-        id
+        id,
+        childName,
+        mobileNumber
       }
     }`
   };
@@ -69,7 +71,6 @@ export function createInvite(invite, partyId, token) {
     type: CREATE_INVITE,
     payload: json
   }))
-  .then((dispatch) => getInvitesForParty(token,partyId))
   .catch(exception => dispatch({
     type: ERROR,
     payload: exception.message
