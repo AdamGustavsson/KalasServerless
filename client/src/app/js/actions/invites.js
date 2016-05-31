@@ -26,6 +26,7 @@ export function getInvite(id) {
       }
     }`
   };
+  
 
   return (dispatch) => fetch(`${API_URL}/data/`, {
     method: 'POST',
@@ -44,8 +45,8 @@ export function getInvite(id) {
 
 
 export function getInvitesForParty(token,partyId) {
- 
- 
+
+
   const query = { "query":
     `{
       invites_for_party(token: "${token}",partyId: "${partyId}")
@@ -105,7 +106,7 @@ export function createInvite(invite, partyId, token) {
     payload: exception.message
   }));
 }
-  
+
 export function acceptInvite(id, token) {
   const query = { "query":
       `mutation acceptInvite {
