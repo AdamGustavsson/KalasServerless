@@ -26,7 +26,7 @@ export function getInvite(id) {
       }
     }`
   };
-  
+
 
   return (dispatch) => fetch(`${API_URL}/data/`, {
     method: 'POST',

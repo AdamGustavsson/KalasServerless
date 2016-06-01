@@ -80,7 +80,10 @@
     "SERVERLESS_STAGE": "${stage}",
     "SERVERLESS_REGION": "${region}",
     "AUTH_TOKEN_SECRET": "${authTokenSecret}",
-    "LOCAL_DDB_ENDPOINT": "${localDynamoDbEndpoint}"
+    "LOCAL_DDB_ENDPOINT": "${localDynamoDbEndpoint}",
+    "SMS_GATEWAY_DEVICE_ID": "${SMSGatewayDeviceId}",
+    "SMS_GATEWAY_PASSWORD": "${SMSGatewayPassword}",
+    "SMS_GATEWAY_USERNAME": "${SMSGatewayUsername}"
   },
   "vpc": {
     "securityGroupIds": [],

@@ -6,13 +6,24 @@ const bcryptjs = require('bcryptjs');
 const db = require('../../../dynamodb');
 const invoke = require('../../../invoke')
 const _ = require('lodash');
+const smsgateway = require('../../../smsgateway');
+const partyResolve = require('../parties/resolves');
 
 const stage = process.env.SERVERLESS_STAGE;
+const region = process.env.SERVERLESS_REGION;
 const projectName = process.env.SERVERLESS_PROJECT;
 const invitesTable = projectName + '-invites-' + stage;
 
+const baseURL = 'graphql-test-project.'+ stage + '.' + region + '.s3-website-'+ region + '.amazonaws.com'
+
+
+function   getInviteText (invite) {
+    return party.get(invite.partyId).then((party) => (invite.childName + ' has been invited to the birthday party of' + party.childName + '. Please click the following link to RSVP: '
+    + baseURL + '/#/invites/' + invite.id + '/show'))
+
+}
 module.exports = {
-   
+
   getInvitesForParty(partyId) {
     return db('scan', {
       TableName: invitesTable,
@@ -30,18 +41,11 @@ module.exports = {
       TableName: invitesTable,
       Item: invite
     })
-    // let's invoke another lambda asynchronously (don't wait till it finished)!
-        .then(() => invoke('timeout', {invite, delay: 70}))  // no actual delay here
-        // if we pass a callback it will run synchronously, so we'll get a response
-        .then(() => invoke('timeout', {invite, delay: 50}, (response) => {
-          // this should be delayed for 50ms
-          // let's do something with the response
-          if (response.result === 'success') {
-            console.log("response data:", response);
-          } else {
-            return Promise.reject(new Error("Something went wrong :("));
-          }
-        }))
+        // send the SMS to the invited user
+        .then(partyResolve.get(invite.partyId))
+        .then(party => invite.childName + ' has been invited to the birthday party of ' + party.childName + '. Please click the following link to RSVP: http://'
+        + baseURL + '/#/invites/' + invite.id + '/show')
+        .then(inviteText => smsgateway.sendSMS(invite.mobileNumber,inviteText))
         // finally return the invite record
         .then(() => invite);
   },
@@ -53,7 +57,7 @@ module.exports = {
        'id',
        'childName',
        'inviteStatus',
-       'partyId'   
+       'partyId'
       ]
     }).then(reply => reply.Item);
   },
@@ -66,5 +70,5 @@ module.exports = {
       ExpressionAttributeValues: {':a': 'ACCEPTED'},
       ReturnValues:"ALL_NEW"
     }).then(reply => reply.Attributes);
-  }   
+  }
 };
