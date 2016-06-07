@@ -107,12 +107,11 @@ export function createInvite(invite, partyId, token) {
   }));
 }
 
-export function acceptInvite(id, token) {
+export function acceptInvite(id) {
   const query = { "query":
       `mutation acceptInvite {
       invite: acceptInvite (
-        inviteId: "${id}",
-        token: "${token}"
+        inviteId: "${id}"
       )
       {
         id,

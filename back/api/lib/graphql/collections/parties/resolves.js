@@ -68,7 +68,7 @@ module.exports = {
       ]
     }).then(reply => reply.Items);
   },
-    
+
   getAllForUser(userId) {
     return db('scan', {
       TableName: partiesTable,
@@ -76,14 +76,14 @@ module.exports = {
       ExpressionAttributeValues: {':userId':userId},
       ProjectionExpression: "id,description,header,hostUser,childName,startDateTime,endDateTime,partyLocation"
     }).then(reply => reply.Items);
-  },    
+  },
 
   update(party, obj) {
 
     // update data
     party.id = obj.id || party.id;
     party.description = obj.description || party.description;
-    party.header = obj.header|| party.header;  
+    party.header = obj.header|| party.header;
     party.hostUser = obj.hostUserhostUser || party.hostUser;
     party.childName = obj.childName || party.childName;
     party.startDateTime = obj.startDateTime|| party.startDateTime;

@@ -42,8 +42,8 @@ module.exports = {
       Item: invite
     })
         // send the SMS to the invited user
-        .then(partyResolve.get(invite.partyId))
-        .then(party => invite.childName + ' has been invited to the birthday party of ' + party.childName + '. Please click the following link to RSVP: http://'
+        .then(() => partyResolve.get(invite.partyId))
+        .then(partyResponse => invite.childName + ' has been invited to the birthday party of ' + partyResponse.childName + '. Please click the following link to RSVP: http://'
         + baseURL + '/#/invites/' + invite.id + '/show')
         .then(inviteText => smsgateway.sendSMS(invite.mobileNumber,inviteText))
         // finally return the invite record

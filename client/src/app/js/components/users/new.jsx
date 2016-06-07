@@ -35,7 +35,7 @@ class UsersNew extends Component {
       <div className="row">
         <div className="four columns offset-by-four">
           <form onSubmit={this.handleSubmit.bind(this)}>
-            <h1>Add user</h1>
+            <h1>Create profile</h1>
             <hr />
             <input type="text" placeholder="Name" className="u-full-width" ref="name" />
             <input type="text" placeholder="Username" className="u-full-width" ref="username" />

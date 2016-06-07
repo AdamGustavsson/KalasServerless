@@ -8,13 +8,13 @@ class InviteShow extends Component {
   }
 
   onAcceptClick(event) {
-      this.props.acceptInvite(this.props.invite.id, this.props.token);
-  } 
+      this.props.acceptInvite(this.props.invite.id);
+  }
   onRejectClick(event) {
-      this.props.rejectInvite(this.props.invite.id, this.props.token);
-  }  
-    
-    
+      this.props.rejectInvite(this.props.invite.id);
+  }
+
+
   render() {
     const { invite } = this.props;
 
@@ -36,7 +36,7 @@ class InviteShow extends Component {
 }
 
 function mapStateToProps(state) {
-  return { invite: state.invites.invite, token: state.users.currentUser.token };
+  return { invite: state.invites.invite};
 }
 
 export default connect(mapStateToProps, { getInvite, acceptInvite, rejectInvite })(InviteShow);

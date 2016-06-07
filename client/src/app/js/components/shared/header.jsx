@@ -29,7 +29,7 @@ class Header extends Component {
       return (
         <div className="row">
             <div className="offset-by-five three columns">
-              Logged in as <strong>{currentUser.username}</strong>  
+              Logged in as <strong>{currentUser.username}</strong>
             </div>
             <div className="two columns">
               ● <Link to="profile">Edit Profile</Link>
@@ -53,10 +53,15 @@ class Header extends Component {
             <div className="one-third column">
               <input type="submit" className="u-full-width button-primary" value="Login"/>
             </div>
-          
+
           <hr />
-        </form>      
+        </form>
+        <div className="twelve columns">
+          <Link to="users/new">Create Profile (optional)</Link>
+        </div>
       </div>
+
+
     );
   }
 }
