@@ -36,5 +36,15 @@ module.exports = {
     resolve(source, args) {
       return validate(args).then(() => resolves.accept(args.inviteId));
     }
+  },
+  rejectInvite: {
+    type: InviteType,
+    description: 'Reject an invite to a party',
+    args: {
+      inviteId: {type: new GraphQLNonNull(GraphQLString)}
+    },
+    resolve(source, args) {
+      return validate(args).then(() => resolves.reject(args.inviteId));
+    }
   }
 }

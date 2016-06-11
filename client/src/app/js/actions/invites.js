@@ -11,7 +11,8 @@ import {
   GET_INVITES_FOR_PARTY,
   CREATE_INVITE,
   GET_INVITE,
-  ACCEPT_INVITE
+  ACCEPT_INVITE,
+  REJECT_INVITE
 } from './constants';
 
 
@@ -128,6 +129,35 @@ export function acceptInvite(id) {
   .then(response => response.json())
   .then(json => dispatch({
     type: ACCEPT_INVITE,
+    payload: json
+  }))
+  .catch(exception => dispatch({
+    type: ERROR,
+    payload: exception.message
+  }));
+}
+
+export function rejectInvite(id) {
+  const query = { "query":
+      `mutation rejectInvite {
+      invite: rejectInvite (
+        inviteId: "${id}"
+      )
+      {
+        id,
+        childName,
+        inviteStatus
+      }
+    }`
+  };
+
+  return (dispatch) => fetch(`${API_URL}/data/`, {
+    method: 'POST',
+    body: JSON.stringify(query)
+  })
+  .then(response => response.json())
+  .then(json => dispatch({
+    type: REJECT_INVITE,
     payload: json
   }))
   .catch(exception => dispatch({

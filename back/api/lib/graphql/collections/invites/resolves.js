@@ -43,7 +43,8 @@ module.exports = {
     })
         // send the SMS to the invited user
         .then(() => partyResolve.get(invite.partyId))
-        .then(partyResponse => invite.childName + ' has been invited to the birthday party of ' + partyResponse.childName + '. Please click the following link to RSVP: http://'
+        .then(partyResponse =>
+invite.childName + ' has been invited to the birthday party of ' + partyResponse.childName + '. Please click the following link to RSVP: http://'
         + baseURL + '/#/invites/' + invite.id + '/show')
         .then(inviteText => smsgateway.sendSMS(invite.mobileNumber,inviteText))
         // finally return the invite record
@@ -68,6 +69,16 @@ module.exports = {
       Key:{'id':inviteId},
       UpdateExpression: 'set inviteStatus = :a',
       ExpressionAttributeValues: {':a': 'ACCEPTED'},
+      ReturnValues:"ALL_NEW"
+    }).then(reply => reply.Attributes);
+  },
+  reject(inviteId) {
+    console.log('rejecting invite with id: ' + inviteId);
+    return db('update', {
+      TableName: invitesTable,
+      Key:{'id':inviteId},
+      UpdateExpression: 'set inviteStatus = :a',
+      ExpressionAttributeValues: {':a': 'REJECTED'},
       ReturnValues:"ALL_NEW"
     }).then(reply => reply.Attributes);
   }
