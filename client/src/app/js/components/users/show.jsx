@@ -20,7 +20,6 @@ class UsersShow extends Component {
         <div className="four columns offset-by-four">
           <h1>{user.name}</h1>
           <hr />
-          <p>{user.id}</p>
           <p>{user.mobileNumber}</p>
           <hr />
           <Link to='users/all' className="button u-full-width">Back</Link>

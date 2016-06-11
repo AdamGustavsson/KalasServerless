@@ -187,6 +187,7 @@ export function loginUser(user) {
     .then(payload => {
       dispatch({payload, type: LOGIN_USER})
     })
+    .then(() => dispatch(push('parties/my')))
     .catch(exception => dispatch({
       type: ERROR,
       payload: exception.message

@@ -72,7 +72,7 @@ module.exports = {
       });
   },
 
-  get(username) {
+  get(mobileNumber) {
     return db('get', {
       TableName: usersTable,
       Key: {mobileNumber},

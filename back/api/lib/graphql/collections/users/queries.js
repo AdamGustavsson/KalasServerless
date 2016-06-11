@@ -12,15 +12,18 @@ module.exports = {
   users: {
     type: new GraphQLList(UserType),
     description: 'List of users',
+    args: {
+      token: {type: new GraphQLNonNull(GraphQLString)}
+    },
     resolve: function(source, args) {
-      return resolves.getAll();
+      return authorize(args.token, ['ADMIN_USER']).then(() => resolves.getAll());
     }
   },
   user: {
     type: UserType,
     description: 'Get a User by mobileNumber',
     args: {
-      mobilrNumber: {type: new GraphQLNonNull(GraphQLString)}
+      mobileNumber: {type: new GraphQLNonNull(GraphQLString)}
     },
     resolve: function(source, args) {
       return validate(args).then(() => resolves.get(args.mobileNumber));

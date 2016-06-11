@@ -15,10 +15,10 @@ module.exports = {
     description: 'List of all invites for a party',
     args: {
       token: { type: new GraphQLNonNull(GraphQLString) },
-      partyId: {type: new GraphQLNonNull(GraphQLString)}    
+      partyId: {type: new GraphQLNonNull(GraphQLString)}
     },
     resolve: function(source, args) {
-      return authorize(args.token, ['LIST_OWN_PARTIES']).then((user) => resolves.getInvitesForParty(args.partyId));
+      return authorize(args.token, ['PARENT_USER']).then((user) => resolves.getInvitesForParty(args.partyId));
     }
   },
   invite: {

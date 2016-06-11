@@ -17,7 +17,7 @@ module.exports = {
       token: { type: new GraphQLNonNull(GraphQLString) }
     },
     resolve: function(source, args) {
-      return authorize(args.token, ['LIST_OWN_PARTIES']).then((user) => resolves.getAllForUser(user.id));
+      return authorize(args.token, ['PARENT_USER']).then((user) => resolves.getAllForUser(user.id));
     }
   },
   party: {
