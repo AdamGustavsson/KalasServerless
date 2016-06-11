@@ -20,19 +20,7 @@ module.exports = {
       TableName: partiesTable,
       Item: party
     })
-    // let's invoke another lambda asynchronously (don't wait till it finished)!
-    .then(() => invoke('timeout', {party, delay: 70}))  // no actual delay here
-    // if we pass a callback it will run synchronously, so we'll get a response
-    .then(() => invoke('timeout', {party, delay: 50}, (response) => {
-      // this should be delayed for 50ms
-      // let's do something with the response
-      if (response.result === 'success') {
-        console.log("response data:", response);
-      } else {
-        return Promise.reject(new Error("Something went wrong :("));
-      }
-    }))
-    // finally return the party record
+    // return the party record
     .then(() => party);
   },
 

@@ -5,9 +5,8 @@ const gateway = new SmsGateway(process.env.SMS_GATEWAY_USERNAME,process.env.SMS_
 
 function sendSMS (number, message) {
   console.log('Sending SMS to number:' + number + ' with message: ' + message);
-  const p = Promise.resolve();
-  return p;
-  //return gateway.send(number, message,process.env.SMS_GATEWAY_DEVICE_ID)
+
+  return gateway.send(number, message,process.env.SMS_GATEWAY_DEVICE_ID)
 }
 
 

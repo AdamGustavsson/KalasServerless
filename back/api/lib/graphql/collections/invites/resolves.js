@@ -8,6 +8,7 @@ const invoke = require('../../../invoke')
 const _ = require('lodash');
 const smsgateway = require('../../../smsgateway');
 const partyResolve = require('../parties/resolves');
+const userResolve = require('../users/resolves');
 
 const stage = process.env.SERVERLESS_STAGE;
 const region = process.env.SERVERLESS_REGION;
@@ -17,11 +18,6 @@ const invitesTable = projectName + '-invites-' + stage;
 const baseURL = 'graphql-test-project.'+ stage + '.' + region + '.s3-website-'+ region + '.amazonaws.com'
 
 
-function   getInviteText (invite) {
-    return party.get(invite.partyId).then((party) => (invite.childName + ' has been invited to the birthday party of' + party.childName + '. Please click the following link to RSVP: '
-    + baseURL + '/#/invites/' + invite.id + '/show'))
-
-}
 module.exports = {
 
   getInvitesForParty(partyId) {
@@ -64,22 +60,68 @@ invite.childName + ' has been invited to the birthday party of ' + partyResponse
   },
   accept(inviteId) {
     console.log('accepting invite with id: ' + inviteId);
+    var invite;
+    var party;
+    var messageToHost;
+    var messageNeeded =true;
     return db('update', {
       TableName: invitesTable,
       Key:{'id':inviteId},
       UpdateExpression: 'set inviteStatus = :a',
       ExpressionAttributeValues: {':a': 'ACCEPTED'},
-      ReturnValues:"ALL_NEW"
-    }).then(reply => reply.Attributes);
+      ReturnValues:"ALL_OLD"
+    }).then((reply) => {
+      invite=reply.Attributes;
+      if (invite.inviteStatus=='ACCEPTED'){
+        // dont send message as the status is unchanged
+        messageNeeded=false;
+        return Promise.resolve()
+      } else {
+        invite.inviteStatus = 'ACCEPTED';
+      }
+      return partyResolve.get(invite.partyId)
+    }).then(partyResponse =>{
+      if(messageNeeded){
+        party = partyResponse;
+        messageToHost= invite.childName + ' has accepted the invite to the birthday party of ' + party.childName + '. Full info: http://'
+      + baseURL + '/#/parties/' + party.id + '/show';
+        return smsgateway.sendSMS(party.hostUser,messageToHost)
+      } else {
+        return Promise.resolve()
+      }
+    }).then(() => invite);
   },
   reject(inviteId) {
     console.log('rejecting invite with id: ' + inviteId);
+    var invite;
+    var party;
+    var messageToHost;
+    var messageNeeded = true;
     return db('update', {
       TableName: invitesTable,
       Key:{'id':inviteId},
       UpdateExpression: 'set inviteStatus = :a',
       ExpressionAttributeValues: {':a': 'REJECTED'},
       ReturnValues:"ALL_NEW"
-    }).then(reply => reply.Attributes);
+    }).then((reply) => {
+      invite=reply.Attributes;
+      if (invite.inviteStatus=='REJECTED'){
+        // dont send message as the status is unchanged
+        messageNeeded=false;
+        return Promise.resolve()
+      } else {
+        invite.inviteStatus = 'REJECTED';
+      }
+      return partyResolve.get(invite.partyId)
+    }).then(partyResponse =>{
+      if(messageNeeded){
+        party = partyResponse;
+        messageToHost= invite.childName + ' has rejected the invite to the birthday party of ' + party.childName + '. Full info: http://'
+      + baseURL + '/#/parties/' + party.id + '/show';
+        return smsgateway.sendSMS(party.hostUser,messageToHost)
+      } else {
+        return Promise.resolve()
+      }    
+    }).then(() => invite);
   }
 };

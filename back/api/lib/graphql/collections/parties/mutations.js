@@ -24,7 +24,7 @@ module.exports = {
     },
     resolve(source, args) {
       return validate(args).then(() => authorize(args.token, ['PARENT_USER'])).then((user) => {
-          args.hostUser=user.id;
+          args.hostUser=user.mobileNumber;
           return resolves.create(args);
       });
     }
