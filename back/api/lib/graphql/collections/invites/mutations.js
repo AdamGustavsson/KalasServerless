@@ -20,7 +20,7 @@ module.exports = {
 
     },
     resolve(source, args) {
-      return validate(args).then(() => authorize(args.token, ['CREATE_PARTY'])).then((user) => {
+      return validate(args).then(() => authorize(args.token, ['PARENT_USER'])).then((user) => {
           args.hostUser=user.id;
           args.inviteStatus='CREATED';
           return resolves.create(args);

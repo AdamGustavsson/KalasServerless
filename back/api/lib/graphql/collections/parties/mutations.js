@@ -20,11 +20,11 @@ module.exports = {
       startDateTime:   {type: new GraphQLNonNull(GraphQLString)},
       endDateTime:   {type: new GraphQLNonNull(GraphQLString)},
       partyLocation:   {type: new GraphQLNonNull(GraphQLString)}
-        
+
     },
     resolve(source, args) {
-      return validate(args).then(() => authorize(args.token, ['CREATE_PARTY'])).then((user) => {
-          args.hostUser=user.id; 
+      return validate(args).then(() => authorize(args.token, ['PARENT_USER'])).then((user) => {
+          args.hostUser=user.id;
           return resolves.create(args);
       });
     }
@@ -41,10 +41,10 @@ module.exports = {
       startDateTime:   {type: GraphQLString},
       endDateTime:   {type: GraphQLString},
       partyLocation:   {type: GraphQLString}
-        
+
     },
     resolve(source, args) {
-      return validate(args).then(() => resolves.get(args.id)).then((party) => authorize(args.token, ['UPDATE_OWN_PARTY'])).then((party) => resolves.update(party, args));
+      return validate(args).then(() => resolves.get(args.id)).then((party) => authorize(args.token, ['PARENT_USER'])).then((party) => resolves.update(party, args));
         //return validate(args).then(() => resolves.update(party,args));
     }
   },

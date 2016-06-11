@@ -21,15 +21,13 @@ export function createUser(user) {
     `mutation createNewUser {
       user: createUser (
         name: "${user.name}",
-        username: "${user.username}"
-        email: "${user.email}"
+        mobileNumber: "${user.mobileNumber}"
         password: "${user.password}"
       )
       {
         id
         name
-        username
-        email
+        mobileNumber
       }
     }`
   };
@@ -54,9 +52,8 @@ export function getUsers() {
   const query = { "query":
     `{
       users {
-        username
+        mobileNumber
         name
-        email
         token
       }
     }`
@@ -77,15 +74,14 @@ export function getUsers() {
   }));
 }
 
-export function getUser(username) {
+export function getUser(mobileNumber) {
   const query = { "query":
     `{
-      user(username: "${username}")
+      user(mobileNumber: "${mobileNumber}")
       {
         id
         name
-        username
-        email,
+        mobileNumber
         token
       }
     }`
@@ -111,15 +107,13 @@ export function updateUser(user) {
     `mutation updateExistingUser {
       user: updateUser (
         name: "${user.name}"
-        email: "${user.email}"
         password: "${user.password}"
         token: "${user.token}"
       )
       {
         id,
         name,
-        username,
-        email,
+        mobileNumber,
         token
       }
     }`
@@ -145,7 +139,7 @@ export function deleteUser(token) {
         token: "${token}"
       )
       {
-        username
+        mobileNumber
       }
     }`
   };
@@ -169,14 +163,13 @@ export function loginUser(user) {
   const query = { "query":
     `mutation loginUser {
       user: loginUser (
-        username: "${user.username}",
+        mobileNumber: "${user.mobileNumber}",
         password: "${user.password}"
       )
       {
         id
-        username
+        mobileNumber
         name
-        email
         token
       }
     }`

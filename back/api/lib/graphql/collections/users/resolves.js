@@ -15,7 +15,7 @@ const usersTable = projectName + '-users-' + stage;
 module.exports = {
   create(user) {
     user.id = uuid.v1();
-    user.permissions = ['UPDATE_USER', 'DELETE_USER','UPDATE_OWN_PARTY','LIST_OWN_PARTIES','CREATE_PARTY','ACCEPT_INVITE'];
+    user.permissions = ['PARENT_USER'];
 
     // generated salted hash with bcryptjs with 10 work factor
     user.password_hash = bcryptjs.hashSync(user.password, 10);
@@ -43,17 +43,16 @@ module.exports = {
   },
 
   login(args) {
-    const username = args.username;
+    const mobileNumber = args.mobileNumber;
     const password = args.password;
 
     return db('get', {
         TableName: usersTable,
-        Key: {username},
+        Key: {mobileNumber},
         AttributesToGet: [
           'id',
           'name',
-          'username',
-          'email',
+          'mobileNumber',
           'permissions',
           'password_hash'
         ]
@@ -76,12 +75,11 @@ module.exports = {
   get(username) {
     return db('get', {
       TableName: usersTable,
-      Key: {username},
+      Key: {mobileNumber},
       AttributesToGet: [
         'id',
-        'username',
-        'name',
-        'email'
+        'mobileNumber',
+        'name'
       ]
     }).then(reply => reply.Item);
   },
@@ -91,9 +89,8 @@ module.exports = {
       TableName: usersTable,
       AttributesToGet: [
         'id',
-        'username',
-        'name',
-        'email'
+        'mobileNumber',
+        'name'
       ]
     }).then(reply => reply.Items);
   },
@@ -114,7 +111,7 @@ module.exports = {
   remove(user) {
     return db('delete', {
       TableName: usersTable,
-      Key: { username: user.username }
+      Key: { mobileNumber: user.mobileNumber }
     });
   }
 };

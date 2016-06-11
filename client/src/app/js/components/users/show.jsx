@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 
 class UsersShow extends Component {
   componentWillMount() {
-    this.props.getUser(this.props.params.username);
+    this.props.getUser(this.props.params.mobileNumber);
   }
 
   render() {
@@ -21,8 +21,7 @@ class UsersShow extends Component {
           <h1>{user.name}</h1>
           <hr />
           <p>{user.id}</p>
-          <p>{user.email}</p>
-          <p>{user.username}</p>
+          <p>{user.mobileNumber}</p>
           <hr />
           <Link to='users/all' className="button u-full-width">Back</Link>
         </div>

@@ -18,7 +18,7 @@ export default (
     <Route path="parties/my" component={PartiesIndex} />
     <Route path="parties/:id/show" component={PartiesShow} />
     <Route path="parties/new" component={PartiesNew} />
-    <Route path="users/:username/show" component={UsersShow} />
+    <Route path="users/:mobileNumber/show" component={UsersShow} />
     <Route path="users/all" component={UsersIndex} />
     <Route path="invites/:id/show" component={InvitesShow} />
     <Route path="profile" component={UsersEdit} />

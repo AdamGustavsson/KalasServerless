@@ -7,11 +7,11 @@ class Header extends Component {
   handleLogin(event) {
     event.preventDefault();
 
-    const username = this.refs.username.value;
+    const mobileNumber = this.refs.mobileNumber.value;
     const password = this.refs.password.value;
 
-    if (username.length !== 0 && password.length !== 0) {
-      this.props.loginUser({username, password});
+    if (mobileNumber.length !== 0 && password.length !== 0) {
+      this.props.loginUser({mobileNumber, password});
     } else {
       alert('Please fill out all fields');
     }
@@ -29,7 +29,7 @@ class Header extends Component {
       return (
         <div className="row">
             <div className="offset-by-five three columns">
-              Logged in as <strong>{currentUser.username}</strong>
+              Logged in as <strong>{currentUser.name}</strong>
             </div>
             <div className="two columns">
               ● <Link to="profile">Edit Profile</Link>
@@ -45,7 +45,7 @@ class Header extends Component {
       <div className="row">
        <form onSubmit={this.handleLogin.bind(this)}>
             <div className="one-third column">
-              <input type="text" className="u-full-width" placeholder="Username" ref="username" />
+              <input type="text" className="u-full-width" placeholder="Mobile number" ref="mobileNumber" />
             </div>
             <div className="one-third column">
               <input type="password" className="u-full-width" placeholder="Password" ref="password" />

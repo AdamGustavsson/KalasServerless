@@ -83,13 +83,13 @@
       "Properties": {
         "AttributeDefinitions": [
           {
-            "AttributeName": "username",
+            "AttributeName": "mobileNumber",
             "AttributeType": "S"
           }
         ],
         "KeySchema": [
           {
-            "AttributeName": "username",
+            "AttributeName": "mobileNumber",
             "KeyType": "HASH"
           }
         ],

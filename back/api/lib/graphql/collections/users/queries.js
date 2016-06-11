@@ -18,12 +18,12 @@ module.exports = {
   },
   user: {
     type: UserType,
-    description: 'Get a User by username',
+    description: 'Get a User by mobileNumber',
     args: {
-      username: {type: new GraphQLNonNull(GraphQLString)}
+      mobilrNumber: {type: new GraphQLNonNull(GraphQLString)}
     },
     resolve: function(source, args) {
-      return validate(args).then(() => resolves.get(args.username));
+      return validate(args).then(() => resolves.get(args.mobileNumber));
     }
   }
 }

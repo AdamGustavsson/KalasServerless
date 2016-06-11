@@ -19,13 +19,11 @@ class UsersEdit extends Component {
     event.preventDefault();
 
     const name = this.refs.name.value;
-    const email = this.refs.email.value;
     const password = this.refs.password.value;
 
-    if (name.length !== 0 && email.length !== 0 && password.length !== 0) {
+    if (name.length !== 0 && password.length !== 0) {
       const user = {
         name,
-        email,
         password,
         token: this.props.user.token
       };
@@ -48,7 +46,6 @@ class UsersEdit extends Component {
           <hr />
           <form onSubmit={this.handleSubmit.bind(this)}>
             <input type="text" placeholder="Name" className="u-full-width" ref="name" defaultValue={user.name}/>
-            <input type="email" placeholder="E-Mail" className="u-full-width" ref="email" defaultValue={user.email} />
             <input type="password" placeholder="Password" className="u-full-width" ref="password" />
             <input type="submit" className="button button-primary" />
             <Link to="/" className="u-pull-right button">Cancel</Link>

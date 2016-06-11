@@ -20,21 +20,19 @@ class UsersIndex extends Component {
             <table className="u-full-width">
               <thead>
                 <tr>
-                  <th>Username</th>
+                  <th>Mobile number</th>
                   <th>Name</th>
-                  <th>E-Mail</th>
                   <th>Parties</th>
                 </tr>
               </thead>
               <tbody>
               {users.map((user) => {
                 return (
-                  <tr key={'user-' + user.username}>
+                  <tr key={'user-' + user.mobileNumber}>
                     <td>
-                      <Link to={ 'users/' + user.username + '/show' }>{user.username}</Link>
+                      <Link to={ 'users/' + user.mobileNumber + '/show' }>{user.mobileNumber}</Link>
                     </td>
                     <td>{user.name}</td>
-                    <td>{user.email}</td>
                     <td>
                       <Link to={ 'parties/all' }>Parties</Link>
                     </td>

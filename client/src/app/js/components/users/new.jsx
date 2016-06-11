@@ -12,15 +12,13 @@ class UsersNew extends Component {
     event.preventDefault();
 
     const name = this.refs.name.value;
-    const username = this.refs.username.value;
-    const email = this.refs.email.value;
+    const mobileNumber = this.refs.mobileNumber.value;
     const password = this.refs.password.value;
 
-    if (name.length !== 0 && username.length !== 0 && email.length !== 0 && password.length !== 0) {
+    if (name.length !== 0 && mobileNumber.length !== 0 && password.length !== 0) {
       const user = {
         name,
-        username,
-        email,
+        mobileNumber,
         password
       };
 
@@ -38,8 +36,7 @@ class UsersNew extends Component {
             <h1>Create profile</h1>
             <hr />
             <input type="text" placeholder="Name" className="u-full-width" ref="name" />
-            <input type="text" placeholder="Username" className="u-full-width" ref="username" />
-            <input type="email" placeholder="E-Mail" className="u-full-width" ref="email" />
+            <input type="text" placeholder="Mobile Number" className="u-full-width" ref="mobileNumber" />
             <input type="password" placeholder="Password" className="u-full-width" ref="password" />
             <input type="submit" className="button button-primary" />
             <Link to="/" className="u-pull-right button">Cancel</Link>
