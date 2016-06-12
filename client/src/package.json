@@ -30,15 +30,21 @@
   "dependencies": {
     "babel-plugin-transform-class-properties": "^6.6.0",
     "babel-plugin-transform-object-rest-spread": "^6.6.5",
+    "css-loader": "^0.23.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "moment": "^2.13.0",
     "react": "^15.0.1",
     "react-dom": "^15.0.1",
     "react-mixin": "^3.0.3",
     "react-redux": "^4.4.0",
     "react-router": "^2.1.1",
     "react-router-redux": "^4.0.2",
+    "react-widgets": "^3.3.2",
     "redux": "^3.3.1",
     "redux-logger": "^2.6.1",
     "redux-thunk": "^2.0.1",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
     "whatwg-fetch": "^0.11.0"
   }
 }

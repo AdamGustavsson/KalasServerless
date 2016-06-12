@@ -1,0 +1,9 @@
+.u-full-width.rw-datetimepicker.rw-widget {
+    margin-bottom: 15px;
+}
+.rw-widget .rw-input {
+    font-size: 11px;
+}
+.button, button, input[type="submit"], input[type="reset"], input[type="button"]{
+  -webkit-appearance: none;
+}
