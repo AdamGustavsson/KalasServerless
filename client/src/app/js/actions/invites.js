@@ -24,6 +24,7 @@ export function getInvite(id) {
         id,
         childName,
         inviteStatus
+        partyId
       }
     }`
   };
