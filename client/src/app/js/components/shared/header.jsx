@@ -48,14 +48,16 @@ class Header extends Component {
     return (
       <div className="row">
         <div className="twelve columns">
-            <form onSubmit={this.handleLogin.bind(this)}>
-                <Menu styles={ styles } right >
-                  <input type="text" className="u-full-width" placeholder="Mobile number" ref="mobileNumber" />
-                  <input type="password" className="u-full-width" placeholder="Password" ref="password" />
-                  <input type="submit" className="u-full-width button-primary" value="Login"/>
+
+                <Menu right >
+                  <form onSubmit={this.handleLogin.bind(this)}>
+                    <input type="text" className="u-full-width" placeholder="Mobile number" ref="mobileNumber" />
+                    <input type="password" className="u-full-width" placeholder="Password" ref="password" />
+                    <input type="submit" className="u-full-width button-primary" value="Login"/>
+                  </form>
                   <Link to="users/new">Create Profile (optional)</Link>
                 </Menu>
-            </form>
+
 
         </div>
       </div>

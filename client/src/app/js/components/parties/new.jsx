@@ -76,7 +76,7 @@ class PartiesNew extends Component {
             <DateTimePicker placeholder="End time" min={this.state.startDateTime} value={this.state.endDateTime} onChange={change.bind(null,'endDateTime')}  format={"HH:mm"} step={15} finalView={"month"} timeFormat={"HH:mm"} calendar={false} className="u-full-width" />
             Location:
             <input type="text" placeholder="Laserdome, Grafiska vägen 32, Göteborg" className="u-full-width" ref="partyLocation" />
-            <input type="submit" className="button button-primary" />
+            <input type="submit" className="button button-primary" value="Create"/>
             <Link to="/" className="u-pull-right button">Cancel</Link>
           </form>
         </div>
