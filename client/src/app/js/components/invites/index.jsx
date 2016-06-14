@@ -15,7 +15,7 @@ class InvitesIndex extends Component {
         return (
           <div className="row">
             <div className="twelve columns">
-              <h2>Invited guests</h2>
+              <h3>Invited guests</h3>
               <hr />
               {invites&&invites.length ? (
                 <table className="u-full-width">

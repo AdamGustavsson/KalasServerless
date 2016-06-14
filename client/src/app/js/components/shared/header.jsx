@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
 import { loginUser, logoutUser } from '../../actions/users';
+import { slide as Menu } from 'react-burger-menu';
+import { Link } from 'react-router';
+import Radium from 'radium';
+import './styles.css';
+let RadiumLink = Radium(Link);
+
 
 class Header extends Component {
   handleLogin(event) {
@@ -28,36 +33,30 @@ class Header extends Component {
     if (currentUser) {
       return (
         <div className="row">
-            <div className="offset-by-five three columns">
-              Logged in as <strong>{currentUser.name}</strong>
-            </div>
-            <div className="two columns">
-              ● <Link to="profile">Edit Profile</Link>
-            </div>
-            <div className="two columns">
-             ● <a href="#" onClick={this.handleLogoutClick.bind(this)}>Logout</a>
-            </div>
+          <div className="twelve columns">
+              <Menu  right >
+                <div className="menu-item" >Logged in as <strong>{currentUser.name}</strong></div>
+                <RadiumLink className="menu-item" to="profile">Edit Profile</RadiumLink>
+                <a className="menu-item" href="#" onClick={this.handleLogoutClick.bind(this)}>Logout</a>
+              </Menu>
+          </div>
         </div>
+
       )
     }
 
     return (
       <div className="row">
-       <form onSubmit={this.handleLogin.bind(this)}>
-            <div className="one-third column">
-              <input type="text" className="u-full-width" placeholder="Mobile number" ref="mobileNumber" />
-            </div>
-            <div className="one-third column">
-              <input type="password" className="u-full-width" placeholder="Password" ref="password" />
-            </div>
-            <div className="one-third column">
-              <input type="submit" className="u-full-width button-primary" value="Login"/>
-            </div>
-
-          <hr />
-        </form>
         <div className="twelve columns">
-          <Link to="users/new">Create Profile (optional)</Link>
+            <form onSubmit={this.handleLogin.bind(this)}>
+                <Menu styles={ styles } right >
+                  <input type="text" className="u-full-width" placeholder="Mobile number" ref="mobileNumber" />
+                  <input type="password" className="u-full-width" placeholder="Password" ref="password" />
+                  <input type="submit" className="u-full-width button-primary" value="Login"/>
+                  <Link to="users/new">Create Profile (optional)</Link>
+                </Menu>
+            </form>
+
         </div>
       </div>
 

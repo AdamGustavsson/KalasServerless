@@ -22,7 +22,7 @@ class InvitesNew extends Component {
 
       this.props.createInvite(invite, this.props.party.id, this.props.token);
       this.refs.mobileNumber.value = null;
-      this.refs.childName.value = null;    
+      this.refs.childName.value = null;
     } else {
       alert('Please fill out all fields');
     }
@@ -35,7 +35,7 @@ class InvitesNew extends Component {
           <form onSubmit={this.handleSubmit.bind(this)}>
             <input type="text" placeholder="Child name" className="u-full-width" ref="childName" />
             <input type="text" placeholder="Mobile number" className="u-full-width" ref="mobileNumber" />
-            <input type="submit" className="button button-primary" />
+            <input type="submit" value="Invite" className="button button-primary" />
           </form>
         </div>
       </div>

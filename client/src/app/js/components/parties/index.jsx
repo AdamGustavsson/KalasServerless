@@ -49,7 +49,7 @@ class PartiesIndex extends Component {
     } else {
         return (<div className="row">
                     <div className="twelve columns">
-                        <h3>Please log in to see parties</h3>
+                        <h4>Please log in to see parties</h4>
                     </div>
                 </div>
                );

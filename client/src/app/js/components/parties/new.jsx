@@ -64,12 +64,18 @@ class PartiesNew extends Component {
           <form onSubmit={this.handleSubmit.bind(this)}>
             <h1>Create party</h1>
             <hr />
-            <input type="text" placeholder="Header" className="u-full-width" ref="header" />
-            <input type="text" placeholder="Description" className="u-full-width" ref="description" />
-            <input type="text" placeholder="Child name" className="u-full-width" ref="childName" />
+            Header:
+            <input type="text" placeholder="Welcome to Jane's 7th birthday party" className="u-full-width" ref="header" />
+            Description:
+            <textarea rows="5" placeholder="Help us celebrate Jane's birthday. Lunch and cake will be served. Please RSVP by June 1st." className="u-full-width" ref="description" />
+            Child name:
+            <input type="text" placeholder="Jane" className="u-full-width" ref="childName" />
+            Start date and time
             <DateTimePicker placeholder="Start time" value={this.state.startDateTime} onChange={change.bind(null,'startDateTime')} format={"YYYY-MM-DD HH:mm"} step={15} finalView={"month"} timeFormat={"HH:mm"} time={true} className="u-full-width" />
+            End time:
             <DateTimePicker placeholder="End time" min={this.state.startDateTime} value={this.state.endDateTime} onChange={change.bind(null,'endDateTime')}  format={"HH:mm"} step={15} finalView={"month"} timeFormat={"HH:mm"} calendar={false} className="u-full-width" />
-            <input type="text" placeholder="Location" className="u-full-width" ref="partyLocation" />
+            Location:
+            <input type="text" placeholder="Laserdome, Grafiska vägen 32, Göteborg" className="u-full-width" ref="partyLocation" />
             <input type="submit" className="button button-primary" />
             <Link to="/" className="u-pull-right button">Cancel</Link>
           </form>

@@ -20,17 +20,18 @@ class PartiesShow extends Component {
     return (
       <div className="row">
         <div className="four columns offset-by-four">
-          <h1>{party.header}</h1>
+          <h4><br/>{party.header}</h4>
           <hr />
           <p>{party.description}</p>
           <p>{party.childName}</p>
           <p>{party.startDateTime}</p>
           <p>{party.endDateTime}</p>
           <p>{party.partyLocation}</p>
-          <Link to='/' className="button u-full-width">Back</Link>
         </div>
         <InvitesIndex/>
         <InvitesNew/>
+        <hr />
+        <Link to='/' className="button u-full-width">Back</Link>
       </div>
 
     );
