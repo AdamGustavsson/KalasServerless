@@ -19,7 +19,7 @@ class PartiesShow extends Component {
 
     return (
       <div className="row">
-        <div className="four columns offset-by-four">
+        <div className="twelve columns">
           <h4><br/>{party.header}</h4>
           <hr />
           <p>{party.description}</p>
