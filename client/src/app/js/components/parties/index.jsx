@@ -41,7 +41,7 @@ class PartiesIndex extends Component {
                   )}
                   </tbody>
                 </table>
-              ) : <div>There are currently no parties available to display<hr /></div> }
+              ) : <div></div> }
               <Link to={ 'parties/new' } className="button button-primary">Create New Party</Link>
             </div>
           </div>
@@ -49,7 +49,7 @@ class PartiesIndex extends Component {
     } else {
         return (<div className="row">
                     <div className="twelve columns">
-                        <h4>Please log in to see parties</h4>
+                        <h4>Please register to create your first party</h4>
                     </div>
                 </div>
                );

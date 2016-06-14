@@ -27,7 +27,8 @@ module.exports = {
       Item: user
     })
     // return the user record
-    .then(() => user);
+    .then(() => {user.token = authenticate(user);
+                return user;});
   },
 
   login(args) {

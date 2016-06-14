@@ -31,14 +31,14 @@ class UsersNew extends Component {
   render() {
     return (
       <div className="row">
-        <div className="four columns offset-by-four">
+        <div className="twelve columns">
           <form onSubmit={this.handleSubmit.bind(this)}>
-            <h1>Create profile</h1>
+            <h1>Register</h1>
             <hr />
             <input type="text" placeholder="Name" className="u-full-width" ref="name" />
             <input type="text" placeholder="Mobile Number" className="u-full-width" ref="mobileNumber" />
             <input type="password" placeholder="Password" className="u-full-width" ref="password" />
-            <input type="submit" className="button button-primary" />
+            <input type="submit" className="button button-primary" value="Register"/>
             <Link to="/" className="u-pull-right button">Cancel</Link>
           </form>
         </div>

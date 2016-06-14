@@ -51,11 +51,14 @@ class Header extends Component {
 
                 <Menu right >
                   <form onSubmit={this.handleLogin.bind(this)}>
+                  <div>Login:</div>
                     <input type="text" className="u-full-width" placeholder="Mobile number" ref="mobileNumber" />
                     <input type="password" className="u-full-width" placeholder="Password" ref="password" />
                     <input type="submit" className="u-full-width button-primary" value="Login"/>
                   </form>
-                  <Link to="users/new">Create Profile (optional)</Link>
+
+            
+                  <Link to="users/new">Register account</Link>
                 </Menu>
 
 

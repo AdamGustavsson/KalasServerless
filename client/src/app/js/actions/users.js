@@ -28,6 +28,7 @@ export function createUser(user) {
         id
         name
         mobileNumber
+        token
       }
     }`
   };
