@@ -32,15 +32,12 @@ class Header extends Component {
 
     if (currentUser) {
       return (
-        <div className="row">
-          <div className="twelve columns">
-              <Menu  right >
+
+              <Menu right >
                 <div className="menu-item" >Logged in as <strong>{currentUser.name}</strong></div>
                 <RadiumLink className="menu-item" to="profile">Edit Profile</RadiumLink>
                 <a className="menu-item" href="#" onClick={this.handleLogoutClick.bind(this)}>Logout</a>
               </Menu>
-          </div>
-        </div>
 
       )
     }

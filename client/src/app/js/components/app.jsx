@@ -7,11 +7,14 @@ import Header from './shared/header';
 export default class App extends Component {
   render() {
     return (
-      <div className="container">
-        <Header />
-        <Error />
-        {this.props.children}
+        <div>
+            <Header />
+            <div className="container">
+                <Error />
+                {this.props.children}
+              </div>
       </div>
+
     );
   }
 }

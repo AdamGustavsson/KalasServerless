@@ -41,7 +41,7 @@ class UsersEdit extends Component {
 
     return (
       <div className="row">
-        <div className="four columns offset-by-four">
+        <div className="twelve columns">
           <h1>Edit Profile</h1>
           <hr />
           <form onSubmit={this.handleSubmit.bind(this)}>
