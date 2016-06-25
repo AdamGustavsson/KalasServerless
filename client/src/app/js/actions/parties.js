@@ -101,7 +101,7 @@ export function createParty(party,token) {
     type: CREATE_PARTY,
     payload: json
   }))
-  .then(() => dispatch(push('parties/all')))
+  .then((response) => dispatch(push(`parties/${response.payload.data.party.id}/show`)))
   .catch(exception => dispatch({
     type: ERROR,
     payload: exception.message
