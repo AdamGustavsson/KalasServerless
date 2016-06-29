@@ -10,16 +10,17 @@ import PartiesIndex from './components/parties/index';
 import PartiesShow from './components/parties/show';
 import PartiesNew from './components/parties/new';
 import InvitesShow from './components/invites/show';
+import LandingPage from './components/shared/landingpage';
 
 export default (
   <Route path="/" component={App}>
-    <IndexRoute component={PartiesIndex} />
+    <IndexRoute component={LandingPage} />
     <Route path="parties/my" component={PartiesIndex} />
     <Route path="parties/:id/show" component={PartiesShow} />
     <Route path="parties/new" component={PartiesNew} />
     <Route path="invites/:id/show" component={InvitesShow} />
     <Route path="profile" component={UsersEdit} />
     <Route path="users/new" component={UsersNew} />
-    <Route path="*" component={PartiesIndex} />
+    <Route path="*" component={LandingPage}  />
   </Route>
 );
