@@ -5,6 +5,9 @@ import { slide as Menu } from 'react-burger-menu';
 import { Link } from 'react-router';
 import Radium from 'radium';
 import './styles.css';
+
+import { Translate, Localize } from 'react-redux-i18n';
+
 let RadiumLink = Radium(Link);
 
 
@@ -37,7 +40,9 @@ class Header extends Component {
     if (currentUser) {
       return (
           <Menu right isOpen={ false }>
-            <div className="menu-item" >Logged in as <strong>{currentUser.name}</strong></div>
+            <div className="menu-item" >
+              <Translate value="loginPage.logged_in_as" name={currentUser.name}/>
+            </div>
             <RadiumLink className="menu-item" to="profile" onClick={this.handleMenuClick.bind(this)}>Edit Profile</RadiumLink>
             <a className="menu-item" href="#" onClick={this.handleLogoutClick.bind(this)}>Logout</a>
           </Menu>
