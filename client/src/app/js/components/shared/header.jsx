@@ -5,6 +5,9 @@ import { slide as Menu } from 'react-burger-menu';
 import { Link } from 'react-router';
 import Radium from 'radium';
 import './styles.css';
+
+import { Translate, Localize } from 'react-redux-i18n';
+
 let RadiumLink = Radium(Link);
 
 
@@ -27,18 +30,22 @@ class Header extends Component {
     this.props.logoutUser();
   }
 
+  handleMenuClick(event) {
+    this.setState({menuOpen: false});
+  }
+
   render() {
     const {currentUser} = this.props;
 
     if (currentUser) {
       return (
-
-              <Menu right >
-                <div className="menu-item" >Logged in as <strong>{currentUser.name}</strong></div>
-                <RadiumLink className="menu-item" to="profile">Edit Profile</RadiumLink>
-                <a className="menu-item" href="#" onClick={this.handleLogoutClick.bind(this)}>Logout</a>
-              </Menu>
-
+          <Menu right isOpen={ false }>
+            <div className="menu-item" >
+              <Translate value="loginPage.logged_in_as" name={currentUser.name}/>
+            </div>
+            <RadiumLink className="menu-item" to="profile" onClick={this.handleMenuClick.bind(this)}>Edit Profile</RadiumLink>
+            <a className="menu-item" href="#" onClick={this.handleLogoutClick.bind(this)}>Logout</a>
+          </Menu>
       )
     }
 
@@ -46,18 +53,16 @@ class Header extends Component {
       <div className="row">
         <div className="twelve columns">
 
-                <Menu right >
-                  <form onSubmit={this.handleLogin.bind(this)}>
-                  <div>Login:</div>
-                    <input type="text" className="u-full-width" placeholder="Mobile number" ref="mobileNumber" />
-                    <input type="password" className="u-full-width" placeholder="Password" ref="password" />
-                    <input type="submit" className="u-full-width button-primary" value="Login"/>
-                  </form>
+            <Menu right isOpen={ false }>
+              <form onSubmit={this.handleLogin.bind(this)}>
+              <div>Login:</div>
+                <input type="text" className="u-full-width" placeholder="Mobile number" ref="mobileNumber" />
+                <input type="password" className="u-full-width" placeholder="Password" ref="password" />
+                <input type="submit" className="u-full-width button-primary" value="Login"/>
+              </form>
 
-            
-                  <Link to="users/new">Register account</Link>
-                </Menu>
-
+              <Link to="users/new" onClick={this.handleMenuClick.bind(this)}>Register account</Link>
+            </Menu>
 
         </div>
       </div>
