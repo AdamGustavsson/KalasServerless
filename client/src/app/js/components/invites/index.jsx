@@ -12,6 +12,19 @@ class InvitesIndex extends Component {
 
   render() {
     const { invites } = this.props;
+    const statusOrder = {ACCEPTED: 1,
+                        REJECTED: 2,
+                        CREATED: 3,
+                        INVITED: 4};
+
+    const statusText = {CREATED: '',
+                        INVITED: 'Invite sent',
+                        ACCEPTED: 'Accepted',
+                        REJECTED: 'Rejected'};
+    var lastStatus = 0;
+    invites.sort((a, b) => {
+      return statusOrder[a.inviteStatus] - statusOrder[b.inviteStatus];
+    })
         return (
           <div className="row">
             <div className="twelve columns">
@@ -22,21 +35,18 @@ class InvitesIndex extends Component {
                   <thead>
                     <tr>
                       <th>Name</th>
-                      <th>Mobile number</th>
                       <th>Status</th>
+                      <th>Mobile number</th>
                     </tr>
                   </thead>
                   <tbody>
-                  {invites.map((invite) => {
-                    const statusText = {CREATED: '',
-                                        INVITED: 'Invite sent',
-                                        ACCEPTED: 'Accepted',
-                                        REJECTED: 'Rejected'};
+                  {
+                    invites.map((invite) => {
                     return (
                       <tr key={'invite-' + invite.id}>
                         <td>{invite.childName}</td>
-                        <td>{invite.mobileNumber}</td>
                         <td>{statusText[invite.inviteStatus]}</td>
+                        <td>{invite.mobileNumber}</td>
                       </tr>
                     )}
                   )}

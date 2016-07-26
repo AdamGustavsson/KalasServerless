@@ -4,6 +4,7 @@ module.exports = {
   entry: {
     javascript: "./app/js/app.jsx",
     html: "./app/index.html"
+
   },
   output: {
     path: __dirname + "/../dist",
