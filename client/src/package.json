@@ -46,6 +46,7 @@
     "redux-thunk": "^2.0.1",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
-    "whatwg-fetch": "^0.11.0"
+    "whatwg-fetch": "^0.11.0",
+    "react-redux-i18n": "0.0.3"
   }
 }
