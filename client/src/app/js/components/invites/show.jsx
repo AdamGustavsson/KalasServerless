@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { getInvite, acceptInvite, rejectInvite} from '../../actions/invites';
 import { getParty } from '../../actions/parties';
 require('./polka.css');
+const flagSource = require('./images/party-flags.png');
 
 class InviteShow extends Component {
   componentWillMount() {
@@ -34,7 +35,7 @@ class InviteShow extends Component {
     return (
       <div className="row">
         <div className="twelve columns frame">
-        <img src="http://www.wiggleysfunfarm.co.uk/images/party-flags.png"/>
+        <img src={flagSource}/>
             <p className="header">{party.header}</p>
             <p>{party.description}</p>
             <p>When: {party.startDateTime} - {party.endDateTime}</p>

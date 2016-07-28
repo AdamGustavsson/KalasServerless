@@ -41,6 +41,7 @@ module.exports = {
         loader: ExtractTextPlugin.extract("style-loader", "css-loader")
       },
       { test: /\.gif$/, loader: "url-loader?mimetype=image/png" },
+      { test: /\.png$/, loader: "url-loader?mimetype=image/png" },
       { test: /\.jpg$/, loader: "url-loader?mimetype=image/jpg" },
       { test: /\.woff(2)?(\?v=[0-9].[0-9].[0-9])?$/, loader: "url-loader?mimetype=application/font-woff" },
       { test: /\.(ttf|eot|svg)(\?v=[0-9].[0-9].[0-9])?$/, loader: "file-loader?name=[name].[ext]" },
