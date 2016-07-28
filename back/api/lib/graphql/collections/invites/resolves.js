@@ -102,7 +102,7 @@ invite.childName + ' has been invited to the birthday party of ' + partyResponse
       Key:{'id':inviteId},
       UpdateExpression: 'set inviteStatus = :a',
       ExpressionAttributeValues: {':a': 'REJECTED'},
-      ReturnValues:"ALL_NEW"
+      ReturnValues:"ALL_OLD"
     }).then((reply) => {
       invite=reply.Attributes;
       if (invite.inviteStatus=='REJECTED'){
@@ -121,7 +121,7 @@ invite.childName + ' has been invited to the birthday party of ' + partyResponse
         return smsgateway.sendSMS(party.hostUser,messageToHost)
       } else {
         return Promise.resolve()
-      }    
+      }
     }).then(() => invite);
   }
 };
