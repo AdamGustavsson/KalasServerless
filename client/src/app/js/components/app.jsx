@@ -13,7 +13,6 @@ import reducers from './../reducers';
 
 export default class App extends Component {
   render() {
-    console.log('Im in');
     return (
           <div>
               <Header />

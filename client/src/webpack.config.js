@@ -1,5 +1,6 @@
 
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var webpack = require('webpack')
 module.exports = {
   entry: {
     javascript: "./app/js/app.jsx",
@@ -48,6 +49,13 @@ module.exports = {
     ]
   },
   plugins: [
-        new ExtractTextPlugin("styles.css")
+        new webpack.DefinePlugin({
+          'process.env': {
+            // This has effect on the react lib size
+            'NODE_ENV': JSON.stringify('production'),
+          }
+        }),
+        new ExtractTextPlugin("styles.css"),
+        new webpack.optimize.UglifyJsPlugin()
     ]
 };

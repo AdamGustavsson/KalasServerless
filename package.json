@@ -20,7 +20,13 @@
     "serverless-offline": "^2.2.4"
   },
   "description": "The Serverless GraphQL Application Boilerplate",
-  "devDependencies": {},
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.4.5"
+  },
+  "scripts": {
+    "test": "SERVERLESS_STAGE=test SERVERLESS_REGION=eu-west-1 ./node_modules/.bin/mocha tests/"
+  },
   "homepage": "https://github.com/serverless/serverless-graphql#readme",
   "license": "MIT",
   "name": "serverless-graphql",
@@ -30,6 +36,5 @@
     "type": "git",
     "url": "git://github.com/serverless/serverless-graphql.git"
   },
-  "scripts": {},
   "version": "0.0.4"
 }

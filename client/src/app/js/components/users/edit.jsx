@@ -50,8 +50,6 @@ class UsersEdit extends Component {
             <input type="submit" className="button button-primary" />
             <Link to="/" className="u-pull-right button">Cancel</Link>
           </form>
-          <hr />
-          <button onClick={this.onDeleteClick.bind(this)} className="button u-full-width">Delete</button>
         </div>
       </div>
     );
