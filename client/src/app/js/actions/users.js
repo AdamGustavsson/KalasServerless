@@ -4,7 +4,7 @@ import { push } from 'react-router-redux';
 
 import { API_URL } from './index';
 import {resetError} from './error';
-
+import {setLocale} from 'react-redux-i18n';
 import {
   ERROR,
   GET_USERS,
@@ -13,7 +13,8 @@ import {
   UPDATE_USER,
   DELETE_USER,
   LOGIN_USER,
-  LOGOUT_USER
+  LOGOUT_USER,
+  UPDATE_LOCALE
 } from './constants';
 
 export function createUser(user) {
@@ -201,5 +202,12 @@ export function logoutUser() {
   return dispatch => {
     dispatch({type: LOGOUT_USER});
     dispatch(push('/'));
+  }
+}
+
+export function updateLanguage(lang) {
+  return dispatch => {
+    localStorage.setItem("locale", lang);
+    dispatch(setLocale(lang));
   }
 }

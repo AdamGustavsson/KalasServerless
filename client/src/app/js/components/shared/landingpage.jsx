@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from "react-router";
 import './landingpage.css';
 
+import { Translate} from 'react-redux-i18n';
 
 class LandingPage extends Component {
 
@@ -15,10 +16,10 @@ class LandingPage extends Component {
         <div className="section">
             <div className="row first">
               <div className="twelve columns">
-                <h4 className="heading">Birthday parties made simple</h4>
-                <p className="description">Party time helps you invite guest to your child's birthday party and keep track of RSVPs.</p>
+                <h4 className="heading"><Translate value="landingPage.heading" /></h4>
+                <p className="description"><Translate value="landingPage.description" /></p>
                 <p>
-                  <Link to={ currentUser?'parties/new':'users/new' } className="button button-primary">Create your first party</Link>
+                  <Link to={ currentUser?'parties/new':'users/new' } className="button button-primary"><Translate value="landingPage.newPartyButton" /></Link>
                 </p>
               </div>
             </div>
@@ -26,13 +27,13 @@ class LandingPage extends Component {
         <div className="section">
             <div className="row second">
               <div className="twelve columns">
-                <h4 className="heading">How it works</h4>
-                <p className="description">You enter the details of you birthday party and and add the names of the invited children along with a mobile number of their parent. </p>
-                <p className="description">We then send the invite to each parent in an SMS with a link to RSVP. </p>
-                <p className="description">You get an SMS whenever a parent RSVPs with a list of the current status of all invited children.</p>
-                <p className="description">It's that simple! </p>
+                <h4 className="heading"><Translate value="landingPage.howItWorks" /></h4>
+                <p className="description"><Translate value="landingPage.howItWorksDetails1" /></p>
+                <p className="description"><Translate value="landingPage.howItWorksDetails2" /></p>
+                <p className="description"><Translate value="landingPage.howItWorksDetails3" /></p>
+                <p className="description"><Translate value="landingPage.howItWorksDetails4" /></p>
                 <p>
-                  <Link to={ currentUser?'parties/new':'users/new' } className="button button-primary">Create your first party</Link>
+                  <Link to={ currentUser?'parties/new':'users/new' } className="button button-primary"><Translate value="landingPage.newPartyButton" /></Link>
                 </p>
               </div>
             </div>

@@ -8,7 +8,7 @@ import Header from './shared/header';
 import { translationsObject } from "./translations/translations";
 
 import { createStore, combineReducers } from 'redux';
-import { loadTranslations, setLocale, syncTranslationWithStore, i18nReducer } from 'react-redux-i18n';
+
 import reducers from './../reducers';
 
 export default class App extends Component {
@@ -24,14 +24,3 @@ export default class App extends Component {
     );
   }
 }
-
-const store =  createStore(
-    combineReducers({
-      ...reducers,
-      i18n: i18nReducer
-    })
-);
-
-syncTranslationWithStore(store);
-store.dispatch(loadTranslations(translationsObject));
-store.dispatch(setLocale('sv'));
