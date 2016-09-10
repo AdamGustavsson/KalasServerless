@@ -6,7 +6,7 @@ import { Link } from 'react-router';
 import Radium from 'radium';
 import './styles.css';
 
-import { Translate, Localize,setLocale } from 'react-redux-i18n';
+import { Translate, Localize,setLocale,I18n} from 'react-redux-i18n';
 
 let RadiumLink = Radium(Link);
 
@@ -31,9 +31,9 @@ class Header extends Component {
   }
 
   handleLanguageClick(locale) {
-
     this.setState({menuOpen: false});
     this.props.updateLanguage(locale);
+
   }
 
   handleMenuClick(event) {
@@ -42,17 +42,18 @@ class Header extends Component {
 
   render() {
     const {currentUser} = this.props;
-
+    const {currentRoute} = this.props;
     if (currentUser) {
       return (
           <Menu right isOpen={ false }>
             <div className="menu-item" >
               <Translate value="loginPage.logged_in_as" name={currentUser.name}/>
             </div>
-            <RadiumLink className="menu-item" to="profile" onClick={this.handleMenuClick.bind(this)}><Translate value="loginPage.editProfile" /></RadiumLink>
-            <RadiumLink className="menu-item" to="#" onClick={this.handleLogoutClick.bind(this)}><Translate value="loginPage.logOut" /></RadiumLink>
-            <a className="menu-item" href="javascript:void(0)" onClick={this.handleLanguageClick.bind(this,"sv")}>Svenska</a>
-            <a className="menu-item" href="javascript:void(0)" onClick={this.handleLanguageClick.bind(this,"en")}>English</a>
+            <RadiumLink className="menu-item" to="/profile" onClick={this.handleMenuClick.bind(this)}><Translate value="loginPage.editProfile" /></RadiumLink>
+            <RadiumLink className="menu-item" to="" onClick={this.handleLogoutClick.bind(this)}><Translate value="loginPage.logOut" /></RadiumLink>
+            <div><br/><Translate value="loginPage.language" />:</div>
+            <RadiumLink className="menu-item" to={currentRoute} onClick={this.handleLanguageClick.bind(this,"sv")}>Svenska</RadiumLink>
+            <RadiumLink className="menu-item" to={currentRoute} onClick={this.handleLanguageClick.bind(this,"en")}>English</RadiumLink>
           </Menu>
       )
     }
@@ -63,13 +64,16 @@ class Header extends Component {
 
             <Menu right isOpen={ false }>
               <form onSubmit={this.handleLogin.bind(this)}>
-              <div>Login:</div>
-                <input type="text" className="u-full-width" placeholder="Mobile number" ref="mobileNumber" />
-                <input type="password" className="u-full-width" placeholder="Password" ref="password" />
-                <input type="submit" className="u-full-width button-primary" value="Login"/>
+              <div><Translate value="loginPage.login" />:</div>
+                <input type="text" className="u-full-width" placeholder={I18n.t('user.mobileNumber')} ref="mobileNumber" />
+                <input type="password" className="u-full-width" placeholder={I18n.t('user.password')} ref="password" />
+                <input type="submit" className="u-full-width button-primary" value={I18n.t('loginPage.login')}/>
               </form>
 
-              <Link to="users/new" onClick={this.handleMenuClick.bind(this)}>Register account</Link>
+              <Link to="users/new" onClick={this.handleMenuClick.bind(this)}><Translate value="loginPage.register" /></Link>
+              <div><br/><Translate value="loginPage.language" />:</div>
+              <RadiumLink className="menu-item" to={currentRoute} onClick={this.handleLanguageClick.bind(this,"sv")}>Svenska</RadiumLink>
+              <RadiumLink className="menu-item" to={currentRoute} onClick={this.handleLanguageClick.bind(this,"en")}>English</RadiumLink>
             </Menu>
 
         </div>
@@ -80,6 +84,13 @@ class Header extends Component {
   }
 }
 
-const mapStateToProps = ({users: {currentUser}}) => ({currentUser});
+
+function mapStateToProps(state) {
+  if(state.users.currentUser){
+      return { currentUser: state.users.currentUser,currentRoute: state.routing.locationBeforeTransitions.pathname};
+  } else {
+      return { currentUser: null,currentRoute: state.routing.locationBeforeTransitions.pathname};
+  }
+}
 
 export default connect(mapStateToProps, { loginUser, logoutUser,updateLanguage})(Header);
