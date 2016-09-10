@@ -31,6 +31,21 @@ export const translationsObject = {
       chosePassword: "Chose a password",
       verifyPassword: "Confirm password",
       error: "Please fill out all fields and ensure that you typed the chosen password twice"
+    },
+    createPartyPage: {
+      error: "Please fill in all fields",
+      createParty: "Create party",
+      header: "Header",
+      header_example: "Welcome to Jane's 7th birthday party",
+      description: "Description",
+      description_example: "Help us celebrate Jane's birthday. Lunch and cake will be served. Please RSVP by June 1st.",
+      childName: "The birthday child's name",
+      childName_example: "Jane",
+      startDateTime: "Start date and time",
+      endDateTime: "End time",
+      location: "Location",
+      location_example: "Laserdome, Grafiska vägen 32, Göteborg",
+      create: "Create"
     }
   },
   sv: {
@@ -67,6 +82,21 @@ export const translationsObject = {
       chosePassword: "Välj ett lösenord",
       verifyPassword: "Bekräfta lösenord",
       error: "Vänligen fyll i alla fält och se till att lösenordsfälten är lika"
+    },
+    createPartyPage: {
+      error: "Vänligen fyll i alla fält",
+      createParty: "Skapa kalas",
+      header: "Rubrik",
+      header_example: "Välkommen till Annas 7-års kalas",
+      description: "Beskrivning",
+      description_example: "Hjälp oss fira Annas födelsedag. Vi bjuder på korv och tårta. Svara gärna innan 7/9.",
+      childName: "Födelsedagsbarnets namn",
+      childName_example: "Anna",
+      startDateTime: "Datum och tid",
+      endDateTime: "Sluttid",
+      location: "Plats",
+      location_example: "Laserdome, Grafiska vägen 32, Göteborg",
+      create: "Skapa"
     }
   }
 };

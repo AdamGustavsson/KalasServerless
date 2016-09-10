@@ -12,12 +12,15 @@ var Moment = require('moment');
 var momentLocalizer = require('react-widgets/lib/localizers/moment');
 momentLocalizer(Moment);
 
+import { Translate,I18n} from 'react-redux-i18n';
+
 class PartiesNew extends Component {
   static contextTypes = {
     router: PropTypes.object
   };
   constructor(props) {
   super(props);
+  Moment.locale(this.props.locale);
   this.state = {startDateTime: null,
                 startDateTimeString: null,
                 endDateTime: null,
@@ -47,37 +50,34 @@ class PartiesNew extends Component {
       };
       this.props.createParty(party,this.props.token);
     } else {
-      alert('Please fill out all fields');
+      alert(I18n.t('createPartyPage.error'));
     }
   }
 
   render() {
     var change = (name, date, dateString) => {
-      //if(name=='startDateTime'&&this.state.endDateTime==null){
-      //  this.setState({endDateTime: date, endDateTimeString: dateString})
-    //  }
       this.setState({[name]: date, [name + 'String']: dateString})
     };
     return (
       <div className="row">
         <div className="tweleve columns">
           <form onSubmit={this.handleSubmit.bind(this)}>
-            <h1>Create party</h1>
+            <h1><Translate value="createPartyPage.createParty" /></h1>
             <hr />
-            Header:
-            <input type="text" placeholder="Welcome to Jane's 7th birthday party" className="u-full-width" ref="header" />
-            Description:
-            <textarea rows="5" placeholder="Help us celebrate Jane's birthday. Lunch and cake will be served. Please RSVP by June 1st." className="u-full-width" ref="description" />
-            Child name:
-            <input type="text" placeholder="Jane" className="u-full-width" ref="childName" />
-            Start date and time
-            <DateTimePicker placeholder="Start time" value={this.state.startDateTime} onChange={change.bind(null,'startDateTime')} format={"YYYY-MM-DD HH:mm"} step={15} finalView={"month"} timeFormat={"HH:mm"} time={true} className="u-full-width" />
-            End time:
-            <DateTimePicker placeholder="End time" min={this.state.startDateTime} value={this.state.endDateTime} onChange={change.bind(null,'endDateTime')}  format={"HH:mm"} step={15} finalView={"month"} timeFormat={"HH:mm"} calendar={false} className="u-full-width" />
-            Location:
-            <input type="text" placeholder="Laserdome, Grafiska vägen 32, Göteborg" className="u-full-width" ref="partyLocation" />
-            <input type="submit" className="button button-primary" value="Create"/>
-            <Link to="/" className="u-pull-right button">Cancel</Link>
+            <Translate value="createPartyPage.header" />:
+            <input type="text" placeholder={I18n.t('createPartyPage.header_example')} className="u-full-width" ref="header" />
+            <Translate value="createPartyPage.description" />:
+            <textarea rows="5" placeholder={I18n.t('createPartyPage.description_example')} className="u-full-width" ref="description" />
+            <Translate value="createPartyPage.childName" />:
+            <input type="text" placeholder={I18n.t('createPartyPage.childName_example')} className="u-full-width" ref="childName" />
+            <Translate value="createPartyPage.startDateTime" />:
+            <DateTimePicker placeholder={I18n.t('createPartyPage.startDateTime')} value={this.state.startDateTime} onChange={change.bind(null,'startDateTime')} format={"YYYY-MM-DD HH:mm"} step={15} finalView={"month"} timeFormat={"HH:mm"} time={true} className="u-full-width" />
+            <Translate value="createPartyPage.endDateTime" />:
+            <DateTimePicker placeholder={I18n.t('createPartyPage.endDateTime')} min={this.state.startDateTime} value={this.state.endDateTime} onChange={change.bind(null,'endDateTime')}  format={"HH:mm"} step={15} finalView={"month"} timeFormat={"HH:mm"} calendar={false} className="u-full-width" />
+            <Translate value="createPartyPage.location" />:
+            <input type="text" placeholder={I18n.t('createPartyPage.location_example')} className="u-full-width" ref="partyLocation" />
+            <input type="submit" className="button button-primary" value={I18n.t('createPartyPage.create')}/>
+            <Link to="/" className="u-pull-right button"><Translate value="general.cancel" /></Link>
           </form>
         </div>
       </div>
@@ -86,7 +86,7 @@ class PartiesNew extends Component {
 }
 
 function mapStateToProps(state) {
-  return { token: state.users.currentUser.token};
+  return { token: state.users.currentUser.token, locale: state.i18n.locale};
 }
 
 export default connect(mapStateToProps, { createParty })(PartiesNew);
