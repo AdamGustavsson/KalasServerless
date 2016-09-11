@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { getInvite, acceptInvite, rejectInvite} from '../../actions/invites';
 import { getParty } from '../../actions/parties';
+import { Translate} from 'react-redux-i18n';
 require('./polka.css');
 const flagSource = require('./images/party-flags.png');
 
@@ -27,7 +28,7 @@ class InviteShow extends Component {
     const { party } = this.props;
 
     if (!invite || !party) {
-      return <div className="row"><div className="twelve columns">Loading...</div></div>
+      return <div className="row"><div className="twelve columns"><Translate value="general.loading" /></div></div>
     }
 
 

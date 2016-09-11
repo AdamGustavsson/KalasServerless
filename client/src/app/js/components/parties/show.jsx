@@ -4,6 +4,7 @@ import { getParty } from '../../actions/parties';
 import { Link } from 'react-router';
 import InvitesIndex from '../invites/index';
 import InvitesNew from '../invites/new';
+import { Translate} from 'react-redux-i18n';
 
 class PartiesShow extends Component {
   componentWillMount() {
@@ -14,7 +15,7 @@ class PartiesShow extends Component {
     const { party } = this.props;
 
     if (!party) {
-      return <div className="row"><div className="twelve columns">Loading...</div></div>
+      return <div className="row"><div className="twelve columns"><Translate value="general.loading" /></div></div>
     }
 
     return (
@@ -31,7 +32,7 @@ class PartiesShow extends Component {
         <InvitesIndex/>
         <InvitesNew/>
         <hr />
-        <Link to='/' className="button u-full-width">Back</Link>
+        <Link to='parties/my' className="button u-full-width"><Translate value="general.back" /></Link>
       </div>
 
     );

@@ -14,7 +14,9 @@ export const translationsObject = {
       password: "Password"
     },
     general: {
-      cancel: "Cancel"
+      cancel: "Cancel",
+      loading: "Loading...",
+      back: "Back"
     },
     landingPage: {
       heading: "Birthday parties made simple",
@@ -45,7 +47,14 @@ export const translationsObject = {
       endDateTime: "End time",
       location: "Location",
       location_example: "Laserdome, Grafiska vägen 32, Göteborg",
-      create: "Create"
+      create: "Create",
+      invitedGuests: "Invited guests",
+      guestName: "Name",
+      inviteStatus: "Status",
+      mobileNumber: "Mobile number",
+      noGuests: "There are currently no invited guests",
+      guestName_example: "Child name",
+      invite: "Invite"
     }
   },
   sv: {
@@ -65,7 +74,9 @@ export const translationsObject = {
       password: "Lösenord"
     },
     general: {
-      cancel: "Avbryt"
+      cancel: "Avbryt",
+      loading: "Laddar...",
+      back: "Tillbaka"
     },
     landingPage: {
       heading: 'Barnkalas utan krångel',
@@ -96,7 +107,15 @@ export const translationsObject = {
       endDateTime: "Sluttid",
       location: "Plats",
       location_example: "Laserdome, Grafiska vägen 32, Göteborg",
-      create: "Skapa"
+      create: "Skapa",
+      invitedGuests: "Inbjudna barn",
+      guestName: "Namn",
+      inviteStatus: "Status",
+      mobileNumber: "Mobilnummer",
+      noGuests: "Du har inte bjudit in några barn än",
+      guestName_example: "Inbjudna barnets namn",
+      mobileNumber_example: "Förälders mobilnummer",
+      invite: "Bjud in"
     }
   }
 };

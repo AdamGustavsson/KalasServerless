@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { createInvite } from '../../actions/invites';
+import { Translate,I18n} from 'react-redux-i18n';
 
 class InvitesNew extends Component {
   static contextTypes = {
@@ -24,7 +25,7 @@ class InvitesNew extends Component {
       this.refs.mobileNumber.value = null;
       this.refs.childName.value = null;
     } else {
-      alert('Please fill out all fields');
+      alert(I18n.t('createPartyPage.error'));
     }
   }
 
@@ -33,9 +34,9 @@ class InvitesNew extends Component {
       <div className="row">
         <div className="twelve columns">
           <form onSubmit={this.handleSubmit.bind(this)}>
-            <input type="text" placeholder="Child name" className="u-full-width" ref="childName" />
-            <input type="text" placeholder="Mobile number" className="u-full-width" ref="mobileNumber" />
-            <input type="submit" value="Invite" className="button button-primary" />
+            <input type="text" placeholder={I18n.t('createPartyPage.guestName_example')} className="u-full-width" ref="childName" />
+            <input type="text" placeholder={I18n.t('createPartyPage.mobileNumber_example')} className="u-full-width" ref="mobileNumber" />
+            <input type="submit" value={I18n.t('createPartyPage.invite')} className="button button-primary" />
           </form>
         </div>
       </div>

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getInvitesForParty } from '../../actions/invites';
 import { Link } from 'react-router';
+import { Translate} from 'react-redux-i18n';
 
 class InvitesIndex extends Component {
   componentWillMount() {
@@ -28,15 +29,15 @@ class InvitesIndex extends Component {
         return (
           <div className="row">
             <div className="twelve columns">
-              <h3>Invited guests</h3>
+              <h3><Translate value="createPartyPage.invitedGuests" /></h3>
               <hr />
               {invites&&invites.length ? (
                 <table className="u-full-width">
                   <thead>
                     <tr>
-                      <th>Name</th>
-                      <th>Status</th>
-                      <th>Mobile number</th>
+                      <th><Translate value="createPartyPage.guestName" /></th>
+                      <th><Translate value="createPartyPage.inviteStatus" /></th>
+                      <th><Translate value="createPartyPage.mobileNumber" /></th>
                     </tr>
                   </thead>
                   <tbody>
@@ -52,7 +53,7 @@ class InvitesIndex extends Component {
                   )}
                   </tbody>
                 </table>
-              ) : <div>There are currently no invited guests<hr /></div> }
+              ) : <div><Translate value="createPartyPage.noGuests" /><hr /></div> }
             </div>
           </div>
       );
