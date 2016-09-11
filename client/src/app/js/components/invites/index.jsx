@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getInvitesForParty } from '../../actions/invites';
 import { Link } from 'react-router';
-import { Translate} from 'react-redux-i18n';
+import { Translate,I18n} from 'react-redux-i18n';
 
 class InvitesIndex extends Component {
   componentWillMount() {
     if(this.props.token) {
         this.props.getInvitesForParty(this.props.token,this.props.party.id);
     }
+
   }
 
   render() {
@@ -19,9 +20,9 @@ class InvitesIndex extends Component {
                         INVITED: 4};
 
     const statusText = {CREATED: '',
-                        INVITED: 'Invite sent',
-                        ACCEPTED: 'Accepted',
-                        REJECTED: 'Rejected'};
+                        INVITED: I18n.t('createPartyPage.inviteSent'),
+                        ACCEPTED: I18n.t('createPartyPage.accepted'),
+                        REJECTED: I18n.t('createPartyPage.rejected')};
     var lastStatus = 0;
     invites.sort((a, b) => {
       return statusOrder[a.inviteStatus] - statusOrder[b.inviteStatus];

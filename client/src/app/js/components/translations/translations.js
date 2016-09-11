@@ -54,7 +54,10 @@ export const translationsObject = {
       mobileNumber: "Mobile number",
       noGuests: "There are currently no invited guests",
       guestName_example: "Child name",
-      invite: "Invite"
+      invite: "Invite",
+      inviteSent: "Invite sent",
+      accepted: "Accepted",
+      rejected: "Declined"
     }
   },
   sv: {
@@ -115,7 +118,10 @@ export const translationsObject = {
       noGuests: "Du har inte bjudit in några barn än",
       guestName_example: "Inbjudna barnets namn",
       mobileNumber_example: "Förälders mobilnummer",
-      invite: "Bjud in"
+      invite: "Bjud in",
+      inviteSent: "Inbjudan skickad",
+      accepted: "Tackat ja",
+      rejected: "Tackat nej"
     }
   }
 };

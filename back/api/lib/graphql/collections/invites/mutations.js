@@ -22,7 +22,7 @@ module.exports = {
     resolve(source, args) {
       return validate(args).then(() => authorize(args.token, ['PARENT_USER'])).then((user) => {
           args.hostUser=user.id;
-          args.inviteStatus='CREATED';
+          args.inviteStatus='INVITED';
           return resolves.create(args);
       });
     }
