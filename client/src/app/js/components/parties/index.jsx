@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getMyParties } from '../../actions/parties';
 import { Link } from 'react-router';
+import { Translate} from 'react-redux-i18n';
 
 class PartiesIndex extends Component {
   componentWillMount() {
@@ -16,15 +17,15 @@ class PartiesIndex extends Component {
         return (
           <div className="row">
             <div className="twelve columns">
-              <h1>Parties</h1>
+              <h1><Translate value="myPartiesPage.header" /></h1>
               <hr />
               {parties&&parties.length ? (
                 <table className="u-full-width">
                   <thead>
                     <tr>
-                      <th>Header</th>
-                      <th>ChildName</th>
-                      <th>Date</th>
+                      <th><Translate value="myPartiesPage.tableHeader" /></th>
+                      <th><Translate value="myPartiesPage.birthdayChild" /></th>
+                      <th><Translate value="myPartiesPage.date" /></th>
                     </tr>
                   </thead>
                   <tbody>
@@ -42,14 +43,14 @@ class PartiesIndex extends Component {
                   </tbody>
                 </table>
               ) : <div></div> }
-              <Link to={ 'parties/new' } className="button button-primary">Create New Party</Link>
+              <Link to={ 'parties/new' } className="button button-primary"><Translate value="myPartiesPage.create" /></Link>
             </div>
           </div>
       );
     } else {
         return (<div className="row">
                     <div className="twelve columns">
-                        <h4>Please register to create your first party</h4>
+                        <h4><br/><br/><Translate value="myPartiesPage.register" /></h4>
                     </div>
                 </div>
                );

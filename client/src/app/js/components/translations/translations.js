@@ -69,6 +69,14 @@ export const translationsObject = {
       rejected: "Rejected",
       accept: "Accept",
       reject: "Reject"
+    },
+    myPartiesPage: {
+      header: "Parties",
+      tableHeader: "Header",
+      birthdayChild: "Child",
+      date: "Date",
+      create: "Create new party",
+      register: "Please register to create your first party"
     }
   },
   sv: {
@@ -144,6 +152,14 @@ export const translationsObject = {
       rejected: "Tackat nej",
       accept: "Tacka ja",
       reject: "Tacka nej"
+    },
+    myPartiesPage: {
+      header: "Kalas",
+      tableHeader: "Rubrik",
+      birthdayChild: "Barn",
+      date: "Datum",
+      create: "Skapa ett nytt kalas",
+      register: "Vänligen registrera dig för att skapa kalas"
     }
   }
 };
