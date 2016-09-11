@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { getInvite, acceptInvite, rejectInvite} from '../../actions/invites';
 import { getParty } from '../../actions/parties';
-import { Translate} from 'react-redux-i18n';
+import { Translate,I18n} from 'react-redux-i18n';
 require('./polka.css');
 const flagSource = require('./images/party-flags.png');
 
@@ -27,6 +27,11 @@ class InviteShow extends Component {
     const { invite } = this.props;
     const { party } = this.props;
 
+    const statusText = {CREATED: I18n.t('invitePage.inviteSent'),
+                        INVITED: I18n.t('invitePage.inviteSent'),
+                        ACCEPTED: I18n.t('invitePage.accepted'),
+                        REJECTED: I18n.t('invitePage.rejected')};
+
     if (!invite || !party) {
       return <div className="row"><div className="twelve columns"><Translate value="general.loading" /></div></div>
     }
@@ -36,15 +41,15 @@ class InviteShow extends Component {
     return (
       <div className="row">
         <div className="twelve columns frame">
-        <img src={flagSource}/>
+            <img src={flagSource}/>
             <p className="header">{party.header}</p>
             <p>{party.description}</p>
-            <p>When: {party.startDateTime} - {party.endDateTime}</p>
-            <p>Where: {party.location}</p>
-            <p className="header">{invite.childName} is invited</p>
-            <p>Invite status: {invite.inviteStatus}</p>
-            <button onClick={this.onAcceptClick.bind(this)} className="button u-full-width accept">Accept</button>
-            <button onClick={this.onRejectClick.bind(this)} className="button u-full-width reject">Reject</button>
+            <p><Translate value="invitePage.when" />: {party.startDateTime} - {party.endDateTime}</p>
+            <p><Translate value="invitePage.where" />: {party.location}</p>
+            <p className="header"><Translate value="invitePage.isInvited" name={invite.childName}/></p>
+            <p><Translate value="invitePage.status" />: {statusText[invite.inviteStatus]}</p>
+            <button onClick={this.onAcceptClick.bind(this)} className="button u-full-width accept"><Translate value="invitePage.accept" /></button>
+            <button onClick={this.onRejectClick.bind(this)} className="button u-full-width reject"><Translate value="invitePage.reject" /></button>
         </div>
       </div>
     );

@@ -58,6 +58,17 @@ export const translationsObject = {
       inviteSent: "Invite sent",
       accepted: "Accepted",
       rejected: "Declined"
+    },
+    invitePage: {
+      isInvited: "%{name} is invited",
+      when: "When? ",
+      where: "Where? ",
+      status: "Your answer",
+      inviteSent: "Not yet replied",
+      accepted: "Accepted",
+      rejected: "Rejected",
+      accept: "Accept",
+      reject: "Reject"
     }
   },
   sv: {
@@ -122,6 +133,17 @@ export const translationsObject = {
       inviteSent: "Inbjudan skickad",
       accepted: "Tackat ja",
       rejected: "Tackat nej"
+    },
+    invitePage: {
+      isInvited: "%{name} är bjuden",
+      when: "När? ",
+      where: "Var? ",
+      status: "Ditt svar",
+      inviteSent: "Inte svarat",
+      accepted: "Tackat ja",
+      rejected: "Tackat nej",
+      accept: "Tacka ja",
+      reject: "Tacka nej"
     }
   }
 };
