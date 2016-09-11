@@ -9,6 +9,26 @@ const _ = require('lodash');
 const smsgateway = require('../../../smsgateway');
 const partyResolve = require('../parties/resolves');
 const userResolve = require('../users/resolves');
+var I18n = require('react-i18nify').I18n;
+
+const translationsObject = {
+  en: {
+    SMSMessage: {
+      accepted: "%{guestName} has accepted the invite to the birthday party of %{birthdayChild}. Full info: http://%{url}",
+      rejected: "%{guestName} has rejected the invite to the birthday party of %{birthdayChild}. Full info: http://%{url}",
+      invited: "%{guestName} has been invited to the birthday party of %{birthdayChild}. Please click the following link to RSVP and get more info: http://%{url}"
+    }
+  },
+  sv: {
+    SMSMessage: {
+      accepted: "%{guestName} har tackat ja till %{birthdayChild}s kalas. Hela listan av inbjudna och deras status: http://%{url}",
+      rejected: "%{guestName} har tackat nej till %{birthdayChild}s kalas. Hela listan av inbjudna och deras status: http://%{url}",
+      invited: "%{guestName} har blivit inbjuden till %{birthdayChild}s kalas. Klicka här för mer information och att tacka ja eller nej: http://%{url}"
+    }
+  }
+};
+
+I18n.loadTranslations(translationsObject);
 
 const stage = process.env.SERVERLESS_STAGE;
 const region = process.env.SERVERLESS_REGION;
@@ -32,7 +52,7 @@ module.exports = {
   create(invite) {
     invite.id = uuid.v1();
     delete invite.token;
-
+    I18n.setLocale('sv');
     return db('put', {
       TableName: invitesTable,
       Item: invite
@@ -40,8 +60,7 @@ module.exports = {
         // send the SMS to the invited user
         .then(() => partyResolve.get(invite.partyId))
         .then(partyResponse =>
-invite.childName + ' has been invited to the birthday party of ' + partyResponse.childName + '. Please click the following link to RSVP: http://'
-        + baseURL + '/#/invites/' + invite.id + '/show')
+        I18n.t("SMSMessage.invited",{guestName: invite.childName, birthdayChild: partyResponse.childName, url:baseURL + '/#/invites/' + invite.id + '/show'}))
         .then(inviteText => smsgateway.sendSMS(invite.mobileNumber,inviteText))
         // finally return the invite record
         .then(() => invite);
@@ -59,6 +78,7 @@ invite.childName + ' has been invited to the birthday party of ' + partyResponse
     }).then(reply => reply.Item);
   },
   accept(inviteId) {
+    I18n.setLocale('sv');
     console.log('accepting invite with id: ' + inviteId);
     var invite;
     var party;
@@ -83,8 +103,7 @@ invite.childName + ' has been invited to the birthday party of ' + partyResponse
     }).then(partyResponse =>{
       if(messageNeeded){
         party = partyResponse;
-        messageToHost= invite.childName + ' has accepted the invite to the birthday party of ' + party.childName + '. Full info: http://'
-      + baseURL + '/#/parties/' + party.id + '/show';
+        messageToHost=   I18n.t('SMSMessage.accepted',{guestName: invite.childName, birthdayChild: party.childName, url: baseURL + '/#/parties/' + party.id + '/show'});
         return smsgateway.sendSMS(party.hostUser,messageToHost)
       } else {
         return Promise.resolve()
@@ -92,6 +111,7 @@ invite.childName + ' has been invited to the birthday party of ' + partyResponse
     }).then(() => invite);
   },
   reject(inviteId) {
+    I18n.setLocale('sv');
     console.log('rejecting invite with id: ' + inviteId);
     var invite;
     var party;
@@ -116,8 +136,7 @@ invite.childName + ' has been invited to the birthday party of ' + partyResponse
     }).then(partyResponse =>{
       if(messageNeeded){
         party = partyResponse;
-        messageToHost= invite.childName + ' has rejected the invite to the birthday party of ' + party.childName + '. Full info: http://'
-      + baseURL + '/#/parties/' + party.id + '/show';
+        messageToHost= I18n.t('SMSMessage.rejected',{guestName: invite.childName, birthdayChild: party.childName, url: baseURL + '/#/parties/' + party.id + '/show'});
         return smsgateway.sendSMS(party.hostUser,messageToHost)
       } else {
         return Promise.resolve()
