@@ -83,6 +83,10 @@ export const translationsObject = {
       editAcount: "Edit profile",
       newPassword: "New password",
       newPassword_verify: "Verify new password"
+    },
+    error: {
+      anErrorOccured: "An error occured",
+      dismiss: "Dismiss"
     }
   },
   sv: {
@@ -172,6 +176,10 @@ export const translationsObject = {
       editAcount: "Ändra uppgifter",
       newPassword: "Nytt lösenord",
       newPassword_verify: "Bekräfta nytt lösenord"
+    },
+    error: {
+      anErrorOccured: "Ett fel inträffade",
+      dismiss: "Ta bort"
     }
   }
 };

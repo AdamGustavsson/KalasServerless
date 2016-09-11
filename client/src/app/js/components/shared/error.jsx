@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { resetError } from '../../actions/error';
+import { Translate,I18n} from 'react-redux-i18n';
 
 const styles = {
   backgroundColor: "#FC9D9A",
@@ -28,8 +29,8 @@ class Error extends Component {
     return (
       <div className="row">
         <div className="twelve columns" style={styles}>
-          An error occurred: "{message}"
-          <a href="#" onClick={this.handleDismissClick.bind(this)} className="u-pull-right">Dismiss</a>
+          <Translate value="error.anErrorOccured" />: "{message}"
+          <a href="#" onClick={this.handleDismissClick.bind(this)} className="u-pull-right"><Translate value="error.dismiss" /></a>
         </div>
       </div>
     );
