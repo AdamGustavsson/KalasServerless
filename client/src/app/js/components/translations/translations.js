@@ -6,7 +6,8 @@ export const translationsObject = {
       logOut: "Log out",
       login: "Login",
       register:"Register account",
-      language:"Change language"
+      language:"Change language",
+      error: "Please fill out all fields"
     },
     user: {
       name: "Name",
@@ -77,6 +78,11 @@ export const translationsObject = {
       date: "Date",
       create: "Create new party",
       register: "Please register to create your first party"
+    },
+    editAccountPage: {
+      editAcount: "Edit profile",
+      newPassword: "New password",
+      newPassword_verify: "Verify new password"
     }
   },
   sv: {
@@ -88,7 +94,8 @@ export const translationsObject = {
       mobileNumber: "Mobilnummer",
       password: "Lösenord",
       register:"Registrera dig",
-      language:"Ändra språk"
+      language:"Ändra språk",
+      error: "Vänligen fyll i alla fält"
     },
     user: {
       name: "Namn",
@@ -160,6 +167,11 @@ export const translationsObject = {
       date: "Datum",
       create: "Skapa ett nytt kalas",
       register: "Vänligen registrera dig för att skapa kalas"
+    },
+    editAccountPage: {
+      editAcount: "Ändra uppgifter",
+      newPassword: "Nytt lösenord",
+      newPassword_verify: "Bekräfta nytt lösenord"
     }
   }
 };

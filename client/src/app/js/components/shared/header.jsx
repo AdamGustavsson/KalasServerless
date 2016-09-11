@@ -20,8 +20,9 @@ class Header extends Component {
 
     if (mobileNumber.length !== 0 && password.length !== 0) {
       this.props.loginUser({mobileNumber, password});
+      this.setState({menuOpen: false});
     } else {
-      alert('Please fill out all fields');
+      alert(I18n.t("loginPage.error"));
     }
   }
 
@@ -64,7 +65,7 @@ class Header extends Component {
 
             <Menu right isOpen={ false }>
               <form onSubmit={this.handleLogin.bind(this)}>
-              <div><Translate value="loginPage.login" />:</div>
+                <div><Translate value="loginPage.login" />:</div>
                 <input type="text" className="u-full-width" placeholder={I18n.t('user.mobileNumber')} ref="mobileNumber" />
                 <input type="password" className="u-full-width" placeholder={I18n.t('user.password')} ref="password" />
                 <input type="submit" className="u-full-width button-primary" value={I18n.t('loginPage.login')}/>

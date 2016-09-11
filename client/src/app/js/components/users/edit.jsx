@@ -2,26 +2,22 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { updateUser, deleteUser, logoutUser} from '../../actions/users';
 import { Link } from 'react-router';
+import { Translate,I18n} from 'react-redux-i18n';
 
 class UsersEdit extends Component {
   static contextTypes = {
     router: PropTypes.object
   };
 
-  onDeleteClick() {
-    if (confirm('Do you want to delete this user?')) {
-      this.props.deleteUser(this.props.user.token)
-        .then(this.props.logoutUser)
-    }
-  }
 
   handleSubmit(event) {
     event.preventDefault();
 
     const name = this.refs.name.value;
     const password = this.refs.password.value;
+    const password2 = this.refs.password2.value
 
-    if (name.length !== 0 && password.length !== 0) {
+    if (name.length !== 0 && password.length !== 0 && password2.length !== 0 && password==password2) {
       const user = {
         name,
         password,
@@ -30,7 +26,7 @@ class UsersEdit extends Component {
 
       this.props.updateUser(user);
     } else {
-      alert('Please fill out all fields');
+      alert(I18n.t('registerPage.error'));
     }
   }
 
@@ -42,11 +38,15 @@ class UsersEdit extends Component {
     return (
       <div className="row">
         <div className="twelve columns">
-          <h1>Edit Profile</h1>
+          <h1><Translate value="editAccountPage.editAcount" /></h1>
           <hr />
           <form onSubmit={this.handleSubmit.bind(this)}>
-            <input type="text" placeholder="Name" className="u-full-width" ref="name" defaultValue={user.name}/>
-            <input type="password" placeholder="Password" className="u-full-width" ref="password" />
+            <div><Translate value="user.name" />:</div>
+            <input type="text" placeholder={I18n.t('user.name')} className="u-full-width" ref="name" defaultValue={user.name}/>
+            <div><Translate value="editAccountPage.newPassword" />:</div>
+            <input type="password" placeholder={I18n.t('user.password')} className="u-full-width" ref="password" />
+            <div><Translate value="editAccountPage.newPassword_verify" />:</div>
+            <input type="password" placeholder={I18n.t('user.password')} className="u-full-width" ref="password2" />
             <input type="submit" className="button button-primary" />
             <Link to="/" className="u-pull-right button">Cancel</Link>
           </form>
@@ -58,4 +58,4 @@ class UsersEdit extends Component {
 
 const mapStateToProps = ({users: {currentUser}}) => ({user: currentUser});
 
-export default connect(mapStateToProps, {updateUser, deleteUser, logoutUser})(UsersEdit);
+export default connect(mapStateToProps, {updateUser, logoutUser})(UsersEdit);
