@@ -52,15 +52,16 @@ module.exports = {
   create(invite) {
     invite.id = uuid.v1();
     delete invite.token;
-    I18n.setLocale('sv');
     return db('put', {
       TableName: invitesTable,
       Item: invite
     })
         // send the SMS to the invited user
         .then(() => partyResolve.get(invite.partyId))
-        .then(partyResponse =>
-        I18n.t("SMSMessage.invited",{guestName: invite.childName, birthdayChild: partyResponse.childName, url:baseURL + '/#/invites/' + invite.id + '/show'}))
+        .then(partyResponse => {
+        I18n.setLocale(partyResponse.locale);
+        return I18n.t("SMSMessage.invited",{guestName: invite.childName, birthdayChild: partyResponse.childName, url:baseURL + '/#/invites/' + invite.id + '/show'})
+      })
         .then(inviteText => smsgateway.sendSMS(invite.mobileNumber,inviteText))
         // finally return the invite record
         .then(() => invite);
@@ -78,7 +79,6 @@ module.exports = {
     }).then(reply => reply.Item);
   },
   accept(inviteId) {
-    I18n.setLocale('sv');
     console.log('accepting invite with id: ' + inviteId);
     var invite;
     var party;
@@ -103,6 +103,7 @@ module.exports = {
     }).then(partyResponse =>{
       if(messageNeeded){
         party = partyResponse;
+        I18n.setLocale(partyResponse.locale);
         messageToHost=   I18n.t('SMSMessage.accepted',{guestName: invite.childName, birthdayChild: party.childName, url: baseURL + '/#/parties/' + party.id + '/show'});
         return smsgateway.sendSMS(party.hostUser,messageToHost)
       } else {
@@ -136,6 +137,7 @@ module.exports = {
     }).then(partyResponse =>{
       if(messageNeeded){
         party = partyResponse;
+        I18n.setLocale(partyResponse.locale);
         messageToHost= I18n.t('SMSMessage.rejected',{guestName: invite.childName, birthdayChild: party.childName, url: baseURL + '/#/parties/' + party.id + '/show'});
         return smsgateway.sendSMS(party.hostUser,messageToHost)
       } else {

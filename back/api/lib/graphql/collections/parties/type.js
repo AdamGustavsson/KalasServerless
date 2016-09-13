@@ -14,7 +14,8 @@ module.exports = new GraphQLObjectType({
     childName: {type: GraphQLString},
     startDateTime:   {type: GraphQLString},
     endDateTime:   {type: GraphQLString},
-    partyLocation: {type: GraphQLString}
-      
+    partyLocation: {type: GraphQLString},
+    locale: {type: GraphQLString}
+
   })
 });

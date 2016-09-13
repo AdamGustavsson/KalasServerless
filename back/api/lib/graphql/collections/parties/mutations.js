@@ -19,7 +19,8 @@ module.exports = {
       childName: {type: new GraphQLNonNull(GraphQLString)},
       startDateTime:   {type: new GraphQLNonNull(GraphQLString)},
       endDateTime:   {type: new GraphQLNonNull(GraphQLString)},
-      partyLocation:   {type: new GraphQLNonNull(GraphQLString)}
+      partyLocation:   {type: new GraphQLNonNull(GraphQLString)},
+      locale: {type: new GraphQLNonNull(GraphQLString)}
 
     },
     resolve(source, args) {

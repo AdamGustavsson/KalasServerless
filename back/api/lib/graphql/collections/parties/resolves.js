@@ -36,7 +36,8 @@ module.exports = {
        'childName',
        'startDateTime',
        'endDateTime',
-       'partyLocation'
+       'partyLocation',
+       'locale'
       ]
     }).then(reply => reply.Item);
   },
@@ -52,7 +53,8 @@ module.exports = {
        'childName',
        'startDateTime',
        'endDateTime',
-       'partyLocation'
+       'partyLocation',
+       'locale'
       ]
     }).then(reply => reply.Items);
   },
@@ -62,7 +64,7 @@ module.exports = {
       TableName: partiesTable,
       FilterExpression: "hostUser = :userId",
       ExpressionAttributeValues: {':userId':userId},
-      ProjectionExpression: "id,description,header,hostUser,childName,startDateTime,endDateTime,partyLocation"
+      ProjectionExpression: "id,description,header,hostUser,childName,startDateTime,endDateTime,partyLocation,locale"
     }).then(reply => reply.Items);
   },
 
@@ -77,6 +79,7 @@ module.exports = {
     party.startDateTime = obj.startDateTime|| party.startDateTime;
     party.endDateTime = obj.endDateTime|| party.endDateTime;
     party.partyLocation = obj.partyLocation|| party.partyLocation;
+    party.locale = obj.locale|| party.locale;
 
 
     return db('put', {

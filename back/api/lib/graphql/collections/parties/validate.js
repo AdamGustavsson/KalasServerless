@@ -5,7 +5,7 @@ const Promise = require('bluebird');
 let validate = {
   token: (token) => {
       return;
-  },    
+  },
   id: (id) => {
     return;
   },
@@ -28,6 +28,9 @@ let validate = {
     return;
   },
   partyLocation: (partyLocation) => {
+    return;
+  },
+  locale:(partyLocation) => {
     return;
   }
 };

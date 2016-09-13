@@ -48,7 +48,7 @@ class PartiesNew extends Component {
         endDateTime,
         partyLocation
       };
-      this.props.createParty(party,this.props.token);
+      this.props.createParty(party,this.props.token,this.props.locale);
     } else {
       alert(I18n.t('createPartyPage.error'));
     }

@@ -73,8 +73,8 @@ export function getParty(id) {
     payload: exception.message
   }));
 }
-    
-export function createParty(party,token) {
+
+export function createParty(party,token,locale) {
   const query = { "query":
     `mutation createNewParty {
       party: createParty (
@@ -83,7 +83,8 @@ export function createParty(party,token) {
         childName: "${party.childName}",
         startDateTime: "${party.startDateTime}",
         endDateTime: "${party.endDateTime}",
-        partyLocation: "${party.partyLocation}"
+        partyLocation: "${party.partyLocation}",
+        locale: "${locale}",
         token: "${token}"
       )
       {
