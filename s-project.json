@@ -6,7 +6,8 @@
       "region": "${meta_bucket_region}"
     },
     "client": {
-      "bucketName": "graphql-test-project.${stage}.${region}"
+      "bucketName": "${stage}.kalas.io",
+      "removeBucketRegex":"^prod\\."
     },
     "cors": {
       "allowOrigin": "*",

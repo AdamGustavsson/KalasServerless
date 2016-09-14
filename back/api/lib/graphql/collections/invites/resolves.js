@@ -35,7 +35,7 @@ const region = process.env.SERVERLESS_REGION;
 const projectName = process.env.SERVERLESS_PROJECT;
 const invitesTable = projectName + '-invites-' + stage;
 
-const baseURL = 'graphql-test-project.'+ stage + '.' + region + '.s3-website-'+ region + '.amazonaws.com'
+const baseURL = (stage=='prod'?'kalas.io':stage + '.kalas.io.s3-website-'+ region + '.amazonaws.com')
 
 
 module.exports = {

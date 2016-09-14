@@ -14,7 +14,7 @@
     "bluebird": "^3.3.4",
     "jsonwebtoken": "^5.7.0",
     "lodash": "^4.6.1",
-    "serverless-client-s3": "^2.0.0",
+    "serverless-client-s3": "https://github.com/serverless/serverless-client-s3.git#e5ac3d71642eed8338e05b4e63201cad2a8a8fca",
     "serverless-cors-plugin": "^0.4.1",
     "serverless-meta-sync": "^0.1.0",
     "serverless-offline": "^2.2.4"
