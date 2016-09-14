@@ -8,18 +8,17 @@ import { Translate} from 'react-redux-i18n';
 
 class PartiesShow extends Component {
   componentWillMount() {
-    if(this.props.currentUser)
-    this.props.getParty(this.props.params.id, this.props.currentUser.token);
+    this.props.getParty(this.props.params.id);
   }
 
   render() {
     const { party } = this.props;
     const { currentUser } = this.props;
 
+
     if (!party) {
       return <div className="row"><div className="twelve columns"><Translate value="general.loading" /></div></div>
     }
-    console.log('currentUser: ' + currentUser)
     if (!currentUser) {
       return <div className="row"><div className="twelve columns"><br/><br/><Translate value="createPartyPage.pleaseLogin" /></div></div>
     }
