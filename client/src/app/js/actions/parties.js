@@ -43,10 +43,10 @@ export function getMyParties(token) {
   }));
 }
 
-export function getParty(id) {
+export function getParty(id,token) {
   const query = { "query":
     `{
-      party(id: "${id}")
+      party(id: "${id}", token: "${token}")
       {
         id,
         header,

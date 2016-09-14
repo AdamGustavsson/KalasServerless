@@ -8,6 +8,8 @@ class InvitesIndex extends Component {
   componentWillMount() {
     if(this.props.token) {
         this.props.getInvitesForParty(this.props.token,this.props.party.id);
+    } else {
+      this.props.invites = [];
     }
 
   }

@@ -58,7 +58,8 @@ export const translationsObject = {
       invite: "Invite",
       inviteSent: "Invite sent",
       accepted: "Accepted",
-      rejected: "Declined"
+      rejected: "Declined",
+      pleaseLogin: "Please login in to see the status of your party"
     },
     invitePage: {
       isInvited: "%{name} is invited",
@@ -151,7 +152,8 @@ export const translationsObject = {
       invite: "Bjud in",
       inviteSent: "Inbjudan skickad",
       accepted: "Tackat ja",
-      rejected: "Tackat nej"
+      rejected: "Tackat nej",
+      pleaseLogin: "Logga in för att se statusen på ditt party"
     },
     invitePage: {
       isInvited: "%{name} är bjuden",

@@ -24,10 +24,11 @@ module.exports = {
     type: PartyType,
     description: 'Get a Party by id',
     args: {
-      id: {type: new GraphQLNonNull(GraphQLString)}
+      id: {type: new GraphQLNonNull(GraphQLString)},
+      token: { type: new GraphQLNonNull(GraphQLString) }
     },
     resolve: function(source, args) {
-      return validate(args).then(() => resolves.get(args.id));
+      return authorize(args.token, ['PARENT_USER']).then((user) => resolves.get(args.id));
     }
   }
 }
