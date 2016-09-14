@@ -45,7 +45,11 @@ class InvitesNew extends Component {
 }
 
 function mapStateToProps(state) {
-  return { token: state.users.currentUser.token, party: state.parties.party};
+    if(state.users.currentUser){
+      return { token: state.users.currentUser.token, party: state.parties.party};
+    } else {
+      return { token: null, party: state.parties.party};
+    }
 }
 
 export default connect(mapStateToProps, { createInvite })(InvitesNew);

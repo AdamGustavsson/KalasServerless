@@ -24,7 +24,8 @@ module.exports = {
 
     return db('put', {
       TableName: usersTable,
-      Item: user
+      Item: user,
+      ConditionExpression: 'attribute_not_exists(mobileNumber)'
     })
     // return the user record
     .then(() => {user.token = authenticate(user);
