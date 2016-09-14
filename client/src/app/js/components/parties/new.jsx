@@ -39,7 +39,7 @@ class PartiesNew extends Component {
     const endDateTime = this.state.endDateTimeString;
     const partyLocation = this.refs.partyLocation.value;
 
-    if (header.length !== 0 && description.length !== 0 && childName.length !== 0 && startDateTime.length !== 0 && endDateTime.length !== 0 && partyLocation.length !== 0) {
+    if (header.length !== 0 && description.length !== 0 && childName.length !== 0 && startDateTime && startDateTime.length !== 0 && endDateTime && endDateTime.length !== 0 && partyLocation.length !== 0) {
       const party = {
         header,
         description,
