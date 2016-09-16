@@ -23,7 +23,7 @@ export function getInvite(id) {
       {
         id,
         childName,
-        inviteStatus
+        inviteStatus,
         partyId
       }
     }`

@@ -74,9 +74,18 @@ module.exports = {
        'id',
        'childName',
        'inviteStatus',
-       'partyId'
+       'partyId',
+       'mobileNumber'
       ]
     }).then(reply => reply.Item);
+  },
+  getUnansweredInvites() {
+    return db('scan', {
+      TableName: invitesTable,
+      FilterExpression: "inviteStatus = :statusValue",
+      ExpressionAttributeValues: {':statusValue':'INVITED'},
+      ProjectionExpression: "id,childName,mobileNumber,inviteStatus"
+    }).then(reply => reply.Items);
   },
   accept(inviteId) {
     console.log('accepting invite with id: ' + inviteId);
