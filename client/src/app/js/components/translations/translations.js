@@ -31,7 +31,7 @@ export const translationsObject = {
     },
     registerPage: {
       register: "Register",
-      registerInfo: "Registration is free of charge and completely volonatry. It gives you a list of all your birthday parties and your invites. We recommend registering after you created your first party.",
+      registerInfo: "Registration is free of charge and completely voluntary. Registered users have access to more functionality. We recommend registering after you created your first party.",
       chosePassword: "Chose a password",
       verifyPassword: "Confirm password",
       error: "Please fill out all fields and ensure that you typed the chosen password twice"
