@@ -5,7 +5,8 @@ import { getParty } from '../../actions/parties';
 import { Translate,I18n} from 'react-redux-i18n';
 require('./polka.css');
 const flagSource = require('./images/party-flags.png');
-import ga from 'ga-react-router'
+import ga from 'ga-react-router';
+import ReactFBLike from 'react-fb-like';
 
 class InviteShow extends Component {
   componentWillMount() {
@@ -37,6 +38,7 @@ class InviteShow extends Component {
   render() {
     const { invite } = this.props;
     const { party } = this.props;
+    const { locale } = this.props;
 
     const statusText = {CREATED: I18n.t('invitePage.inviteSent'),
                         INVITED: I18n.t('invitePage.inviteSent'),
@@ -61,6 +63,7 @@ class InviteShow extends Component {
             <p><Translate value="invitePage.status" />: {statusText[invite.inviteStatus]}</p>
             <button onClick={this.onAcceptClick.bind(this)} className="button u-full-width accept"><Translate value="invitePage.accept" /></button>
             <button onClick={this.onRejectClick.bind(this)} className="button u-full-width reject"><Translate value="invitePage.reject" /></button>
+            {invite.inviteStatus=='ACCEPTED'?<ReactFBLike language={locale=='sv'?'sv_SE':'en_GB'} appId="1114268925305216" />:''}
         </div>
       </div>
     );
@@ -68,7 +71,7 @@ class InviteShow extends Component {
 }
 
 function mapStateToProps(state) {
-  return { invite: state.invites.invite, party: state.parties.party};
+  return { invite: state.invites.invite, party: state.parties.party, locale: state.i18n.locale};
 }
 
 export default connect(mapStateToProps, { getInvite, getParty, acceptInvite, rejectInvite })(InviteShow);

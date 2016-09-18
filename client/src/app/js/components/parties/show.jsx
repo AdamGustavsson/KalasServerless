@@ -8,6 +8,8 @@ import { Translate} from 'react-redux-i18n';
 const flagSource = require('../invites/images/party-flags.png');
 require('../invites/polka.css');
 import ga from 'ga-react-router';
+import ReactFBLike from 'react-fb-like';
+
 
 class PartiesShow extends Component {
   componentWillMount() {
@@ -22,6 +24,7 @@ class PartiesShow extends Component {
     const { party } = this.props;
     const { currentUser } = this.props;
     const {invites } = this.props;
+    const {locale} = this.props;
 
 
     if (!party) {
@@ -51,6 +54,8 @@ class PartiesShow extends Component {
         <InvitesNew/>
         <h5><Translate value="createPartyPage.youreDone" /></h5>
         <h5><Translate value="createPartyPage.youGetAText" /></h5>
+        <ReactFBLike language={locale=='sv'?'sv_SE':'en_GB'} appId="1114268925305216" />
+
         <Link to='parties/my' className="button u-full-width"><Translate value="createPartyPage.seeAllParties" /></Link>
       </div>
 
@@ -59,7 +64,7 @@ class PartiesShow extends Component {
 }
 
 function mapStateToProps(state) {
-  return { party: state.parties.party,invites: state.invites.all, currentUser: state.users.currentUser};
+  return { party: state.parties.party,invites: state.invites.all, currentUser: state.users.currentUser,locale: state.i18n.locale};
 }
 
 export default connect(mapStateToProps, { getParty })(PartiesShow);
