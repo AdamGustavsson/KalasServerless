@@ -20,6 +20,7 @@ export const translationsObject = {
       back: "Back"
     },
     landingPage: {
+      title: "Invites for your birthday party. Invite easily and get RSVPs via SMS | kalas.io",
       heading: "Birthday parties made simple",
       description: "Party time helps you invite guest to your child's birthday party and keep track of RSVPs.",
       newPartyButton: "Create your first party",
@@ -37,6 +38,7 @@ export const translationsObject = {
       error: "Please fill out all fields and ensure that you typed the chosen password twice"
     },
     createPartyPage: {
+      title: "Status of your party invite | kalas.io",
       error: "Please fill in all fields",
       createParty: "Create party",
       step1: "Step 1:",
@@ -73,6 +75,7 @@ export const translationsObject = {
       seeAllParties: "See all your parties"
     },
     invitePage: {
+      title: "You're invited to a party | kalas.io",
       isInvited: "%{name} is invited",
       when: "When? ",
       where: "Where? ",
@@ -124,6 +127,7 @@ export const translationsObject = {
       back: "Tillbaka"
     },
     landingPage: {
+      title: "Inbjudningskort till ditt kalas. Bjud in till barnkalas utan krångel | kalas.io",
       heading: 'Barnkalas utan krångel',
       description: "Kalas.io hjälper dig att bjuda in till ditt barnkalas och hålla reda på vilka barn som kommer.",
       newPartyButton: "Skapa din första kalasinbjudan",
@@ -141,6 +145,7 @@ export const translationsObject = {
       error: "Vänligen fyll i alla fält och se till att lösenordsfälten är lika"
     },
     createPartyPage: {
+      title: "Status på din kalasinbjudan | kalas.io",
       error: "Vänligen fyll i alla fält",
       createParty: "Skapa inbjudan",
       step1: "Steg 1:",
@@ -178,6 +183,7 @@ export const translationsObject = {
       seeAllParties: "Se alla dina kalas"
     },
     invitePage: {
+      title: "Du är bjuden på kalas | kalas.io",
       isInvited: "%{name} är bjuden",
       when: "När? ",
       where: "Var? ",

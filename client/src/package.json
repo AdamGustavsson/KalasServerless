@@ -40,6 +40,7 @@
     "react-burger-menu": "^1.9.0",
     "react-dom": "^15.0.1",
     "react-fb-like": "^0.2.5",
+    "react-helmet": "^3.1.0",
     "react-mixin": "^3.0.3",
     "react-redux": "^4.4.0",
     "react-redux-i18n": "0.0.3",

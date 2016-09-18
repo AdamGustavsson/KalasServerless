@@ -4,11 +4,12 @@ import { getParty } from '../../actions/parties';
 import { Link } from 'react-router';
 import InvitesIndex from '../invites/index';
 import InvitesNew from '../invites/new';
-import { Translate} from 'react-redux-i18n';
+import { Translate,I18n} from 'react-redux-i18n';
 const flagSource = require('../invites/images/party-flags.png');
 require('../invites/polka.css');
 import ga from 'ga-react-router';
 import ReactFBLike from 'react-fb-like';
+import Helmet from "react-helmet";
 
 
 class PartiesShow extends Component {
@@ -34,6 +35,12 @@ class PartiesShow extends Component {
 
     return (
       <div className="row">
+      <Helmet
+        title={I18n.t('createPartyPage.title')}
+        meta={[
+              {"name": "robots", "content": "noindex,nofollow"}
+            ]}
+      />
         <div className="twelve columns frame">
           <img src={flagSource}/>
           <p className="header">{party.header}</p>
@@ -54,7 +61,7 @@ class PartiesShow extends Component {
         <InvitesNew/>
         <h5><Translate value="createPartyPage.youreDone" /></h5>
         <h5><Translate value="createPartyPage.youGetAText" /></h5>
-        <ReactFBLike language={locale=='sv'?'sv_SE':'en_GB'} appId="1114268925305216" />
+        <ReactFBLike language={locale=='sv'?'sv_SE':'en_GB'} appId="1114268925305216" href="http://kalas.io"/>
 
         <Link to='parties/my' className="button u-full-width"><Translate value="createPartyPage.seeAllParties" /></Link>
       </div>

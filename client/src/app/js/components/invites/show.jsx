@@ -7,6 +7,7 @@ require('./polka.css');
 const flagSource = require('./images/party-flags.png');
 import ga from 'ga-react-router';
 import ReactFBLike from 'react-fb-like';
+import Helmet from "react-helmet";
 
 class InviteShow extends Component {
   componentWillMount() {
@@ -53,6 +54,12 @@ class InviteShow extends Component {
     ga('set', 'userId', party.hostUser);
     return (
       <div className="row">
+        <Helmet
+          title={I18n.t('invitePage.title')}
+          meta={[
+                {"name": "robots", "content": "noindex,nofollow"}
+              ]}
+        />
         <div className="twelve columns frame">
             <img src={flagSource}/>
             <p className="header">{party.header}</p>
@@ -63,7 +70,7 @@ class InviteShow extends Component {
             <p><Translate value="invitePage.status" />: {statusText[invite.inviteStatus]}</p>
             <button onClick={this.onAcceptClick.bind(this)} className="button u-full-width accept"><Translate value="invitePage.accept" /></button>
             <button onClick={this.onRejectClick.bind(this)} className="button u-full-width reject"><Translate value="invitePage.reject" /></button>
-            {invite.inviteStatus=='ACCEPTED'?<ReactFBLike language={locale=='sv'?'sv_SE':'en_GB'} appId="1114268925305216" />:''}
+            {invite.inviteStatus=='ACCEPTED'?<ReactFBLike language={locale=='sv'?'sv_SE':'en_GB'} appId="1114268925305216" href="http://kalas.io"/>:''}
         </div>
       </div>
     );
