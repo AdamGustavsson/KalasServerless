@@ -46,12 +46,12 @@ export function getInvite(id) {
 }
 
 
-export function getInvitesForParty(token,partyId) {
+export function getInvitesForParty(partyId) {
 
 
   const query = { "query":
     `{
-      invites_for_party(token: "${token}",partyId: "${partyId}")
+      invites_for_party(partyId: "${partyId}")
       {
         id,
         childName,
@@ -76,14 +76,13 @@ export function getInvitesForParty(token,partyId) {
   }));
 }
 
-export function createInvite(invite, partyId, token) {
+export function createInvite(invite, partyId) {
   const query = { "query":
       `mutation createNewInvite {
       invite: createInvite (
         childName: "${invite.childName}",
         mobileNumber: "${invite.mobileNumber}",
-        partyId: "${partyId}",
-        token: "${token}"
+        partyId: "${partyId}"
       )
       {
         id,

@@ -13,15 +13,13 @@ module.exports = {
     type: InviteType,
     description: 'Invite a guest',
     args: {
-      token: { type: new GraphQLNonNull(GraphQLString) },
       childName: {type: new GraphQLNonNull(GraphQLString)},
       mobileNumber: {type: new GraphQLNonNull(GraphQLString)},
       partyId:   {type: new GraphQLNonNull(GraphQLString)},
 
     },
     resolve(source, args) {
-      return validate(args).then(() => authorize(args.token, ['PARENT_USER'])).then((user) => {
-          args.hostUser=user.id;
+      return validate(args).then(() => {
           args.inviteStatus='INVITED';
           return resolves.create(args);
       });

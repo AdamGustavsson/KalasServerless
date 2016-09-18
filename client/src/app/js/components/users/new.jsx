@@ -40,6 +40,8 @@ class UsersNew extends Component {
           <form onSubmit={this.handleSubmit.bind(this)}>
             <h1><Translate value="registerPage.register" /></h1>
             <hr />
+            <h5><Translate value="registerPage.registerInfo" /></h5>
+            <Link to={ 'parties/new' } className="button button-primary"><Translate value="myPartiesPage.create" /></Link>
             <div><Translate value="user.name" />:</div>
             <input type="text" placeholder={I18n.t('user.name')} className="u-full-width" ref="name" />
             <div><Translate value="user.mobileNumber" />:</div>

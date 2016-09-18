@@ -14,10 +14,13 @@ const collections = [
 ];
 
 // load collections queries and muataions
-collections.forEach(name => {
-  _.assign(queries, require(`./collections/${name}/queries`));
-  _.assign(mutations, require(`./collections/${name}/mutations`));
-});
+
+  _.assign(queries, require("./collections/users/queries"));
+  _.assign(mutations, require("./collections/users/mutations"));
+  _.assign(queries, require("./collections/parties/queries"));
+  _.assign(mutations, require("./collections/parties/mutations"));
+  _.assign(queries, require("./collections/invites/queries"));
+  _.assign(mutations, require("./collections/invites/mutations"));
 
 const Queries = new GraphQLObjectType({
   name: 'Root',

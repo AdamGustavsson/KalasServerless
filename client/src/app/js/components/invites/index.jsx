@@ -6,12 +6,7 @@ import { Translate,I18n} from 'react-redux-i18n';
 
 class InvitesIndex extends Component {
   componentWillMount() {
-    if(this.props.token) {
-        this.props.getInvitesForParty(this.props.token,this.props.party.id);
-    } else {
-      this.props.invites = [];
-    }
-
+    this.props.getInvitesForParty(this.props.party.id);
   }
 
   render() {
@@ -32,8 +27,8 @@ class InvitesIndex extends Component {
         return (
           <div className="row">
             <div className="twelve columns">
+              <br/>
               <h3><Translate value="createPartyPage.invitedGuests" /></h3>
-              <hr />
               {invites&&invites.length ? (
                 <table className="u-full-width">
                   <thead>
@@ -64,10 +59,6 @@ class InvitesIndex extends Component {
 }
 
 function mapStateToProps(state) {
-  if(state.users.currentUser){
-      return { party: state.parties.party, invites: state.invites.all, token: state.users.currentUser.token};
-  } else {
-      return { party: state.parties.party, invites: state.invites.all, token: null};
-  }
+  return { party: state.parties.party, invites: state.invites.all};
 }
 export default connect(mapStateToProps, { getInvitesForParty })(InvitesIndex);

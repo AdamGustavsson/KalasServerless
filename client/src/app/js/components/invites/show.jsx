@@ -45,7 +45,7 @@ class InviteShow extends Component {
             <p className="header">{party.header}</p>
             <p>{party.description}</p>
             <p><Translate value="invitePage.when" />: {party.startDateTime} - {party.endDateTime}</p>
-            <p><Translate value="invitePage.where" />: {party.location}</p>
+            <p><Translate value="invitePage.where" />: {party.partyLocation}</p>
             <p className="header"><Translate value="invitePage.isInvited" name={invite.childName}/></p>
             <p><Translate value="invitePage.status" />: {statusText[invite.inviteStatus]}</p>
             <button onClick={this.onAcceptClick.bind(this)} className="button u-full-width accept"><Translate value="invitePage.accept" /></button>

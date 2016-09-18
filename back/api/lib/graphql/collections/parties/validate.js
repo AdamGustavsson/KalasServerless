@@ -3,7 +3,7 @@
 const Promise = require('bluebird');
 
 let validate = {
-  token: (token) => {
+  hostUser: (hostUser) => {
       return;
   },
   id: (id) => {

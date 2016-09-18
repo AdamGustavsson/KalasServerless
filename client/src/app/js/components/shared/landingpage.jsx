@@ -19,7 +19,7 @@ class LandingPage extends Component {
                 <h4 className="heading"><Translate value="landingPage.heading" /></h4>
                 <p className="description"><Translate value="landingPage.description" /></p>
                 <p>
-                  <Link to={ currentUser?'parties/new':'users/new' } className="button button-primary"><Translate value="landingPage.newPartyButton" /></Link>
+                  <Link to={'/parties/new'} className="button button-primary"><Translate value="landingPage.newPartyButton" /></Link>
                 </p>
               </div>
             </div>
@@ -33,7 +33,7 @@ class LandingPage extends Component {
                 <p className="description"><Translate value="landingPage.howItWorksDetails3" /></p>
                 <p className="description"><Translate value="landingPage.howItWorksDetails4" /></p>
                 <p>
-                  <Link to={ currentUser?'parties/new':'users/new' } className="button button-primary"><Translate value="landingPage.newPartyButton" /></Link>
+                  <Link to={'/parties/new'} className="button button-primary"><Translate value="landingPage.newPartyButton" /></Link>
                 </p>
               </div>
             </div>

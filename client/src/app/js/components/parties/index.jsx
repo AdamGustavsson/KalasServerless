@@ -51,6 +51,7 @@ class PartiesIndex extends Component {
         return (<div className="row">
                     <div className="twelve columns">
                         <h4><br/><br/><Translate value="myPartiesPage.register" /></h4>
+                        <Link to={ 'users/new' } ><Translate value="loginPage.register" /></Link>
                     </div>
                 </div>
                );

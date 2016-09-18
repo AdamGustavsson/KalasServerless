@@ -31,6 +31,7 @@ export const translationsObject = {
     },
     registerPage: {
       register: "Register",
+      registerInfo: "Registration is free of charge and completely volonatry. It gives you a list of all your birthday parties and your invites. We recommend registering after you created your first party.",
       chosePassword: "Chose a password",
       verifyPassword: "Confirm password",
       error: "Please fill out all fields and ensure that you typed the chosen password twice"
@@ -38,6 +39,12 @@ export const translationsObject = {
     createPartyPage: {
       error: "Please fill in all fields",
       createParty: "Create party",
+      step1: "Step 1:",
+      step1_description: "Enter details of the party",
+      step2: "Step 2:",
+      step2_description: "Invite the children",
+      hostUser: "Your own mobile number",
+      hostUser_example: "07XXXXXXXXX",
       header: "Header",
       header_example: "Welcome to Jane's 7th birthday party",
       description: "Description",
@@ -50,16 +57,20 @@ export const translationsObject = {
       location_example: "Laserdome, Grafiska vägen 32, Göteborg",
       create: "Create",
       invitedGuests: "Invited guests",
-      guestName: "Name",
-      inviteStatus: "Status",
-      mobileNumber: "Mobile number",
-      noGuests: "There are currently no invited guests",
+      guestName: "Name of the invited child",
       guestName_example: "Child name",
+      inviteStatus: "Status",
+      mobileNumber: "Mobile number of a parent",
+      mobileNumber_example: "07XXXXXXXXX",
+      noGuests: "There are currently no invited guests",
       invite: "Invite",
       inviteSent: "Invite sent",
       accepted: "Accepted",
       rejected: "Declined",
-      pleaseLogin: "Please login in to see the status of your party"
+      pleaseLogin: "Please login in to see the status of your party",
+      youreDone: "When you invited all children,you're done.",
+      youGetAText: "You will get a SMS whenever someone replies",
+      seeAllParties: "See all your parties"
     },
     invitePage: {
       isInvited: "%{name} is invited",
@@ -78,7 +89,7 @@ export const translationsObject = {
       birthdayChild: "Child",
       date: "Date",
       create: "Create new party",
-      register: "Please register to create your first party"
+      register: "Please register to see all your parties"
     },
     editAccountPage: {
       editAcount: "Edit profile",
@@ -115,7 +126,7 @@ export const translationsObject = {
     landingPage: {
       heading: 'Barnkalas utan krångel',
       description: "Kalas.io hjälper dig att bjuda in till ditt barnkalas och hålla reda på vilka barn som kommer.",
-      newPartyButton: "Skapa din första inbjudan",
+      newPartyButton: "Skapa din första kalasinbjudan",
       howItWorks: "Hur fungerar det?",
       howItWorksDetails1: "Du fyller i informationen om ditt kalas, sen lägger du till namnen på de inbjudna barnen tillsammans med förälderns mobilnummer.",
       howItWorksDetails2: "Därefter skickar vi, helt kostnadsfritt, ett SMS till varje förälder med en länk till inbjudan. Där kan de uppge om barnet kan komma eller inte.",
@@ -124,13 +135,21 @@ export const translationsObject = {
     },
     registerPage: {
       register: "Registera dig",
+      registerInfo: "Registratering är gratis och helt frivillig. Du kan använda tjänsten utan att vara registrerad. Registrerade användare har tillgång till fler funktioner. Vi rekommenderar att du registrerar dig efter du har skapat din första kalas inbjudan.",
       chosePassword: "Välj ett lösenord",
       verifyPassword: "Bekräfta lösenord",
       error: "Vänligen fyll i alla fält och se till att lösenordsfälten är lika"
     },
     createPartyPage: {
       error: "Vänligen fyll i alla fält",
-      createParty: "Skapa kalas",
+      createParty: "Skapa inbjudan",
+      step1: "Steg 1:",
+      step1_description: "Fyll i uppgifter om kalaset",
+      step2: "Steg 2:",
+      step2_description: "Bjud in barnen",
+      inviteMoreChildren: "Bjud in fler barn",
+      hostUser: "Ditt eget mobilnummer",
+      hostUser_example: "07XXXXXXXXX",
       header: "Rubrik",
       header_example: "Välkommen till Annas 7-års kalas",
       description: "Beskrivning",
@@ -143,17 +162,20 @@ export const translationsObject = {
       location_example: "Laserdome, Grafiska vägen 32, Göteborg",
       create: "Skapa",
       invitedGuests: "Inbjudna barn",
-      guestName: "Namn",
+      guestName: "Inbjudna barnets namn",
+      guestName_example: "Namn",
       inviteStatus: "Status",
-      mobileNumber: "Mobilnummer",
+      mobileNumber: "Förälders mobilnummer",
+      mobileNumber_example: "07XXXXXXXXX",
       noGuests: "Du har inte bjudit in några barn än",
-      guestName_example: "Inbjudna barnets namn",
-      mobileNumber_example: "Förälders mobilnummer",
       invite: "Bjud in",
       inviteSent: "Inbjudan skickad",
       accepted: "Tackat ja",
       rejected: "Tackat nej",
-      pleaseLogin: "Logga in för att se statusen på ditt party"
+      pleaseLogin: "Logga in för att se statusen på ditt party",
+      youreDone: "När du bjudit in alla barn är du klar.",
+      youGetAText: "Du får ett SMS så fort någon svarar.",
+      seeAllParties: "Se alla dina kalas"
     },
     invitePage: {
       isInvited: "%{name} är bjuden",
@@ -171,8 +193,8 @@ export const translationsObject = {
       tableHeader: "Rubrik",
       birthdayChild: "Barn",
       date: "Datum",
-      create: "Skapa ett nytt kalas",
-      register: "Vänligen registrera dig för att skapa kalas"
+      create: "Skapa en ny kalasinbjudan",
+      register: "Vänligen registrera dig för att se an lista på alla dina kalas"
     },
     editAccountPage: {
       editAcount: "Ändra uppgifter",

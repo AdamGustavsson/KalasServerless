@@ -74,25 +74,25 @@ export function getParty(id) {
   }));
 }
 
-export function createParty(party,token,locale) {
+export function createParty(party,locale) {
+  party.description = party.description.replace(/(\r\n|\n|\r)/gm," ");
   const query = { "query":
     `mutation createNewParty {
       party: createParty (
+        hostUser: "${party.hostUser}",
         header: "${party.header}",
         description: "${party.description}",
         childName: "${party.childName}",
         startDateTime: "${party.startDateTime}",
         endDateTime: "${party.endDateTime}",
         partyLocation: "${party.partyLocation}",
-        locale: "${locale}",
-        token: "${token}"
+        locale: "${locale}"
       )
       {
         id
       }
     }`
   };
-  console.log(token);
   return (dispatch) => fetch(`${API_URL}/data/`, {
     method: 'POST',
     body: JSON.stringify(query)

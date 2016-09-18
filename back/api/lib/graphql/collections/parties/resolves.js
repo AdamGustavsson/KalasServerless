@@ -14,7 +14,6 @@ const partiesTable = projectName + '-parties-' + stage;
 module.exports = {
   create(party) {
     party.id = uuid.v1();
-    delete party.token;
 
     return db('put', {
       TableName: partiesTable,

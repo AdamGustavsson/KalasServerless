@@ -32,6 +32,7 @@ class PartiesNew extends Component {
   handleSubmit(event) {
     event.preventDefault();
 
+    const hostUser = this.refs.hostUser.value;
     const header = this.refs.header.value;
     const description = this.refs.description.value;
     const childName = this.refs.childName.value;
@@ -39,8 +40,9 @@ class PartiesNew extends Component {
     const endDateTime = this.state.endDateTimeString;
     const partyLocation = this.refs.partyLocation.value;
 
-    if (header.length !== 0 && description.length !== 0 && childName.length !== 0 && startDateTime && startDateTime.length !== 0 && endDateTime && endDateTime.length !== 0 && partyLocation.length !== 0) {
+    if (hostUser.length !== 0 && header.length !== 0 && description.length !== 0 && childName.length !== 0 && startDateTime && startDateTime.length !== 0 && endDateTime && endDateTime.length !== 0 && partyLocation.length !== 0) {
       const party = {
+        hostUser,
         header,
         description,
         childName,
@@ -48,7 +50,7 @@ class PartiesNew extends Component {
         endDateTime,
         partyLocation
       };
-      this.props.createParty(party,this.props.token,this.props.locale);
+      this.props.createParty(party,this.props.locale);
     } else {
       alert(I18n.t('createPartyPage.error'));
     }
@@ -63,7 +65,13 @@ class PartiesNew extends Component {
         <div className="tweleve columns">
           <form onSubmit={this.handleSubmit.bind(this)}>
             <h1><Translate value="createPartyPage.createParty" /></h1>
+            <h2><Translate value="createPartyPage.step1" /></h2>
+            <h3><Translate value="createPartyPage.step1_description" /></h3>
             <hr />
+            <Translate value="createPartyPage.hostUser" />:
+            <input type="text" placeholder={I18n.t('createPartyPage.hostUser_example')} className="u-full-width" ref="hostUser" />
+            <br/><br/>
+
             <Translate value="createPartyPage.header" />:
             <input type="text" placeholder={I18n.t('createPartyPage.header_example')} className="u-full-width" ref="header" />
             <Translate value="createPartyPage.description" />:
@@ -86,7 +94,7 @@ class PartiesNew extends Component {
 }
 
 function mapStateToProps(state) {
-  return { token: state.users.currentUser.token, locale: state.i18n.locale};
+  return { locale: state.i18n.locale};
 }
 
 export default connect(mapStateToProps, { createParty })(PartiesNew);

@@ -16,14 +16,14 @@ const translationsObject = {
     SMSMessage: {
       accepted: "%{guestName} has accepted the invite to the birthday party of %{birthdayChild}. Full info: http://%{url}",
       rejected: "%{guestName} has rejected the invite to the birthday party of %{birthdayChild}. Full info: http://%{url}",
-      invited: "%{guestName} has been invited to the birthday party of %{birthdayChild}. Please click the following link to RSVP and get more info: http://%{url}"
+      invited: "Party invite: %{guestName} has been invited to the birthday party of %{birthdayChild}. Please click the following link to answer and get more info: http://%{url} You cannot reply to this SMS."
     }
   },
   sv: {
     SMSMessage: {
       accepted: "%{guestName} har tackat ja till %{birthdayChild}s kalas. Hela listan av inbjudna och deras status: http://%{url}",
       rejected: "%{guestName} har tackat nej till %{birthdayChild}s kalas. Hela listan av inbjudna och deras status: http://%{url}",
-      invited: "%{guestName} har blivit inbjuden till %{birthdayChild}s kalas. Klicka här för mer information och att tacka ja eller nej: http://%{url}"
+      invited: "Kalasinbjudan: %{guestName} har blivit inbjuden till %{birthdayChild}s kalas. Klicka på länken för mer information och fär att tacka ja eller nej: http://%{url} Du kan inte svara på detta SMS."
     }
   }
 };
@@ -51,7 +51,6 @@ module.exports = {
 
   create(invite) {
     invite.id = uuid.v1();
-    delete invite.token;
     return db('put', {
       TableName: invitesTable,
       Item: invite

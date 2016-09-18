@@ -13,7 +13,7 @@ module.exports = {
     type: PartyType,
     description: 'Create Party',
     args: {
-      token: { type: new GraphQLNonNull(GraphQLString) },
+      hostUser: { type: new GraphQLNonNull(GraphQLString) },
       description: {type: new GraphQLNonNull(GraphQLString)},
       header: {type: new GraphQLNonNull(GraphQLString)},
       childName: {type: new GraphQLNonNull(GraphQLString)},
@@ -24,10 +24,7 @@ module.exports = {
 
     },
     resolve(source, args) {
-      return validate(args).then(() => authorize(args.token, ['PARENT_USER'])).then((user) => {
-          args.hostUser=user.mobileNumber;
-          return resolves.create(args);
-      });
+      return validate(args).then(() => resolves.create(args));
     }
   },
   updateParty: {
