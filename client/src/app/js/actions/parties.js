@@ -54,7 +54,8 @@ export function getParty(id) {
         childName,
         startDateTime,
         endDateTime,
-        partyLocation
+        partyLocation,
+        hostUser
       }
     }`
   };

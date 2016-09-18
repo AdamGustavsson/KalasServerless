@@ -55,6 +55,7 @@ module.exports = {
             'NODE_ENV': JSON.stringify('production'),
           }
         }),
-        new ExtractTextPlugin("styles.css")
+        new ExtractTextPlugin("styles.css"),
+        new webpack.DefinePlugin({GA_TRACKING_CODE: JSON.stringify('UA-3987274-11')})
     ]
 };

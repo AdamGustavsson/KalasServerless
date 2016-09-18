@@ -13,6 +13,7 @@ var momentLocalizer = require('react-widgets/lib/localizers/moment');
 momentLocalizer(Moment);
 
 import { Translate,I18n} from 'react-redux-i18n';
+import ga from 'ga-react-router'
 
 class PartiesNew extends Component {
   static contextTypes = {
@@ -51,6 +52,12 @@ class PartiesNew extends Component {
         partyLocation
       };
       this.props.createParty(party,this.props.locale);
+      ga('send', {
+        hitType: 'event',
+        eventCategory: 'Party',
+        eventAction: 'create',
+        eventLabel: party.header
+      });
     } else {
       alert(I18n.t('createPartyPage.error'));
     }

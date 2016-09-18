@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { createInvite } from '../../actions/invites';
 import { Translate,I18n} from 'react-redux-i18n';
+import ga from 'ga-react-router'
 
 class InvitesNew extends Component {
   static contextTypes = {
@@ -22,6 +23,11 @@ class InvitesNew extends Component {
       };
 
       this.props.createInvite(invite, this.props.party.id, this.props.token);
+      ga('send', {
+        hitType: 'event',
+        eventCategory: 'Invite',
+        eventAction: 'create'
+      });
       this.refs.mobileNumber.value = null;
       this.refs.childName.value = null;
     } else {

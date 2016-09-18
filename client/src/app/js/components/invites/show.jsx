@@ -5,6 +5,7 @@ import { getParty } from '../../actions/parties';
 import { Translate,I18n} from 'react-redux-i18n';
 require('./polka.css');
 const flagSource = require('./images/party-flags.png');
+import ga from 'ga-react-router'
 
 class InviteShow extends Component {
   componentWillMount() {
@@ -17,9 +18,19 @@ class InviteShow extends Component {
 
   onAcceptClick(event) {
       this.props.acceptInvite(this.props.invite.id);
+      ga('send', {
+        hitType: 'event',
+        eventCategory: 'Invite',
+        eventAction: 'Accept'
+      });
   }
   onRejectClick(event) {
       this.props.rejectInvite(this.props.invite.id);
+      ga('send', {
+        hitType: 'event',
+        eventCategory: 'Invite',
+        eventAction: 'Reject'
+      });
   }
 
 
@@ -37,7 +48,7 @@ class InviteShow extends Component {
     }
 
 
-
+    ga('set', 'userId', party.hostUser);
     return (
       <div className="row">
         <div className="twelve columns frame">

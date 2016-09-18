@@ -7,6 +7,7 @@ import InvitesNew from '../invites/new';
 import { Translate} from 'react-redux-i18n';
 const flagSource = require('../invites/images/party-flags.png');
 require('../invites/polka.css');
+import ga from 'ga-react-router';
 
 class PartiesShow extends Component {
   componentWillMount() {
@@ -26,7 +27,7 @@ class PartiesShow extends Component {
     if (!party) {
       return <div className="row"><div className="twelve columns"><Translate value="general.loading" /></div></div>
     }
-
+    ga('set', 'userId', party.hostUser);
 
     return (
       <div className="row">

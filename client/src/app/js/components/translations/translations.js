@@ -78,8 +78,8 @@ export const translationsObject = {
       where: "Where? ",
       status: "Your answer",
       inviteSent: "Not yet replied",
-      accepted: "Accepted",
-      rejected: "Rejected",
+      accepted: "Accepted, The host has been notified via SMS",
+      rejected: "Rejected, The host has been notified via SMS",
       accept: "Accept",
       reject: "Reject"
     },
@@ -183,8 +183,8 @@ export const translationsObject = {
       where: "Var? ",
       status: "Ditt svar",
       inviteSent: "Inte svarat",
-      accepted: "Tackat ja",
-      rejected: "Tackat nej",
+      accepted: "Tackat ja, vi har meddelat den som bjudit dig via SMS",
+      rejected: "Tackat nej, vi har meddelat den som bjudit dig via SMS",
       accept: "Tacka ja",
       reject: "Tacka nej"
     },

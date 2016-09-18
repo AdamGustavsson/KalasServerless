@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { createUser } from '../../actions/users';
 import { Link } from 'react-router';
 import { Translate, I18n } from 'react-redux-i18n';
-
+import ga from 'ga-react-router';
 
 class UsersNew extends Component {
   static contextTypes = {
@@ -26,6 +26,11 @@ class UsersNew extends Component {
       };
 
       this.props.createUser(user);
+      ga('send', {
+        hitType: 'event',
+        eventCategory: 'User',
+        eventAction: 'Register'
+      });
     } else {
       alert(I18n.t('registerPage.error'));
     }
