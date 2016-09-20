@@ -9,7 +9,17 @@
   	<meta property="og:type"          content="website" />
   	<meta property="og:title"         content="Inbjudningskort till ditt kalas. Bjud in till barnkalas utan krångel | kalas.io" />
   	<meta property="og:description"   content="Kalas.io hjälper dig att bjuda in till ditt barnkalas och hålla reda på vilka barn som kommer." />
-
+    <script>
+    window.onerror = function(message, url, lineNumber) {
+      if(typeof ga === "function"){
+        ga('send', 'exception', {
+          'exDescription': message,
+          'exFatal': false
+        });
+      }
+      return false;
+    };
+    </script>
   </head>
   <body >
     <div id="root"></div>
