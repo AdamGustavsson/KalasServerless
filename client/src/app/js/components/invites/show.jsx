@@ -4,15 +4,26 @@ import { getInvite, acceptInvite, rejectInvite} from '../../actions/invites';
 import { getParty } from '../../actions/parties';
 import { Translate,I18n} from 'react-redux-i18n';
 require('./polka.css');
-const flagSource = require('./images/party-flags.png');
+require('./bowling.css');
 import ga from 'ga-react-router';
 import ReactFBLike from 'react-fb-like';
 import Helmet from "react-helmet";
 
 class InviteShow extends Component {
   componentWillMount() {
-    this.props.getInvite(this.props.params.id).then(() => this.props.getParty(this.props.invite.partyId));
-    document.body.className='polka';
+    this.props.getInvite(this.props.params.id).then(() => this.props.getParty(this.props.invite.partyId))
+    .then(() => {
+      this.props.party.theme = "bowling";
+      console.log("we are in");
+      if(this.props.party.theme){
+        document.body.className=this.props.party.theme;
+        const themeSource = require('./images/' + this.props.party.theme +'.png');
+      } else {
+        document.body.className='polka';
+        const themeSource = require('./images/polka.png');
+      }
+
+    });
   }
   componentWillUnmount() {
     document.body.className='';
@@ -60,8 +71,8 @@ class InviteShow extends Component {
                 {"name": "robots", "content": "noindex,nofollow"}
               ]}
         />
-        <div className="twelve columns frame">
-            <img src={flagSource}/>
+        <div className="twelve columns frame" id={"inviteFrame-"+party.theme} >
+            <img src={themeSource}/>
             <p className="header">{party.header}</p>
             <p>{party.description}</p>
             <p><Translate value="invitePage.when" />: {party.startDateTime} - {party.endDateTime}</p>
