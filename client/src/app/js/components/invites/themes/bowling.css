@@ -1,0 +1,24 @@
+.bowling {
+  background-color: grey;
+}
+#inviteFrame-bowling{
+    background-color: red;
+    border-color: #FCB100;
+    border-width: 3px;
+    border-style: solid;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.accept{
+  background-color: #8BC755;
+}
+.reject{
+  background-color: #F68D60;
+}
+
+.header{
+  text-align: center;
+  font-weight: bold;
+}

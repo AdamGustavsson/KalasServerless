@@ -6,16 +6,15 @@ import InvitesIndex from '../invites/index';
 import InvitesNew from '../invites/new';
 import { Translate,I18n} from 'react-redux-i18n';
 const flagSource = require('../invites/images/party-flags.png');
-require('../invites/polka.css');
+require('../invites/themes/polka.css');
 import ga from 'ga-react-router';
 import ReactFBLike from 'react-fb-like';
 import Helmet from "react-helmet";
-
+import ThemedInvite from '../invites/themes/themedInvite';
 
 class PartiesShow extends Component {
   componentWillMount() {
     this.props.getParty(this.props.params.id);
-    document.body.className='polka';
   }
   componentWillUnmount() {
     document.body.className='';
@@ -41,13 +40,7 @@ class PartiesShow extends Component {
               {"name": "robots", "content": "noindex,nofollow"}
             ]}
       />
-        <div className="twelve columns frame">
-          <img src={flagSource}/>
-          <p className="header">{party.header}</p>
-          <p>{party.description}</p>
-          <p><Translate value="invitePage.when" />: {party.startDateTime} - {party.endDateTime}</p>
-          <p><Translate value="invitePage.where" />: {party.partyLocation}</p>
-        </div>
+        <ThemedInvite party={party} locale={locale}/>
         <InvitesIndex/>
         {!invites||invites.length==0?
           (<div>
