@@ -16,9 +16,13 @@ export default (
   <Route path="/" component={App}>
     <IndexRoute component={LandingPage} />
     <Route path="parties/my" component={PartiesIndex} />
-    <Route path="parties/:id/show" component={PartiesShow} />
     <Route path="parties/new" component={PartiesNew} />
+    <Route path="parties/:id/show" component={PartiesShow} />
+    <Route path="parties/:id" component={PartiesShow} />
+    <Route path="p/:id" component={PartiesShow} />
     <Route path="invites/:id/show" component={InvitesShow} />
+    <Route path="invites/:id" component={InvitesShow} />
+    <Route path="i/:id" component={InvitesShow} />
     <Route path="profile" component={UsersEdit} />
     <Route path="users/new" component={UsersNew} />
     <Route path="*" component={LandingPage}  />

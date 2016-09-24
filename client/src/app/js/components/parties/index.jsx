@@ -33,7 +33,7 @@ class PartiesIndex extends Component {
                     return (
                       <tr key={'party-' + party.id}>
                         <td>
-                          <Link to={ 'parties/' + party.id + '/show' }>{party.header}</Link>
+                          <Link to={ 'p/' + party.id }>{party.header}</Link>
                         </td>
                         <td>{party.childName}</td>
                         <td>{party.startDateTime}</td>

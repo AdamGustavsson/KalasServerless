@@ -16,14 +16,14 @@ const translationsObject = {
     SMSMessage: {
       accepted: "%{guestName} has accepted the invite to the birthday party of %{birthdayChild}. Full info: http://%{url}",
       rejected: "%{guestName} has rejected the invite to the birthday party of %{birthdayChild}. Full info: http://%{url}",
-      invited: "Party invite: %{guestName} has been invited to the birthday party of %{birthdayChild}. Please click the following link to answer and get more info: http://%{url} You cannot reply to this SMS."
+      invited: "Party invite: %{guestName} has been invited to the birthday party of %{birthdayChild}. Please click the following link to answer and get more info: http://%{url} "
     }
   },
   sv: {
     SMSMessage: {
       accepted: "%{guestName} har tackat ja till %{birthdayChild}s kalas. Hela listan av inbjudna och deras status: http://%{url}",
       rejected: "%{guestName} har tackat nej till %{birthdayChild}s kalas. Hela listan av inbjudna och deras status: http://%{url}",
-      invited: "Kalasinbjudan: %{guestName} har blivit inbjuden till %{birthdayChild}s kalas. Klicka på länken för mer information och fär att tacka ja eller nej: http://%{url} Du kan inte svara på detta SMS."
+      invited: "Kalasinbjudan: %{guestName} har blivit inbjuden till %{birthdayChild}s kalas. Klicka på länken för mer information och för att tacka ja eller nej: http://%{url} "
     }
   }
 };
@@ -59,7 +59,7 @@ module.exports = {
         .then(() => partyResolve.get(invite.partyId))
         .then(partyResponse => {
         I18n.setLocale(partyResponse.locale);
-        return I18n.t("SMSMessage.invited",{guestName: invite.childName, birthdayChild: partyResponse.childName, url:baseURL + '/#/invites/' + invite.id + '/show'})
+        return I18n.t("SMSMessage.invited",{guestName: invite.childName, birthdayChild: partyResponse.childName.trim(), url:baseURL + '/#/i/' + invite.id})
       })
         .then(inviteText => smsgateway.sendSMS(invite.mobileNumber,inviteText))
         // finally return the invite record
@@ -103,7 +103,7 @@ module.exports = {
       if(messageNeeded){
         party = partyResponse;
         I18n.setLocale(partyResponse.locale);
-        messageToHost=   I18n.t('SMSMessage.accepted',{guestName: invite.childName, birthdayChild: party.childName, url: baseURL + '/#/parties/' + party.id + '/show'});
+        messageToHost=   I18n.t('SMSMessage.accepted',{guestName: invite.childName, birthdayChild: party.childName.trim(), url: baseURL + '/#/p/' + party.id});
         return smsgateway.sendSMS(party.hostUser,messageToHost)
       } else {
         return Promise.resolve()
@@ -137,7 +137,7 @@ module.exports = {
       if(messageNeeded){
         party = partyResponse;
         I18n.setLocale(partyResponse.locale);
-        messageToHost= I18n.t('SMSMessage.rejected',{guestName: invite.childName, birthdayChild: party.childName, url: baseURL + '/#/parties/' + party.id + '/show'});
+        messageToHost= I18n.t('SMSMessage.rejected',{guestName: invite.childName, birthdayChild: party.childName.trim(), url: baseURL + '/#/p/' + party.id });
         return smsgateway.sendSMS(party.hostUser,messageToHost)
       } else {
         return Promise.resolve()
