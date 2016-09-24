@@ -43,7 +43,6 @@ class InviteShow extends Component {
       return <div className="row"><div className="twelve columns"><Translate value="general.loading" /></div></div>
     }
     ga('set', 'userId', party.hostUser);
-
     return (
       <div className="row">
         <Helmet

@@ -39,6 +39,7 @@ export function createUser(user) {
     body: JSON.stringify(query)
   })
   .then(response => response.json())
+  .then(json => _.isEmpty(json.errors) ? json : Promise.reject(json.errors[0]))
   .then(json => dispatch({
     type: CREATE_USER,
     payload: json

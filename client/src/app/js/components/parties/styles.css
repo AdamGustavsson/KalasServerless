@@ -3,6 +3,8 @@
 }
 .rw-widget .rw-input {
     font-size: 11px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 .button, button, input[type="submit"], input[type="reset"], input[type="button"]{
   -webkit-appearance: none;

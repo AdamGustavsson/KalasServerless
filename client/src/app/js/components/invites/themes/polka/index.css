@@ -13,14 +13,16 @@
     -moz-background-size:20px 20px;
     background-size:20px 20px;
 }
-.frame{
+#inviteFrame-polka{
     background-color: #ffe7c9;
+    color: #744B27;
     border-color: #FCB100;
     border-width: 3px;
     border-style: solid;
     padding: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
+    font-family: "Acme";
 }
 
 .accept{

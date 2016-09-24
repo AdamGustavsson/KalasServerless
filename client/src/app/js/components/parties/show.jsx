@@ -1,16 +1,16 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { getParty } from '../../actions/parties';
+import { getParty,setThemeOnParty } from '../../actions/parties';
 import { Link } from 'react-router';
 import InvitesIndex from '../invites/index';
 import InvitesNew from '../invites/new';
 import { Translate,I18n} from 'react-redux-i18n';
 const flagSource = require('../invites/images/party-flags.png');
-require('../invites/themes/polka.css');
 import ga from 'ga-react-router';
 import ReactFBLike from 'react-fb-like';
 import Helmet from "react-helmet";
 import ThemedInvite from '../invites/themes/themedInvite';
+import DropDownList from 'react-widgets/lib/DropdownList';
 
 class PartiesShow extends Component {
   componentWillMount() {
@@ -18,6 +18,10 @@ class PartiesShow extends Component {
   }
   componentWillUnmount() {
     document.body.className='';
+  }
+
+  setTheme(theme){
+    this.props.setThemeOnParty(this.props.party.id,theme);
   }
 
   render() {
@@ -31,7 +35,11 @@ class PartiesShow extends Component {
       return <div className="row"><div className="twelve columns"><Translate value="general.loading" /></div></div>
     }
     ga('set', 'userId', party.hostUser);
-
+    const themes=[{id:'polka',
+                  name:I18n.t('theme.polka')}
+                  ,
+                  {id:'bowling',
+                  name:I18n.t('theme.bowling')}];
     return (
       <div className="row">
       <Helmet
@@ -41,11 +49,15 @@ class PartiesShow extends Component {
             ]}
       />
         <ThemedInvite party={party} locale={locale}/>
+
+        <h2><Translate value="createPartyPage.step2" /></h2>
+        <h3><Translate value="createPartyPage.step2_description" /></h3>
+        <DropDownList defaultValue={"polka"} value={party.theme} valueField='id' textField='name' data={themes}  onChange={value => this.setTheme(value.id)}/>
         <InvitesIndex/>
         {!invites||invites.length==0?
           (<div>
-            <h2><Translate value="createPartyPage.step2" /></h2>
-            <h3><Translate value="createPartyPage.step2_description" /></h3>
+            <h2><Translate value="createPartyPage.step3" /></h2>
+            <h3><Translate value="createPartyPage.step3_description" /></h3>
           </div>)
           :
           (<h3><Translate value="createPartyPage.inviteMoreChildren" /></h3>)
@@ -67,4 +79,4 @@ function mapStateToProps(state) {
   return { party: state.parties.party,invites: state.invites.all, currentUser: state.users.currentUser,locale: state.i18n.locale};
 }
 
-export default connect(mapStateToProps, { getParty })(PartiesShow);
+export default connect(mapStateToProps, { getParty,setThemeOnParty})(PartiesShow);

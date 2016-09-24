@@ -1,16 +1,14 @@
 import React, { Component, PropTypes } from 'react';
 import { Translate,I18n} from 'react-redux-i18n';
-import PolkaTheme from './polka';
-import BowlingTheme from './bowling';
+import PolkaTheme from './polka/';
+import BowlingTheme from './bowling/';
 
 export default class themedInvite extends Component {
   componentWillUnmount() {
     document.body.className='';
   }
   render() {
-    const { invite } = this.props;
-    const { party } = this.props;
-    const { locale } = this.props;
+    var party  = this.props.party;
 
     var ThemeComponent;
     switch (party.theme) {
@@ -21,12 +19,14 @@ export default class themedInvite extends Component {
         ThemeComponent = PolkaTheme;
         break;
       default:
-        party.theme="polka"
+        party = Object.assign({}, party, {
+          theme: "polka"
+        })
         ThemeComponent = PolkaTheme;
         break;
        }
     return(
-      <ThemeComponent invite={invite} party={party} locale={locale}/>
+      <ThemeComponent invite={this.props.invite} party={party} locale={this.props.locale}/>
   );
 }
 }

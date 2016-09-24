@@ -1,14 +1,23 @@
 .bowling {
-  background-color: grey;
+  background-color: #FFCC66;
+  font-family: "Droid Serif";
+}
+#themeImage{
+  display: block;
+  margin: auto;
+  width: 90%;
+  max-width: 300px;
 }
 #inviteFrame-bowling{
-    background-color: red;
-    border-color: #FCB100;
+    background-color: #f7f0de;
+    color: #930302;
+    border-color: #930302;
     border-width: 3px;
     border-style: solid;
     padding: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
+    font-family: "Droid Serif";
 }
 
 .accept{

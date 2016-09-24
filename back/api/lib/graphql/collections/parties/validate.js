@@ -30,7 +30,10 @@ let validate = {
   partyLocation: (partyLocation) => {
     return;
   },
-  locale:(partyLocation) => {
+  locale:(locale) => {
+    return;
+  },
+  theme:(theme) => {
     return;
   }
 };

@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { Translate,I18n} from 'react-redux-i18n';
 const imageSource = require('./polka.png');
-require('./polka.css');
+require('./index.css');
 export default class PolkaTheme extends Component {
   componentWillUnmount() {
     document.body.className='';

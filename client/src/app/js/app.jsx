@@ -4,7 +4,8 @@ import { Provider } from 'react-redux';
 import { Router, hashHistory} from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import { translationsObject } from "./components/translations/translations";
-import ga from 'ga-react-router'
+import ga from 'ga-react-router';
+import  WebFont from 'webfontloader';
 
 import { loadTranslations, setLocale, syncTranslationWithStore} from 'react-redux-i18n';
 
@@ -26,6 +27,13 @@ const unlisten = history.listen(location => {
 syncTranslationWithStore(store);
 store.dispatch(loadTranslations(translationsObject));
 store.dispatch(setLocale((localStorage.getItem("locale")?localStorage.getItem("locale"):"sv")));
+
+WebFont.load({
+    google: {
+      families: ['Droid Serif','Acme']
+    }
+  });
+
 
 ReactDOM.render(
   <Provider store={store}>
