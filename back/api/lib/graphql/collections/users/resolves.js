@@ -28,8 +28,10 @@ module.exports = {
       ConditionExpression: 'attribute_not_exists(mobileNumber)'
     })
     // return the user record
-    .then(() => {user.token = authenticate(user);
-                return user;});
+    .then(() => {
+      user.token = authenticate(user);
+      return user;})
+      .catch(() => Promise.reject('User already exists'))
   },
 
   login(args) {

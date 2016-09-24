@@ -9,7 +9,8 @@ import {
   ERROR,
   GET_PARTIES,
   GET_PARTY,
-  CREATE_PARTY
+  CREATE_PARTY,
+  THEME_PARTY
 } from './constants';
 
 
@@ -55,7 +56,8 @@ export function getParty(id) {
         startDateTime,
         endDateTime,
         partyLocation,
-        hostUser
+        hostUser,
+        theme
       }
     }`
   };
@@ -103,9 +105,37 @@ export function createParty(party,locale) {
     type: CREATE_PARTY,
     payload: json
   }))
-  .then((response) => dispatch(push(`parties/${response.payload.data.party.id}/show`)))
+  .then((response) => dispatch(push(`p/${response.payload.data.party.id}`)))
   .catch(exception => dispatch({
     type: ERROR,
     payload: exception.message
   }));
+}
+
+
+export function setThemeOnParty(id,theme) {
+  const query = { "query":
+    `mutation setThemeOnParty {
+      party: setThemeOnParty (
+        id: "${id}",
+        theme: "${theme}"
+      )
+      {
+        id
+      }
+    }`
+  };
+  return (dispatch) => {
+    dispatch({
+      type: THEME_PARTY,
+      theme: theme
+    });
+    return fetch(`${API_URL}/data/`, {
+      method: 'POST',
+      body: JSON.stringify(query)
+    }).catch(exception => dispatch({
+        type: ERROR,
+        payload: exception.message
+      }));
+  }
 }

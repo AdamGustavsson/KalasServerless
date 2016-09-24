@@ -3,19 +3,13 @@ import { connect } from 'react-redux';
 import { getInvite, acceptInvite, rejectInvite} from '../../actions/invites';
 import { getParty } from '../../actions/parties';
 import { Translate,I18n} from 'react-redux-i18n';
-require('./polka.css');
-const flagSource = require('./images/party-flags.png');
 import ga from 'ga-react-router';
 import ReactFBLike from 'react-fb-like';
 import Helmet from "react-helmet";
-
+import ThemedInvite from './themes/themedInvite';
 class InviteShow extends Component {
   componentWillMount() {
     this.props.getInvite(this.props.params.id).then(() => this.props.getParty(this.props.invite.partyId));
-    document.body.className='polka';
-  }
-  componentWillUnmount() {
-    document.body.className='';
   }
 
   onAcceptClick(event) {
@@ -40,7 +34,6 @@ class InviteShow extends Component {
     const { invite } = this.props;
     const { party } = this.props;
     const { locale } = this.props;
-
     const statusText = {CREATED: I18n.t('invitePage.inviteSent'),
                         INVITED: I18n.t('invitePage.inviteSent'),
                         ACCEPTED: I18n.t('invitePage.accepted'),
@@ -49,8 +42,6 @@ class InviteShow extends Component {
     if (!invite || !party) {
       return <div className="row"><div className="twelve columns"><Translate value="general.loading" /></div></div>
     }
-
-
     ga('set', 'userId', party.hostUser);
     return (
       <div className="row">
@@ -60,18 +51,12 @@ class InviteShow extends Component {
                 {"name": "robots", "content": "noindex,nofollow"}
               ]}
         />
-        <div className="twelve columns frame">
-            <img src={flagSource}/>
-            <p className="header">{party.header}</p>
-            <p>{party.description}</p>
-            <p><Translate value="invitePage.when" />: {party.startDateTime} - {party.endDateTime}</p>
-            <p><Translate value="invitePage.where" />: {party.partyLocation}</p>
-            <p className="header"><Translate value="invitePage.isInvited" name={invite.childName}/></p>
-            <p><Translate value="invitePage.status" />: {statusText[invite.inviteStatus]}</p>
-            <button onClick={this.onAcceptClick.bind(this)} className="button u-full-width accept"><Translate value="invitePage.accept" /></button>
-            <button onClick={this.onRejectClick.bind(this)} className="button u-full-width reject"><Translate value="invitePage.reject" /></button>
-            {invite.inviteStatus=='ACCEPTED'?<ReactFBLike language={locale=='sv'?'sv_SE':'en_GB'} appId="1114268925305216" href="http://kalas.io"/>:''}
-        </div>
+      <ThemedInvite invite={invite} party={party} locale={locale}/>
+
+      <h5><Translate value="invitePage.status" />: {statusText[invite.inviteStatus]}</h5>
+      <button onClick={this.onAcceptClick.bind(this)} className="button u-full-width accept"><Translate value="invitePage.accept" /></button>
+      <button onClick={this.onRejectClick.bind(this)} className="button u-full-width reject"><Translate value="invitePage.reject" /></button>
+      {invite.inviteStatus=='ACCEPTED'?<ReactFBLike language={locale=='sv'?'sv_SE':'en_GB'} appId="1114268925305216" href="http://kalas.io"/>:''}
       </div>
     );
   }

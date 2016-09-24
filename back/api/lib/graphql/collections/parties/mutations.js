@@ -27,6 +27,17 @@ module.exports = {
       return validate(args).then(() => resolves.create(args));
     }
   },
+  setThemeOnParty: {
+    type: PartyType,
+    description: 'set a theme to a Party',
+    args: {
+      id: {type: new GraphQLNonNull(GraphQLString)},
+      theme: {type: GraphQLString}
+    },
+    resolve(source, args) {
+      return validate(args).then(() => resolves.setThemeOnParty(args.id,args.theme));
+    }
+  },
   updateParty: {
     type: PartyType,
     description: 'Update Party',
@@ -38,7 +49,8 @@ module.exports = {
       childName: {type: GraphQLString},
       startDateTime:   {type: GraphQLString},
       endDateTime:   {type: GraphQLString},
-      partyLocation:   {type: GraphQLString}
+      partyLocation:   {type: GraphQLString},
+      theme: {type: GraphQLString}
 
     },
     resolve(source, args) {

@@ -36,7 +36,8 @@ module.exports = {
        'startDateTime',
        'endDateTime',
        'partyLocation',
-       'locale'
+       'locale',
+       'theme'
       ]
     }).then(reply => reply.Item);
   },
@@ -85,6 +86,16 @@ module.exports = {
       TableName: partiesTable,
       Item: party
     }).then(() => _.merge({}, party, obj));
+  },
+  setThemeOnParty(id,theme) {
+    console.log("Setting theme on party with id v2: " +id +" theme: " +theme);
+    return db('update', {
+      TableName: partiesTable,
+      Key:{'id':id},
+      UpdateExpression: 'set theme = :t',
+      ExpressionAttributeValues: {':t': theme},
+      ReturnValues:"ALL_NEW"
+    }).then(reply => reply.Attributes);
   },
 
   remove(id) {

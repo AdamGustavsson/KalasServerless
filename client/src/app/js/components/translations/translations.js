@@ -44,7 +44,9 @@ export const translationsObject = {
       step1: "Step 1:",
       step1_description: "Enter details of the party",
       step2: "Step 2:",
-      step2_description: "Invite the children",
+      step2_description: "Chose a theme",
+      step3: "Step 3:",
+      step3_description: "Invite the children",
       hostUser: "Your own mobile number",
       hostUser_example: "07XXXXXXXXX",
       header: "Header",
@@ -102,6 +104,10 @@ export const translationsObject = {
     error: {
       anErrorOccured: "An error occured",
       dismiss: "Dismiss"
+    },
+    theme: {
+      polka: "Polka",
+      bowling: "Bowling"
     }
   },
   sv: {
@@ -151,7 +157,9 @@ export const translationsObject = {
       step1: "Steg 1:",
       step1_description: "Fyll i uppgifter om kalaset",
       step2: "Steg 2:",
-      step2_description: "Bjud in barnen",
+      step2_description: "Välj ett inbjudningskort",
+      step3: "Steg 2:",
+      step3_description: "Bjud in barnen",
       inviteMoreChildren: "Bjud in fler barn",
       hostUser: "Ditt eget mobilnummer",
       hostUser_example: "07XXXXXXXXX",
