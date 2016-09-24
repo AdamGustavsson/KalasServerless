@@ -107,7 +107,8 @@ export const translationsObject = {
     },
     theme: {
       polka: "Polka",
-      bowling: "Bowling"
+      bowling: "Bowling",
+      ladybug: "Ladybug"
     }
   },
   sv: {
@@ -218,6 +219,11 @@ export const translationsObject = {
     error: {
       anErrorOccured: "Ett fel inträffade",
       dismiss: "Ta bort"
+    },
+    theme: {
+      polka: "Polka",
+      bowling: "Bowling",
+      ladybug: "Ladybug"
     }
   }
 };

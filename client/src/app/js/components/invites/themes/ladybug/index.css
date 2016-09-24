@@ -1,0 +1,45 @@
+.ladybug {
+    background:
+        -moz-radial-gradient(#e880a7 15%, transparent 16%),
+        -moz-radial-gradient(#e880a7 15%, transparent 16%),
+        #C4D48C;
+    background:
+        -webkit-radial-gradient(#e880a7 15%, transparent 16%),
+        -webkit-radial-gradient(#e880a7 15%, transparent 16%),
+        #C4D48C;
+        background-position: 0 0, 20px 20px;
+
+        -webkit-background-size:40px 40px;
+        -moz-background-size:40px 40px;
+        background-size:40px 40px;
+}
+
+#themeImage-ladybug{
+  float:left;
+  margin-right: 10px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+#inviteFrame-ladybug{
+    background-color: #ffe7c9;
+    color: black;
+    border-color: #C4D48C;
+    border-width: 6px;
+    border-style: solid;
+    padding: 10px 10px 10px 5px;
+    margin-top: 40px;
+    margin-bottom: 10px;
+    font-family: "Indie Flower";
+}
+
+.accept{
+  background-color: #C4D58A;
+}
+.reject{
+  background-color: #FC2F60;
+}
+
+.header-ladybug{
+  color: #FC2F60;
+
+}

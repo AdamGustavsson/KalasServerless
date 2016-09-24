@@ -36,10 +36,12 @@ class PartiesShow extends Component {
     }
     ga('set', 'userId', party.hostUser);
     const themes=[{id:'polka',
-                  name:I18n.t('theme.polka')}
-                  ,
+                  name:I18n.t('theme.polka')},
                   {id:'bowling',
-                  name:I18n.t('theme.bowling')}];
+                  name:I18n.t('theme.bowling')},
+                  {id:'ladybug',
+                  name:I18n.t('theme.ladybug')}
+                ];
     return (
       <div className="row">
       <Helmet
@@ -53,7 +55,7 @@ class PartiesShow extends Component {
         <h2><Translate value="createPartyPage.step2" /></h2>
         <h3><Translate value="createPartyPage.step2_description" /></h3>
         <DropDownList defaultValue={"polka"} value={party.theme} valueField='id' textField='name' data={themes}  onChange={value => this.setTheme(value.id)}/>
-        <InvitesIndex/>
+        <InvitesIndex id="inviteFrame-ladybug"/>
         {!invites||invites.length==0?
           (<div>
             <h2><Translate value="createPartyPage.step3" /></h2>

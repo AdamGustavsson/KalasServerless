@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { Translate,I18n} from 'react-redux-i18n';
 import PolkaTheme from './polka/';
 import BowlingTheme from './bowling/';
+import LadybugTheme from './ladybug/';
 
 export default class themedInvite extends Component {
   componentWillUnmount() {
@@ -18,6 +19,9 @@ export default class themedInvite extends Component {
       case 'polka':
         ThemeComponent = PolkaTheme;
         break;
+      case 'ladybug':
+          ThemeComponent = LadybugTheme;
+          break;
       default:
         party = Object.assign({}, party, {
           theme: "polka"
