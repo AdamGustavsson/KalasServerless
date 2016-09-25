@@ -111,10 +111,10 @@ export const translationsObject = {
       bowling: "Bowling",
       ladybug: "Ladybug",
       dummyParty: {
-        header1: "Welcome to celebrate Amir's 6th birthday",
-        header2: "Welcome to Anne's birthday party",
+        header1: "Welcome to celebrate %{name}'s 6th birthday",
+        header2: "Welcome to %{name}'s birthday party",
         description1: "We meet up at the sports bar, eat some burgers and throw a few strikes. Bowling shoes can be borrowed.",
-        description2: "Anna is turning 8. Lets celebrate with a party at our place. Bring warm clothes as we will also be outdoors."
+        description2: "%{name} is turning 8. Lets celebrate with a party at our place. Bring warm clothes as we will also be outdoors."
       }
     }
   },
@@ -233,10 +233,10 @@ export const translationsObject = {
       bowling: "Bowling",
       ladybug: "Ladybug",
       dummyParty: {
-        header1: "Välkommen att fira Amirs 6-årsdag",
-        header2: "Välkommen på Annas kalas",
+        header1: "Välkommen att fira %{name} 6-årsdag",
+        header2: "Välkommen på %{name} kalas",
         description1: "Vi samlas på sportbaren, äter hamburgare och slår några strikes. Bowlingskor lånar vi.",
-        description2: "Anna fyller 8 år. Det firar vi med stort tårtkalas hemma hos oss. Ta med varma kläder för vi kommer även att vara ute."
+        description2: "%{name} fyller 8 år. Det firar vi med stort tårtkalas hemma hos oss. Ta med varma kläder för vi kommer även att vara ute."
       }
     }
   }

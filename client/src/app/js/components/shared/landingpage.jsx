@@ -9,9 +9,10 @@ import ThemedInvite from '../invites/themes/themedInvite';
 class LandingPage extends Component {
 
 getDummyParty(theme){
+  const name = theme=="ladybug"?"Amir":"Anna"
   return {
-    header:theme=="ladybug"?I18n.t('theme.dummyParty.header1'):I18n.t('theme.dummyParty.header2'),
-    description:theme=="bowling"?I18n.t('theme.dummyParty.description1'):I18n.t('theme.dummyParty.description2'),
+    header:theme=="ladybug"?I18n.t('theme.dummyParty.header1',{name:name}):I18n.t('theme.dummyParty.header2',{name:name}),
+    description:theme=="bowling"?I18n.t('theme.dummyParty.description1'):I18n.t('theme.dummyParty.description2',{name:name}),
     startDateTime:"2016-12-06: 18.00",
     endDateTime: "20:00",
     partyLocation: theme=="bowling"?"John Scott's, Partille Arena":"Kungsgatan 23, Göteborg",
