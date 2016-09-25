@@ -3,9 +3,27 @@ import { connect } from 'react-redux';
 import { Link } from "react-router";
 import './landingpage.css';
 
-import { Translate} from 'react-redux-i18n';
+import { Translate,I18n} from 'react-redux-i18n';
+import ThemedInvite from '../invites/themes/themedInvite';
 
 class LandingPage extends Component {
+
+getDummyParty(theme){
+  return {
+    header:theme=="ladybug"?I18n.t('theme.dummyParty.header1'):I18n.t('theme.dummyParty.header2'),
+    description:theme=="bowling"?I18n.t('theme.dummyParty.description1'):I18n.t('theme.dummyParty.description2'),
+    startDateTime:"2016-12-06: 18.00",
+    endDateTime: "20:00",
+    partyLocation: theme=="bowling"?"John Scott's, Partille Arena":"Kungsgatan 23, Göteborg",
+    theme:theme
+  }
+}
+getDummyInvite(){
+  return {childName:"Lisa"}
+}
+setThemeBackground(currentTheme){
+
+}
 
 
   render() {
@@ -35,14 +53,33 @@ class LandingPage extends Component {
                 <p>
                   <Link to={'/parties/new'} className="button button-primary"><Translate value="landingPage.newPartyButton" /></Link>
                 </p>
+                <p className="description"><Translate value="landingPage.themes" /></p>
+
               </div>
             </div>
         </div>
-
+        <div className="row">
+          <div className="four columns polka themePreview" >
+            <ThemedInvite party={this.getDummyParty("polka")} invite={this.getDummyInvite()} locale={this.props.locale} setBackground={this.setThemeBackground.bind(this)}/>
+          </div>
+          <div className="four columns bowling themePreview" >
+            <ThemedInvite party={this.getDummyParty("bowling")} invite={this.getDummyInvite()} locale={this.props.locale} setBackground={this.setThemeBackground.bind(this)}/>
+          </div>
+          <div className="four columns ladybug themePreview" >
+            <ThemedInvite party={this.getDummyParty("ladybug")} invite={this.getDummyInvite()} locale={this.props.locale} setBackground={this.setThemeBackground.bind(this)}/>
+          </div>
+          <div className="section">
+            <div className="twelve columns">
+              <Link to={'/parties/new'} className="button button-primary"><Translate value="landingPage.newPartyButton" /></Link>
+            </div>
+          </div>
+        </div>
       </div>
   );
   }
 }
-const mapStateToProps = ({users: {currentUser}}) => ({currentUser});
+function mapStateToProps(state) {
+  return { currentUser: state.users.currentUser,locale: state.i18n.locale};
+}
 
 export default connect(mapStateToProps, {})(LandingPage);

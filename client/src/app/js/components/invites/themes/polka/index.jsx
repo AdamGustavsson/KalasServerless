@@ -3,18 +3,17 @@ import { Translate,I18n} from 'react-redux-i18n';
 const imageSource = require('./polka.png');
 require('./index.css');
 export default class PolkaTheme extends Component {
-  componentWillUnmount() {
-    document.body.className='';
-  }
+
   render() {
     const inviteMightBeNull = this.props.invite;
     const { party } = this.props;
     const { locale } = this.props;
-    //TODO change the react way
-    document.body.className=party.theme;
+    this.props.setBackground(party.theme);
     return(
-    <div className="twelve columns frame" id={"inviteFrame-"+party.theme} >
-        <img src={imageSource}/>
+    <div className="frame" id={"inviteFrame-"+party.theme} >
+        <div >
+          <img src={imageSource} id={"themeImage-"+party.theme}/>
+        </div>
         <p className="header">{party.header}</p>
         <p>{party.description}</p>
         <p><Translate value="invitePage.when" />: {party.startDateTime} - {party.endDateTime}</p>

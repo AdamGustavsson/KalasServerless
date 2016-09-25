@@ -53,3 +53,8 @@ body {
 input {
   font-family: "Acme";
 }
+
+.themePreview{
+  padding:8px;
+  margin-bottom: 20px;
+}

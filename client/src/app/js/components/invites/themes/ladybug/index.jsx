@@ -4,9 +4,7 @@ import  WebFont from 'webfontloader';
 require('./index.css');
 const imageSource = require('./ladybug.png');
 export default class LadybugTheme extends Component {
-  componentWillUnmount() {
-    document.body.className='';
-  }
+
   componentWillMount() {
     WebFont.load({
         google: {
@@ -19,13 +17,13 @@ export default class LadybugTheme extends Component {
     const { party } = this.props;
     const { locale } = this.props;
     //TODO change the react way
-    document.body.className=party.theme;
+    this.props.setBackground(party.theme);
     return(
-    <div  className="twelve columns frame" id={"inviteFrame-"+party.theme} >
+    <div  className="frame" id={"inviteFrame-"+party.theme} >
         <div id={"themeImage-"+party.theme}>
           <img src={imageSource} />
         </div>
-        <div>
+        <div >
           <p className={"header-"+party.theme}>{party.header}</p>
           <p>{party.description}</p>
           <p><Translate value="invitePage.when" />: {party.startDateTime} - {party.endDateTime}</p>

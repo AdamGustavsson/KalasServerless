@@ -25,10 +25,11 @@ export const translationsObject = {
       description: "Party time helps you invite guest to your child's birthday party and keep track of RSVPs.",
       newPartyButton: "Create your first party",
       howItWorks: "How it works",
-      howItWorksDetails1: "You enter the details of you birthday party and add the names of the invited children along with a mobile number of their parent.",
+      howItWorksDetails1: "You enter the details of you birthday party, select a theme, and add the names of the invited children along with a mobile number of their parent.",
       howItWorksDetails2: "We then send the invite to each parent in an SMS with a link to RSVP.",
       howItWorksDetails3: "You get an SMS whenever a parent RSVPs with a list of the current status of all invited children.",
-      howItWorksDetails4: "It's that simple!"
+      howItWorksDetails4: "It's that simple! Below are exampels of how your invitation will look.",
+      themes: "Here are a few examples of invites. We keep adding new themes for you to use."
     },
     registerPage: {
       register: "Register",
@@ -108,7 +109,13 @@ export const translationsObject = {
     theme: {
       polka: "Polka",
       bowling: "Bowling",
-      ladybug: "Ladybug"
+      ladybug: "Ladybug",
+      dummyParty: {
+        header1: "Welcome to celebrate Amir's 6th birthday",
+        header2: "Welcome to Anne's birthday party",
+        description1: "We meet up at the sports bar, eat some burgers and throw a few strikes. Bowling shoes can be borrowed.",
+        description2: "Anna is turning 8. Lets celebrate with a party at our place. Bring warm clothes as we will also be outdoors."
+      }
     }
   },
   sv: {
@@ -139,10 +146,11 @@ export const translationsObject = {
       description: "Kalas.io hjälper dig att bjuda in till ditt barnkalas och hålla reda på vilka barn som kommer.",
       newPartyButton: "Skapa din första kalasinbjudan",
       howItWorks: "Hur fungerar det?",
-      howItWorksDetails1: "Du fyller i informationen om ditt kalas, sen lägger du till namnen på de inbjudna barnen tillsammans med förälderns mobilnummer.",
+      howItWorksDetails1: "Du fyller i informationen om ditt kalas, väljer ett inbjudingskort, och sen lägger du till namnen på de inbjudna barnen tillsammans med förälderns mobilnummer.",
       howItWorksDetails2: "Därefter skickar vi, helt kostnadsfritt, ett SMS till varje förälder med en länk till inbjudan. Där kan de uppge om barnet kan komma eller inte.",
       howItWorksDetails3: "Du får ett SMS varje gång någon ändrar status på inbjudan. Du kan hela tiden se en aktuell lista på alla inbjudna och hur de svarat.",
-      howItWorksDetails4: "Så enkelt är det!"
+      howItWorksDetails4: "Så enkelt är det! Nedan finns exempel på hur ditt inbjudningkort kan se ut.",
+      themes: "Här är några exempel på inbjudningskort. Vi lägger hela tiden in nya mallar som du kan använda."
     },
     registerPage: {
       register: "Registera dig",
@@ -223,7 +231,13 @@ export const translationsObject = {
     theme: {
       polka: "Polka",
       bowling: "Bowling",
-      ladybug: "Ladybug"
+      ladybug: "Ladybug",
+      dummyParty: {
+        header1: "Välkommen att fira Amirs 6 årsdag",
+        header2: "Välkommen på Annas kalas",
+        description1: "Vi samlas på sportbaren, äter hamburgare och slår några strikes. Bowlingskor lånar vi.",
+        description2: "Anna fyller 8 år. Det firar vi med stort tårtkalas hemma hos oss. Ta med varma kläder för vi kommer även att vara ute."
+      }
     }
   }
 };

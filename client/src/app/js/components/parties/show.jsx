@@ -16,9 +16,6 @@ class PartiesShow extends Component {
   componentWillMount() {
     this.props.getParty(this.props.params.id);
   }
-  componentWillUnmount() {
-    document.body.className='';
-  }
 
   setTheme(theme){
     this.props.setThemeOnParty(this.props.party.id,theme);
@@ -55,7 +52,7 @@ class PartiesShow extends Component {
         <h2><Translate value="createPartyPage.step2" /></h2>
         <h3><Translate value="createPartyPage.step2_description" /></h3>
         <DropDownList defaultValue={"polka"} value={party.theme} valueField='id' textField='name' data={themes}  onChange={value => this.setTheme(value.id)}/>
-        <InvitesIndex id="inviteFrame-ladybug"/>
+        <InvitesIndex />
         {!invites||invites.length==0?
           (<div>
             <h2><Translate value="createPartyPage.step3" /></h2>

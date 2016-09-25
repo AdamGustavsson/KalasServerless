@@ -13,6 +13,12 @@
     -moz-background-size:20px 20px;
     background-size:20px 20px;
 }
+#themeImage-polka{
+  display: block;
+  margin: auto;
+  width: 110%;
+  max-width: 500px;
+}
 #inviteFrame-polka{
     background-color: #ffe7c9;
     color: #744B27;

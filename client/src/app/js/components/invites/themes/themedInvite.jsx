@@ -8,6 +8,9 @@ export default class themedInvite extends Component {
   componentWillUnmount() {
     document.body.className='';
   }
+  setBackground(theme){
+    document.body.className=theme;
+  }
   render() {
     var party  = this.props.party;
 
@@ -30,7 +33,7 @@ export default class themedInvite extends Component {
         break;
        }
     return(
-      <ThemeComponent invite={this.props.invite} party={party} locale={this.props.locale}/>
+      <ThemeComponent invite={this.props.invite} party={party} locale={this.props.locale} setBackground={this.props.setBackground?this.props.setBackground:this.setBackground}/>
   );
 }
 }
