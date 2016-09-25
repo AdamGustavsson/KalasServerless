@@ -14,7 +14,7 @@ export default class BowlingTheme extends Component {
     return(
     <div className="twelve columns frame" id={"inviteFrame-"+party.theme} >
         <img src={imageSource} id="themeImage"/>
-        <p className={"header-"+party.theme}>>{party.header}</p>
+        <p className={"header-"+party.theme}>{party.header}</p>
         <p>{party.description}</p>
         <p><Translate value="invitePage.when" />: {party.startDateTime} - {party.endDateTime}</p>
         <p><Translate value="invitePage.where" />: {party.partyLocation}</p>
