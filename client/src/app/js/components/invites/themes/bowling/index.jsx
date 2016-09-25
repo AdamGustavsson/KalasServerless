@@ -18,7 +18,7 @@ export default class BowlingTheme extends Component {
         <p>{party.description}</p>
         <p><Translate value="invitePage.when" />: {party.startDateTime} - {party.endDateTime}</p>
         <p><Translate value="invitePage.where" />: {party.partyLocation}</p>
-        {inviteMightBeNull?<p className={"header-"+party.theme}>><Translate value="invitePage.isInvited" name={inviteMightBeNull.childName}/></p>:''}
+        {inviteMightBeNull?<p className={"header-"+party.theme}><Translate value="invitePage.isInvited" name={inviteMightBeNull.childName}/></p>:''}
 
     </div>
   );
