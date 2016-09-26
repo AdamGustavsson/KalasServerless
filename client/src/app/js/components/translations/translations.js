@@ -233,8 +233,8 @@ export const translationsObject = {
       bowling: "Bowling",
       ladybug: "Ladybug",
       dummyParty: {
-        header1: "Välkommen att fira %{name} 6-årsdag",
-        header2: "Välkommen på %{name} kalas",
+        header1: "Välkommen att fira %{name}s 6-årsdag",
+        header2: "Välkommen på %{name}s kalas",
         description1: "Vi samlas på sportbaren, äter hamburgare och slår några strikes. Bowlingskor lånar vi.",
         description2: "%{name} fyller 8 år. Det firar vi med stort tårtkalas hemma hos oss. Ta med varma kläder för vi kommer även att vara ute."
       }
