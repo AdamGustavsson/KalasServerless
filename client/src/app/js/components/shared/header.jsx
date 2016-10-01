@@ -71,7 +71,7 @@ class Header extends Component {
                 <input type="submit" className="u-full-width button-primary" value={I18n.t('loginPage.login')}/>
               </form>
 
-              <Link to="users/new" onClick={this.handleMenuClick.bind(this)}><Translate value="loginPage.register" /></Link>
+              <RadiumLink to="users/new" onClick={this.handleMenuClick.bind(this)}><Translate value="loginPage.register" /></RadiumLink>
               <div><br/><Translate value="loginPage.language" />:</div>
               <RadiumLink className="menu-item" to={currentRoute} onClick={this.handleLanguageClick.bind(this,"sv")}>Svenska</RadiumLink>
               <RadiumLink className="menu-item" to={currentRoute} onClick={this.handleLanguageClick.bind(this,"en")}>English</RadiumLink>
