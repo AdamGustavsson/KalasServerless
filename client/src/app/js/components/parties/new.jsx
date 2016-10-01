@@ -79,10 +79,6 @@ class PartiesNew extends Component {
             <input type="text" placeholder={I18n.t('createPartyPage.hostUser_example')} className="u-full-width" ref="hostUser" />
             <br/><br/>
 
-            <Translate value="createPartyPage.header" />:
-            <input type="text" placeholder={I18n.t('createPartyPage.header_example')} className="u-full-width" ref="header" />
-            <Translate value="createPartyPage.description" />:
-            <textarea rows="5" placeholder={I18n.t('createPartyPage.description_example')} className="u-full-width" ref="description" />
             <Translate value="createPartyPage.childName" />:
             <input type="text" placeholder={I18n.t('createPartyPage.childName_example')} className="u-full-width" ref="childName" />
             <Translate value="createPartyPage.startDateTime" />:
@@ -91,6 +87,10 @@ class PartiesNew extends Component {
             <DateTimePicker placeholder={I18n.t('createPartyPage.endDateTime')} min={this.state.startDateTime} value={this.state.endDateTime} onChange={change.bind(null,'endDateTime')}  format={"HH:mm"} step={15} finalView={"month"} timeFormat={"HH:mm"} calendar={false} className="u-full-width" />
             <Translate value="createPartyPage.location" />:
             <input type="text" placeholder={I18n.t('createPartyPage.location_example')} className="u-full-width" ref="partyLocation" />
+            <Translate value="createPartyPage.header" />:
+            <input type="text" placeholder={I18n.t('createPartyPage.header_example')} className="u-full-width" ref="header" />
+            <Translate value="createPartyPage.description" />:
+            <textarea rows="5" placeholder={I18n.t('createPartyPage.description_example')} className="u-full-width" ref="description" />
             <input type="submit" className="button button-primary" value={I18n.t('createPartyPage.create')}/>
             <Link to="/" className="u-pull-right button"><Translate value="general.cancel" /></Link>
           </form>
