@@ -36,9 +36,9 @@ class InvitesIndex extends Component {
                 <table className="u-full-width">
                   <thead>
                     <tr>
-                      <th><Translate value="createPartyPage.guestName" /></th>
+                      <th><Translate value="createPartyPage.guestNameHeader" /></th>
                       <th><Translate value="createPartyPage.inviteStatus" /></th>
-                      <th><Translate value="createPartyPage.mobileNumber" /></th>
+                      <th><Translate value="createPartyPage.mobileNumberHeader" /></th>
                     </tr>
                   </thead>
                   <tbody>
