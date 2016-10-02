@@ -16,14 +16,17 @@ class InvitesIndex extends Component {
                         CREATED: 3,
                         INVITED: 4};
 
-    const statusText = {CREATED: '',
-                        INVITED: I18n.t('createPartyPage.inviteSent'),
-                        ACCEPTED: I18n.t('createPartyPage.accepted'),
-                        REJECTED: I18n.t('createPartyPage.rejected')};
     var lastStatus = 0;
     invites.sort((a, b) => {
       return statusOrder[a.inviteStatus] - statusOrder[b.inviteStatus];
     })
+    // first invite has status INVITED so all will have it (because of the sort above)
+    const allInvitesAreNew = invites && invites.length>0 && invites[0].inviteStatus=="INVITED";
+    // differ the message of INVITED depending on the context
+    const statusText = {CREATED: '',
+                        INVITED: allInvitesAreNew?I18n.t('createPartyPage.inviteSent'):I18n.t('invitePage.inviteSent'),
+                        ACCEPTED: I18n.t('createPartyPage.accepted'),
+                        REJECTED: I18n.t('createPartyPage.rejected')};
         return (
           <div className="row">
             <div className="twelve columns">
