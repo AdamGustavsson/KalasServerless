@@ -14,6 +14,8 @@ class InviteShow extends Component {
 
   onAcceptClick(event) {
       this.props.acceptInvite(this.props.invite.id);
+      this.props.invite.inviteStatus="ACCEPTED";
+      this.forceUpdate();
       ga('send', {
         hitType: 'event',
         eventCategory: 'Invite',
@@ -22,6 +24,8 @@ class InviteShow extends Component {
   }
   onRejectClick(event) {
       this.props.rejectInvite(this.props.invite.id);
+      this.props.invite.inviteStatus="REJECTED";
+      this.forceUpdate();
       ga('send', {
         hitType: 'event',
         eventCategory: 'Invite',
