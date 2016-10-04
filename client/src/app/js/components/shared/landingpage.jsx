@@ -9,12 +9,6 @@ import {throwError} from '../../actions/error';
 
 class LandingPage extends Component {
 
-componentWillMount() {
-  if(navigator.userAgent.indexOf("SAMSUNG")!=-1){
-    this.props.throwError("Klickade du precis på en länk i ett SMS? Samsungs webbläsare för SMS fungerar dåligt. Vänligen öppna länken i den valiga webbläsaren. Det gör du genom att klicka på MER i högra hörnet, följt av Öppna i webbläsare. Fungerar inte det så försök öppna länken i en annan webbläsare, tex i en annan telefon eller dator.");
-  }
-}
-
 getDummyParty(theme){
   const name = theme=="polka"?"Amir":"Anna"
   return {
