@@ -44,21 +44,6 @@
     text-align: left;
     height: 165px;
   }
-  .phone {
-    position: absolute;
-    top: -7rem;
-    right: 3rem;
-    max-height: 362px;
-    z-index: 3;
-  }
-  .phone + .phone {
-    top: -6rem;
-    display: block;
-    max-width: 73.8%;
-    right: 0;
-    z-index: 2;
-    max-height: 338px;
-  }
   .hero-heading {
     font-size: 2.4rem;
   }
@@ -83,15 +68,6 @@
     margin-left: auto;
     margin-right: auto;
   }
-  .phone {
-    top: -14rem;
-    right: 5rem;
-    max-height: 510px;
-  }
-  .phone + .phone {
-    top: -12rem;
-    max-height: 472px;
-  }
   .categories {
     padding: 15rem 0 8rem;
   }
@@ -107,15 +83,5 @@
   }
   .hero-heading {
     font-size: 3.0rem;
-  }
-  .phone {
-    background-image: url('./images/placeit.jpg');
-    background-size: cover;
-    width: 600px;
-    height: 212px;
-  }
-  .phone + .phone {
-    top: -14rem;
-    max-height: 570px;
   }
 }
