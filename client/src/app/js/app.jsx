@@ -1,3 +1,4 @@
+import "babel-polyfill";
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
@@ -6,6 +7,7 @@ import { syncHistoryWithStore } from 'react-router-redux';
 import { translationsObject } from "./components/translations/translations";
 import ga from 'ga-react-router';
 import  WebFont from 'webfontloader';
+
 
 import { loadTranslations, setLocale, syncTranslationWithStore} from 'react-redux-i18n';
 

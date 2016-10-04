@@ -32,6 +32,7 @@
     "autotrack": "^1.0.1",
     "babel-plugin-transform-class-properties": "^6.6.0",
     "babel-plugin-transform-object-rest-spread": "^6.6.5",
+    "babel-polyfill": "^6.16.0",
     "css-loader": "^0.23.1",
     "extract-text-webpack-plugin": "^1.0.1",
     "ga-react-router": "^2.1.1",
