@@ -48,7 +48,7 @@ class InvitesIndex extends Component {
                       <tr key={'invite-' + invite.id}>
                         <td>{invite.childName}</td>
                         <td>{statusText[invite.inviteStatus]}</td>
-                        <td>{invite.mobileNumber}</td>
+                        <td><a href={"tel:" + invite.mobileNumber}>{invite.mobileNumber}</a></td>
                       </tr>
                     )}
                   )}
