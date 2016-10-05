@@ -221,7 +221,7 @@ export const translationsObject = {
       birthdayChild: "Barn",
       date: "Datum",
       create: "Skapa en ny kalasinbjudan",
-      register: "Vänligen registrera dig för att se an lista på alla dina kalas"
+      register: "Vänligen registrera dig för att se en lista på alla dina kalas"
     },
     editAccountPage: {
       editAcount: "Ändra uppgifter",
