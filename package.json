@@ -4,10 +4,10 @@
     "tmp": "tmp/serverless-graphql-0.0.4.tgz_1460768832694_0.5603838413953781"
   },
   "author": {
-    "name": "me"
+    "name": "Adam Gustavsson"
   },
   "bugs": {
-    "url": "https://github.com/serverless/serverless-graphql/issues"
+    "url": "https://github.com/AdamGustavsson/KalasServerless/issues"
   },
   "dependencies": {
     "aws-sdk": "^2.3.0",
@@ -19,22 +19,30 @@
     "serverless-meta-sync": "^0.1.0",
     "serverless-offline": "^2.2.4"
   },
-  "description": "The Serverless GraphQL Application Boilerplate",
+  "description": "kalas.io, an birthday party invitation web app",
   "devDependencies": {
     "chai": "^3.5.0",
     "mocha": "^2.4.5"
   },
   "scripts": {
-    "test": "SERVERLESS_STAGE=test SERVERLESS_REGION=eu-west-1 ./node_modules/.bin/mocha tests/"
+    "test": "SERVERLESS_STAGE=test SERVERLESS_REGION=eu-west-1 ./node_modules/.bin/mocha tests/",
+    "build-client": "cd ./client/src/ && npm run build",
+    "build-client-prod": "cd ./client/src/ && npm run build-prod",
+    "start-client": "cd ./client/src/ && npm start",
+    "build-deploy-client": "npm run build-client && sls client deploy",
+    "build-deploy-client-prod": "npm run build-client-prod && sls client deploy -s prod -d kalas.io",
+    "deploy-client": "sls client deploy",
+    "deploy-back": "sls function deploy",
+    "build-deploy-client-back-prod": "npm run build-client-prod && sls function deploy -s prod && sls client deploy -s prod -d kalas.io"
   },
-  "homepage": "https://github.com/serverless/serverless-graphql#readme",
+  "homepage": "https://github.com/AdamGustavsson/KalasServerless",
   "license": "MIT",
   "name": "serverless-graphql",
   "optionalDependencies": {},
   "private": false,
   "repository": {
     "type": "git",
-    "url": "git://github.com/serverless/serverless-graphql.git"
+    "url": "https://github.com/AdamGustavsson/KalasServerless.git"
   },
   "version": "0.0.4"
 }
