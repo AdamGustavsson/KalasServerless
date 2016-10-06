@@ -58,7 +58,7 @@ module.exports = {
         }),
         new ExtractTextPlugin("styles.css"),
         new CompressionPlugin({
-           asset: "gzip[path]",
+           asset: "gzip/[path]",
            algorithm: "gzip",
            test: /\.js$|\.css$/,
        }),

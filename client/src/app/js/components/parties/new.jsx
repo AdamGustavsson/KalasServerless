@@ -8,7 +8,8 @@ import './styles.css';
 
 import DateTimePicker from  'react-widgets/lib/DateTimePicker';
 
-var Moment = require('moment');
+import Moment from 'moment';
+
 var momentLocalizer = require('react-widgets/lib/localizers/moment');
 momentLocalizer(Moment);
 

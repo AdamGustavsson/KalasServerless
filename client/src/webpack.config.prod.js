@@ -59,7 +59,7 @@ module.exports = {
         new ExtractTextPlugin("styles.css"),
         new webpack.optimize.UglifyJsPlugin(),
         new CompressionPlugin({
-           asset: "gzip[path]",
+           asset: "gzip/[path]",
            algorithm: "gzip",
            test: /\.js$|\.css$/,
        }),
