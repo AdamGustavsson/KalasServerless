@@ -1,5 +1,6 @@
 
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var CompressionPlugin = require("compression-webpack-plugin");
 var webpack = require('webpack')
 module.exports = {
   entry: {
@@ -56,6 +57,11 @@ module.exports = {
           }
         }),
         new ExtractTextPlugin("styles.css"),
+        new CompressionPlugin({
+           asset: "gzip[path]",
+           algorithm: "gzip",
+           test: /\.js$|\.css$/,
+       }),
         new webpack.DefinePlugin({GA_TRACKING_CODE: JSON.stringify('UA-3987274-10')})
     ]
 };
