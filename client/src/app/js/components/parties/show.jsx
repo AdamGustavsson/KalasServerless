@@ -65,8 +65,8 @@ class PartiesShow extends Component {
         <InvitesNew/>
         <h5><Translate value="createPartyPage.youreDone" /></h5>
         <h5><Translate value="createPartyPage.youGetAText" /></h5>
-        <ReactFBLike language={locale=='sv'?'sv_SE':'en_GB'} appId="1114268925305216" href="http://kalas.io"/>
-
+        <ReactFBLike width="300" reference="party" language={locale=='sv'?'sv_SE':'en_GB'} appId="1114268925305216" href="http://kalas.io"/>
+        <br/>&nbsp;
         <Link to='parties/my' className="button u-full-width"><Translate value="createPartyPage.seeAllParties" /></Link>
       </div>
 

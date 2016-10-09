@@ -60,7 +60,7 @@ class InviteShow extends Component {
       <h5><Translate value="invitePage.status" />: {statusText[invite.inviteStatus]}</h5>
       <button onClick={this.onAcceptClick.bind(this)} className="button u-full-width accept"><Translate value="invitePage.accept" /></button>
       <button onClick={this.onRejectClick.bind(this)} className="button u-full-width reject"><Translate value="invitePage.reject" /></button>
-      {invite.inviteStatus=='ACCEPTED'?<ReactFBLike language={locale=='sv'?'sv_SE':'en_GB'} appId="1114268925305216" href="http://kalas.io"/>:''}
+      {invite.inviteStatus=='ACCEPTED'?<div className="twelve columns"><ReactFBLike width="300"  reference="invite" language={locale=='sv'?'sv_SE':'en_GB'} appId="1114268925305216" href="http://kalas.io"/><br/>&nbsp;</div>:''}
       </div>
     );
   }
