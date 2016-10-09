@@ -95,6 +95,7 @@ export const translationsObject = {
       whatIs: "What is kalas.io?",
       serviceDescription: "Kalas.io is a free service that helps you invite guest to your child's birthday party and keep track of RSVPs.",
       moreInfo: "More info",
+      remindMe: "Do you want to use the service yourself? We can remind via SMS in time for your next birthday invitation.",
       remindMeButton: "Yes please"
     },
     reminderPage:{
