@@ -22,14 +22,16 @@ export const translationsObject = {
     landingPage: {
       title: "Invites for your birthday party. Invite easily and get RSVPs via SMS | kalas.io",
       heading: "Birthday parties made simple",
-      description: "Party time helps you invite guest to your child's birthday party and keep track of RSVPs.",
+      description: "Kalas.io helps you invite guest to your child's birthday party and keep track of RSVPs.",
       newPartyButton: "Create your first party",
       howItWorks: "How it works",
       howItWorksDetails1: "You enter the details of you birthday party, select a theme, and add the names of the invited children along with a mobile number of their parent.",
       howItWorksDetails2: "We then send the invite to each parent in an SMS with a link to RSVP.",
       howItWorksDetails3: "You get an SMS whenever a parent RSVPs with a list of the current status of all invited children.",
       howItWorksDetails4: "It's that simple! Below are exampels of how your invitation will look.",
-      themes: "Here are a few examples of invites. We keep adding new themes for you to use."
+      themes: "Here are a few examples of invites. We keep adding new themes for you to use.",
+      reminderHeader: "Is it a while until your next birthday party?",
+      reminderDetails: "No problem! Just enter your childrens birthdays and we will remind you of our service via SMS in time for your next birthday invitation."
     },
     registerPage: {
       register: "Register",
@@ -89,7 +91,15 @@ export const translationsObject = {
       accepted: "Accepted, The host has been notified via SMS",
       rejected: "Rejected, The host has been notified via SMS",
       accept: "Accept",
-      reject: "Reject"
+      reject: "Reject",
+      whatIs: "What is kalas.io?",
+      serviceDescription: "Kalas.io is a free service that helps you invite guest to your child's birthday party and keep track of RSVPs.",
+      moreInfo: "More info",
+      remindMeButton: "Yes please"
+    },
+    reminderPage:{
+      heading: "Thank you for your interest",
+      description: "This function is under development. You will be able to add your childrens birthdays and we will then remind you of the service well in advance for your next birthday party invitation."
     },
     myPartiesPage: {
       header: "Parties",
@@ -152,7 +162,9 @@ export const translationsObject = {
       howItWorksDetails2: "Därefter skickar vi, helt kostnadsfritt, ett SMS till varje förälder med en länk till inbjudan. Där kan de uppge om barnet kan komma eller inte.",
       howItWorksDetails3: "Du får ett SMS varje gång någon ändrar status på inbjudan. Du kan hela tiden se en aktuell lista på alla inbjudna och hur de svarat.",
       howItWorksDetails4: "Så enkelt är det! Nedan finns exempel på hur ditt inbjudningkort kan se ut.",
-      themes: "Här är några exempel på inbjudningskort. Vi lägger hela tiden in nya mallar som du kan använda."
+      themes: "Här är några exempel på inbjudningskort. Vi lägger hela tiden in nya mallar som du kan använda.",
+      reminderHeader: "Är det ett tag kvar tills du skall ha kalas?",
+      reminderDetails: "Inga problem! Vi kan påminna dig om kalas.io via SMS. Fyll bara i dina barns födelsedagar, så påminner vi dig i god tid för din nästa kalasinbjudan."
     },
     registerPage: {
       register: "Registera dig",
@@ -213,7 +225,16 @@ export const translationsObject = {
       accepted: "Tackat ja, vi har meddelat den som bjudit dig via SMS",
       rejected: "Tackat nej, vi har meddelat den som bjudit dig via SMS",
       accept: "Tacka ja",
-      reject: "Tacka nej"
+      reject: "Tacka nej",
+      whatIs: "Vad är kalas.io?",
+      serviceDescription: "Kalas.io är en gratistjänst som hjälper dig att bjuda in till ditt barnkalas och hålla reda på vilka barn som kommer. Prova du också!",
+      moreInfo: "Mer info",
+      remindMe: "Vill du själv använda tjänsten så kan vi påminna dig via SMS när ditt barn fyller år.",
+      remindMeButton: "Ja tack"
+    },
+    reminderPage:{
+      heading: "Tack för ditt intresse",
+      description: "Denna funktion är under utveckling. Du kommer kunna ange när dina barn fyller år och bli påmind om tjänsten via SMS i god tid för din nästa kalasinbjudan."
     },
     myPartiesPage: {
       header: "Kalas",

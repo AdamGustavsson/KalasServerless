@@ -29,7 +29,6 @@ setThemeBackground(currentTheme){
 
 
   render() {
-    const {currentUser} = this.props;
 
     return (
       <div>
@@ -71,8 +70,12 @@ setThemeBackground(currentTheme){
             <ThemedInvite party={this.getDummyParty("ladybug")} invite={this.getDummyInvite()} locale={this.props.locale} setBackground={this.setThemeBackground.bind(this)}/>
           </div>
           <div className="section">
-            <div className="twelve columns">
-              <Link to={'/parties/new'} className="button button-primary"><Translate value="landingPage.newPartyButton" /></Link>
+            <div className="row second">
+              <div className="twelve columns">
+                <h4 className="heading"><Translate value="landingPage.reminderHeader" /></h4>
+                <p className="description"><Translate value="landingPage.reminderDetails" /></p>
+                <Link to={'reminder'} className="button button-primary"><Translate value="invitePage.remindMeButton" /></Link>
+              </div>
             </div>
           </div>
         </div>

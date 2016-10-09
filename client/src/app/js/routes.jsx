@@ -11,6 +11,7 @@ import PartiesShow from './components/parties/show';
 import PartiesNew from './components/parties/new';
 import InvitesShow from './components/invites/show';
 import LandingPage from './components/shared/landingpage';
+import ReminderPage from './components/shared/reminderpage';
 
 export default (
   <Route path="/" component={App}>
@@ -25,6 +26,7 @@ export default (
     <Route path="i/:id" component={InvitesShow} />
     <Route path="profile" component={UsersEdit} />
     <Route path="users/new" component={UsersNew} />
+    <Route path="reminder" component={ReminderPage} />
     <Route path="*" component={LandingPage}  />
   </Route>
 );

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { getInvite, acceptInvite, rejectInvite} from '../../actions/invites';
 import { getParty } from '../../actions/parties';
 import { Translate,I18n} from 'react-redux-i18n';
+import { Link } from "react-router";
 import ga from 'ga-react-router';
 import ReactFBLike from 'react-fb-like';
 import Helmet from "react-helmet";
@@ -60,7 +61,19 @@ class InviteShow extends Component {
       <h5><Translate value="invitePage.status" />: {statusText[invite.inviteStatus]}</h5>
       <button onClick={this.onAcceptClick.bind(this)} className="button u-full-width accept"><Translate value="invitePage.accept" /></button>
       <button onClick={this.onRejectClick.bind(this)} className="button u-full-width reject"><Translate value="invitePage.reject" /></button>
-      {invite.inviteStatus=='ACCEPTED'?<div className="twelve columns"><ReactFBLike width="300"  reference="invite" language={locale=='sv'?'sv_SE':'en_GB'} appId="1114268925305216" href="http://kalas.io"/><br/>&nbsp;</div>:''}
+      {invite.inviteStatus!='INVITED'?
+      <div className="twelve columns">
+        <h4><Translate value="invitePage.whatIs" /></h4>
+        <h5><Translate value="invitePage.serviceDescription" /></h5>
+        <Link to={'/'} className="button button-primary"><Translate value="invitePage.moreInfo" /></Link>
+        <br/>&nbsp;
+        <h5><Translate value="invitePage.remindMe" /></h5>
+        <Link to={'/reminder'} className="button button-primary"><Translate value="invitePage.remindMeButton" /></Link>
+        <br/>&nbsp;
+        <ReactFBLike width="300"  reference="invite" language={locale=='sv'?'sv_SE':'en_GB'} appId="1114268925305216" href="http://kalas.io"/>
+        <br/>&nbsp;
+      </div>
+      :''}
       </div>
     );
   }
