@@ -50,7 +50,7 @@ body {
   margin:0;
   font-family: "Acme";
 }
-input {
+input, textarea {
   font-family: "Acme";
 }
 
