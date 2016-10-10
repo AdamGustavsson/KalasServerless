@@ -3,8 +3,15 @@
   border-radius: 100px;
 }
 
+
+.button.button-primary, button.button-primary, input[type="submit"].button-primary, input[type="reset"].button-primary, input[type="button"].button-primary {
+  color: #FFF;
+  background-color: #239fcc;
+  border-color: #239fcc;
+}
+
 .section {
-  padding: 7rem 0 0;
+  padding: 4rem 0 0;
   text-align: center;
 }
 
@@ -15,37 +22,36 @@
 
 
 .first {
-  background-image: url('./images/Party_hero_dark.jpg');
-  background-size: cover;
-  color: #fff;
-  padding: 5rem 0 5rem;
+  padding: 3rem 0 0;
+}
+.logo{
+  width: 100%;
+  margin-bottom: 0;
+}
+.logo-heading {
+  font-size: 2.4rem;
+  margin-bottom: .6rem;
 }
 
-.heading {
-  margin-bottom: .3rem;
-}
 .description {
   opacity: .8;
   font-weight: 300;
 }
 
-.phone {
-  display: none;
-}
 
 
 /* Bigger than 550 */
 @media (min-width: 550px) {
   .section {
-    padding: 12rem 0 11rem;
+    padding: 3rem 0 0;
   }
   .hero {
     padding-bottom: 12rem;
     text-align: left;
     height: 165px;
   }
-  .hero-heading {
-    font-size: 2.4rem;
+  .logo-heading {
+    font-size: 4rem;
   }
 }
 
@@ -54,11 +60,12 @@
   .hero {
     height: 190px;
   }
-  .hero-heading {
-    font-size: 2.6rem;
+  .logo-heading {
+    font-size: 5rem;
+    padding-left: 5.5rem
   }
   .section {
-    padding: 14rem 0 0rem;
+    padding: 3rem 0 0rem;
   }
   .hero {
     padding: 16rem 0 14rem;
@@ -75,8 +82,12 @@
 
 /* Bigger than 1000 */
 @media (min-width: 1000px) {
+  .logo-heading {
+    font-size: 7rem;
+    padding-left: 5.5rem
+  }
   .section {
-    padding: 20rem 0 0rem;
+    padding: 3rem 0 0rem;
   }
   .hero {
     padding: 22rem 0;

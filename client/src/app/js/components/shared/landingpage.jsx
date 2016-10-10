@@ -6,6 +6,7 @@ import './landingpage.css';
 import { Translate,I18n} from 'react-redux-i18n';
 import ThemedInvite from '../invites/themes/themedInvite';
 import {throwError} from '../../actions/error';
+const imageSource = require('./images/kalasLogo.png');
 
 class LandingPage extends Component {
 
@@ -35,7 +36,8 @@ setThemeBackground(currentTheme){
         <div className="section">
             <div className="row first">
               <div className="twelve columns">
-                <h4 className="heading"><Translate value="landingPage.heading" /></h4>
+                <img src={imageSource} className="logo"/>
+                <h4 className="logo-heading"><Translate value="landingPage.heading" /></h4>
                 <p className="description"><Translate value="landingPage.description" /></p>
                 <p>
                   <Link to={'/parties/new'} className="button button-primary"><Translate value="landingPage.newPartyButton" /></Link>
