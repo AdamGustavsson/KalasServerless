@@ -4,11 +4,6 @@
 }
 
 
-.button.button-primary, button.button-primary, input[type="submit"].button-primary, input[type="reset"].button-primary, input[type="button"].button-primary {
-  color: #FFF;
-  background-color: #239fcc;
-  border-color: #239fcc;
-}
 
 .section {
   padding: 4rem 0 0;
@@ -51,7 +46,7 @@
     height: 165px;
   }
   .logo-heading {
-    font-size: 4rem;
+    font-size: 3rem;
   }
 }
 
@@ -61,7 +56,6 @@
     height: 190px;
   }
   .logo-heading {
-    font-size: 5rem;
     padding-left: 5.5rem
   }
   .section {
@@ -83,7 +77,7 @@
 /* Bigger than 1000 */
 @media (min-width: 1000px) {
   .logo-heading {
-    font-size: 7rem;
+    font-size: 5rem;
     padding-left: 5.5rem
   }
   .section {

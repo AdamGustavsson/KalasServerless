@@ -46,6 +46,12 @@
   background: rgba(0, 0, 0, 0.3);
 }
 
+.button.button-primary, button.button-primary, input[type="submit"].button-primary, input[type="reset"].button-primary, input[type="button"].button-primary {
+  color: #FFF;
+  background-color: #239fcc;
+  border-color: #239fcc;
+}
+
 body {
   margin:0;
   font-family: "Acme";
