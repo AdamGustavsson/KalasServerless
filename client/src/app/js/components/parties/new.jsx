@@ -65,8 +65,11 @@ class PartiesNew extends Component {
   }
 
   render() {
-    var change = (name, date, dateString) => {
+    var changeStart = (name, date, dateString) => {
       this.setState({[name]: date, [name + 'String']: Moment(date).format('YYYY-MM-DD HH:mm')});
+    };
+    var changeEnd = (name, date, dateString) => {
+      this.setState({[name]: date, [name + 'String']: Moment(date).format('HH:mm')});
     };
     return (
       <div className="row">
@@ -83,9 +86,9 @@ class PartiesNew extends Component {
             <Translate value="createPartyPage.childName" />:
             <input type="text" placeholder={I18n.t('createPartyPage.childName_example')} className="u-full-width" ref="childName" />
             <Translate value="createPartyPage.startDateTime" />:
-            <DateTimePicker placeholder={I18n.t('createPartyPage.startDateTime')} value={this.state.startDateTime} defaultValue={null} onChange={change.bind(null,'startDateTime')} format={"YYYY-MM-DD HH:mm"} step={15} finalView={"month"} timeFormat={"HH:mm"} time={true} className="u-full-width" />
+            <DateTimePicker placeholder={I18n.t('createPartyPage.startDateTime')} value={this.state.startDateTime} defaultValue={null} onChange={changeStart.bind(null,'startDateTime')} format={"YYYY-MM-DD HH:mm"} step={15} finalView={"month"} timeFormat={"HH:mm"} time={true} className="u-full-width" />
             <Translate value="createPartyPage.endDateTime" />:
-            <DateTimePicker placeholder={I18n.t('createPartyPage.endDateTime')} min={this.state.startDateTime} value={this.state.endDateTime} onChange={change.bind(null,'endDateTime')}  format={"HH:mm"} step={15} finalView={"month"} timeFormat={"HH:mm"} calendar={false} className="u-full-width" />
+            <DateTimePicker placeholder={I18n.t('createPartyPage.endDateTime')} min={this.state.startDateTime} value={this.state.endDateTime} onChange={changeEnd.bind(null,'endDateTime')}  format={"HH:mm"} step={15} finalView={"month"} timeFormat={"HH:mm"} calendar={false} className="u-full-width" />
             <Translate value="createPartyPage.location" />:
             <input type="text" placeholder={I18n.t('createPartyPage.location_example')} className="u-full-width" ref="partyLocation" />
             <Translate value="createPartyPage.header" />:
