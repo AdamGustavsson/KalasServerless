@@ -26,9 +26,10 @@
     <div id="root"></div>
     <script src="gzip/js/app.js"></script>
     <script>
-    if (typeof React == 'undefined') {
-        document.write(unescape("%3Cscript src='js/app.js' type='text/javascript'%3E%3C/script%3E"));
-        document.write(unescape("%3Clink href='styles.css' rel='stylesheet' %3E"));
+    const stage=window.location.host.split('.')[0];
+    if(0==stage.indexOf('localhost')){
+      document.write(unescape("%3Cscript src='js/app.js' type='text/javascript'%3E%3C/script%3E"));
+      document.write(unescape("%3Clink href='styles.css' rel='stylesheet' %3E"));
     }
     </script>
   </body>
