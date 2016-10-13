@@ -56,7 +56,7 @@ class PartiesNew extends Component {
       ga('send', {
         hitType: 'event',
         eventCategory: 'Party',
-        eventAction: 'create',
+        eventAction: 'CreateParty',
         eventLabel: party.header
       });
     } else {

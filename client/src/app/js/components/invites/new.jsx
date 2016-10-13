@@ -26,7 +26,7 @@ class InvitesNew extends Component {
       ga('send', {
         hitType: 'event',
         eventCategory: 'Invite',
-        eventAction: 'create'
+        eventAction: 'CreateInvite'
       });
       this.refs.mobileNumber.value = null;
       this.refs.childName.value = null;
