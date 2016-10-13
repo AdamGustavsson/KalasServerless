@@ -47,7 +47,7 @@ class InviteShow extends Component {
     if (!invite || !party) {
       return <div className="row"><div className="twelve columns"><Translate value="general.loading" /></div></div>
     }
-    ga('set', 'userId', party.hostUser);
+    ga('set', 'userId', invite.mobileNumber);
     return (
       <div className="row">
         <Helmet
