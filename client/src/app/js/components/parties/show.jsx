@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { getParty,setThemeOnParty } from '../../actions/parties';
+import { getParty,updateParty,setThemeOnParty } from '../../actions/parties';
 import { Link } from 'react-router';
 import InvitesIndex from '../invites/index';
 import InvitesNew from '../invites/new';
@@ -14,11 +14,15 @@ import DropDownList from 'react-widgets/lib/DropdownList';
 
 class PartiesShow extends Component {
   componentWillMount() {
-    this.props.getParty(this.props.params.id);
+    this.props.getParty(this.props.params.id).then(() => this.forceUpdate());
   }
 
   setTheme(theme){
     this.props.setThemeOnParty(this.props.party.id,theme);
+  }
+  updatePartyField(party){
+    party.id = this.props.party.id;
+    this.props.updateParty(party);
   }
 
   render() {
@@ -47,7 +51,7 @@ class PartiesShow extends Component {
               {"name": "robots", "content": "noindex,nofollow"}
             ]}
       />
-        <ThemedInvite party={party} locale={locale}/>
+        <ThemedInvite party={party} locale={locale} updatePartyField={this.updatePartyField.bind(this)} editEnabled={!invites||invites.length==0}/>
 
         <h2><Translate value="createPartyPage.step2" /></h2>
         <h3><Translate value="createPartyPage.step2_description" /></h3>
@@ -78,4 +82,4 @@ function mapStateToProps(state) {
   return { party: state.parties.party,invites: state.invites.all, currentUser: state.users.currentUser,locale: state.i18n.locale};
 }
 
-export default connect(mapStateToProps, { getParty,setThemeOnParty})(PartiesShow);
+export default connect(mapStateToProps, { getParty,updateParty,setThemeOnParty})(PartiesShow);

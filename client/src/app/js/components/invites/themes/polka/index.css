@@ -13,6 +13,13 @@
     -moz-background-size:20px 20px;
     background-size:20px 20px;
 }
+.inline-edit-polka{
+  color: #744B27;
+  border-color: #FCB100;
+  background-color: #ffe7c9;
+  font-family: "Droid Serif";
+  width: 95%;
+}
 #themeImage-polka{
   display: block;
   margin: auto;
@@ -31,14 +38,14 @@
     font-family: "Acme";
 }
 
-.accept{
+.accept-polka{
   background-color: #8BC755;
 }
-.reject{
+.reject-polka{
   background-color: #F68D60;
 }
 
-.header{
+.header-polka{
   text-align: center;
   font-weight: bold;
 }

@@ -2,6 +2,13 @@
   background-color: #FFCC66;
   font-family: "Droid Serif";
 }
+.inline-edit-bowling{
+  color: #930302;
+  border-color: #930302;
+  background-color: #f7f0de;
+  font-family: "Droid Serif";
+  width: 95%;
+}
 #themeImage-bowling{
   display: block;
   margin: auto;
@@ -20,10 +27,10 @@
     font-family: "Droid Serif";
 }
 
-.accept{
+.accept-bowling{
   background-color: #8BC755;
 }
-.reject{
+.reject-bowling{
   background-color: #F68D60;
 }
 

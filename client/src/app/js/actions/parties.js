@@ -10,6 +10,7 @@ import {
   GET_PARTIES,
   GET_PARTY,
   CREATE_PARTY,
+  UPDATE_PARTY,
   THEME_PARTY
 } from './constants';
 
@@ -112,6 +113,43 @@ export function createParty(party,locale) {
   }));
 }
 
+export function updateParty(party) {
+  const query = { "query":
+    `mutation updateTheParty {
+      party: updateParty (
+        id: "${party.id}",
+        ${party.header?'header: "' + party.header +'"':''}
+        ${party.description?'description: "' + party.description +'"':''}
+        ${party.childName?'childName: "' + party.childName +'"':''}
+        ${party.startDateTime?'startDateTime: "' + party.startDateTime +'"':''}
+        ${party.endDateTime?'endDateTime: "' + party.endDateTime +'"':''}
+        ${party.partyLocation?'partyLocation: "' + party.partyLocation +'"':''}
+      )
+      {
+        id,
+        header,
+        description,
+        childName,
+        startDateTime,
+        endDateTime,
+        partyLocation,
+        theme
+      }
+    }`
+  };
+
+  return (dispatch) => {fetch(`${API_URL}/data/`, {
+    method: 'POST',
+    body: JSON.stringify(query)
+  })
+  .then(response => response.json())
+  .then(payload => dispatch({payload: payload, type: UPDATE_PARTY}))
+  .catch(exception => dispatch({
+    type: ERROR,
+    payload: exception.message
+  }));
+  }
+}
 
 export function setThemeOnParty(id,theme) {
   const query = { "query":

@@ -85,10 +85,9 @@ module.exports = {
     return db('put', {
       TableName: partiesTable,
       Item: party
-    }).then(() => _.merge({}, party, obj));
+    }).then(() => party);
   },
   setThemeOnParty(id,theme) {
-    console.log("Setting theme on party with id v2: " +id +" theme: " +theme);
     return db('update', {
       TableName: partiesTable,
       Key:{'id':id},

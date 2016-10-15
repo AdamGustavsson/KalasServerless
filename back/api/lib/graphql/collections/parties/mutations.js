@@ -42,7 +42,6 @@ module.exports = {
     type: PartyType,
     description: 'Update Party',
     args: {
-      token: { type: new GraphQLNonNull(GraphQLString) },
       id: {type: new GraphQLNonNull(GraphQLString)},
       description: {type: GraphQLString},
       header: {type: GraphQLString},
@@ -54,8 +53,7 @@ module.exports = {
 
     },
     resolve(source, args) {
-      return validate(args).then(() => resolves.get(args.id)).then((party) => authorize(args.token, ['PARENT_USER'])).then((party) => resolves.update(party, args));
-        //return validate(args).then(() => resolves.update(party,args));
+      return validate(args).then(() => resolves.get(args.id)).then((orgParty) => resolves.update(orgParty,args));
     }
   },
   deleteParty: {

@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { Translate,I18n} from 'react-redux-i18n';
+import EditablePartyField from '../editablePartyField';
 import  WebFont from 'webfontloader';
 require('./index.css');
 const imageSource = require('./ladybug.png');
@@ -24,10 +25,51 @@ export default class LadybugTheme extends Component {
           <img src={imageSource} />
         </div>
         <div >
-          <p className={"header-"+party.theme}>{party.header}</p>
-          <p>{party.description}</p>
-          <p><Translate value="invitePage.when" />: {party.startDateTime} - {party.endDateTime}</p>
-          <p><Translate value="invitePage.where" />: {party.partyLocation}</p>
+        <br/>
+        <div className={"header-"+party.theme} >
+          <EditablePartyField
+            editEnabled={this.props.editEnabled}
+            value={party.header}
+            change={this.props.updatePartyField}
+            propName="header"
+            theme={party.theme}/>
+         </div>
+         <br/>
+         <div>
+         <EditablePartyField
+            isTextArea={true}
+            editEnabled={this.props.editEnabled}
+            value={party.description}
+            change={this.props.updatePartyField}
+            propName="description"
+            theme={party.theme}/>
+          </div>
+          <br/>
+        <div><Translate value="invitePage.when" />:
+          <EditablePartyField
+           editEnabled={this.props.editEnabled}
+           value={party.startDateTime}
+           change={this.props.updatePartyField}
+           propName="startDateTime"
+           theme={party.theme}/>
+
+          -
+          <EditablePartyField
+           editEnabled={this.props.editEnabled}
+           value={party.endDateTime}
+           change={this.props.updatePartyField}
+           propName="endDateTime"
+           theme={party.theme}/>
+        </div>
+        <br/>
+        <div><Translate value="invitePage.where" />:
+        <EditablePartyField
+          editEnabled={this.props.editEnabled}
+           value={party.partyLocation}
+           change={this.props.updatePartyField}
+           propName="partyLocation"
+           theme={party.theme}/>
+        </div>
           {inviteMightBeNull?<p className={"header-"+party.theme}><Translate value="invitePage.isInvited" name={inviteMightBeNull.childName}/></p>:''}
         </div>
     </div>

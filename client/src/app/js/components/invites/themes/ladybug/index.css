@@ -13,7 +13,12 @@
         -moz-background-size:40px 40px;
         background-size:40px 40px;
 }
-
+.inline-edit-ladybug{
+  color: black;
+  border-color: #b3c181;
+  background-color: #ffe7c9;
+  width: 40%;
+}
 #themeImage-ladybug{
   float:left;
   margin-right: 10px;
@@ -32,10 +37,10 @@
     font-family: "Indie Flower";
 }
 
-.accept{
-  background-color: #C4D58A;
+.accept-ladybug{
+  background-color: #b3c181;
 }
-.reject{
+.reject-ladybug{
   background-color: #FC2F60;
 }
 

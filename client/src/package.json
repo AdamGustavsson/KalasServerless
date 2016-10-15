@@ -52,6 +52,7 @@
     "redux": "^3.3.1",
     "redux-logger": "^2.6.1",
     "redux-thunk": "^2.0.1",
+    "riek": "^1.0.5",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webfontloader": "^1.6.26",

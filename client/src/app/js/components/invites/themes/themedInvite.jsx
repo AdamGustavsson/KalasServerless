@@ -3,6 +3,7 @@ import { Translate,I18n} from 'react-redux-i18n';
 import PolkaTheme from './polka/';
 import BowlingTheme from './bowling/';
 import LadybugTheme from './ladybug/';
+require('./index.css');
 
 export default class themedInvite extends Component {
   componentWillUnmount() {
@@ -33,7 +34,13 @@ export default class themedInvite extends Component {
         break;
        }
     return(
-      <ThemeComponent invite={this.props.invite} party={party} locale={this.props.locale} setBackground={this.props.setBackground?this.props.setBackground:this.setBackground}/>
+      <ThemeComponent
+      editEnabled={this.props.editEnabled?this.props.editEnabled:false}
+      updatePartyField={this.props.updatePartyField}
+      invite={this.props.invite}
+      party={party}
+      locale={this.props.locale}
+      setBackground={this.props.setBackground?this.props.setBackground:this.setBackground}/>
   );
 }
 }
