@@ -80,7 +80,7 @@ class PartiesNew extends Component {
             <h3><Translate value="createPartyPage.step1_description" /></h3>
             <hr />
             <Translate value="createPartyPage.hostUser" />:
-            <input type="text" placeholder={I18n.t('createPartyPage.hostUser_example')} className="u-full-width" ref="hostUser" />
+            <input type="tel" placeholder={I18n.t('createPartyPage.hostUser_example')} className="u-full-width" ref="hostUser" />
             <br/><br/>
 
             <Translate value="createPartyPage.childName" />:
