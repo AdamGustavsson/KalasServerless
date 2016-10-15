@@ -45,7 +45,7 @@ export default class LadybugTheme extends Component {
             theme={party.theme}/>
           </div>
           <br/>
-        <div><Translate value="invitePage.when" />:
+        <div><Translate value="invitePage.when" />:&nbsp;
           <EditablePartyField
            editEnabled={this.props.editEnabled}
            value={party.startDateTime}
@@ -62,7 +62,7 @@ export default class LadybugTheme extends Component {
            theme={party.theme}/>
         </div>
         <br/>
-        <div><Translate value="invitePage.where" />:
+        <div><Translate value="invitePage.where" />:&nbsp;
         <EditablePartyField
           editEnabled={this.props.editEnabled}
            value={party.partyLocation}

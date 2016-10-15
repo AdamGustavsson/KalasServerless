@@ -14,7 +14,7 @@ import DropDownList from 'react-widgets/lib/DropdownList';
 
 class PartiesShow extends Component {
   componentWillMount() {
-    this.props.getParty(this.props.params.id).then(() => this.forceUpdate());
+    this.props.getParty(this.props.params.id);
   }
 
   setTheme(theme){
@@ -52,10 +52,14 @@ class PartiesShow extends Component {
             ]}
       />
         <ThemedInvite party={party} locale={locale} updatePartyField={this.updatePartyField.bind(this)} editEnabled={!invites||invites.length==0}/>
-
-        <h2><Translate value="createPartyPage.step2" /></h2>
-        <h3><Translate value="createPartyPage.step2_description" /></h3>
-        <DropDownList defaultValue={"polka"} value={party.theme} valueField='id' textField='name' data={themes}  onChange={value => this.setTheme(value.id)}/>
+        {!invites||invites.length==0?
+        <div>
+          <h5><Translate value="createPartyPage.editChanges" /></h5>
+          <h2><Translate value="createPartyPage.step2" /></h2>
+          <h3><Translate value="createPartyPage.step2_description" /></h3>
+          <DropDownList defaultValue={"polka"} value={party.theme} valueField='id' textField='name' data={themes}  onChange={value => this.setTheme(value.id)}/>
+        </div>
+        :''}
         <InvitesIndex />
         {!invites||invites.length==0?
           (<div>
