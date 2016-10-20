@@ -79,7 +79,7 @@ export function getParty(id) {
 }
 
 export function createParty(party,locale) {
-  party.description = party.description.replace(/(\r\n|\n|\r)/gm," ");
+  party.description = party.description.replace(/(\r\n|\n|\r)/gm,"&#13");
   const query = { "query":
     `mutation createNewParty {
       party: createParty (
@@ -114,6 +114,7 @@ export function createParty(party,locale) {
 }
 
 export function updateParty(party) {
+  party.description = party.description.replace(/(\r\n|\n|\r)/gm,"&#13");
   const query = { "query":
     `mutation updateTheParty {
       party: updateParty (

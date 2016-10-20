@@ -3,7 +3,8 @@ import {RIEInput, RIETextArea} from 'riek';
 export default class EditablePartyField extends Component {
 
   render() {
-    const { value } = this.props;
+    var { value } = this.props;
+    value = value.replace(/&#13/g,'\n');
     const { theme } = this.props;
     const { editEnabled } = this.props;
     const { change } = this.props;
@@ -26,7 +27,7 @@ export default class EditablePartyField extends Component {
           }
 
       } else {
-        return (<div style={{display:"inline"}}>{value}</div>);
+        return (<div style={{display:"inline", whiteSpace : "pre"}}>{value}</div>);
       }
     }
 }
