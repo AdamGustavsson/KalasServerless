@@ -27,7 +27,16 @@ export default class EditablePartyField extends Component {
           }
 
       } else {
-        return (<div style={{display:"inline", whiteSpace : "pre"}}>{value}</div>);
+        const spans_and_brs = []
+        let i = 0
+        value.split("\n").map(line => {
+          spans_and_brs.push(<span key={i}>{line}</span>)
+          spans_and_brs.push(<br key={i+1} />)
+          i += 2
+        })
+        spans_and_brs.pop() // remove last br tag
+
+        return <span style={{display:"inline"}}>{spans_and_brs}</span>;
       }
     }
 }
