@@ -5,7 +5,7 @@ import { getParty } from '../../actions/parties';
 import { Translate,I18n} from 'react-redux-i18n';
 import { Link } from "react-router";
 import ga from 'ga-react-router';
-import ReactFBLike from 'react-fb-like';
+import FacebookProvider, { Like, Comments } from 'react-facebook';
 import Helmet from "react-helmet";
 import ThemedInvite from './themes/themedInvite';
 import InvitesIndex from './index';
@@ -44,7 +44,6 @@ class InviteShow extends Component {
                         INVITED: I18n.t('invitePage.inviteSent'),
                         ACCEPTED: I18n.t('invitePage.accepted'),
                         REJECTED: I18n.t('invitePage.rejected')};
-
     if (!invite || !party) {
       return <div className="row"><div className="twelve columns"><Translate value="general.loading" /></div></div>
     }
@@ -62,6 +61,14 @@ class InviteShow extends Component {
       <h5><Translate value="invitePage.status" />: {statusText[invite.inviteStatus]}</h5>
       <button onClick={this.onAcceptClick.bind(this)} className={"button u-full-width accept-"+ (party.theme?party.theme:"polka")}><Translate value="invitePage.accept" /></button>
       <button onClick={this.onRejectClick.bind(this)} className={"button u-full-width reject-"+ (party.theme?party.theme:"polka")}><Translate value="invitePage.reject" /></button>
+      {invite.inviteStatus!='INVITED'?
+      <div className="frame" id={"inviteFrame-"+(party.theme?party.theme:"polka")}>
+        <div><Translate value="invitePage.comments" /></div>
+        <FacebookProvider appID="1114268925305216" language={locale=='sv'?'sv_SE':'en_GB'}>
+          <Comments href={"http://" + location.host + "/#/fromComments/" +party.id} orderBy="time" numPosts="10"/>
+        </FacebookProvider>
+      </div>
+      :''}
       {invite.inviteStatus=='ACCEPTED'?
       <InvitesIndex/>
       :''}
@@ -74,8 +81,9 @@ class InviteShow extends Component {
         <h5><Translate value="invitePage.remindMe" /></h5>
         <Link to={'/reminder'} className="button button-primary"><Translate value="invitePage.remindMeButton" /></Link>
         <br/>&nbsp;
-        <ReactFBLike width="300"  reference="invite" language={locale=='sv'?'sv_SE':'en_GB'} appId="1114268925305216" href="http://kalas.io"/>
-        <br/>&nbsp;
+        <FacebookProvider appID="1114268925305216" language={locale=='sv'?'sv_SE':'en_GB'}>
+          <Like reference="party" width="300" showFaces share href="http://kalas.io"/>
+        </FacebookProvider>        <br/>&nbsp;
       </div>
       :''}
       </div>

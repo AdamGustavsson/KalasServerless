@@ -7,10 +7,19 @@ import InvitesNew from '../invites/new';
 import { Translate,I18n} from 'react-redux-i18n';
 const flagSource = require('../invites/images/party-flags.png');
 import ga from 'ga-react-router';
-import ReactFBLike from 'react-fb-like';
+import FacebookProvider, { Like,Comments } from 'react-facebook';
 import Helmet from "react-helmet";
 import ThemedInvite from '../invites/themes/themedInvite';
 import DropDownList from 'react-widgets/lib/DropdownList';
+
+function fbReady(){
+  window.FB.Event.subscribe('comment.create',
+        function(response) {
+            console.log('A new comment has been added!');
+        }
+    );
+
+}
 
 class PartiesShow extends Component {
   componentWillMount() {
@@ -30,8 +39,15 @@ class PartiesShow extends Component {
     const { currentUser } = this.props;
     const {invites } = this.props;
     const {locale} = this.props;
-
-
+    //Check if anyone has replied yet, used to know if the comments function should be shown
+    var anyoneHasReplied = false;
+    if(invites&&invites.length>0){
+      invites.map(invite => {
+        if(invite.inviteStatus!="INVITED"){
+          anyoneHasReplied=true;
+        }
+      })
+    }
     if (!party) {
       return <div className="row"><div className="twelve columns"><Translate value="general.loading" /></div></div>
     }
@@ -67,13 +83,26 @@ class PartiesShow extends Component {
             <h3><Translate value="createPartyPage.step3_description" /></h3>
           </div>)
           :
-          (<h3><Translate value="createPartyPage.inviteMoreChildren" /></h3>)
+          (<div>
+            {anyoneHasReplied?
+            <div className="frame" id={"inviteFrame-"+(party.theme?party.theme:"polka")}>
+              <div><Translate value="createPartyPage.comments" /></div>
+              <FacebookProvider onReady={fbReady} appID="1114268925305216" language={locale=='sv'?'sv_SE':'en_GB'}>
+                <Comments href={"http://" + location.host + "/#/fromComments/" +party.id} orderBy="time" numPosts={10}/>
+              </FacebookProvider>
+
+            </div>
+            :''}
+            <h3><Translate value="createPartyPage.inviteMoreChildren" /></h3>
+          </div>)
         }
 
         <InvitesNew/>
         <h5><Translate value="createPartyPage.youreDone" /></h5>
         <h5><Translate value="createPartyPage.youGetAText" /></h5>
-        <ReactFBLike width="300" reference="party" language={locale=='sv'?'sv_SE':'en_GB'} appId="1114268925305216" href="http://kalas.io"/>
+        <FacebookProvider appID="1114268925305216" language={locale=='sv'?'sv_SE':'en_GB'} >
+          <Like reference="party" width="300" showFaces share href="http://kalas.io"/>
+        </FacebookProvider>
         <br/>&nbsp;
         <Link to='parties/my' className="button u-full-width"><Translate value="createPartyPage.seeAllParties" /></Link>
       </div>
