@@ -34,6 +34,21 @@ class InviteShow extends Component {
         eventAction: 'Reject'
       });
   }
+  fbReady(){
+    window.FB.Event.subscribe('comment.create',
+          function(response) {
+              console.log('A new comment has been added!');
+              ga('send', {
+                hitType: 'event',
+                eventCategory: 'Comment',
+                eventAction: 'CommentCreate',
+                eventlabel: 'CommentCreateOnInvitePage'
+              });
+          }
+      );
+
+  }
+
 
 
   render() {
@@ -64,8 +79,8 @@ class InviteShow extends Component {
       {invite.inviteStatus!='INVITED'?
       <div className="frame" id={"inviteFrame-"+(party.theme?party.theme:"polka")}>
         <div><Translate value="invitePage.comments" /></div>
-        <FacebookProvider appID="1114268925305216" language={locale=='sv'?'sv_SE':'en_GB'}>
-          <Comments href={"http://" + location.host + "/#/fromComments/" +party.id} orderBy="time" numPosts="10"/>
+        <FacebookProvider onReady={this.fbReady} appID="1114268925305216" language={locale=='sv'?'sv_SE':'en_GB'}>
+          <Comments href={"http://" + location.host + "/fromComments/" +party.id} orderBy="time" numPosts="10"/>
         </FacebookProvider>
       </div>
       :''}

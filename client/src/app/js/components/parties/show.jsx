@@ -16,6 +16,12 @@ function fbReady(){
   window.FB.Event.subscribe('comment.create',
         function(response) {
             console.log('A new comment has been added!');
+            ga('send', {
+              hitType: 'event',
+              eventCategory: 'Comment',
+              eventAction: 'CommentCreate',
+              eventlabel: 'CommentCreateOnPartyPage'
+            });
         }
     );
 
@@ -88,7 +94,7 @@ class PartiesShow extends Component {
             <div className="frame" id={"inviteFrame-"+(party.theme?party.theme:"polka")}>
               <div><Translate value="createPartyPage.comments" /></div>
               <FacebookProvider onReady={fbReady} appID="1114268925305216" language={locale=='sv'?'sv_SE':'en_GB'}>
-                <Comments href={"http://" + location.host + "/#/fromComments/" +party.id} orderBy="time" numPosts={10}/>
+                <Comments href={"http://" + location.host + "/fromComments/" +party.id} orderBy="time" numPosts={10}/>
               </FacebookProvider>
 
             </div>
