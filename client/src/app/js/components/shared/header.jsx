@@ -52,6 +52,7 @@ class Header extends Component {
             </div>
             <RadiumLink className="menu-item" to="/profile" onClick={this.handleMenuClick.bind(this)}><Translate value="loginPage.editProfile" /></RadiumLink>
             <RadiumLink className="menu-item" to="" onClick={this.handleLogoutClick.bind(this)}><Translate value="loginPage.logOut" /></RadiumLink>
+            <RadiumLink className="menu-item" to="/parties/my" onClick={this.handleMenuClick.bind(this)}><Translate value="loginPage.myParties" /></RadiumLink>
             <div><br/><Translate value="loginPage.language" />:</div>
             <RadiumLink className="menu-item" to={currentRoute} onClick={this.handleLanguageClick.bind(this,"sv")}>Svenska</RadiumLink>
             <RadiumLink className="menu-item" to={currentRoute} onClick={this.handleLanguageClick.bind(this,"en")}>English</RadiumLink>
@@ -62,7 +63,6 @@ class Header extends Component {
     return (
       <div className="row">
         <div className="twelve columns">
-
             <Menu right isOpen={ false }>
               <form onSubmit={this.handleLogin.bind(this)}>
                 <div><Translate value="loginPage.login" />:</div>
@@ -71,6 +71,7 @@ class Header extends Component {
                 <input type="submit" className="u-full-width button-primary" value={I18n.t('loginPage.login')}/>
               </form>
 
+              <RadiumLink className="menu-item" to="/parties/my" onClick={this.handleMenuClick.bind(this)}><Translate value="loginPage.myParties" /></RadiumLink>
               <RadiumLink to="users/new" onClick={this.handleMenuClick.bind(this)}><Translate value="loginPage.register" /></RadiumLink>
               <div><br/><Translate value="loginPage.language" />:</div>
               <RadiumLink className="menu-item" to={currentRoute} onClick={this.handleLanguageClick.bind(this,"sv")}>Svenska</RadiumLink>

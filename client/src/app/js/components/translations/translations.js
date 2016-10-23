@@ -6,6 +6,7 @@ export const translationsObject = {
       logOut: "Log out",
       login: "Login",
       register:"Register account",
+      myParties: "My parties",
       language:"Change language",
       error: "Please fill out all fields"
     },
@@ -144,6 +145,7 @@ export const translationsObject = {
       mobileNumber: "Mobilnummer",
       password: "Lösenord",
       register:"Registrera dig",
+      myParties: "Mina kalas",
       language:"Ändra språk",
       error: "Vänligen fyll i alla fält"
     },
