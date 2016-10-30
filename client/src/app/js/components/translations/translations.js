@@ -32,7 +32,7 @@ export const translationsObject = {
       howItWorksDetails4: "It's that simple! Below are exampels of how your invitation will look.",
       themes: "Here are a few examples of invites. We keep adding new themes for you to use.",
       reminderHeader: "Is it a while until your next birthday party?",
-      reminderDetails: "No problem! Just enter your childrens birthdays and we will remind you of our service via SMS in time for your next birthday invitation."
+      reminderDetails: "No problem! Just enter a date when you want the reminder and we will then send you an SMS so you can create your birthday party invitations."
     },
     registerPage: {
       register: "Register",
@@ -105,7 +105,7 @@ export const translationsObject = {
     },
     reminderPage:{
       heading: "Thank you for your interest",
-      description: "This function is under development. You will be able to add your childrens birthdays and we will then remind you of the service well in advance for your next birthday party invitation."
+      description: "This function is under development. You will be able to enter a date when you want the reminder and we will then send you an SMS so you can create your birthday party invitations."
     },
     myPartiesPage: {
       header: "Parties",
@@ -171,7 +171,7 @@ export const translationsObject = {
       howItWorksDetails4: "Så enkelt är det! Nedan finns exempel på hur ditt inbjudningkort kan se ut.",
       themes: "Här är några exempel på inbjudningskort. Vi lägger hela tiden in nya mallar som du kan använda.",
       reminderHeader: "Är det ett tag kvar tills du skall ha kalas?",
-      reminderDetails: "Inga problem! Vi kan påminna dig om kalas.io via SMS. Fyll bara i dina barns födelsedagar, så påminner vi dig i god tid för din nästa kalasinbjudan."
+      reminderDetails: "Inga problem! Vi kan påminna dig om kalas.io via SMS. Fyll bara i ett datum när du vill bli påmind så skickar vi dig ett SMS med länk till kalas.io så att du kan bjuda in till ditt nästa kalas."
     },
     registerPage: {
       register: "Registera dig",
@@ -239,12 +239,12 @@ export const translationsObject = {
       whatIs: "Vad är kalas.io?",
       serviceDescription: "Kalas.io är en gratistjänst som hjälper dig att bjuda in till ditt barnkalas och hålla reda på vilka barn som kommer. Prova du också!",
       moreInfo: "Mer info",
-      remindMe: "Vill du själv använda tjänsten så kan vi påminna dig via SMS när ditt barn fyller år.",
+      remindMe: "Vill du själv använda tjänsten så kan vi påminna dig via SMS när det är dags för ditt nästa kalas.",
       remindMeButton: "Ja tack"
     },
     reminderPage:{
       heading: "Tack för ditt intresse",
-      description: "Denna funktion är under utveckling. Du kommer kunna ange när dina barn fyller år och bli påmind om tjänsten via SMS i god tid för din nästa kalasinbjudan."
+      description: "Denna funktion är under utveckling. Du kommer kunna ange när du vill bli påmind så skickar vi ett SMS med en länk så att du kan bjuda in till ditt nästa kalas."
     },
     myPartiesPage: {
       header: "Kalas",
