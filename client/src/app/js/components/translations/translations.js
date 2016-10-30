@@ -105,7 +105,8 @@ export const translationsObject = {
     },
     reminderPage:{
       heading: "Thank you for your interest",
-      description: "This function is under development. You will be able to enter a date when you want the reminder and we will then send you an SMS so you can create your birthday party invitations."
+      descriptionHaveNumber: "Please enter a date below when you want us to remind you. We will send an SMS with the reminder to your mobile number: %{mobileNumber}",
+      descriptionDontHaveNumber: "Please enter your mobile number and a date below when you want us to remind you. We will send an SMS with the reminder."
     },
     myPartiesPage: {
       header: "Parties",
@@ -244,7 +245,11 @@ export const translationsObject = {
     },
     reminderPage:{
       heading: "Tack för ditt intresse",
-      description: "Denna funktion är under utveckling. Du kommer kunna ange när du vill bli påmind så skickar vi ett SMS med en länk så att du kan bjuda in till ditt nästa kalas."
+      descriptionHaveNumber: "Ange ett datum när du vill bli påmind nedan. Vi kommer skicka ett SMS till ditt mobilnummer: %{mobileNumber}",
+      descriptionDontHaveNumber: "Ange ditt mobilnummer och ett datum när du vill bli påmind nedan. Vi kommer skicka ett SMS med en påminnelse",
+      mobileNumber: "Mobilnummer",
+      create: "Skapa påminnelse",
+      error: "Vänligen fyll i alla fält"
     },
     myPartiesPage: {
       header: "Kalas",

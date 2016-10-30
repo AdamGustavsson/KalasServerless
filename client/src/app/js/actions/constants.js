@@ -24,3 +24,6 @@ export const CREATE_INVITE = 'CREATE_INVITE';
 export const GET_INVITE = 'GET_INVITE';
 export const ACCEPT_INVITE = 'ACCEPT_INVITE';
 export const REJECT_INVITE = 'REJECT_INVITE';
+
+//reminders
+export const CREATE_REMINDER = 'CREATE_REMINDER';
