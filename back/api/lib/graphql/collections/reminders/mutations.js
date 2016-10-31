@@ -17,6 +17,7 @@ module.exports = {
       locale: {type: new GraphQLNonNull(GraphQLString)}
     },
     resolve(source, args) {
+      args.reminderStatus = 'CREATED';
       return validate(args).then(() => resolves.create(args));
     }
   }

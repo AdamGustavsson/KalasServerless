@@ -12,6 +12,9 @@ let validate = {
   reminderDate: (reminderDate) => {
     return;
   },
+  reminderStatus: (reminderStatus) => {
+    return;
+  },
   locale:(locale) => {
     return;
   }
