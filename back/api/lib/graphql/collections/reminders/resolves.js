@@ -6,35 +6,11 @@ const bcryptjs = require('bcryptjs');
 const db = require('../../../dynamodb');
 const invoke = require('../../../invoke')
 const _ = require('lodash');
-const smsgateway = require('../../../smsgateway');
-const partyResolve = require('../parties/resolves');
-var I18n = require('react-i18nify').I18n;
-
-const translationsObject = {
-  en: {
-    SMSMessage: {
-      accepted: "%{guestName} has accepted the invite to the birthday party of %{birthdayChild}. http://%{url} Click above for full info",
-      rejected: "%{guestName} has rejected the invite to the birthday party of %{birthdayChild}. http://%{url} Click above for full info",
-      invited: "Party invite: %{guestName} has been invited to the birthday party of %{birthdayChild}. http://%{url} Please click the link to answer and get more info"
-    }
-  },
-  sv: {
-    SMSMessage: {
-      accepted: "%{guestName} har tackat ja till %{birthdayChild}s kalas. http://%{url} Klicka ovan för hela listan av inbjudna och deras status",
-      rejected: "%{guestName} har tackat nej till %{birthdayChild}s kalas. http://%{url} Klicka ovan för hela listan av inbjudna och deras status",
-      invited: "Kalasinbjudan: %{guestName} har blivit inbjuden till %{birthdayChild}s kalas. http://%{url} Klicka på länken för mer information och för att tacka ja eller nej"
-    }
-  }
-};
-
-I18n.loadTranslations(translationsObject);
 
 const stage = process.env.SERVERLESS_STAGE;
 const region = process.env.SERVERLESS_REGION;
 const projectName = process.env.SERVERLESS_PROJECT;
 const reminderTable = projectName + '-reminders-' + stage;
-
-const baseURL = (stage=='prod'?'kalas.io':stage + '.kalas.io.s3-website-'+ region + '.amazonaws.com')
 
 
 module.exports = {
@@ -52,10 +28,20 @@ module.exports = {
   getTodaysActiveReminders() {
     return db('scan', {
       TableName: reminderTable,
-      FilterExpression: "reminderStatus = :statusValue",
-      ExpressionAttributeValues: {':statusValue':'CREATED'},
+      FilterExpression: "reminderStatus = :statusValue and reminderDate = :dateValue",
+      ExpressionAttributeValues: {':statusValue':'CREATED',
+                                  ':dateValue':new Date().toISOString().slice(0,10)},
       ProjectionExpression: "id,mobileNumber,locale,reminderStatus"
     }).then(reply => reply.Items);
+  },
+  setReminderAsDone(id) {
+    return db('update', {
+      TableName: reminderTable,
+      Key:{'id':id},
+      UpdateExpression: 'set reminderStatus = :s',
+      ExpressionAttributeValues: {':s': 'DONE'},
+      ReturnValues:"ALL_NEW"
+    }).then(reply => reply.Attributes);
   },
 
 };
