@@ -21,6 +21,7 @@ const collections = [
   _.assign(mutations, require("./collections/parties/mutations"));
   _.assign(queries, require("./collections/invites/queries"));
   _.assign(mutations, require("./collections/invites/mutations"));
+  _.assign(mutations, require("./collections/reminders/mutations"));
 
 const Queries = new GraphQLObjectType({
   name: 'Root',
