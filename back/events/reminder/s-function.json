@@ -4,7 +4,7 @@
   "description": "sends reminders to users",
   "customName": false,
   "customRole": false,
-  "handler": "handler.handler",
+  "handler": "events/reminder/handler.handler",
   "timeout": 6,
   "memorySize": 1024,
   "authorizer": {},
@@ -17,14 +17,18 @@
       "name" : "reminderSource",
       "type": "schedule",
       "config": {
-         "schedule": "rate(1 minute)"
+         "schedule": "cron(0 17 * * ? *)",
+          "enabled": true
       }
     }
   ],
   "environment": {
     "SERVERLESS_PROJECT": "${project}",
     "SERVERLESS_STAGE": "${stage}",
-    "SERVERLESS_REGION": "${region}"
+    "SERVERLESS_REGION": "${region}",
+    "SMS_GATEWAY_DEVICE_ID": "${SMSGatewayDeviceId}",
+    "SMS_GATEWAY_PASSWORD": "${SMSGatewayPassword}",
+    "SMS_GATEWAY_USERNAME": "${SMSGatewayUsername}"
   },
   "vpc": {
     "securityGroupIds": [],

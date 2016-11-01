@@ -72,7 +72,6 @@ module.exports = {
       AttributesToGet: [
        'id',
        'childName',
-       'mobileNumber',
        'inviteStatus',
        'partyId',
        'mobileNumber'

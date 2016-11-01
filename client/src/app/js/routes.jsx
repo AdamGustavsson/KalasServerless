@@ -27,6 +27,7 @@ export default (
     <Route path="profile" component={UsersEdit} />
     <Route path="users/new" component={UsersNew} />
     <Route path="reminder" component={ReminderPage} />
+    <Route path="reminderLanding" component={LandingPage} />
     <Route path="*" component={LandingPage}  />
   </Route>
 );
