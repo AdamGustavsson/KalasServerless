@@ -1,7 +1,7 @@
 {
-  "name": "timeout",
+  "name": "reminder",
   "runtime": "nodejs4.3",
-  "description": "Serverless Lambda function for project: serverless-boilerplate",
+  "description": "sends reminders to users",
   "customName": false,
   "customRole": false,
   "handler": "handler.handler",
@@ -12,7 +12,15 @@
     "excludePatterns": []
   },
   "endpoints": [],
-  "events": [],
+  "events": [
+    {
+      "name" : "reminderSource",
+      "type": "schedule",
+      "config": {
+         "schedule": "rate(1 minute)"
+      }
+    }
+  ],
   "environment": {
     "SERVERLESS_PROJECT": "${project}",
     "SERVERLESS_STAGE": "${stage}",
