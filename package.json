@@ -34,6 +34,7 @@
     "deploy-client": "sls client deploy",
     "deploy-back": "sls function deploy",
     "deploy-back-resources": "sls resources deploy",
+    "deploy-back-event": "sls event deploy",
     "build-deploy-client-back-prod": "npm3 run build-client-prod && sls function deploy -s prod && sls client deploy -s prod -d kalas.io"
   },
   "homepage": "https://github.com/AdamGustavsson/KalasServerless",

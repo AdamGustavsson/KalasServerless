@@ -54,7 +54,7 @@ class ReminderPage extends Component {
       <div className="twelve columns">
         <h4><Translate value="reminderPage.heading" /></h4>
         {reminderCreated?
-          <h5>Reminder Created</h5>
+          <h5><Translate value="reminderPage.reminderCreated" /></h5>
         :
         <form onSubmit={this.handleSubmit.bind(this)}>
           {invite?

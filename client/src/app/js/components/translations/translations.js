@@ -107,7 +107,11 @@ export const translationsObject = {
     reminderPage:{
       heading: "Thank you for your interest",
       descriptionHaveNumber: "Please enter a date below when you want us to remind you. We will send an SMS with the reminder to your mobile number: %{mobileNumber}",
-      descriptionDontHaveNumber: "Please enter your mobile number and a date below when you want us to remind you. We will send an SMS with the reminder."
+      descriptionDontHaveNumber: "Please enter your mobile number and a date below when you want us to remind you. We will send an SMS with the reminder.",
+      reminderCreated: "Your reminder has been saved. We are excited to see you back soon.",
+      mobileNumber: "Mobile number",
+      create: "Create reminder",
+      error: "Please fill out all fields"
     },
     myPartiesPage: {
       header: "Parties",
@@ -249,6 +253,7 @@ export const translationsObject = {
       heading: "Tack för ditt intresse",
       descriptionHaveNumber: "Ange ett datum när du vill bli påmind nedan. Vi kommer skicka ett SMS till ditt mobilnummer: %{mobileNumber}",
       descriptionDontHaveNumber: "Ange ditt mobilnummer och ett datum när du vill bli påmind nedan. Vi kommer skicka ett SMS med en påminnelse",
+      reminderCreated: "Din påminnelse har sparats. Vi är glada att återse dig snart.",
       mobileNumber: "Mobilnummer",
       create: "Skapa påminnelse",
       error: "Vänligen fyll i alla fält"
