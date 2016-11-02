@@ -48,7 +48,7 @@ module.exports = {
       description: {type: GraphQLString},
       header: {type: GraphQLString},
       childName: {type: GraphQLString},
-      startDateTimeUnix:   {type: new GraphQLNonNull(GraphQLInt)},
+      startDateTimeUnix:   {type: GraphQLInt},
       startDateTime:   {type: GraphQLString},
       endDateTime:   {type: GraphQLString},
       partyLocation:   {type: GraphQLString},

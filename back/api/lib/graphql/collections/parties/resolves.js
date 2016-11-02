@@ -68,18 +68,20 @@ module.exports = {
     }).then(reply => reply.Items);
   },
 
-  update(party, obj) {
-
+  update(oldParty, newFields) {
+    var party = {};
     // update data
-    party.id = obj.id || party.id;
-    party.description = obj.description || party.description;
-    party.header = obj.header|| party.header;
-    party.hostUser = obj.hostUser || party.hostUser;
-    party.childName = obj.childName || party.childName;
-    party.startDateTime = obj.startDateTime|| party.startDateTime;
-    party.endDateTime = obj.endDateTime|| party.endDateTime;
-    party.partyLocation = obj.partyLocation|| party.partyLocation;
-    party.locale = obj.locale|| party.locale;
+    party.id = oldParty.id;
+    party.description = newFields.description || oldParty.description;
+    party.header = newFields.header|| oldParty.header;
+    party.hostUser = newFields.hostUser || oldParty.hostUser;
+    party.childName = newFields.childName || oldParty.childName;
+    party.startDateTimeUnix = newFields.startDateTimeUnix|| oldParty.startDateTimeUnix;
+    party.startDateTime = newFields.startDateTime|| oldParty.startDateTime;
+    party.endDateTime = newFields.endDateTime|| oldParty.endDateTime;
+    party.partyLocation = newFields.partyLocation|| oldParty.partyLocation;
+    party.locale = newFields.locale|| oldParty.locale;
+    party.theme = newFields.theme|| oldParty.theme;
 
 
     return db('put', {
