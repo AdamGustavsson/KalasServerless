@@ -33,6 +33,7 @@ module.exports = {
        'header',
        'hostUser',
        'childName',
+       'startDateTimeUnix',
        'startDateTime',
        'endDateTime',
        'partyLocation',
