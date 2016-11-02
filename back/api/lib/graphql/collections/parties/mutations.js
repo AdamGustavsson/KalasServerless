@@ -1,6 +1,7 @@
 'use strict';
 
 const GraphQLString = require('graphql').GraphQLString;
+const GraphQLInt = require('graphql').GraphQLInt;
 const GraphQLNonNull = require('graphql').GraphQLNonNull;
 
 const authorize = require('../../../auth').authorize;
@@ -17,6 +18,7 @@ module.exports = {
       description: {type: new GraphQLNonNull(GraphQLString)},
       header: {type: new GraphQLNonNull(GraphQLString)},
       childName: {type: new GraphQLNonNull(GraphQLString)},
+      startDateTimeUnix:   {type: new GraphQLNonNull(GraphQLInt)},
       startDateTime:   {type: new GraphQLNonNull(GraphQLString)},
       endDateTime:   {type: new GraphQLNonNull(GraphQLString)},
       partyLocation:   {type: new GraphQLNonNull(GraphQLString)},
@@ -46,6 +48,7 @@ module.exports = {
       description: {type: GraphQLString},
       header: {type: GraphQLString},
       childName: {type: GraphQLString},
+      startDateTimeUnix:   {type: new GraphQLNonNull(GraphQLInt)},
       startDateTime:   {type: GraphQLString},
       endDateTime:   {type: GraphQLString},
       partyLocation:   {type: GraphQLString},

@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { Translate,I18n} from 'react-redux-i18n';
 import EditablePartyField from '../editablePartyField';
 import  WebFont from 'webfontloader';
+import Moment from 'moment';
 require('./index.css');
 const imageSource = require('./ladybug.png');
 export default class LadybugTheme extends Component {
@@ -50,6 +51,7 @@ export default class LadybugTheme extends Component {
            editEnabled={this.props.editEnabled}
            value={party.startDateTime}
            change={this.props.updatePartyField}
+           validate={value => Moment(value, 'YYYY-MM-DD HH:mm').isValid()}
            propName="startDateTime"
            theme={party.theme}/>
 

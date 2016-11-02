@@ -51,19 +51,21 @@ module.exports = {
 
   create(invite) {
     invite.id = uuid.v1();
-    return db('put', {
-      TableName: invitesTable,
-      Item: invite
+    return partyResolve.get(invite.partyId)
+    .then(partyResponse => {
+      I18n.setLocale(partyResponse.locale);
+      const inviteText = I18n.t("SMSMessage.invited",{guestName: invite.childName, birthdayChild: partyResponse.childName.trim(), url:baseURL + '/i/' + invite.id})
+      smsgateway.sendSMS(invite.mobileNumber,inviteText);
+      invite.partyDateTime = (new Date(partyResponse.startDateTime)?Math.floor(new Date(partyResponse.startDateTime)):null);
+      return Promise.resolve(invite);
     })
-        // send the SMS to the invited user
-        .then(() => partyResolve.get(invite.partyId))
-        .then(partyResponse => {
-        I18n.setLocale(partyResponse.locale);
-        return I18n.t("SMSMessage.invited",{guestName: invite.childName, birthdayChild: partyResponse.childName.trim(), url:baseURL + '/i/' + invite.id})
+    .then( invite  => db('put', {
+        TableName: invitesTable,
+        Item: invite
       })
-        .then(inviteText => smsgateway.sendSMS(invite.mobileNumber,inviteText))
-        // finally return the invite record
-        .then(() => invite);
+    )
+    // finally return the invite record
+    .then(() => invite);
   },
   get(id) {
     return db('get', {

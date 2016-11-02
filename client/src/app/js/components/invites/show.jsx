@@ -81,7 +81,7 @@ class InviteShow extends Component {
       <div className="frame" id={"inviteFrame-"+(party.theme?party.theme:"polka")}>
         <div><Translate value="invitePage.comments" /></div>
         <FacebookProvider onReady={this.fbReady} appID="1114268925305216" language={locale=='sv'?'sv_SE':'en_GB'}>
-          <Comments href={"http://" + location.host + "/fromComments/" +party.id} orderBy="time" numPosts="10"/>
+          <Comments href={"http://" + location.host + "/fromComments/" +party.id} orderBy="time" numPosts={10}/>
         </FacebookProvider>
       </div>
       :''}

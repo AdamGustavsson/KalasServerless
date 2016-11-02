@@ -38,6 +38,7 @@ class PartiesNew extends Component {
     const header = this.refs.header.value;
     const description = this.refs.description.value;
     const childName = this.refs.childName.value;
+    const startDateTimeUnix = Moment(this.state.startDateTime).unix();
     const startDateTime = this.state.startDateTimeString;
     const endDateTime = this.state.endDateTimeString;
     const partyLocation = this.refs.partyLocation.value;
@@ -48,6 +49,7 @@ class PartiesNew extends Component {
         header,
         description,
         childName,
+        startDateTimeUnix,
         startDateTime,
         endDateTime,
         partyLocation

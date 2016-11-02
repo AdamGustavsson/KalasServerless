@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { Translate,I18n} from 'react-redux-i18n';
 import EditablePartyField from '../editablePartyField';
+import Moment from 'moment';
 const imageSource = require('./bowling.png');
 require('./index.css');
 export default class BowlingTheme extends Component {
@@ -38,6 +39,7 @@ export default class BowlingTheme extends Component {
              value={party.startDateTime}
              change={this.props.updatePartyField}
              propName="startDateTime"
+             validate={value => Moment(value, 'YYYY-MM-DD HH:mm').isValid()}
              theme={party.theme}/>
 
             -

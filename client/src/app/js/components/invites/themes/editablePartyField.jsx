@@ -10,12 +10,14 @@ export default class EditablePartyField extends Component {
     const { change } = this.props;
     const { isTextArea } = this.props;
     const { propName } = this.props;
+    const { validate } = this.props;
        if(editEnabled){
           if(isTextArea) {
             return (<RIETextArea
               value={value}
               change={change}
               propName={propName}
+              validate={validate}
               classEditing={"inline-edit inline-edit-"+theme}/>)
           }
           else {
@@ -23,6 +25,7 @@ export default class EditablePartyField extends Component {
              value={value}
              change={change}
              propName={propName}
+             validate={validate}
              classEditing={"inline-edit inline-edit-"+theme}/>)
           }
 
