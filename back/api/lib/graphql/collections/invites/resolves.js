@@ -56,7 +56,8 @@ module.exports = {
       I18n.setLocale(partyResponse.locale);
       const inviteText = I18n.t("SMSMessage.invited",{guestName: invite.childName, birthdayChild: partyResponse.childName.trim(), url:baseURL + '/i/' + invite.id})
       smsgateway.sendSMS(invite.mobileNumber,inviteText);
-      invite.partyDateTime = (new Date(partyResponse.startDateTime)?Math.floor(new Date(partyResponse.startDateTime)):null);
+      invite.createDateTimeUnix = Math.round(new Date().getTime()/1000);
+      invite.partyDateTimeUnix = partyResponse.startDateTimeUnix;
       return Promise.resolve(invite);
     })
     .then( invite  => db('put', {
@@ -81,10 +82,11 @@ module.exports = {
     }).then(reply => reply.Item);
   },
   getUnansweredInvites() {
+    const nowUnix = Math.round(new Date().getTime()/1000)
     return db('scan', {
       TableName: invitesTable,
-      FilterExpression: "inviteStatus = :statusValue",
-      ExpressionAttributeValues: {':statusValue':'INVITED'},
+      FilterExpression: "inviteStatus = :statusValue and partyDateTimeUnix>=:dateTimeValue",
+      ExpressionAttributeValues: {':statusValue':'INVITED',':dateTimeValue':nowUnix},
       ProjectionExpression: "id,childName,mobileNumber,inviteStatus"
     }).then(reply => reply.Items);
   },
