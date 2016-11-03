@@ -21,7 +21,7 @@ export default class LadybugTheme extends Component {
     //TODO change the react way
     this.props.setBackground(party.theme);
     return(
-    <div  className="frame" id={"inviteFrame-"+party.theme} >
+    <div className={"frame font-"+ party.theme + " inviteFrame-"+party.theme} >
         <div id={"themeImage-"+party.theme}>
           <img src={imageSource} />
         </div>

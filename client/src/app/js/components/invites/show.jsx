@@ -78,7 +78,7 @@ class InviteShow extends Component {
       <button onClick={this.onAcceptClick.bind(this)} className={"button u-full-width accept-"+ (party.theme?party.theme:"polka")}><Translate value="invitePage.accept" /></button>
       <button onClick={this.onRejectClick.bind(this)} className={"button u-full-width reject-"+ (party.theme?party.theme:"polka")}><Translate value="invitePage.reject" /></button>
       {invite.inviteStatus!='INVITED'?
-      <div className="frame" id={"inviteFrame-"+(party.theme?party.theme:"polka")}>
+      <div className={"frame inviteFrame-"+(party.theme?party.theme:"polka")}>
         <div><Translate value="invitePage.comments" /></div>
         <FacebookProvider onReady={this.fbReady} appID="1114268925305216" language={locale=='sv'?'sv_SE':'en_GB'}>
           <Comments href={"http://" + location.host + "/fromComments/" +party.id} orderBy="time" numPosts={10}/>
@@ -89,7 +89,7 @@ class InviteShow extends Component {
       <InvitesIndex/>
       :''}
       {invite.inviteStatus!='INVITED'?
-      <div className="twelve columns">
+      <div className={"twelve columns frame inviteFrame-"+(party.theme?party.theme:"polka")}>
         <h4><Translate value="invitePage.whatIs" /></h4>
         <h5><Translate value="invitePage.serviceDescription" /></h5>
         <Link to={'/'} className="button button-primary"><Translate value="invitePage.moreInfo" /></Link>

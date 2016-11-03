@@ -12,7 +12,7 @@ export default class PolkaTheme extends Component {
     const { locale } = this.props;
     this.props.setBackground(party.theme);
     return(
-    <div className="frame" id={"inviteFrame-"+party.theme} >
+    <div className={"frame inviteFrame-"+party.theme} >
       <img src={imageSource} id={"themeImage-"+party.theme}/>
       <div className={"header-"+party.theme} >
         <EditablePartyField
