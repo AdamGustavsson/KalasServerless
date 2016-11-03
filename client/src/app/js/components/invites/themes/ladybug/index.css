@@ -25,6 +25,9 @@
   padding-top: 50px;
   padding-bottom: 50px;
 }
+.container-ladybug{
+  min-height: 360px;
+}
 .inviteFrame-ladybug{
     background-color: #ffe7c9;
     color: black;

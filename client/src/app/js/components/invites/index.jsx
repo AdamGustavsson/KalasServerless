@@ -54,7 +54,7 @@ class InvitesIndex extends Component {
                   )}
                   </tbody>
                 </table>
-              ) : <div><Translate value="createPartyPage.noGuests" /><hr /></div> }
+              ) : <div><Translate value="createPartyPage.noGuests" /></div> }
             </div>
           </div>
       );

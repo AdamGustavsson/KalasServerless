@@ -25,7 +25,7 @@ export default class LadybugTheme extends Component {
         <div id={"themeImage-"+party.theme}>
           <img src={imageSource} />
         </div>
-        <div >
+        <div className="container-ladybug">
         <br/>
         <div className={"header-"+party.theme} >
           <EditablePartyField
