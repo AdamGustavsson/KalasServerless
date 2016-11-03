@@ -94,19 +94,21 @@ export function createInvite(invite, partyId) {
     }`
   };
 
-  return (dispatch) => fetch(`${API_URL}/data/`, {
-    method: 'POST',
-    body: JSON.stringify(query)
-  })
-  .then(response => response.json())
-  .then(json => dispatch({
-    type: CREATE_INVITE,
-    payload: json
-  }))
-  .catch(exception => dispatch({
-    type: ERROR,
-    payload: exception.message
-  }));
+  return (dispatch) => {
+    dispatch({type: CREATE_INVITE,
+      // creating a temp object to show before the backend response is done
+      payload: {data:{invite:{...invite,inviteStatus:'INVITED'}}}
+    });
+  return fetch(`${API_URL}/data/`, {
+          method: 'POST',
+          body: JSON.stringify(query)
+        })
+        .then(response => response.json())
+        .catch(exception => dispatch({
+          type: ERROR,
+          payload: exception.message
+        }));
+  }
 }
 
 export function acceptInvite(id) {
