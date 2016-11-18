@@ -9,6 +9,8 @@ import FacebookProvider, { Like, Comments } from 'react-facebook';
 import Helmet from "react-helmet";
 import ThemedInvite from './themes/themedInvite';
 import InvitesIndex from './index';
+import VenuesShow from '../venues/show';
+
 class InviteShow extends Component {
   componentWillMount() {
     this.props.getInvite(this.props.params.id).then(() => this.props.getParty(this.props.invite.partyId));
@@ -97,6 +99,7 @@ class InviteShow extends Component {
         <h5><Translate value="invitePage.remindMe" /></h5>
         <Link to={'/reminder'} className="button button-primary"><Translate value="invitePage.remindMeButton" /></Link>
         <br/>&nbsp;
+        <VenuesShow/>
         <FacebookProvider appID="1114268925305216" language={locale=='sv'?'sv_SE':'en_GB'}>
           <Like reference="party" width="300" showFaces share href="http://kalas.io"/>
         </FacebookProvider>        <br/>&nbsp;
