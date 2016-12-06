@@ -111,7 +111,8 @@ export const translationsObject = {
       reminderCreated: "Your reminder has been saved. We are excited to see you back soon.",
       mobileNumber: "Mobile number",
       create: "Create reminder",
-      error: "Please fill out all fields"
+      error: "Please fill out all fields",
+      date: "Date"
     },
     myPartiesPage: {
       header: "Parties",
@@ -256,7 +257,8 @@ export const translationsObject = {
       reminderCreated: "Din påminnelse har sparats. Vi är glada att återse dig snart.",
       mobileNumber: "Mobilnummer",
       create: "Skapa påminnelse",
-      error: "Vänligen fyll i alla fält"
+      error: "Vänligen fyll i alla fält",
+      date: "Datum"
     },
     myPartiesPage: {
       header: "Kalas",
