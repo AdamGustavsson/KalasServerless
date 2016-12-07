@@ -105,5 +105,11 @@ module.exports = {
       TableName: partiesTable,
       Key: { id: id }
     });
+  },
+  getVenueOfParty(partyLocation){
+    return {name:"Laserdome",
+    url:"http://goteborg.laserdome.se/barn-ungdom/",
+    image:"http://goteborg.laserdome.se/wp-content/themes/laserdome/img/logo.png",
+    text:"Uppge koden KALAS.IO när du bokar för att få 10% i rabatt på ditt eget kalas"}
   }
 };

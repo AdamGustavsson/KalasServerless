@@ -88,7 +88,14 @@ class InviteShow extends Component {
       </div>
       :''}
       {invite.inviteStatus=='ACCEPTED'?
-      <InvitesIndex/>
+      <div>
+        {party.partyLocation.toLowerCase().indexOf("laserdome")>-1?
+        <div className={"twelve columns frame inviteFrame-"+(party.theme?party.theme:"polka")}>
+          <VenuesShow venueName="laserdome"/>
+        </div>
+        :''}
+        <InvitesIndex/>
+      </div>
       :''}
       {invite.inviteStatus!='INVITED'?
       <div className={"twelve columns frame inviteFrame-"+(party.theme?party.theme:"polka")}>
@@ -99,7 +106,7 @@ class InviteShow extends Component {
         <h5><Translate value="invitePage.remindMe" /></h5>
         <Link to={'/reminder'} className="button button-primary"><Translate value="invitePage.remindMeButton" /></Link>
         <br/>&nbsp;
-        <VenuesShow/>
+
         <FacebookProvider appID="1114268925305216" language={locale=='sv'?'sv_SE':'en_GB'}>
           <Like reference="party" width="300" showFaces share href="http://kalas.io"/>
         </FacebookProvider>        <br/>&nbsp;

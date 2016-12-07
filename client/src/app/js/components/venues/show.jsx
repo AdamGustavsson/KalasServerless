@@ -19,21 +19,28 @@ class VenuesShow extends Component {
     //const { venue } = this.props;
     const venues = {laserdome:{name:"Laserdome",
     url:"http://goteborg.laserdome.se/barn-ungdom/",
-    image:"http://goteborg.laserdome.se/wp-content/themes/laserdome/img/logo.png"},
+    image:"http://goteborg.laserdome.se/wp-content/themes/laserdome/img/logo.png",
+    text:"Uppge koden KALAS.IO när du bokar för att få 10% i rabatt på ditt eget kalas"},
+    palatset:{name:"Barnpalatset",
+    url:"http://barnpalatset.com/kalas/",
+    image:"http://media2.barnpalatset.com/2013/09/logga.png",
+    text:"Boka på 031-43 39 66. Uppge koden KALAS.IO när du bokar så går ett av barnen in gratis"},
     john:{name:"John Scotts",
     url:"http://johnscotts.se/partille/barnkalas/",
-    image:"http://johnscotts.se/partille/wp-content/uploads/sites/13/2016/08/JS_PARTILLE_web.png"}
+    image:"http://johnscotts.se/partille/wp-content/uploads/sites/13/2016/08/JS_PARTILLE_web.png",
+    text:"Boka på 031–44 23 34. Uppge koden KALAS.IO för att uppgradera till Barnakalas - Silver utan extra kostnad"}
 
                   };
-    const venue = venues.john;
+    const {venueName} = this.props;
+    const venue = venues[venueName];
     const {locale} = this.props;
     if (!venue) {
       return <div className="twelve columns"><Translate value="general.loading" /></div>
     }
     return (
       <h5>
-        Snart dags för ditt eget barn att ha kalas?<br/>
-        Skulle du vilja boka på {venue.name} du också?<br/>&nbsp;<br/>
+        Boka ditt nästa kalas på {venue.name} du också!<br/>&nbsp;<br/>
+        {venue.text}<br/>&nbsp;<br/>
         <a onClick={() => ga('send', {
           hitType: 'event',
           eventCategory: 'Venue',
