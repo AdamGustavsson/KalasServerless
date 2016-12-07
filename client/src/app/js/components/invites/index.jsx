@@ -8,6 +8,15 @@ class InvitesIndex extends Component {
   componentWillMount() {
     this.props.getInvitesForParty(this.props.party.id);
   }
+  onEmailLinkClick(){
+    ga('send', {
+    hitType: 'event',
+    eventCategory: 'Invite',
+    eventAction: 'Email'
+  });
+  alert(I18n.t('createPartyPage.noGuests_email_alert'));
+  return false;
+  }
 
   render() {
     const { invites } = this.props;
@@ -54,7 +63,14 @@ class InvitesIndex extends Component {
                   )}
                   </tbody>
                 </table>
-              ) : <div><Translate value="createPartyPage.noGuests" /></div> }
+              ) : <div><Translate value="createPartyPage.noGuests" />
+                    <div>
+                      <Translate value="createPartyPage.noGuests_email_question" /><br/>
+                      <a onClick={this.onEmailLinkClick.bind(this)} >
+                        <Translate value="createPartyPage.noGuests_email_link" />
+                      </a>
+                    </div>
+                  </div> }
             </div>
           </div>
       );
