@@ -138,6 +138,7 @@ export const translationsObject = {
       polka: "Polka",
       bowling: "Bowling",
       ladybug: "Ladybug",
+      prison: "Prison",
       dummyParty: {
         header1: "Welcome to celebrate %{name}'s 6th birthday",
         header2: "Welcome to %{name}'s birthday party",
@@ -287,6 +288,7 @@ export const translationsObject = {
       polka: "Polka",
       bowling: "Bowling",
       ladybug: "Ladybug",
+      prison: "Prison",
       dummyParty: {
         header1: "Välkommen att fira %{name}s 6-årsdag",
         header2: "Välkommen på %{name}s kalas",
