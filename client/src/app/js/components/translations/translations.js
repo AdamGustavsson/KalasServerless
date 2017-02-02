@@ -200,7 +200,7 @@ export const translationsObject = {
       editChanges: "Ser texten bra ut? Klicka för att ändra.",
       step2: "Steg 2:",
       step2_description: "Välj ett inbjudningskort",
-      step3: "Steg 2:",
+      step3: "Steg 3:",
       step3_description: "Bjud in barnen",
       comments: "Här kan du läsa kommentarer från de inbjudna och skriva egna. De syns på alla inbjudningar.",
       inviteMoreChildren: "Bjud in fler barn",
