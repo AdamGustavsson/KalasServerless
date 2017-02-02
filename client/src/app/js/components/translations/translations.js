@@ -137,6 +137,7 @@ export const translationsObject = {
     theme: {
       polka: "Polka",
       bowling: "Bowling",
+      johnscott: "JohnScotts",
       ladybug: "Ladybug",
       prison: "Prison",
       dummyParty: {
@@ -287,6 +288,7 @@ export const translationsObject = {
     theme: {
       polka: "Polka",
       bowling: "Bowling",
+      johnscott: "JohnScotts",
       ladybug: "Ladybug",
       prison: "Prison",
       dummyParty: {
