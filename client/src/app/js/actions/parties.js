@@ -117,7 +117,7 @@ export function createParty(party,locale) {
 export function updateParty(party) {
   if(party.description){
     party.description = party.description.replace(/(\r\n|\n|\r)/gm,"&#13");
-  }  
+  }
   if(party.startDateTime){
     party.startDateTimeUnix=Moment(party.startDateTime, 'YYYY-MM-DD HH:mm').unix();
   }

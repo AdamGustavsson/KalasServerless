@@ -11,9 +11,21 @@ import ThemedInvite from './themes/themedInvite';
 import InvitesIndex from './index';
 class InviteShow extends Component {
   componentWillMount() {
-    this.props.getInvite(this.props.params.id).then(() => this.props.getParty(this.props.invite.partyId));
+    this.props.getInvite(this.props.params.id).then(() => this.props.getParty(this.props.invite.partyId)).then(() => this.trackForRemarketing(this.props.party));
   }
 
+  trackForRemarketing(party){
+      window.google_trackConversion({
+        google_conversion_id: 982175048,
+        google_custom_params: {
+          partyLocation: party.partyLocation,
+        },
+        google_remarketing_only: true
+      });
+      fbq('track', 'ViewContent', {
+        content_name: party.partyLocation,
+       });
+  }
   onAcceptClick(event) {
       this.props.acceptInvite(this.props.invite.id);
       this.props.invite.inviteStatus="ACCEPTED";
