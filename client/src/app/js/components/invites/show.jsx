@@ -73,10 +73,11 @@ class InviteShow extends Component {
         />
       <ThemedInvite invite={invite} party={party} locale={locale}/>
 
-      <h5><Translate value="invitePage.status" />: {statusText[invite.inviteStatus]}</h5>
-      <p><Translate value="invitePage.noReply" /></p>
+
       <button onClick={this.onAcceptClick.bind(this)} className={"button u-full-width accept-"+ (party.theme?party.theme:"polka")}><Translate value="invitePage.accept" /></button>
       <button onClick={this.onRejectClick.bind(this)} className={"button u-full-width reject-"+ (party.theme?party.theme:"polka")}><Translate value="invitePage.reject" /></button>
+      <p><Translate value="invitePage.noReply" /></p>
+      <h5><Translate value="invitePage.status" />: {statusText[invite.inviteStatus]}</h5>
       {invite.inviteStatus!='INVITED'?
       <div className={"frame inviteFrame-"+(party.theme?party.theme:"polka")}>
         <div><Translate value="invitePage.comments" /></div>
