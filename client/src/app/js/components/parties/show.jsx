@@ -70,8 +70,12 @@ class PartiesShow extends Component {
                   name:I18n.t('theme.polka')},
                   {id:'bowling',
                   name:I18n.t('theme.bowling')},
+                  {id:'johnscott',
+                  name:I18n.t('theme.johnscott')},
                   {id:'ladybug',
-                  name:I18n.t('theme.ladybug')}
+                  name:I18n.t('theme.ladybug')},
+                  {id:'prison',
+                  name:I18n.t('theme.prison')}
                 ];
     return (
       <div className="row">

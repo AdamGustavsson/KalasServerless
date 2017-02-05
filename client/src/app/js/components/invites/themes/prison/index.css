@@ -1,0 +1,56 @@
+.prison {
+  background-color: #FBF3E6;
+  color: #595959;
+}
+.inline-edit-prison{
+  color: black;
+  border-color: #b3c181;
+  background-color: #ffe7c9;
+  width: 40%;
+}
+#themeImage-prison{
+  float:left;
+  margin-left: -10px;
+  margin-right: 5px;
+  margin-top: -10px;
+  background-image: url("./fence.png");
+  background-repeat: repeat-y;
+  width:124px;
+  min-height: 620px;
+}
+.container-prison{
+  min-height: 600px;
+}
+.logo-prison{
+  padding-left: 150px;
+}
+.inviteFrame-prison{
+    background-color: #F16530;
+    color: #FBF3E6;
+    border-color: #595959;
+    border-width: 3px;
+    border-style: solid;
+    padding: 10px 10px 10px 5px;
+    margin-top: 40px;
+    margin-bottom: 10px;
+}
+
+.inviteFrame-prison a{
+    color: #595959;
+}
+.font-prison{
+  font-family: "Alfa Slab One";
+}
+
+.accept-prison{
+  background-color: #b3c181;
+}
+.reject-prison{
+  background-color: #FC2F60;
+}
+
+.header-prison{
+  color: #FBF3E6;
+  font-size: 2em;
+
+}

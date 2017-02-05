@@ -2,7 +2,9 @@ import React, { Component, PropTypes } from 'react';
 import { Translate,I18n} from 'react-redux-i18n';
 import PolkaTheme from './polka/';
 import BowlingTheme from './bowling/';
+import JohnScottTheme from './JohnScott/';
 import LadybugTheme from './ladybug/';
+import PrisonTheme from './prison/';
 require('./index.css');
 
 export default class themedInvite extends Component {
@@ -20,11 +22,17 @@ export default class themedInvite extends Component {
       case 'bowling':
         ThemeComponent = BowlingTheme;
         break;
+      case 'johnscott':
+          ThemeComponent = JohnScottTheme;
+          break;
       case 'polka':
         ThemeComponent = PolkaTheme;
         break;
       case 'ladybug':
           ThemeComponent = LadybugTheme;
+          break;
+      case 'prison':
+          ThemeComponent = PrisonTheme;
           break;
       default:
         party = Object.assign({}, party, {

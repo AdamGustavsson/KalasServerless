@@ -137,7 +137,9 @@ export const translationsObject = {
     theme: {
       polka: "Polka",
       bowling: "Bowling",
+      johnscott: "JohnScotts",
       ladybug: "Ladybug",
+      prison: "Prison",
       dummyParty: {
         header1: "Welcome to celebrate %{name}'s 6th birthday",
         header2: "Welcome to %{name}'s birthday party",
@@ -199,7 +201,7 @@ export const translationsObject = {
       editChanges: "Ser texten bra ut? Klicka för att ändra.",
       step2: "Steg 2:",
       step2_description: "Välj ett inbjudningskort",
-      step3: "Steg 2:",
+      step3: "Steg 3:",
       step3_description: "Bjud in barnen",
       comments: "Här kan du läsa kommentarer från de inbjudna och skriva egna. De syns på alla inbjudningar.",
       inviteMoreChildren: "Bjud in fler barn",
@@ -286,7 +288,9 @@ export const translationsObject = {
     theme: {
       polka: "Polka",
       bowling: "Bowling",
+      johnscott: "JohnScotts",
       ladybug: "Ladybug",
+      prison: "Prison",
       dummyParty: {
         header1: "Välkommen att fira %{name}s 6-årsdag",
         header2: "Välkommen på %{name}s kalas",
