@@ -11,22 +11,7 @@ const partyResolve = require('../parties/resolves');
 const userResolve = require('../users/resolves');
 var I18n = require('react-i18nify').I18n;
 
-const translationsObject = {
-  en: {
-    SMSMessage: {
-      accepted: "%{guestName} has accepted the invite to the birthday party of %{birthdayChild}. http://%{url} Click above for full info",
-      rejected: "%{guestName} has rejected the invite to the birthday party of %{birthdayChild}. http://%{url} Click above for full info",
-      invited: "Party invite: %{guestName} has been invited to the birthday party of %{birthdayChild}. http://%{url} Please click the link to answer and get more info"
-    }
-  },
-  sv: {
-    SMSMessage: {
-      accepted: "%{guestName} har tackat ja till %{birthdayChild}s kalas. http://%{url} Klicka ovan för hela listan av inbjudna och deras status",
-      rejected: "%{guestName} har tackat nej till %{birthdayChild}s kalas. http://%{url} Klicka ovan för hela listan av inbjudna och deras status",
-      invited: "Kalasinbjudan: %{guestName} har blivit inbjuden till %{birthdayChild}s kalas. http://%{url} Klicka på länken för mer information och för att tacka ja eller nej"
-    }
-  }
-};
+const translationsObject = require('../../translations/translations');
 
 I18n.loadTranslations(translationsObject);
 

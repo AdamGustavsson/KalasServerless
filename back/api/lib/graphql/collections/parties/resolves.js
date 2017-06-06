@@ -6,15 +6,25 @@ const bcryptjs = require('bcryptjs');
 const db = require('../../../dynamodb');
 const invoke = require('../../../invoke')
 const _ = require('lodash');
+const smsgateway = require('../../../smsgateway');
+var I18n = require('react-i18nify').I18n;
+
+const translationsObject =  require('../../translations/translations');
+
+I18n.loadTranslations(translationsObject);
 
 const stage = process.env.SERVERLESS_STAGE;
+const region = process.env.SERVERLESS_REGION;
 const projectName = process.env.SERVERLESS_PROJECT;
 const partiesTable = projectName + '-parties-' + stage;
+const baseURL = (stage=='prod'?'kalas.io':stage + '.kalas.io.s3-website-'+ region + '.amazonaws.com')
 
 module.exports = {
   create(party) {
     party.id = uuid.v1();
-
+    I18n.setLocale(party.locale);
+    const linkText = I18n.t("SMSMessage.partyCreated",{birthdayChild: party.childName.trim(), url:baseURL + '/p/' + party.id})
+    smsgateway.sendSMS(party.hostUser,linkText);
     return db('put', {
       TableName: partiesTable,
       Item: party
