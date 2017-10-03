@@ -9,11 +9,28 @@ import FacebookProvider, { Like, Comments } from 'react-facebook';
 import Helmet from "react-helmet";
 import ThemedInvite from './themes/themedInvite';
 import InvitesIndex from './index';
+import ReactModal from 'react-modal';
+import SubscribeForm from 'react-mailchimp-subscribe';
 class InviteShow extends Component {
   componentWillMount() {
     this.props.getInvite(this.props.params.id).then(() => this.props.getParty(this.props.invite.partyId)).then(() => this.trackForRemarketing(this.props.party));
   }
+  constructor () {
+    super();
+    this.state = {
+      showModal: false
+    };
 
+    this.handleOpenModal = this.handleOpenModal.bind(this);
+    this.handleCloseModal = this.handleCloseModal.bind(this);
+  }
+  handleOpenModal () {
+    this.setState({ showModal: true });
+  }
+
+  handleCloseModal () {
+    this.setState({ showModal: false });
+  }
   trackForRemarketing(party){
       window.google_trackConversion({
         google_conversion_id: 982175048,
@@ -30,6 +47,7 @@ class InviteShow extends Component {
       this.props.acceptInvite(this.props.invite.id);
       this.props.invite.inviteStatus="ACCEPTED";
       this.forceUpdate();
+      this.handleOpenModal();
       ga('send', {
         hitType: 'event',
         eventCategory: 'Invite',
@@ -40,6 +58,7 @@ class InviteShow extends Component {
       this.props.rejectInvite(this.props.invite.id);
       this.props.invite.inviteStatus="REJECTED";
       this.forceUpdate();
+      this.handleOpenModal();
       ga('send', {
         hitType: 'event',
         eventCategory: 'Invite',
@@ -84,7 +103,27 @@ class InviteShow extends Component {
               ]}
         />
       <ThemedInvite invite={invite} party={party} locale={locale}/>
+      <ReactModal
+       isOpen={this.state.showModal}
+       contentLabel="Minimal Modal Example"
+       className={"inviteFrame-"+party.theme +" modal"}
+       >
+       <div className="modal-child">
+          <h5><Translate value="invitePage.status" />: {statusText[invite.inviteStatus]}</h5>
+          <h6>Prenummerera på kalas.io's nyhetsbrev och få personliga erbjudanden och nyheter om barnkalas</h6>
+          <SubscribeForm action="//kalas.us14.list-manage.com/subscribe/post?u=89ce620dd6e97dd801dd51988&amp;id=3ee048e6e3"
+          messages = {{
+                        inputPlaceholder: "Din epost",
+                        btnLabel: "Prenummerera",
+                        sending: "Skickar...",
+                        success: "Tack för ditt intresse!",
+                        error: "Vänligen fyll i en korrekt epost"
+                      }}
+  />
+          <button className="button button-primary" onClick={this.handleCloseModal}>Stäng</button>
+       </div>
 
+       </ReactModal>
 
       <button onClick={this.onAcceptClick.bind(this)} className={"button u-full-width accept-"+ (party.theme?party.theme:"polka")}><Translate value="invitePage.accept" /></button>
       <button onClick={this.onRejectClick.bind(this)} className={"button u-full-width reject-"+ (party.theme?party.theme:"polka")}><Translate value="invitePage.reject" /></button>
