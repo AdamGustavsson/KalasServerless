@@ -172,8 +172,8 @@ export const translationsObject = {
       back: "Tillbaka"
     },
     landingPage: {
-      title: "Inbjudningskort till ditt kalas. Bjud in till barnkalas utan krångel | kalas.io",
-      heading: 'Kalasinbjudningar för dagens föräldrar',
+      title: "Skicka inbjudningskort till barnkalas med SMS. | kalas.io",
+      heading: 'Skicka inbjudningskort med SMS',
       description: "Kalas.io hjälper dig att bjuda in till ditt barnkalas och hålla reda på vilka barn som kommer.",
       newPartyButton: "Skapa din första kalasinbjudan",
       howItWorks: "Hur fungerar det?",
