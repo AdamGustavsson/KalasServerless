@@ -27,3 +27,6 @@ export const REJECT_INVITE = 'REJECT_INVITE';
 
 //reminders
 export const CREATE_REMINDER = 'CREATE_REMINDER';
+
+//payment
+export const PAY_FOR_THEME ='PAY_FOR_THEME'

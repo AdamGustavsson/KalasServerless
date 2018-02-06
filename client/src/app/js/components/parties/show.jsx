@@ -10,6 +10,7 @@ import ga from 'ga-react-router';
 import FacebookProvider, { Like,Comments } from 'react-facebook';
 import Helmet from "react-helmet";
 import ThemedInvite from '../invites/themes/themedInvite';
+import PaymentModule from '../payment/paymentModule';
 import DropDownList from 'react-widgets/lib/DropdownList';
 
 function fbReady(){
@@ -20,7 +21,7 @@ function fbReady(){
               hitType: 'event',
               eventCategory: 'Comment',
               eventAction: 'CommentCreate',
-              eventlabel: 'CommentCreateOnPartyPage'
+              eventLabel: 'CommentCreateOnPartyPage'
             });
         }
     );
@@ -33,7 +34,12 @@ class PartiesShow extends Component {
   }
 
   setTheme(theme){
-    this.props.setThemeOnParty(this.props.party.id,theme);
+    this.props.setThemeOnParty(this.props.party.id,theme.id);
+    //do stuff if a paid theme is selected
+    if(theme.paid){
+        console.log("A paid theme was selected");
+    }
+
   }
   updatePartyField(party){
     if(party.startDateTime){
@@ -53,6 +59,7 @@ class PartiesShow extends Component {
     const { currentUser } = this.props;
     const {invites } = this.props;
     const {locale} = this.props;
+    const {isThemePaidFor} = this.props;
     //Check if anyone has replied yet, used to know if the comments function should be shown
     var anyoneHasReplied = false;
     if(invites&&invites.length>0){
@@ -66,17 +73,17 @@ class PartiesShow extends Component {
       return <div className="row"><div className="twelve columns"><Translate value="general.loading" /></div></div>
     }
     ga('set', 'userId', party.hostUser);
-    const themes=[{id:'polka',
+    const themes={polka:{id:'polka',
                   name:I18n.t('theme.polka')},
-                  {id:'bowling',
+                  bowling:{id:'bowling',
                   name:I18n.t('theme.bowling')},
-                  {id:'johnscott',
-                  name:I18n.t('theme.johnscott')},
-                  {id:'ladybug',
+                  ladybug:{id:'ladybug',
                   name:I18n.t('theme.ladybug')},
-                  {id:'prison',
+                  ladybugPaid:{id:'ladybugPaid',
+                  name:I18n.t('theme.ladybugPaid',{price:"10"}),paid:true,price:10},
+                  prison:{id:'prison',
                   name:I18n.t('theme.prison')}
-                ];
+                };
     return (
       <div className="row">
       <Helmet
@@ -91,7 +98,8 @@ class PartiesShow extends Component {
           <h5><Translate value="createPartyPage.editChanges" /></h5>
           <h2><Translate value="createPartyPage.step2" /></h2>
           <h3><Translate value="createPartyPage.step2_description" /></h3>
-          <DropDownList defaultValue={"polka"} value={party.theme} valueField='id' textField='name' data={themes}  onChange={value => this.setTheme(value.id)}/>
+          <DropDownList defaultValue={"polka"} value={party.theme} valueField='id' textField='name' data={Object.values(themes)}  onChange={value => this.setTheme(value)}/>
+          <PaymentModule theme={themes[party.theme]}  paymentMethod={"Swish"}/>
         </div>
         :''}
         <InvitesIndex />
@@ -115,7 +123,9 @@ class PartiesShow extends Component {
           </div>)
         }
 
-        <InvitesNew/>
+        {party.theme&&themes[party.theme].paid&&!isThemePaidFor?
+          <div>Vänligen betala ditt inbjudningskort innan du kan bjuda in barnen. Eller välj ett av våra gratis kort.</div>
+        :<InvitesNew/>}
         <div className={"frame inviteFrame-"+(party.theme?party.theme:"polka")}>
           <h5><Translate value="createPartyPage.youreDone" /></h5>
           <h5><Translate value="createPartyPage.youGetAText" /></h5>
@@ -132,7 +142,7 @@ class PartiesShow extends Component {
 }
 
 function mapStateToProps(state) {
-  return { party: state.parties.party,invites: state.invites.all, currentUser: state.users.currentUser,locale: state.i18n.locale};
+  return { isThemePaidFor:state.payment.isThemePaidFor, party: state.parties.party,invites: state.invites.all, currentUser: state.users.currentUser,locale: state.i18n.locale};
 }
 
 export default connect(mapStateToProps, { getParty,updateParty,setThemeOnParty})(PartiesShow);

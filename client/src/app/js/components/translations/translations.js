@@ -137,8 +137,8 @@ export const translationsObject = {
     theme: {
       polka: "Polka",
       bowling: "Bowling",
-      johnscott: "JohnScotts",
       ladybug: "Ladybug",
+      ladybugPaid: "Ladybug Premium Price: 10SEK",
       prison: "Prison",
       dummyParty: {
         header1: "Welcome to celebrate %{name}'s 6th birthday",
@@ -288,8 +288,8 @@ export const translationsObject = {
     theme: {
       polka: "Polka",
       bowling: "Bowling",
-      johnscott: "JohnScotts",
       ladybug: "Ladybug",
+      ladybugPaid: "Ladybug Premium, Pris %{price}kr",
       prison: "Prison",
       dummyParty: {
         header1: "Välkommen att fira %{name}s 6-årsdag",
