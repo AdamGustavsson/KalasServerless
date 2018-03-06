@@ -30,6 +30,7 @@ class InvitesNew extends Component {
       });
       this.refs.mobileNumber.value = null;
       this.refs.childName.value = null;
+      this.forceUpdate();
     } else {
       alert(I18n.t('createPartyPage.error'));
     }

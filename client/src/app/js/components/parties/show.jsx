@@ -27,7 +27,22 @@ function fbReady(){
     );
 
 }
-
+function getThemeABPrice(userNumber){
+  const lastDigit = userNumber.slice(-1);
+  if(lastDigit<5){
+    return 10;
+  } else {
+    return 30;
+  }
+}
+function getThemeABPaymentMethod(userNumber){
+  const nextLastDigit = userNumber.charAt(userNumber.length - 2);
+  if(nextLastDigit<5){
+    return "Swish";
+  } else {
+    return "Klarna";
+  }
+}
 class PartiesShow extends Component {
   componentWillMount() {
     this.props.getParty(this.props.params.id);
@@ -73,6 +88,26 @@ class PartiesShow extends Component {
       return <div className="row"><div className="twelve columns"><Translate value="general.loading" /></div></div>
     }
     ga('set', 'userId', party.hostUser);
+
+    const themeABPrice = getThemeABPrice(party.hostUser);
+    const themeABPaymentMethod = getThemeABPaymentMethod(party.hostUser);
+    if(invites.length==1){
+      ga('send', {
+        hitType: 'event',
+        eventCategory: 'Party',
+        eventAction: 'ThemeChosenPaymentOffered',
+        eventLabel: themeABPaymentMethod,
+        eventValue: themeABPrice
+      });
+      ga('send', {
+        hitType: 'event',
+        eventCategory: 'Party',
+        eventAction: 'ThemeChosen',
+        eventLabel: (party.theme?party.theme:'polka'),
+        eventValue: themeABPrice
+      });
+
+    }
     const themes={polka:{id:'polka',
                   name:I18n.t('theme.polka')},
                   bowling:{id:'bowling',
@@ -80,7 +115,7 @@ class PartiesShow extends Component {
                   ladybug:{id:'ladybug',
                   name:I18n.t('theme.ladybug')},
                   ladybugPaid:{id:'ladybugPaid',
-                  name:I18n.t('theme.ladybugPaid',{price:"10"}),paid:true,price:10},
+                  name:I18n.t('theme.ladybugPaid',{price:themeABPrice}),paid:true,price:themeABPrice},
                   prison:{id:'prison',
                   name:I18n.t('theme.prison')}
                 };
@@ -99,7 +134,7 @@ class PartiesShow extends Component {
           <h2><Translate value="createPartyPage.step2" /></h2>
           <h3><Translate value="createPartyPage.step2_description" /></h3>
           <DropDownList defaultValue={"polka"} value={party.theme} valueField='id' textField='name' data={Object.values(themes)}  onChange={value => this.setTheme(value)}/>
-          <PaymentModule theme={themes[party.theme]}  paymentMethod={"Swish"}/>
+          <PaymentModule theme={themes[(party.theme?party.theme:"polka")]}  paymentMethod={themeABPaymentMethod}/>
         </div>
         :''}
         <InvitesIndex />
@@ -124,7 +159,7 @@ class PartiesShow extends Component {
         }
 
         {party.theme&&themes[party.theme].paid&&!isThemePaidFor?
-          <div>Vänligen betala ditt inbjudningskort innan du kan bjuda in barnen. Eller välj ett av våra gratis kort.</div>
+          <div><Translate value="createPartyPage.pleasePay" /></div>
         :<InvitesNew/>}
         <div className={"frame inviteFrame-"+(party.theme?party.theme:"polka")}>
           <h5><Translate value="createPartyPage.youreDone" /></h5>

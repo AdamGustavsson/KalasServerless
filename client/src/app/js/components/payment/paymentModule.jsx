@@ -28,11 +28,11 @@ export default class PaymentModule extends Component {
       <div className="row">
         <div className="twelve columns">
           <div style={{marginTop:'20px'}} className={"paymentModule frame inviteFrame-"+theme.id}>
-            Du har valt ett premium-inbjudningskort.<br/>
-            Kostnaden är <div className="paymentPrice">{theme.price}kr</div><br/>
-            Betalning sker med <div className="paymentMethod">{paymentMethod}</div><br/><br/>
+            <Translate value="createPartyPage.paymentPremiumCard" /><br/>
+            <Translate value="createPartyPage.paymentCostIs" /><div className="paymentPrice">{theme.price}kr</div><br/>
+            <Translate value="createPartyPage.paymentMethod" /><div className="paymentMethod">{paymentMethod}</div><br/><br/>
             {isThemePaidFor?
-              'Vår integration med ' + paymentMethod + ' är ännu inte klar. Under tiden bjuder vi på premium-inbjudningskorten. Var så god!':
+              <Translate value="createPartyPage.paymentIntegrationIsNotReady" paymentMethod={paymentMethod} />:
               <button onClick={this.onPurchaseClick.bind(this)} className="button button-primary">Köp</button>
             }
           </div>
