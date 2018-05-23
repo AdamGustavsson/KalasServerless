@@ -27,8 +27,7 @@
     "SERVERLESS_STAGE": "${stage}",
     "SERVERLESS_REGION": "${region}",
     "SMS_GATEWAY_DEVICE_ID": "${SMSGatewayDeviceId}",
-    "SMS_GATEWAY_PASSWORD": "${SMSGatewayPassword}",
-    "SMS_GATEWAY_USERNAME": "${SMSGatewayUsername}"
+    "SMS_GATEWAY_TOKEN": "${SMSGatewayToken}"
   },
   "vpc": {
     "securityGroupIds": [],
