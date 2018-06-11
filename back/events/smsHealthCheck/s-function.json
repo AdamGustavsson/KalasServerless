@@ -1,0 +1,36 @@
+{
+  "name": "smsHealthCheck",
+  "runtime": "nodejs4.3",
+  "description": "healthcheck of the sms service",
+  "customName": false,
+  "customRole": false,
+  "handler": "events/smsHealthCheck/handler.handler",
+  "timeout": 6,
+  "memorySize": 1024,
+  "authorizer": {},
+  "custom": {
+    "excludePatterns": []
+  },
+  "endpoints": [],
+  "events": [
+    {
+      "name" : "healthCheck",
+      "type": "schedule",
+      "config": {
+         "schedule": "rate(1 day)",
+         "enabled": true
+      }
+    }
+  ],
+  "environment": {
+    "SERVERLESS_PROJECT": "${project}",
+    "SERVERLESS_STAGE": "${stage}",
+    "SERVERLESS_REGION": "${region}",
+    "SMS_GATEWAY_DEVICE_ID": "${SMSGatewayDeviceId}",
+    "SMS_GATEWAY_TOKEN": "${SMSGatewayToken}"
+  },
+  "vpc": {
+    "securityGroupIds": [],
+    "subnetIds": []
+  }
+}
