@@ -138,6 +138,7 @@ export const translationsObject = {
       polka: "Polka",
       bowling: "Bowling",
       johnscott: "JohnScotts",
+      laser: "Laserdome",
       ladybug: "Ladybug",
       prison: "Prison",
       dummyParty: {
@@ -289,6 +290,7 @@ export const translationsObject = {
       polka: "Polka",
       bowling: "Bowling",
       johnscott: "JohnScotts",
+      laser: "Laserdome",
       ladybug: "Ladybug",
       prison: "Prison",
       dummyParty: {

@@ -3,6 +3,7 @@ import { Translate,I18n} from 'react-redux-i18n';
 import PolkaTheme from './polka/';
 import BowlingTheme from './bowling/';
 import JohnScottTheme from './JohnScott/';
+import LaserTheme from './laser/';
 import LadybugTheme from './ladybug/';
 import PrisonTheme from './prison/';
 require('./index.css');
@@ -24,6 +25,9 @@ export default class themedInvite extends Component {
         break;
       case 'johnscott':
           ThemeComponent = JohnScottTheme;
+          break;
+      case 'laser':
+          ThemeComponent = LaserTheme;
           break;
       case 'polka':
         ThemeComponent = PolkaTheme;
