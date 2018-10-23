@@ -27,24 +27,31 @@ class InviteShow extends Component {
        });
   }
   onAcceptClick(event) {
+      if(this.props.invite.inviteStatus!='ACCEPTED'){
+        ga('send', {
+          hitType: 'event',
+          eventCategory: 'Invite',
+          eventAction: 'Accept'
+        });
+      }
       this.props.acceptInvite(this.props.invite.id);
       this.props.invite.inviteStatus="ACCEPTED";
       this.forceUpdate();
-      ga('send', {
-        hitType: 'event',
-        eventCategory: 'Invite',
-        eventAction: 'Accept'
-      });
+      
+      
   }
   onRejectClick(event) {
+      if(this.props.invite.inviteStatus!='REJECTED'){
+        ga('send', {
+          hitType: 'event',
+          eventCategory: 'Invite',
+          eventAction: 'Reject'
+        });
+      }
       this.props.rejectInvite(this.props.invite.id);
       this.props.invite.inviteStatus="REJECTED";
       this.forceUpdate();
-      ga('send', {
-        hitType: 'event',
-        eventCategory: 'Invite',
-        eventAction: 'Reject'
-      });
+      
   }
   fbReady(){
     window.FB.Event.subscribe('comment.create',
@@ -74,7 +81,9 @@ class InviteShow extends Component {
     if (!invite || !party) {
       return <div className="row"><div className="twelve columns"><Translate value="general.loading" /></div></div>
     }
-    ga('set', 'userId', invite.mobileNumber);
+    if(invite.mobileNumber){
+      ga('set', 'userId', invite.mobileNumber);
+    } 
     return (
       <div className="row">
         <Helmet
