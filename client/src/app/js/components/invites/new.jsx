@@ -44,7 +44,7 @@ class InvitesNew extends Component {
             <input type="text" placeholder={I18n.t('createPartyPage.guestName_example')} className="u-full-width" ref="childName" />
             <Translate value="createPartyPage.mobileNumber" />:
             <input type="tel" placeholder={I18n.t('createPartyPage.mobileNumber_example')} className="u-full-width" ref="mobileNumber" />
-            <input type="submit" value={I18n.t('createPartyPage.invite')} className="button button-primary" />
+            <input type="submit" value={I18n.t('createPartyPage.invite')} className="u-pull-right button button-primary" />
           </form>
         </div>
       </div>

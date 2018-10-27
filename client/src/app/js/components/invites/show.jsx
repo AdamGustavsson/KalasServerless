@@ -115,6 +115,8 @@ class InviteShow extends Component {
         <h4><Translate value="invitePage.whatIs" /></h4>
         <h5><Translate value="invitePage.serviceDescription" /></h5>
         <Link to={'/'} className="button button-primary"><Translate value="invitePage.moreInfo" /></Link>
+        <br/><Link to={'/integrityPolicy'} >
+        <Translate value="loginPage.integrityPolicy" /></Link>
         <br/>&nbsp;
         <h5><Translate value="invitePage.remindMe" /></h5>
         <Link to={'/reminder'} className="button button-primary"><Translate value="invitePage.remindMeButton" /></Link>

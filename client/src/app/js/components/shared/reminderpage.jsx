@@ -66,7 +66,7 @@ class ReminderPage extends Component {
             </div>
           }
           <DateTimePicker placeholder={I18n.t('reminderPage.date')} value={this.state.reminderDate} defaultValue={null}  onChange={changeDate.bind(null,'reminderDate')} format={"YYYY-MM-DD"} finalView={"month"} min={new Date()} time={false} className="u-full-width" />
-          <input type="submit" className="button button-primary" value={I18n.t('reminderPage.create')}/>
+          <input type="submit" className="u-pull-right button button-primary" value={I18n.t('reminderPage.create')}/>
         </form>
       }
       </div>

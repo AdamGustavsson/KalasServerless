@@ -47,8 +47,9 @@ class UsersEdit extends Component {
             <input type="password" placeholder={I18n.t('user.password')} className="u-full-width" ref="password" />
             <div><Translate value="editAccountPage.newPassword_verify" />:</div>
             <input type="password" placeholder={I18n.t('user.password')} className="u-full-width" ref="password2" />
-            <input type="submit" className="button button-primary" />
-            <Link to="/" className="u-pull-right button">Cancel</Link>
+            <Link to="/" className="u-pull-left button"><Translate value="general.cancel" /></Link>
+            <input type="submit" className="u-pull-right button button-primary" />
+            
           </form>
         </div>
       </div>

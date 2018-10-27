@@ -97,8 +97,9 @@ class PartiesNew extends Component {
             <input type="text" placeholder={I18n.t('createPartyPage.header_example')} className="u-full-width" ref="header" />
             <Translate value="createPartyPage.description" />:
             <textarea rows="5" placeholder={I18n.t('createPartyPage.description_example')} className="u-full-width" ref="description" />
-            <input type="submit" className="button button-primary" value={I18n.t('createPartyPage.create')}/>
-            <Link to="/" className="u-pull-right button"><Translate value="general.cancel" /></Link>
+            <Link to="/" className="u-pull-left button"><Translate value="general.cancel" /></Link>
+            <input type="submit" className="u-pull-right button button-primary" value={I18n.t('createPartyPage.create')}/>
+            
           </form>
         </div>
       </div>

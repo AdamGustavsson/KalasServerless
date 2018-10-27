@@ -6,8 +6,10 @@ export const translationsObject = {
       logOut: "Log out",
       login: "Login",
       register:"Register account",
+      integrityPolicy:"Integrity policy",
       myParties: "My parties",
       language:"Change language",
+      contact:"Contact",
       error: "Please fill out all fields"
     },
     user: {
@@ -39,6 +41,7 @@ export const translationsObject = {
       registerInfo: "Registration is free of charge and completely voluntary. Registered users have access to more functionality. We recommend registering after you created your first party.",
       chosePassword: "Chose a password",
       verifyPassword: "Confirm password",
+      acceptPolicy: "By registering you accept our",
       error: "Please fill out all fields and ensure that you typed the chosen password twice"
     },
     createPartyPage: {
@@ -158,8 +161,10 @@ export const translationsObject = {
       mobileNumber: "Mobilnummer",
       password: "Lösenord",
       register:"Registrera dig",
+      integrityPolicy:"Integritetspolicy",
       myParties: "Mina kalas",
       language:"Ändra språk",
+      contact:"Kontakt",
       error: "Vänligen fyll i alla fält"
     },
     user: {
@@ -191,6 +196,7 @@ export const translationsObject = {
       registerInfo: "Registratering är gratis och helt frivillig. Du kan använda tjänsten utan att vara registrerad. Registrerade användare har tillgång till fler funktioner. Vi rekommenderar att du registrerar dig efter du har skapat din första kalas inbjudan.",
       chosePassword: "Välj ett lösenord",
       verifyPassword: "Bekräfta lösenord",
+      acceptPolicy: "Genom att registrera dig accepterar du vår",
       error: "Vänligen fyll i alla fält och se till att lösenordsfälten är lika"
     },
     createPartyPage: {
