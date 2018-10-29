@@ -178,8 +178,8 @@ export const translationsObject = {
       back: "Tillbaka"
     },
     landingPage: {
-      title: "Skicka inbjudningskort till barnkalas med SMS. Gratis kalasinbjudningar.| kalas.io",
-      heading: 'Skicka inbjudningskort med SMS',
+      title: "Skicka kalasinbjudan med SMS. Gratis inbjudningskort kalas online.| kalas.io",
+      heading: 'Skicka kalasinbjudan  med SMS',
       description: "Kalas.io hjälper dig att bjuda in till ditt barnkalas och hålla reda på vilka barn som kommer.",
       newPartyButton: "Skapa din första kalasinbjudan",
       howItWorks: "Hur fungerar det?",
@@ -301,7 +301,7 @@ export const translationsObject = {
       prison: "Prison",
       dummyParty: {
         header1: "Välkommen att fira %{name}s 6-årsdag",
-        header2: "Välkommen på %{name}s kalas",
+        header2: "Välkommen på kalas",
         description1: "Vi samlas på sportbaren, äter hamburgare och slår några strikes. Bowlingskor lånar vi.",
         description2: "%{name} fyller 8 år. Det firar vi med stort tårtkalas hemma hos oss. Ta med varma kläder för vi kommer även att vara ute."
       }
