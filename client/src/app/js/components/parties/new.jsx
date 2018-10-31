@@ -87,12 +87,12 @@ class PartiesNew extends Component {
 
             <Translate value="createPartyPage.childName" />:
             <input type="text" placeholder={I18n.t('createPartyPage.childName_example')} className="u-full-width" ref="childName" />
+            <Translate value="createPartyPage.location" />:
+            <input type="text" placeholder={I18n.t('createPartyPage.location_example')} className="u-full-width" ref="partyLocation" />
             <Translate value="createPartyPage.startDateTime" />:
             <DateTimePicker placeholder={I18n.t('createPartyPage.startDateTime')} value={this.state.startDateTime} defaultValue={null} onChange={changeStart.bind(null,'startDateTime')} format={"YYYY-MM-DD HH:mm"} step={15} finalView={"month"} timeFormat={"HH:mm"} time={true} className="u-full-width" />
             <Translate value="createPartyPage.endDateTime" />:
             <DateTimePicker placeholder={I18n.t('createPartyPage.endDateTime')} min={this.state.startDateTime} value={this.state.endDateTime} onChange={changeEnd.bind(null,'endDateTime')}  format={"HH:mm"} step={15} finalView={"month"} timeFormat={"HH:mm"} calendar={false} className="u-full-width" />
-            <Translate value="createPartyPage.location" />:
-            <input type="text" placeholder={I18n.t('createPartyPage.location_example')} className="u-full-width" ref="partyLocation" />
             <Translate value="createPartyPage.header" />:
             <input type="text" placeholder={I18n.t('createPartyPage.header_example')} className="u-full-width" ref="header" />
             <Translate value="createPartyPage.description" />:

@@ -33,6 +33,12 @@ class PartiesShow extends Component {
   }
 
   setTheme(theme){
+    ga('send', {
+      hitType: 'event',
+      eventCategory: 'Party',
+      eventAction: 'SelectTheme',
+      label: theme
+    });
     this.props.setThemeOnParty(this.props.party.id,theme);
   }
   updatePartyField(party){
@@ -77,6 +83,7 @@ class PartiesShow extends Component {
                   {id:'prison',
                   name:I18n.t('theme.prison')}
                 ];
+       
     return (
       <div className="row">
       <Helmet
