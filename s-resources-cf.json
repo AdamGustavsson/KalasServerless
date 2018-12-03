@@ -147,10 +147,28 @@
           }
         ],
         "ProvisionedThroughput": {
-          "ReadCapacityUnits": 1,
-          "WriteCapacityUnits": 1
+          "ReadCapacityUnits": 3,
+          "WriteCapacityUnits": 3
         },
         "TableName": "${project}-invites-${stage}"
+        {
+          "IndexName" : "partyId-createDateTimeUnix-index",
+          "KeySchema" : [ 
+            {
+              "AttributeName": "partyId",
+              "KeyType": "HASH"
+            },
+            {
+              "AttributeName": "createDateTimeUnix",
+              "KeyType": "RANGE"
+            }
+          ],
+          "Projection" : { "ProjectionType": "ALL" },
+          "ProvisionedThroughput" : { 
+            "ReadCapacityUnits": 3,
+            "WriteCapacityUnits": 3 
+          }
+        }
       }
     },
     "DynamoDbRemindersTable": {
