@@ -46,9 +46,9 @@ export const translationsObject = {
     },
     createPartyPage: {
       title: "Status of your party invite | kalas.io",
-      error: "Please fill in all fields",
+      error: "Please fill in all fields, before you can choose a theme",
       createParty: "Create party",
-      step1: "Step 1:",
+      step1: "Step 1 of 3:",
       step1_description: "Enter details of the party",
       editChanges: "Does the text look ok? Tap to edit.",
       step2: "Step 2:",
@@ -69,7 +69,7 @@ export const translationsObject = {
       endDateTime: "End time",
       location: "Location",
       location_example: "Laserdome, Grafiska vägen 32, Göteborg",
-      create: "Create",
+      create: "Chose a theme",
       invitedGuests: "Invited guests",
       guestName: "First name of the invited child",
       guestNameHeader: "Name",
@@ -148,7 +148,8 @@ export const translationsObject = {
         header1: "Welcome to celebrate %{name}'s 6th birthday",
         header2: "Welcome to %{name}'s birthday party",
         description1: "We meet up at the sports bar, eat some burgers and throw a few strikes. Bowling shoes can be borrowed.",
-        description2: "%{name} is turning 8. Lets celebrate with a party at our place. Bring warm clothes as we will also be outdoors."
+        description2: "%{name} is turning 8. Lets celebrate with a party at our place. Bring warm clothes as we will also be outdoors.",
+        description3: "%{name} has had her 10th birthday. We want you to join us in the celebration."
       }
     }
   },
@@ -201,9 +202,9 @@ export const translationsObject = {
     },
     createPartyPage: {
       title: "Status på din kalasinbjudan | kalas.io",
-      error: "Vänligen fyll i alla fält",
+      error: "Vänligen fyll i alla fält, innan du kan välja ett inbjudningskort",
       createParty: "Skapa inbjudan",
-      step1: "Steg 1:",
+      step1: "Steg 1 av 3:",
       step1_description: "Fyll i uppgifter om kalaset",
       editChanges: "Ser texten bra ut? Klicka för att ändra.",
       step2: "Steg 2:",
@@ -224,7 +225,7 @@ export const translationsObject = {
       endDateTime: "Sluttid",
       location: "Plats",
       location_example: "Laserdome, Grafiska vägen 32, Göteborg",
-      create: "Skapa",
+      create: "Välj inbjudningskort",
       invitedGuests: "Inbjudna barn",
       guestName: "Inbjudna barnets förnamn",
       guestNameHeader: "Namn",
@@ -303,7 +304,8 @@ export const translationsObject = {
         header1: "Välkommen att fira %{name}s 6-årsdag",
         header2: "Välkommen på kalas",
         description1: "Vi samlas på sportbaren, äter hamburgare och slår några strikes. Bowlingskor lånar vi.",
-        description2: "%{name} fyller 8 år. Det firar vi med stort tårtkalas hemma hos oss. Ta med varma kläder för vi kommer även att vara ute."
+        description2: "%{name} fyller 8 år. Det firar vi med stort tårtkalas hemma hos oss. Ta med varma kläder för vi kommer även att vara ute.",
+        description3: "%{name} har fyllt 10. Du är välkommen att fira det med henne."
       }
     }
   }
