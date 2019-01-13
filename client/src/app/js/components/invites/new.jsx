@@ -38,14 +38,9 @@ class InvitesNew extends Component {
   render() {
     return (
       <div className="row">
-        <div className="twelve columns">
-          <form onSubmit={this.handleSubmit.bind(this)}>
-            <Translate value="createPartyPage.guestName" />:
-            <input type="text" placeholder={I18n.t('createPartyPage.guestName_example')} className="u-full-width" ref="childName" />
-            <Translate value="createPartyPage.mobileNumber" />:
-            <input type="tel" placeholder={I18n.t('createPartyPage.mobileNumber_example')} className="u-full-width" ref="mobileNumber" />
-            <input type="submit" value={I18n.t('createPartyPage.invite')} className="u-pull-right button button-primary" />
-          </form>
+        <div className="twelve columns" style={{color:'red'}}>
+        Tyvärr har vår SMS-leverantör tekniska problem för närvarande. Vi hoppas att de löser det inom kort så att vi kan vara i drift igen.
+        Det innebär att inga SMS kan skickas. Du kommer inte få SMS när någon svarat på inbjudan. Listan med inbjudningarnas status stämmer fortfarande. Vi beklagar olägenheten och hoppas att vår leverantor snart har löst sina problem.
         </div>
       </div>
     );

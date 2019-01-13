@@ -75,32 +75,8 @@ class PartiesNew extends Component {
     };
     return (
       <div className="row">
-        <div className="tweleve columns">
-          <form onSubmit={this.handleSubmit.bind(this)}>
-            <h1><Translate value="createPartyPage.createParty" /></h1>
-            <h2><Translate value="createPartyPage.step1" /></h2>
-            <h3><Translate value="createPartyPage.step1_description" /></h3>
-            <hr />
-            <Translate value="createPartyPage.hostUser" />:
-            <input type="tel" placeholder={I18n.t('createPartyPage.hostUser_example')} className="u-full-width" ref="hostUser" />
-            <br/><br/>
-
-            <Translate value="createPartyPage.childName" />:
-            <input type="text" placeholder={I18n.t('createPartyPage.childName_example')} className="u-full-width" ref="childName" />
-            <Translate value="createPartyPage.location" />:
-            <input type="text" placeholder={I18n.t('createPartyPage.location_example')} className="u-full-width" ref="partyLocation" />
-            <Translate value="createPartyPage.startDateTime" />:
-            <DateTimePicker placeholder={I18n.t('createPartyPage.startDateTime')} value={this.state.startDateTime} defaultValue={null} onChange={changeStart.bind(null,'startDateTime')} format={"YYYY-MM-DD HH:mm"} step={15} finalView={"month"} timeFormat={"HH:mm"} time={true} className="u-full-width" />
-            <Translate value="createPartyPage.endDateTime" />:
-            <DateTimePicker placeholder={I18n.t('createPartyPage.endDateTime')} min={this.state.startDateTime} value={this.state.endDateTime} onChange={changeEnd.bind(null,'endDateTime')}  format={"HH:mm"} step={15} finalView={"month"} timeFormat={"HH:mm"} calendar={false} className="u-full-width" />
-            <Translate value="createPartyPage.header" />:
-            <input type="text" placeholder={I18n.t('createPartyPage.header_example')} className="u-full-width" ref="header" />
-            <Translate value="createPartyPage.description" />:
-            <textarea rows="5" placeholder={I18n.t('createPartyPage.description_example')} className="u-full-width" ref="description" />
-            <Link to="/" className="u-pull-left button"><Translate value="general.cancel" /></Link>
-            <input type="submit" className="u-pull-right button button-primary" value={I18n.t('createPartyPage.create')}/>
-            
-          </form>
+        <div className="tweleve columns" style={{marginTop:'100px'}}>
+          Tyvärr har vår SMS-leverantör tekniska problem för närvarande. Vi hoppas att de löser det inom kort så att vi kan vara i drift igen. 
         </div>
       </div>
     );
