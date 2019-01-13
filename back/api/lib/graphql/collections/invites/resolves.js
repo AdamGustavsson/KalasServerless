@@ -19,6 +19,7 @@ const stage = process.env.SERVERLESS_STAGE;
 const region = process.env.SERVERLESS_REGION;
 const projectName = process.env.SERVERLESS_PROJECT;
 const invitesTable = projectName + '-invites-' + stage;
+const partyIndex = 'partyId-index';
 
 const baseURL = (stage=='prod'?'kalas.io':stage + '.kalas.io.s3-website-'+ region + '.amazonaws.com')
 
@@ -26,9 +27,10 @@ const baseURL = (stage=='prod'?'kalas.io':stage + '.kalas.io.s3-website-'+ regio
 module.exports = {
 
   getInvitesForParty(partyId) {
-    return db('scan', {
+    return db('query', {
       TableName: invitesTable,
-      FilterExpression: "partyId = :partyId",
+      IndexName:partyIndex,
+      KeyConditionExpression: "partyId = :partyId",
       ExpressionAttributeValues: {':partyId':partyId},
       ProjectionExpression: "id,childName,mobileNumber,inviteStatus"
     }).then(reply => reply.Items);

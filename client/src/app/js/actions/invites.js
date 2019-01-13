@@ -97,7 +97,7 @@ export function createInvite(invite, partyId) {
   return (dispatch) => {
     dispatch({type: CREATE_INVITE,
       // creating a temp object to show before the backend response is done
-      payload: {data:{invite:{...invite,inviteStatus:'INVITED'}}}
+      payload: {data:{invite:{...invite,inviteStatus:'INVITED',id:(new Date()).getTime()}}}
     });
   return fetch(`${API_URL}/data/`, {
           method: 'POST',
