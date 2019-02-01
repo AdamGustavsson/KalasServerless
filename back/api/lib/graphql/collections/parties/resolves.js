@@ -17,6 +17,7 @@ const stage = process.env.SERVERLESS_STAGE;
 const region = process.env.SERVERLESS_REGION;
 const projectName = process.env.SERVERLESS_PROJECT;
 const partiesTable = projectName + '-parties-' + stage;
+const userIndex = 'hostUser-index';
 const baseURL = (stage=='prod'?'kalas.io':stage + '.kalas.io.s3-website-'+ region + '.amazonaws.com')
 
 module.exports = {
@@ -71,11 +72,12 @@ module.exports = {
   },
 
   getAllForUser(userId) {
-    return db('scan', {
+    return db('query', {
       TableName: partiesTable,
-      FilterExpression: "hostUser = :userId",
+      IndexName: userIndex,
+      KeyConditionExpression: "hostUser = :userId",
       ExpressionAttributeValues: {':userId':userId},
-      ProjectionExpression: "id,description,header,hostUser,childName,startDateTime,endDateTime,partyLocation,locale"
+      ProjectionExpression: "id,header,childName,startDateTime"
     }).then(reply => reply.Items);
   },
 

@@ -59,7 +59,28 @@
               "Action": [
                 "*"
               ],
+              "Resource": "arn:aws:dynamodb:${region}:*:table/${project}-parties-${stage}/index/hostUser-index"
+            },
+            {
+              "Effect": "Allow",
+              "Action": [
+                "*"
+              ],
               "Resource": "arn:aws:dynamodb:${region}:*:table/${project}-invites-${stage}"
+            },
+            {
+              "Effect": "Allow",
+              "Action": [
+                "*"
+              ],
+              "Resource": "arn:aws:dynamodb:${region}:*:table/${project}-invites-${stage}/index/partyId-index"
+            },
+            {
+              "Effect": "Allow",
+              "Action": [
+                "*"
+              ],
+              "Resource": "arn:aws:dynamodb:${region}:*:table/${project}-invites-${stage}/index/partyId-createDateTimeUnix-index"
             },
             {
               "Effect": "Allow",
@@ -115,6 +136,10 @@
           {
             "AttributeName": "id",
             "AttributeType": "S"
+          },
+          {
+            "AttributeName": "hostUser",
+            "AttributeType": "S"
           }
         ],
         "KeySchema": [
@@ -127,7 +152,25 @@
           "ReadCapacityUnits": 1,
           "WriteCapacityUnits": 1
         },
-        "TableName": "${project}-parties-${stage}"
+        "TableName": "${project}-parties-${stage}",
+        "GlobalSecondaryIndexes":[
+          {
+            "IndexName" : "hostUser-index",
+            "KeySchema" : [ 
+              {
+                "AttributeName": "hostUser",
+                "KeyType": "HASH"
+              }
+            ],
+            "Projection" : { 
+              "NonKeyAttributes" : ["childName","startDateTime","header"],
+              "ProjectionType": "INCLUDE" },
+            "ProvisionedThroughput" : { 
+              "ReadCapacityUnits": 1,
+              "WriteCapacityUnits": 1 
+            }
+          }
+        ]
       }
     },
     "DynamoDbInvitesTable": {
@@ -138,7 +181,11 @@
           {
             "AttributeName": "id",
             "AttributeType": "S"
-          }
+          },
+          {
+            "AttributeName": "partyId",
+            "AttributeType": "S"
+          }  
         ],
         "KeySchema": [
           {
@@ -150,25 +197,25 @@
           "ReadCapacityUnits": 3,
           "WriteCapacityUnits": 3
         },
-        "TableName": "${project}-invites-${stage}"
-        {
-          "IndexName" : "partyId-createDateTimeUnix-index",
-          "KeySchema" : [ 
-            {
-              "AttributeName": "partyId",
-              "KeyType": "HASH"
-            },
-            {
-              "AttributeName": "createDateTimeUnix",
-              "KeyType": "RANGE"
+        "TableName": "${project}-invites-${stage}",
+        "GlobalSecondaryIndexes":[
+          {
+            "IndexName" : "partyId-index",
+            "KeySchema" : [ 
+              {
+                "AttributeName": "partyId",
+                "KeyType": "HASH"
+              }
+            ],
+            "Projection" : { 
+              "NonKeyAttributes" : ["childName","inviteStatus","mobileNumber"],
+              "ProjectionType": "INCLUDE" },
+            "ProvisionedThroughput" : { 
+              "ReadCapacityUnits": 3,
+              "WriteCapacityUnits": 3 
             }
-          ],
-          "Projection" : { "ProjectionType": "ALL" },
-          "ProvisionedThroughput" : { 
-            "ReadCapacityUnits": 3,
-            "WriteCapacityUnits": 3 
           }
-        }
+        ]  
       }
     },
     "DynamoDbRemindersTable": {
