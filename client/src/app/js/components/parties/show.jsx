@@ -76,6 +76,8 @@ class PartiesShow extends Component {
                   name:I18n.t('theme.polka')},
                   {id:'bowling',
                   name:I18n.t('theme.bowling')},
+                  {id:'music',
+                  name:I18n.t('theme.music')},
                   {id:'laser',
                   name:I18n.t('theme.laser')},
                   {id:'ladybug',

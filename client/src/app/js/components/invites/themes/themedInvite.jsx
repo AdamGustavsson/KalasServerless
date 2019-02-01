@@ -23,8 +23,8 @@ export default class themedInvite extends Component {
       case 'bowling':
         ThemeComponent = BowlingTheme;
         break;
-      case 'johnscott':
-          ThemeComponent = JohnScottTheme;
+      case 'music':
+          ThemeComponent = MusicTheme;
           break;
       case 'laser':
           ThemeComponent = LaserTheme;
