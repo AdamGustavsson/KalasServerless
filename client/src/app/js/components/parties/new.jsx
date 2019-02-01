@@ -74,13 +74,7 @@ class PartiesNew extends Component {
       this.setState({[name]: date, [name + 'String']: Moment(date).format('HH:mm')});
     };
     return (
-      {
         <div className="row">
-          <div className="tweleve columns">
-            Vår SMS-leverantör har för närvarande tekniska problem. Vi hoppas vara i drift igen inom kort.
-          </div>
-        </div>
-        /* <div className="row">
         <div className="tweleve columns">
           <form onSubmit={this.handleSubmit.bind(this)}>
             <h1><Translate value="createPartyPage.createParty" /></h1>
@@ -108,7 +102,7 @@ class PartiesNew extends Component {
             
           </form>
         </div>
-      </div> */}
+      </div>
     );
   }
 }
