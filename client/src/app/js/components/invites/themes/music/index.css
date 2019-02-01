@@ -1,52 +1,56 @@
-.johnscott {
-  background-color: #292e5c;
+.music {
+  background-color: #595959;
   color: #f7f0de;
+  font-family: "BenchNine","Arial Narrow",Arial,sans-serif;
 }
-.inline-edit-johnscott{
-  color: #930302;
-  border-color: #930302;
+.inline-edit-music{
+  color: #cc6633;
+  border-color: #cc6633;
   background-color: #f7f0de;
-  font-family: "Droid Serif";
+  font-family: "BenchNine","Arial Narrow",Arial,sans-serif;
   width: 95%;
 }
-#themeImage-johnscott{
+#themeImage-music{
   display: block;
   margin: auto;
-  width: 90%;
+  width: 50%;
   max-width: 300px;
 }
-#themeLogo-johnscott{
+#themeLogo-music{
   display: block;
   padding-top: 10px;
   margin: auto;
   width: 90%;
   max-width: 300px;
 }
-.inviteFrame-johnscott{
+.inviteFrame-music{
     background-color: #f7f0de;
-    color: #930302;
-    border-color: #930302;
-    border-width: 3px;
+    color: #cc6633;
+    font-weight: bold;
+    border-color: #cc6633;
+    border-width: 8px;
     border-style: solid;
     padding: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
 
 }
-.font-johnscott{
+.font-music{
 
 }
 
-.accept-johnscott{
+.accept-music{
   background-color: #8BC755;
   color: #f7f0de;
 }
-.reject-johnscott{
-  background-color: #c61f38;
+.reject-music{
+  background-color: #cc6633;
   color: #f7f0de;
 }
 
-.header-johnscott{
+.header-music{
   text-align: center;
   font-weight: bold;
+  color: #393939;
+  font-size: 2rem
 }
