@@ -2,10 +2,9 @@ import React, { Component, PropTypes } from 'react';
 import { Translate,I18n} from 'react-redux-i18n';
 import EditablePartyField from '../editablePartyField';
 import Moment from 'moment';
-const imageSource = require('./bowling.png');
-const logoSource = require('./john_scotts.png');
+const imageSource = require('./face.png');
 require('./index.css');
-export default class BowlingTheme extends Component {
+export default class MusicTheme extends Component {
 
   render() {
     const  inviteMightBeNull  = this.props.invite;
@@ -61,7 +60,6 @@ export default class BowlingTheme extends Component {
              theme={party.theme}/>
           </div>
           {inviteMightBeNull?<p className={"header-"+party.theme}><Translate value="invitePage.isInvited" name={inviteMightBeNull.childName}/></p>:''}
-          <img src={logoSource} id={"themeLogo-"+party.theme}/>
       </div>
   );
 }
