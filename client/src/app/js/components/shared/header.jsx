@@ -53,6 +53,7 @@ class Header extends Component {
             <RadiumLink className="menu-item" to="/profile" onClick={this.handleMenuClick.bind(this)}><Translate value="loginPage.editProfile" /></RadiumLink>
             <RadiumLink className="menu-item" to="" onClick={this.handleLogoutClick.bind(this)}><Translate value="loginPage.logOut" /></RadiumLink>
             <RadiumLink className="menu-item" to="/parties/my" onClick={this.handleMenuClick.bind(this)}><Translate value="loginPage.myParties" /></RadiumLink>
+            <RadiumLink className="menu-item" to="/integrityPolicy" onClick={this.handleMenuClick.bind(this)}><Translate value="loginPage.integrityPolicy" /></RadiumLink>
             <div><br/><Translate value="loginPage.language" />:</div>
             <RadiumLink className="menu-item" to={currentRoute} onClick={this.handleLanguageClick.bind(this,"sv")}>Svenska</RadiumLink>
             <RadiumLink className="menu-item" to={currentRoute} onClick={this.handleLanguageClick.bind(this,"en")}>English</RadiumLink>
@@ -73,9 +74,12 @@ class Header extends Component {
 
               <RadiumLink className="menu-item" to="/parties/my" onClick={this.handleMenuClick.bind(this)}><Translate value="loginPage.myParties" /></RadiumLink>
               <RadiumLink to="users/new" onClick={this.handleMenuClick.bind(this)}><Translate value="loginPage.register" /></RadiumLink>
+              <RadiumLink className="menu-item" to="/integrityPolicy" onClick={this.handleMenuClick.bind(this)}><Translate value="loginPage.integrityPolicy" /></RadiumLink>
               <div><br/><Translate value="loginPage.language" />:</div>
               <RadiumLink className="menu-item" to={currentRoute} onClick={this.handleLanguageClick.bind(this,"sv")}>Svenska</RadiumLink>
               <RadiumLink className="menu-item" to={currentRoute} onClick={this.handleLanguageClick.bind(this,"en")}>English</RadiumLink>
+              <div><br/><Translate value="loginPage.contact" />:</div>
+              <a href="mailto:info@kalas.io">info@kalas.io</a>
             </Menu>
 
         </div>

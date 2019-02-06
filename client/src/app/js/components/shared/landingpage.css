@@ -31,7 +31,11 @@
   opacity: .8;
   font-weight: 300;
 }
-
+.description b{
+  color: black;
+  font-weight: 900;
+  font-size: larger;
+}
 
 
 /* Bigger than 550 */

@@ -38,6 +38,7 @@ class PartiesNew extends Component {
     const header = this.refs.header.value;
     const description = this.refs.description.value;
     const childName = this.refs.childName.value;
+    const startDateTimeUnix = Moment(this.state.startDateTime).unix();
     const startDateTime = this.state.startDateTimeString;
     const endDateTime = this.state.endDateTimeString;
     const partyLocation = this.refs.partyLocation.value;
@@ -48,6 +49,7 @@ class PartiesNew extends Component {
         header,
         description,
         childName,
+        startDateTimeUnix,
         startDateTime,
         endDateTime,
         partyLocation
@@ -72,7 +74,7 @@ class PartiesNew extends Component {
       this.setState({[name]: date, [name + 'String']: Moment(date).format('HH:mm')});
     };
     return (
-      <div className="row">
+        <div className="row">
         <div className="tweleve columns">
           <form onSubmit={this.handleSubmit.bind(this)}>
             <h1><Translate value="createPartyPage.createParty" /></h1>
@@ -85,18 +87,19 @@ class PartiesNew extends Component {
 
             <Translate value="createPartyPage.childName" />:
             <input type="text" placeholder={I18n.t('createPartyPage.childName_example')} className="u-full-width" ref="childName" />
+            <Translate value="createPartyPage.location" />:
+            <input type="text" placeholder={I18n.t('createPartyPage.location_example')} className="u-full-width" ref="partyLocation" />
             <Translate value="createPartyPage.startDateTime" />:
             <DateTimePicker placeholder={I18n.t('createPartyPage.startDateTime')} value={this.state.startDateTime} defaultValue={null} onChange={changeStart.bind(null,'startDateTime')} format={"YYYY-MM-DD HH:mm"} step={15} finalView={"month"} timeFormat={"HH:mm"} time={true} className="u-full-width" />
             <Translate value="createPartyPage.endDateTime" />:
             <DateTimePicker placeholder={I18n.t('createPartyPage.endDateTime')} min={this.state.startDateTime} value={this.state.endDateTime} onChange={changeEnd.bind(null,'endDateTime')}  format={"HH:mm"} step={15} finalView={"month"} timeFormat={"HH:mm"} calendar={false} className="u-full-width" />
-            <Translate value="createPartyPage.location" />:
-            <input type="text" placeholder={I18n.t('createPartyPage.location_example')} className="u-full-width" ref="partyLocation" />
             <Translate value="createPartyPage.header" />:
             <input type="text" placeholder={I18n.t('createPartyPage.header_example')} className="u-full-width" ref="header" />
             <Translate value="createPartyPage.description" />:
             <textarea rows="5" placeholder={I18n.t('createPartyPage.description_example')} className="u-full-width" ref="description" />
-            <input type="submit" className="button button-primary" value={I18n.t('createPartyPage.create')}/>
-            <Link to="/" className="u-pull-right button"><Translate value="general.cancel" /></Link>
+            <Link to="/" className="u-pull-left button"><Translate value="general.cancel" /></Link>
+            <input type="submit" className="u-pull-right button button-primary" value={I18n.t('createPartyPage.create')}/>
+            
           </form>
         </div>
       </div>

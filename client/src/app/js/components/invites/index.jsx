@@ -8,9 +8,19 @@ class InvitesIndex extends Component {
   componentWillMount() {
     this.props.getInvitesForParty(this.props.party.id);
   }
+  onEmailLinkClick(){
+    ga('send', {
+    hitType: 'event',
+    eventCategory: 'Invite',
+    eventAction: 'Email'
+  });
+  alert(I18n.t('createPartyPage.noGuests_email_alert'));
+  return false;
+  }
 
   render() {
     const { invites } = this.props;
+    const { party } = this.props;
     const statusOrder = {ACCEPTED: 1,
                         REJECTED: 2,
                         CREATED: 3,
@@ -29,8 +39,7 @@ class InvitesIndex extends Component {
                         REJECTED: I18n.t('createPartyPage.rejected')};
         return (
           <div className="row">
-            <div className="twelve columns">
-              <br/>
+            <div className={"twelve columns frame inviteFrame-"+(party.theme?party.theme:"polka")}>
               <h3><Translate value="createPartyPage.invitedGuests" /></h3>
               {invites&&invites.length ? (
                 <table className="u-full-width">
@@ -54,7 +63,14 @@ class InvitesIndex extends Component {
                   )}
                   </tbody>
                 </table>
-              ) : <div><Translate value="createPartyPage.noGuests" /><hr /></div> }
+              ) : <div><Translate value="createPartyPage.noGuests" />
+                    <div>
+                      <Translate value="createPartyPage.noGuests_email_question" /><br/>
+                      <a onClick={this.onEmailLinkClick.bind(this)} >
+                        <Translate value="createPartyPage.noGuests_email_link" />
+                      </a>
+                    </div>
+                  </div> }
             </div>
           </div>
       );

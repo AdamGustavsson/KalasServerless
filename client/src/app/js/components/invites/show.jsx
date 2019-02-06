@@ -11,28 +11,47 @@ import ThemedInvite from './themes/themedInvite';
 import InvitesIndex from './index';
 class InviteShow extends Component {
   componentWillMount() {
-    this.props.getInvite(this.props.params.id).then(() => this.props.getParty(this.props.invite.partyId));
+    this.props.getInvite(this.props.params.id).then(() => this.props.getParty(this.props.invite.partyId)).then(() => this.trackForRemarketing(this.props.party));
   }
 
+  trackForRemarketing(party){
+      window.google_trackConversion({
+        google_conversion_id: 982175048,
+        google_custom_params: {
+          partyLocation: party.partyLocation,
+        },
+        google_remarketing_only: true
+      });
+      fbq('track', 'ViewContent', {
+        content_name: party.partyLocation,
+       });
+  }
   onAcceptClick(event) {
+      if(this.props.invite.inviteStatus!='ACCEPTED'){
+        ga('send', {
+          hitType: 'event',
+          eventCategory: 'Invite',
+          eventAction: 'Accept'
+        });
+      }
       this.props.acceptInvite(this.props.invite.id);
       this.props.invite.inviteStatus="ACCEPTED";
       this.forceUpdate();
-      ga('send', {
-        hitType: 'event',
-        eventCategory: 'Invite',
-        eventAction: 'Accept'
-      });
+      
+      
   }
   onRejectClick(event) {
+      if(this.props.invite.inviteStatus!='REJECTED'){
+        ga('send', {
+          hitType: 'event',
+          eventCategory: 'Invite',
+          eventAction: 'Reject'
+        });
+      }
       this.props.rejectInvite(this.props.invite.id);
       this.props.invite.inviteStatus="REJECTED";
       this.forceUpdate();
-      ga('send', {
-        hitType: 'event',
-        eventCategory: 'Invite',
-        eventAction: 'Reject'
-      });
+      
   }
   fbReady(){
     window.FB.Event.subscribe('comment.create',
@@ -62,7 +81,9 @@ class InviteShow extends Component {
     if (!invite || !party) {
       return <div className="row"><div className="twelve columns"><Translate value="general.loading" /></div></div>
     }
-    ga('set', 'userId', invite.mobileNumber);
+    if(invite.mobileNumber){
+      ga('set', 'userId', invite.mobileNumber);
+    } 
     return (
       <div className="row">
         <Helmet
@@ -73,15 +94,16 @@ class InviteShow extends Component {
         />
       <ThemedInvite invite={invite} party={party} locale={locale}/>
 
-      <h5><Translate value="invitePage.status" />: {statusText[invite.inviteStatus]}</h5>
-      <p><Translate value="invitePage.noReply" /></p>
+
       <button onClick={this.onAcceptClick.bind(this)} className={"button u-full-width accept-"+ (party.theme?party.theme:"polka")}><Translate value="invitePage.accept" /></button>
       <button onClick={this.onRejectClick.bind(this)} className={"button u-full-width reject-"+ (party.theme?party.theme:"polka")}><Translate value="invitePage.reject" /></button>
+      <p><Translate value="invitePage.noReply" /></p>
+      <h5><Translate value="invitePage.status" />: {statusText[invite.inviteStatus]}</h5>
       {invite.inviteStatus!='INVITED'?
-      <div className="frame" id={"inviteFrame-"+(party.theme?party.theme:"polka")}>
+      <div className={"frame inviteFrame-"+(party.theme?party.theme:"polka")}>
         <div><Translate value="invitePage.comments" /></div>
         <FacebookProvider onReady={this.fbReady} appID="1114268925305216" language={locale=='sv'?'sv_SE':'en_GB'}>
-          <Comments href={"http://" + location.host + "/fromComments/" +party.id} orderBy="time" numPosts="10"/>
+          <Comments href={"http://" + location.host + "/fromComments/" +party.id} orderBy="time" numPosts={10}/>
         </FacebookProvider>
       </div>
       :''}
@@ -89,10 +111,12 @@ class InviteShow extends Component {
       <InvitesIndex/>
       :''}
       {invite.inviteStatus!='INVITED'?
-      <div className="twelve columns">
+      <div className={"twelve columns frame inviteFrame-"+(party.theme?party.theme:"polka")}>
         <h4><Translate value="invitePage.whatIs" /></h4>
         <h5><Translate value="invitePage.serviceDescription" /></h5>
         <Link to={'/'} className="button button-primary"><Translate value="invitePage.moreInfo" /></Link>
+        <br/><Link to={'/integrityPolicy'} >
+        <Translate value="loginPage.integrityPolicy" /></Link>
         <br/>&nbsp;
         <h5><Translate value="invitePage.remindMe" /></h5>
         <Link to={'/reminder'} className="button button-primary"><Translate value="invitePage.remindMeButton" /></Link>

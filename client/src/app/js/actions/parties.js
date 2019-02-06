@@ -1,7 +1,7 @@
 import 'whatwg-fetch';
 import _ from 'lodash';
 import { push } from 'react-router-redux';
-
+import Moment from 'moment';
 import { API_URL } from './index';
 import {resetError} from './error';
 
@@ -87,6 +87,7 @@ export function createParty(party,locale) {
         header: "${party.header}",
         description: "${party.description}",
         childName: "${party.childName}",
+        startDateTimeUnix: ${party.startDateTimeUnix},
         startDateTime: "${party.startDateTime}",
         endDateTime: "${party.endDateTime}",
         partyLocation: "${party.partyLocation}",
@@ -114,7 +115,12 @@ export function createParty(party,locale) {
 }
 
 export function updateParty(party) {
-  party.description = party.description.replace(/(\r\n|\n|\r)/gm,"&#13");
+  if(party.description){
+    party.description = party.description.replace(/(\r\n|\n|\r)/gm,"&#13");
+  }
+  if(party.startDateTime){
+    party.startDateTimeUnix=Moment(party.startDateTime, 'YYYY-MM-DD HH:mm').unix();
+  }
   const query = { "query":
     `mutation updateTheParty {
       party: updateParty (
@@ -122,6 +128,7 @@ export function updateParty(party) {
         ${party.header?'header: "' + party.header +'"':''}
         ${party.description?'description: "' + party.description +'"':''}
         ${party.childName?'childName: "' + party.childName +'"':''}
+        ${party.startDateTimeUnix?'startDateTimeUnix: ' + party.startDateTimeUnix :''}
         ${party.startDateTime?'startDateTime: "' + party.startDateTime +'"':''}
         ${party.endDateTime?'endDateTime: "' + party.endDateTime +'"':''}
         ${party.partyLocation?'partyLocation: "' + party.partyLocation +'"':''}

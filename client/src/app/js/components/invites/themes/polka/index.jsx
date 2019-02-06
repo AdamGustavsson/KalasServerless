@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { Translate,I18n} from 'react-redux-i18n';
 import EditablePartyField from '../editablePartyField';
+import Moment from 'moment';
 const imageSource = require('./polka.png');
 require('./index.css');
 export default class PolkaTheme extends Component {
@@ -11,7 +12,7 @@ export default class PolkaTheme extends Component {
     const { locale } = this.props;
     this.props.setBackground(party.theme);
     return(
-    <div className="frame" id={"inviteFrame-"+party.theme} >
+    <div className={"frame inviteFrame-"+party.theme} >
       <img src={imageSource} id={"themeImage-"+party.theme}/>
       <div className={"header-"+party.theme} >
         <EditablePartyField
@@ -37,6 +38,7 @@ export default class PolkaTheme extends Component {
          editEnabled={this.props.editEnabled}
          value={party.startDateTime}
          change={this.props.updatePartyField}
+         validate={value => Moment(value, 'YYYY-MM-DD HH:mm').isValid()}
          propName="startDateTime"
          theme={party.theme}/>
 

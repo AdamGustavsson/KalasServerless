@@ -26,6 +26,7 @@ module.exports = {
   },
 
   getTodaysActiveReminders() {
+    //TODO change to a query and add an index. This will fail when the size of the table is big enough
     return db('scan', {
       TableName: reminderTable,
       FilterExpression: "reminderStatus = :statusValue and reminderDate = :dateValue",

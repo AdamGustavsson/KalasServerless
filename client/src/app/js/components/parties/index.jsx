@@ -43,7 +43,7 @@ class PartiesIndex extends Component {
                   </tbody>
                 </table>
               ) : <div></div> }
-              <Link to={ 'parties/new' } className="button button-primary"><Translate value="myPartiesPage.create" /></Link>
+              <Link to={ 'parties/new' } className="u-pull-right button button-primary"><Translate value="myPartiesPage.create" /></Link>
             </div>
           </div>
       );

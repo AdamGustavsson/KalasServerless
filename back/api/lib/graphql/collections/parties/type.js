@@ -12,6 +12,7 @@ module.exports = new GraphQLObjectType({
     description: {type: GraphQLString},
     hostUser: {type: GraphQLString},
     childName: {type: GraphQLString},
+    startDateTimeUnix:   {type: GraphQLString},
     startDateTime:   {type: GraphQLString},
     endDateTime:   {type: GraphQLString},
     partyLocation: {type: GraphQLString},

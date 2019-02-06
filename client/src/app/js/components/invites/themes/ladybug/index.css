@@ -25,7 +25,10 @@
   padding-top: 50px;
   padding-bottom: 50px;
 }
-#inviteFrame-ladybug{
+.container-ladybug{
+  min-height: 360px;
+}
+.inviteFrame-ladybug{
     background-color: #ffe7c9;
     color: black;
     border-color: #b3c181;
@@ -34,7 +37,9 @@
     padding: 10px 10px 10px 5px;
     margin-top: 40px;
     margin-bottom: 10px;
-    font-family: "Indie Flower";
+}
+.font-ladybug{
+  font-family: "Indie Flower";
 }
 
 .accept-ladybug{

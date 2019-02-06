@@ -33,9 +33,23 @@ class PartiesShow extends Component {
   }
 
   setTheme(theme){
+    ga('send', {
+      hitType: 'event',
+      eventCategory: 'Party',
+      eventAction: 'SelectTheme',
+      label: theme
+    });
     this.props.setThemeOnParty(this.props.party.id,theme);
   }
   updatePartyField(party){
+    if(party.startDateTime){
+      const parsed = Moment(party.startDateTime, 'YYYY-MM-DD HH:mm');
+      if (!parsed.isValid()){
+        return
+      }
+
+      party.startDateTimeUnix=parsed.unix();
+    }
     party.id = this.props.party.id;
     this.props.updateParty(party);
   }
@@ -62,9 +76,16 @@ class PartiesShow extends Component {
                   name:I18n.t('theme.polka')},
                   {id:'bowling',
                   name:I18n.t('theme.bowling')},
+                  {id:'music',
+                  name:I18n.t('theme.music')},
+                  {id:'laser',
+                  name:I18n.t('theme.laser')},
                   {id:'ladybug',
-                  name:I18n.t('theme.ladybug')}
+                  name:I18n.t('theme.ladybug')},
+                  {id:'prison',
+                  name:I18n.t('theme.prison')}
                 ];
+       
     return (
       <div className="row">
       <Helmet
@@ -91,7 +112,7 @@ class PartiesShow extends Component {
           :
           (<div>
             {anyoneHasReplied?
-            <div className="frame" id={"inviteFrame-"+(party.theme?party.theme:"polka")}>
+            <div className={"frame inviteFrame-"+(party.theme?party.theme:"polka")}>
               <div><Translate value="createPartyPage.comments" /></div>
               <FacebookProvider onReady={fbReady} appID="1114268925305216" language={locale=='sv'?'sv_SE':'en_GB'}>
                 <Comments href={"http://" + location.host + "/fromComments/" +party.id} orderBy="time" numPosts={10}/>
@@ -104,13 +125,15 @@ class PartiesShow extends Component {
         }
 
         <InvitesNew/>
-        <h5><Translate value="createPartyPage.youreDone" /></h5>
-        <h5><Translate value="createPartyPage.youGetAText" /></h5>
-        <FacebookProvider appID="1114268925305216" language={locale=='sv'?'sv_SE':'en_GB'} >
-          <Like reference="party" width="300" showFaces share href="http://kalas.io"/>
-        </FacebookProvider>
-        <br/>&nbsp;
-        <Link to='parties/my' className="button u-full-width"><Translate value="createPartyPage.seeAllParties" /></Link>
+        <div className={"frame inviteFrame-"+(party.theme?party.theme:"polka")}>
+          <h5><Translate value="createPartyPage.youreDone" /></h5>
+          <h5><Translate value="createPartyPage.youGetAText" /></h5>
+          <FacebookProvider appID="1114268925305216" language={locale=='sv'?'sv_SE':'en_GB'} >
+            <Like reference="party" width="300" showFaces share href="http://kalas.io"/>
+          </FacebookProvider>
+          <br/>&nbsp;
+          <Link to='parties/my' className="u-pull-right button button-primary"><Translate value="createPartyPage.seeAllParties" /></Link><br/>&nbsp;
+        </div>
       </div>
 
     );

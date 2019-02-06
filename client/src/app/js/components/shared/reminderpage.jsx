@@ -54,7 +54,7 @@ class ReminderPage extends Component {
       <div className="twelve columns">
         <h4><Translate value="reminderPage.heading" /></h4>
         {reminderCreated?
-          <h5>Reminder Created</h5>
+          <h5><Translate value="reminderPage.reminderCreated" /></h5>
         :
         <form onSubmit={this.handleSubmit.bind(this)}>
           {invite?
@@ -66,7 +66,7 @@ class ReminderPage extends Component {
             </div>
           }
           <DateTimePicker placeholder={I18n.t('reminderPage.date')} value={this.state.reminderDate} defaultValue={null}  onChange={changeDate.bind(null,'reminderDate')} format={"YYYY-MM-DD"} finalView={"month"} min={new Date()} time={false} className="u-full-width" />
-          <input type="submit" className="button button-primary" value={I18n.t('reminderPage.create')}/>
+          <input type="submit" className="u-pull-right button button-primary" value={I18n.t('reminderPage.create')}/>
         </form>
       }
       </div>

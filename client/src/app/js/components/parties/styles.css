@@ -12,7 +12,7 @@
 .button, button, input[type="submit"], input[type="reset"], input[type="button"]{
   -webkit-appearance: none;
 }
-td {
+td, th {
   padding: 12px 8px;
 }
 .rw-calendar-grid td{

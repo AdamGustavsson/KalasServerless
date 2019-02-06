@@ -1,6 +1,6 @@
 .bowling {
-  background-color: #FFCC66;
-  font-family: "Droid Serif";
+  background-color: #292e5c;
+  color: #f7f0de;
 }
 .inline-edit-bowling{
   color: #930302;
@@ -15,7 +15,7 @@
   width: 90%;
   max-width: 300px;
 }
-#inviteFrame-bowling{
+.inviteFrame-bowling{
     background-color: #f7f0de;
     color: #930302;
     border-color: #930302;
@@ -24,14 +24,19 @@
     padding: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
-    font-family: "Droid Serif";
+
+}
+.font-bowling{
+
 }
 
 .accept-bowling{
   background-color: #8BC755;
+  color: #f7f0de;
 }
 .reject-bowling{
-  background-color: #F68D60;
+  background-color: #c61f38;
+  color: #f7f0de;
 }
 
 .header-bowling{

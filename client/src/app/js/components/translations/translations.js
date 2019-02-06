@@ -6,8 +6,10 @@ export const translationsObject = {
       logOut: "Log out",
       login: "Login",
       register:"Register account",
+      integrityPolicy:"Integrity policy",
       myParties: "My parties",
       language:"Change language",
+      contact:"Contact",
       error: "Please fill out all fields"
     },
     user: {
@@ -39,13 +41,14 @@ export const translationsObject = {
       registerInfo: "Registration is free of charge and completely voluntary. Registered users have access to more functionality. We recommend registering after you created your first party.",
       chosePassword: "Chose a password",
       verifyPassword: "Confirm password",
+      acceptPolicy: "By registering you accept our",
       error: "Please fill out all fields and ensure that you typed the chosen password twice"
     },
     createPartyPage: {
       title: "Status of your party invite | kalas.io",
-      error: "Please fill in all fields",
+      error: "Please fill in all fields, before you can choose a theme",
       createParty: "Create party",
-      step1: "Step 1:",
+      step1: "Step 1 of 3:",
       step1_description: "Enter details of the party",
       editChanges: "Does the text look ok? Tap to edit.",
       step2: "Step 2:",
@@ -66,7 +69,7 @@ export const translationsObject = {
       endDateTime: "End time",
       location: "Location",
       location_example: "Laserdome, Grafiska vägen 32, Göteborg",
-      create: "Create",
+      create: "Chose a theme",
       invitedGuests: "Invited guests",
       guestName: "First name of the invited child",
       guestNameHeader: "Name",
@@ -76,6 +79,9 @@ export const translationsObject = {
       mobileNumberHeader: "Mobile number",
       mobileNumber_example: "07XXXXXXXXX",
       noGuests: "There are currently no invited guests. It's convinient to first write the names of the guests on a piece of paper. Then find the mobile numbers of the parents in your contacts or the lists you often get from school. Then you are ready for the next step below.",
+      noGuests_email_question: "Would you rather invite through email? ",
+      noGuests_email_link: "Click here",
+      noGuests_email_alert: "This feature is under development. Right now you can only invite with mobile numbers.",
       invite: "Invite",
       inviteSent: "Invite sent",
       accepted: "Accepted",
@@ -93,11 +99,11 @@ export const translationsObject = {
       status: "Your answer",
       inviteSent: "Not yet replied",
       accepted: "Accepted, The host has been notified via SMS",
-      rejected: "Rejected, The host has been notified via SMS",
-      noReply: "The SMS you recieved is automatic. You can NOT reply to it",
+      rejected: "Declined, The host has been notified via SMS. Why not write a comment below, as to why you cannot attend?",
+      noReply: "Please tap one of the buttons above. The SMS you recieved is automatic. You can NOT reply to it. ",
       accept: "Accept",
       reject: "Reject",
-      comments: "Here you can write a comment that is visible on all invites and for the one that invited you.",
+      comments: "Here you can write a comment that is visible on all invites and for the one that invited you. This is useful for coordinating transprt to the party and letting the host know why you cannot attend.",
       whatIs: "What is kalas.io?",
       serviceDescription: "Kalas.io is a free service that helps you invite guest to your child's birthday party and keep track of RSVPs.",
       moreInfo: "More info",
@@ -107,7 +113,12 @@ export const translationsObject = {
     reminderPage:{
       heading: "Thank you for your interest",
       descriptionHaveNumber: "Please enter a date below when you want us to remind you. We will send an SMS with the reminder to your mobile number: %{mobileNumber}",
-      descriptionDontHaveNumber: "Please enter your mobile number and a date below when you want us to remind you. We will send an SMS with the reminder."
+      descriptionDontHaveNumber: "Please enter your mobile number and a date below when you want us to remind you. We will send an SMS with the reminder.",
+      reminderCreated: "Your reminder has been saved. We are excited to see you back soon.",
+      mobileNumber: "Mobile number",
+      create: "Create reminder",
+      error: "Please fill out all fields",
+      date: "Date"
     },
     myPartiesPage: {
       header: "Parties",
@@ -129,12 +140,17 @@ export const translationsObject = {
     theme: {
       polka: "Polka",
       bowling: "Bowling",
+      johnscott: "JohnScotts",
+      music: "Audio",
+      laser: "Laserdome",
       ladybug: "Ladybug",
+      prison: "Prison",
       dummyParty: {
         header1: "Welcome to celebrate %{name}'s 6th birthday",
         header2: "Welcome to %{name}'s birthday party",
         description1: "We meet up at the sports bar, eat some burgers and throw a few strikes. Bowling shoes can be borrowed.",
-        description2: "%{name} is turning 8. Lets celebrate with a party at our place. Bring warm clothes as we will also be outdoors."
+        description2: "%{name} is turning 8. Lets celebrate with a party at our place. Bring warm clothes as we will also be outdoors.",
+        description3: "%{name} has had her 10th birthday. We want you to join us in the celebration."
       }
     }
   },
@@ -147,8 +163,10 @@ export const translationsObject = {
       mobileNumber: "Mobilnummer",
       password: "Lösenord",
       register:"Registrera dig",
+      integrityPolicy:"Integritetspolicy",
       myParties: "Mina kalas",
       language:"Ändra språk",
+      contact:"Kontakt",
       error: "Vänligen fyll i alla fält"
     },
     user: {
@@ -162,8 +180,8 @@ export const translationsObject = {
       back: "Tillbaka"
     },
     landingPage: {
-      title: "Inbjudningskort till ditt kalas. Bjud in till barnkalas utan krångel | kalas.io",
-      heading: 'Kalasinbjudningar för dagens föräldrar',
+      title: "Skicka kalasinbjudan med SMS. Gratis inbjudningskort kalas online.| kalas.io",
+      heading: 'Skicka kalasinbjudan  med SMS',
       description: "Kalas.io hjälper dig att bjuda in till ditt barnkalas och hålla reda på vilka barn som kommer.",
       newPartyButton: "Skapa din första kalasinbjudan",
       howItWorks: "Hur fungerar det?",
@@ -180,18 +198,19 @@ export const translationsObject = {
       registerInfo: "Registratering är gratis och helt frivillig. Du kan använda tjänsten utan att vara registrerad. Registrerade användare har tillgång till fler funktioner. Vi rekommenderar att du registrerar dig efter du har skapat din första kalas inbjudan.",
       chosePassword: "Välj ett lösenord",
       verifyPassword: "Bekräfta lösenord",
+      acceptPolicy: "Genom att registrera dig accepterar du vår",
       error: "Vänligen fyll i alla fält och se till att lösenordsfälten är lika"
     },
     createPartyPage: {
       title: "Status på din kalasinbjudan | kalas.io",
-      error: "Vänligen fyll i alla fält",
+      error: "Vänligen fyll i alla fält, innan du kan välja ett inbjudningskort",
       createParty: "Skapa inbjudan",
-      step1: "Steg 1:",
+      step1: "Steg 1 av 3:",
       step1_description: "Fyll i uppgifter om kalaset",
       editChanges: "Ser texten bra ut? Klicka för att ändra.",
       step2: "Steg 2:",
       step2_description: "Välj ett inbjudningskort",
-      step3: "Steg 2:",
+      step3: "Steg 3:",
       step3_description: "Bjud in barnen",
       comments: "Här kan du läsa kommentarer från de inbjudna och skriva egna. De syns på alla inbjudningar.",
       inviteMoreChildren: "Bjud in fler barn",
@@ -207,7 +226,7 @@ export const translationsObject = {
       endDateTime: "Sluttid",
       location: "Plats",
       location_example: "Laserdome, Grafiska vägen 32, Göteborg",
-      create: "Skapa",
+      create: "Välj inbjudningskort",
       invitedGuests: "Inbjudna barn",
       guestName: "Inbjudna barnets förnamn",
       guestNameHeader: "Namn",
@@ -217,6 +236,9 @@ export const translationsObject = {
       mobileNumberHeader: "Mobilnummer",
       mobileNumber_example: "07XXXXXXXXX",
       noGuests: "Du har inte bjudit in några barn än. Ett tips är att skriva ned de barn du vill bjuda på papper först. Leta sedan upp förädrarnas mobilnummer i dina kontakter i mobilen eller i en lista från skolan. Sen är du redo att bjuda in dem nedan.",
+      noGuests_email_question: "Vill du hellre ange gästernas epost-adresser? ",
+      noGuests_email_link: "Klicka här",
+      noGuests_email_alert: "Denna funktion är under utveckling. Just nu kan man bara bjuda in med hjälp av mobilnummer.",
       invite: "Bjud in",
       inviteSent: "Inbjudan skickad",
       accepted: "Tackat ja",
@@ -234,11 +256,11 @@ export const translationsObject = {
       status: "Ditt svar",
       inviteSent: "Inte svarat",
       accepted: "Tackat ja, vi har meddelat den som bjudit dig via SMS",
-      rejected: "Tackat nej, vi har meddelat den som bjudit dig via SMS",
-      noReply: "SMSet du fått är automatiskt. Du kan INTE svara på det.",
+      rejected: "Tackat nej, vi har meddelat den som bjudit dig via SMS. Du kan skriva en kommentar nedan, om vaför du inte kan komma.",
+      noReply: "Vänligen klicka en av klapparna ovan. SMSet du fått är automatiskt. Du kan INTE svara på det.",
       accept: "Tacka ja",
       reject: "Vi kan tyvärr inte komma",
-      comments: "Här kan du skriva en kommentar som syns på allas inbjudningar samt för den som bjudit dig.",
+      comments: "Här kan du skriva en kommentar som syns på allas inbjudningar samt för den som bjudit dig. Här kan ni t.ex samordna skjuts till kalaset eller meddela varför ni inte kan komma.",
       whatIs: "Vad är kalas.io?",
       serviceDescription: "Kalas.io är en gratistjänst som hjälper dig att bjuda in till ditt barnkalas och hålla reda på vilka barn som kommer. Prova du också!",
       moreInfo: "Mer info",
@@ -249,9 +271,11 @@ export const translationsObject = {
       heading: "Tack för ditt intresse",
       descriptionHaveNumber: "Ange ett datum när du vill bli påmind nedan. Vi kommer skicka ett SMS till ditt mobilnummer: %{mobileNumber}",
       descriptionDontHaveNumber: "Ange ditt mobilnummer och ett datum när du vill bli påmind nedan. Vi kommer skicka ett SMS med en påminnelse",
+      reminderCreated: "Din påminnelse har sparats. Vi är glada att återse dig snart.",
       mobileNumber: "Mobilnummer",
       create: "Skapa påminnelse",
-      error: "Vänligen fyll i alla fält"
+      error: "Vänligen fyll i alla fält",
+      date: "Datum"
     },
     myPartiesPage: {
       header: "Kalas",
@@ -273,12 +297,17 @@ export const translationsObject = {
     theme: {
       polka: "Polka",
       bowling: "Bowling",
+      johnscott: "JohnScotts",
+      music: "Audio",
+      laser: "Laserdome",
       ladybug: "Ladybug",
+      prison: "Prison",
       dummyParty: {
         header1: "Välkommen att fira %{name}s 6-årsdag",
-        header2: "Välkommen på %{name}s kalas",
+        header2: "Välkommen på kalas",
         description1: "Vi samlas på sportbaren, äter hamburgare och slår några strikes. Bowlingskor lånar vi.",
-        description2: "%{name} fyller 8 år. Det firar vi med stort tårtkalas hemma hos oss. Ta med varma kläder för vi kommer även att vara ute."
+        description2: "%{name} fyller 8 år. Det firar vi med stort tårtkalas hemma hos oss. Ta med varma kläder för vi kommer även att vara ute.",
+        description3: "%{name} har fyllt 10. Du är välkommen att fira det med henne."
       }
     }
   }

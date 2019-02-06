@@ -23,7 +23,8 @@ const unlisten = history.listen(location => {
   if(state.users.currentUser){
       ga('set', 'userId', state.users.currentUser.mobileNumber);
   }
-  ga('send', 'pageview', location.pathname);
+  ga('set', 'page', location.pathname);
+  ga('send', 'pageview');
 });
 
 syncTranslationWithStore(store);

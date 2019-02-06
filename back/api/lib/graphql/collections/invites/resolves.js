@@ -11,22 +11,7 @@ const partyResolve = require('../parties/resolves');
 const userResolve = require('../users/resolves');
 var I18n = require('react-i18nify').I18n;
 
-const translationsObject = {
-  en: {
-    SMSMessage: {
-      accepted: "%{guestName} has accepted the invite to the birthday party of %{birthdayChild}. http://%{url} Click above for full info",
-      rejected: "%{guestName} has rejected the invite to the birthday party of %{birthdayChild}. http://%{url} Click above for full info",
-      invited: "Party invite: %{guestName} has been invited to the birthday party of %{birthdayChild}. http://%{url} Please click the link to answer and get more info"
-    }
-  },
-  sv: {
-    SMSMessage: {
-      accepted: "%{guestName} har tackat ja till %{birthdayChild}s kalas. http://%{url} Klicka ovan för hela listan av inbjudna och deras status",
-      rejected: "%{guestName} har tackat nej till %{birthdayChild}s kalas. http://%{url} Klicka ovan för hela listan av inbjudna och deras status",
-      invited: "Kalasinbjudan: %{guestName} har blivit inbjuden till %{birthdayChild}s kalas. http://%{url} Klicka på länken för mer information och för att tacka ja eller nej"
-    }
-  }
-};
+const translationsObject = require('../../translations/translations');
 
 I18n.loadTranslations(translationsObject);
 
@@ -34,6 +19,7 @@ const stage = process.env.SERVERLESS_STAGE;
 const region = process.env.SERVERLESS_REGION;
 const projectName = process.env.SERVERLESS_PROJECT;
 const invitesTable = projectName + '-invites-' + stage;
+const partyIndex = 'partyId-index';
 
 const baseURL = (stage=='prod'?'kalas.io':stage + '.kalas.io.s3-website-'+ region + '.amazonaws.com')
 
@@ -41,9 +27,10 @@ const baseURL = (stage=='prod'?'kalas.io':stage + '.kalas.io.s3-website-'+ regio
 module.exports = {
 
   getInvitesForParty(partyId) {
-    return db('scan', {
+    return db('query', {
       TableName: invitesTable,
-      FilterExpression: "partyId = :partyId",
+      IndexName:partyIndex,
+      KeyConditionExpression: "partyId = :partyId",
       ExpressionAttributeValues: {':partyId':partyId},
       ProjectionExpression: "id,childName,mobileNumber,inviteStatus"
     }).then(reply => reply.Items);
@@ -51,19 +38,22 @@ module.exports = {
 
   create(invite) {
     invite.id = uuid.v1();
-    return db('put', {
-      TableName: invitesTable,
-      Item: invite
+    return partyResolve.get(invite.partyId)
+    .then(partyResponse => {
+      I18n.setLocale(partyResponse.locale);
+      const inviteText = I18n.t("SMSMessage.invited",{guestName: invite.childName, birthdayChild: partyResponse.childName.trim(), url:baseURL + '/i/' + invite.id})
+      smsgateway.sendSMS(invite.mobileNumber,inviteText);
+      invite.createDateTimeUnix = Math.round(new Date().getTime()/1000);
+      invite.partyDateTimeUnix = partyResponse.startDateTimeUnix;
+      return Promise.resolve(invite);
     })
-        // send the SMS to the invited user
-        .then(() => partyResolve.get(invite.partyId))
-        .then(partyResponse => {
-        I18n.setLocale(partyResponse.locale);
-        return I18n.t("SMSMessage.invited",{guestName: invite.childName, birthdayChild: partyResponse.childName.trim(), url:baseURL + '/i/' + invite.id})
+    .then( invite  => db('put', {
+        TableName: invitesTable,
+        Item: invite
       })
-        .then(inviteText => smsgateway.sendSMS(invite.mobileNumber,inviteText))
-        // finally return the invite record
-        .then(() => invite);
+    )
+    // finally return the invite record
+    .then(() => invite);
   },
   get(id) {
     return db('get', {
