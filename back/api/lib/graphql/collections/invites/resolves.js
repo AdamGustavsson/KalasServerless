@@ -78,12 +78,12 @@ module.exports = {
       ]
     }).then(reply => reply.Item);
   },
-  getUnansweredInvites() {
+  getAcceptedInvitesForUpcomingParties(intervalStart,intervalEnd) {
     return db('scan', {
       TableName: invitesTable,
-      FilterExpression: "inviteStatus = :statusValue",
-      ExpressionAttributeValues: {':statusValue':'INVITED'},
-      ProjectionExpression: "id,childName,mobileNumber,inviteStatus"
+      FilterExpression: "inviteStatus = :statusValue, partyDateTimeUnixb > : startValue, partyDateTimeUnix npm< :endValue",
+      ExpressionAttributeValues: {':statusValue':'ACCEPTED','startValue': intervalStart,'endValue': intervalEnd},
+      ProjectionExpression: "id,childName,mobileNumber,partyId"
     }).then(reply => reply.Items);
   },
   accept(inviteId) {
