@@ -1,6 +1,7 @@
 'use strict';
 const inviteResolves = require('../../../api/lib/graphql/collections/invites/resolves');
-const partyResolves = require('../../../api/lib/graphql/collections/party/resolves');
+const partyResolves = require('../../../api/lib/graphql/collections/parties/resolves');
+const smsgateway = require('../../../api/lib/smsgateway');
 var I18n = require('react-i18nify').I18n;
 const stage = process.env.SERVERLESS_STAGE;
 const region = process.env.SERVERLESS_REGION;
@@ -15,7 +16,7 @@ const translationsObject = {
   },
   sv: {
     SMSMessage: {
-      partyReminder: "Påminnelse: Imorgon kl. %{startTime} är %{birthdayChild}s kalas. %{guestName} är bjuden. http://%{url} Klicka ovan för detaljer"
+      partyReminder: "Påminnelse: Imorgon kl. %{startTime} har %{birthdayChild} kalas. %{guestName} är bjuden. http://%{url} Klicka ovan för detaljer"
     }
   }
 };
@@ -39,8 +40,10 @@ function getIntervalForTomorrow(){
 }
 
 function handleInvites(invites){
+  console.log("in handleInvites");
+  console.log(invites);
   invites.forEach(invite => {
-    partyResolve.get(invite.partyId)
+    partyResolves.get(invite.partyId)
         .then(partyResponse => {
         I18n.setLocale(partyResponse.locale);
         return I18n.t("SMSMessage.partyReminder",{guestName: invite.childName, birthdayChild: partyResponse.childName.trim(),startTime: partyResponse.startDateTime.split(' ')[1], url:baseURL + '/i/' + invite.id})
@@ -52,7 +55,8 @@ function handleInvites(invites){
 module.exports = {
   remindAll(){
     console.log("We are now in remind all");
-    var [intervalStart,intervalEnd] = getIntervalForTomorrow();
+    var intervalStart = getIntervalForTomorrow()[0];
+    var intervalEnd = getIntervalForTomorrow()[1];
     console.log(intervalStart);
     console.log(intervalEnd);
     inviteResolves.getAcceptedInvitesForUpcomingParties(intervalStart,intervalEnd)

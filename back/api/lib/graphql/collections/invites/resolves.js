@@ -71,8 +71,8 @@ module.exports = {
   getAcceptedInvitesForUpcomingParties(intervalStart,intervalEnd) {
     return db('scan', {
       TableName: invitesTable,
-      FilterExpression: "inviteStatus = :statusValue, partyDateTimeUnixb > : startValue, partyDateTimeUnix npm< :endValue",
-      ExpressionAttributeValues: {':statusValue':'ACCEPTED','startValue': intervalStart,'endValue': intervalEnd},
+      FilterExpression: "inviteStatus = :statusValue and partyDateTimeUnix > :startValue and partyDateTimeUnix < :endValue",
+      ExpressionAttributeValues: {':statusValue':'ACCEPTED',':startValue': intervalStart,':endValue': intervalEnd},
       ProjectionExpression: "id,childName,mobileNumber,partyId"
     }).then(reply => reply.Items);
   },
