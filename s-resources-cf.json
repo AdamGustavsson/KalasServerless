@@ -80,6 +80,13 @@
               "Action": [
                 "*"
               ],
+              "Resource": "arn:aws:dynamodb:${region}:*:table/${project}-invites-${stage}/index/inviteStatus-partyDateTimeUnix-index"
+            },
+            {
+              "Effect": "Allow",
+              "Action": [
+                "*"
+              ],
               "Resource": "arn:aws:dynamodb:${region}:*:table/${project}-invites-${stage}/index/partyId-createDateTimeUnix-index"
             },
             {
@@ -212,6 +219,26 @@
               "ProjectionType": "INCLUDE" },
             "ProvisionedThroughput" : { 
               "ReadCapacityUnits": 3,
+              "WriteCapacityUnits": 3 
+            }
+          },
+          {
+            "IndexName" : "inviteStatus-partyDateTimeUnix-index",
+            "KeySchema" : [ 
+              {
+                "AttributeName": "inviteStatus",
+                "KeyType": "HASH"
+              },
+              {
+                "AttributeName": "partyDateTimeUnix",
+                "KeyType": "RANGE"
+              }
+            ],
+            "Projection" : { 
+              "NonKeyAttributes" : ["id","childName","mobileNumber","partyId","createDateTimeUnix"],
+              "ProjectionType": "INCLUDE" },
+              "ProvisionedThroughput" : { 
+              "ReadCapacityUnits": 1,
               "WriteCapacityUnits": 3 
             }
           }
