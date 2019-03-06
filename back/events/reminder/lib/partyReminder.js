@@ -51,15 +51,26 @@ function handleInvites(invites){
         .then(inviteText => smsgateway.sendSMS(invite.mobileNumber,inviteText))
   });
 }
+function filterInvites(min,invites){
+  // return those whos last number equals the min
+  console.log("in filter");
+  console.log("min:"+min);
+  console.log(invites);
+  //converting createDateTimeUnix to a date and taking the second, compare that with the current minute
+  // the scheduling must be set so that this is run exactly 60 times per day, on the minute 1,2,3,4.... 
+  return invites.filter(invite => new Date(invite.createDateTimeUnix*1000).getSeconds()==min)
+}
 
 module.exports = {
-  remindAll(){
-    console.log("We are now in remind all");
+  remindSameSecond(){
+    console.log("We are now in remindSameSecond");
+    var min = new Date().getMinutes();
+    console.log(min);
     var intervalStart = getIntervalForTomorrow()[0];
     var intervalEnd = getIntervalForTomorrow()[1];
     console.log(intervalStart);
     console.log(intervalEnd);
     inviteResolves.getAcceptedInvitesForUpcomingParties(intervalStart,intervalEnd)
-    .then((invites) => handleInvites(invites));
+    .then((invites) => handleInvites(filterInvites(min,invites)));
   }
 }

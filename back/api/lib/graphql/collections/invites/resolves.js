@@ -20,6 +20,7 @@ const region = process.env.SERVERLESS_REGION;
 const projectName = process.env.SERVERLESS_PROJECT;
 const invitesTable = projectName + '-invites-' + stage;
 const partyIndex = 'partyId-index';
+const timeIndex= 'inviteStatus-partyDateTimeUnix-index';
 
 const baseURL = (stage=='prod'?'kalas.io':stage + '.kalas.io.s3-website-'+ region + '.amazonaws.com')
 
@@ -69,11 +70,12 @@ module.exports = {
     }).then(reply => reply.Item);
   },
   getAcceptedInvitesForUpcomingParties(intervalStart,intervalEnd) {
-    return db('scan', {
+    return db('query', {
       TableName: invitesTable,
-      FilterExpression: "inviteStatus = :statusValue and partyDateTimeUnix > :startValue and partyDateTimeUnix < :endValue",
+      IndexName:timeIndex,
+      KeyConditionExpression: "inviteStatus = :statusValue and partyDateTimeUnix BETWEEN :startValue and :endValue",
       ExpressionAttributeValues: {':statusValue':'ACCEPTED',':startValue': intervalStart,':endValue': intervalEnd},
-      ProjectionExpression: "id,childName,mobileNumber,partyId"
+      ProjectionExpression: "id,childName,mobileNumber,partyId,createDateTimeUnix"
     }).then(reply => reply.Items);
   },
   accept(inviteId) {
