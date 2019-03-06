@@ -108,7 +108,7 @@ class InviteShow extends Component {
       </div>
       :''}
       {invite.inviteStatus=='ACCEPTED'?
-      <InvitesIndex/>
+      <InvitesIndex showPhone={false}/>
       :''}
       {invite.inviteStatus!='INVITED'?
       <div className={"twelve columns frame inviteFrame-"+(party.theme?party.theme:"polka")}>

@@ -103,7 +103,7 @@ class PartiesShow extends Component {
           <DropDownList defaultValue={"polka"} value={party.theme} valueField='id' textField='name' data={themes}  onChange={value => this.setTheme(value.id)}/>
         </div>
         :''}
-        <InvitesIndex />
+        <InvitesIndex showPhone={true}/>
         {!invites||invites.length==0?
           (<div>
             <h2><Translate value="createPartyPage.step3" /></h2>
