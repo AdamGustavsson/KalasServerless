@@ -1,6 +1,7 @@
 'use strict';
 const inviteResolves = require('../../../api/lib/graphql/collections/invites/resolves');
 const partyResolves = require('../../../api/lib/graphql/collections/parties/resolves');
+const offerService = require('./offerService');
 const smsgateway = require('../../../api/lib/smsgateway');
 var I18n = require('react-i18nify').I18n;
 const stage = process.env.SERVERLESS_STAGE;
@@ -11,12 +12,12 @@ const baseURL = (stage=='prod'?'kalas.io':stage + '.kalas.io.s3-website-'+ regio
 const translationsObject = {
   en: {
     SMSMessage: {
-      partyReminder: "Reminder: Tomorrow at %{startTime} is the birthday party of %{birthdayChild}. %{guestName} is invited. http://%{url} Click above for full info"
+      partyReminder: "Reminder: Tomorrow at %{startTime} is the birthday party of %{birthdayChild}. %{guestName} is invited. More info: http://%{url}"
     }
   },
   sv: {
     SMSMessage: {
-      partyReminder: "Påminnelse: Imorgon kl. %{startTime} har %{birthdayChild} kalas. %{guestName} är bjuden. http://%{url} Klicka ovan för detaljer"
+      partyReminder: "Påminnelse: Imorgon kl. %{startTime} har %{birthdayChild} kalas. %{guestName} är bjuden. Mer info: http://%{url}"
     }
   }
 };
@@ -45,8 +46,9 @@ function handleInvites(invites){
   invites.forEach(invite => {
     partyResolves.get(invite.partyId)
         .then(partyResponse => {
+         // FIXME: I18n should not be used like this, locale is global so it will get mixed up when parties have different languages.
         I18n.setLocale(partyResponse.locale);
-        return I18n.t("SMSMessage.partyReminder",{guestName: invite.childName, birthdayChild: partyResponse.childName.trim(),startTime: partyResponse.startDateTime.split(' ')[1], url:baseURL + '/i/' + invite.id})
+        return I18n.t("SMSMessage.partyReminder",{guestName: invite.childName, birthdayChild: partyResponse.childName.trim(),startTime: partyResponse.startDateTime.split(' ')[1], url:baseURL + '/i/' + invite.id}) + ' ' + offerService.getOfferText(partyResponse)
       })
         .then(inviteText => smsgateway.sendSMS(invite.mobileNumber,inviteText))
   });
@@ -62,7 +64,7 @@ function filterInvites(min,invites){
 }
 
 module.exports = {
-  remindSameSecond(){
+   remindSameSecond(){
     console.log("We are now in remindSameSecond");
     var min = new Date().getMinutes();
     console.log(min);
@@ -72,5 +74,16 @@ module.exports = {
     console.log(intervalEnd);
     inviteResolves.getAcceptedInvitesForUpcomingParties(intervalStart,intervalEnd)
     .then((invites) => handleInvites(filterInvites(min,invites)));
+  },
+  testOffer(){
+    const invites = [{
+      "childName": "Liv",
+      "id": "040c4ce0-9905-11e6-8ac9-2ff8a4e7e40a",
+      "inviteStatus": "INVITED",
+      "mobileNumber": "070-633 02 12",
+      "partyId": "281a9e40-9697-11e6-9273-71d72e2c1205"
+    }];
+    handleInvites(invites);
   }
+
 }
