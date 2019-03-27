@@ -4,6 +4,9 @@ const Promise = require('bluebird');
 const uuid = require('uuid');
 const bcryptjs = require('bcryptjs');
 const db = require('../../../dynamodb');
+
+// FIXME It does not work if this is required. Circular dependency?
+//const offerService = require('../offer/offerService');
 const invoke = require('../../../invoke')
 const _ = require('lodash');
 const smsgateway = require('../../../smsgateway');
@@ -51,7 +54,16 @@ module.exports = {
        'locale',
        'theme'
       ]
-    }).then(reply => reply.Item);
+    }).then(function (reply){
+              // if (reply.Item.startDateTimeUnix<Date.now()/1000){
+              //   reply.Item.status = 'PASSED';
+              //   const offer = offerService.getOffer(partyResponse);
+              //   if(offer){
+              //     reply.Item.OfferUrl = offer.url;
+              //   }
+              // }
+               return reply.Item
+    });
   },
 
   getAll() {

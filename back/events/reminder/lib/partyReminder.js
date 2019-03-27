@@ -1,7 +1,7 @@
 'use strict';
 const inviteResolves = require('../../../api/lib/graphql/collections/invites/resolves');
 const partyResolves = require('../../../api/lib/graphql/collections/parties/resolves');
-const offerService = require('./offerService');
+const offerService = require('../../../api/lib/graphql/collections/offer/offerService');
 const smsgateway = require('../../../api/lib/smsgateway');
 var I18n = require('react-i18nify').I18n;
 const stage = process.env.SERVERLESS_STAGE;

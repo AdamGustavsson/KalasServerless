@@ -60,5 +60,8 @@ module.exports = {
       return "";
     }
     
-  }  
+  } ,
+  getOffer(party){
+    return identifyOffer(party);
+  }
 }
