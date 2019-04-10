@@ -1,29 +1,29 @@
 'use strict';
 
 const offers =[
-  {
-    id:'laserdomeMalmo',
-    company: 'Laserdome',
-    texts : {
-      sv: {
-        offerText: 'Klicka på länken igen efter %{birthdayChild}s kalas, så får du rabatt på ditt nästa %{company}-kalas.'
-      },
-      en: {
-        offerText: 'EN: Klicka på länken igen efter %{birthdayChild}s kalas, så får du rabatt på ditt nästa %{company}-kalas.'
-      }
-    }, 
-    url: 'http://boka.kalas.io/erbjudande/laserdomeMalmo',
-    locationRegex: /laserdome.*malm|drottning.*$/gi
-  },
+  // {
+  //   id:'laserdomeMalmo',
+  //   company: 'Laserdome',
+  //   texts : {
+  //     sv: {
+  //       offerText: 'Klicka på länken igen efter %{birthdayChild}s kalas, så får du rabatt på ditt nästa %{company}-kalas.'
+  //     },
+  //     en: {
+  //       offerText: 'EN: Klicka på länken igen efter %{birthdayChild}s kalas, så får du rabatt på ditt nästa %{company}-kalas.'
+  //     }
+  //   }, 
+  //   url: 'http://boka.kalas.io/erbjudande/laserdomeMalmo',
+  //   locationRegex: /laserdome.*malm|drottning.*$/gi
+  // },
   {
     id: 'default',
-    company: 'partykungen.se',
+    company: 'PARTYKUNGEN',
     texts : {
       sv: {
-        offerText: 'Klicka på länken igen efter %{birthdayChild}s kalas så får du ett erbjudande från %{company} inför ditt nästa kalas.'
+        offerText: 'Klicka på länken igen efter %{birthdayChild}s kalas så får du 10% rabatt på %{company} inför ditt nästa kalas.'
       },
       en: {
-        offerText: 'EN: Klicka på länken igen efter %{birthdayChild}s kalas så får du ett erbjudande från %{company} inför ditt nästa kalas.'
+        offerText: 'Klicka på länken igen efter %{birthdayChild}s kalas så får du 10% rabatt på %{company} inför ditt nästa kalas.'
       }
     }, 
     url: 'http://boka.kalas.io/erbjudande/partykungen',

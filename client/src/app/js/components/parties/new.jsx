@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { createParty } from '../../actions/parties';
+import PartyKingInvites from '../shared/partyKingInvites';
 import { Link } from 'react-router';
 
 import 'react-widgets/dist/css/react-widgets.css';
@@ -101,7 +102,9 @@ class PartiesNew extends Component {
             <input type="submit" className="u-pull-right button button-primary" value={I18n.t('createPartyPage.create')}/>
             
           </form>
+          <PartyKingInvites/> 
         </div>
+      
       </div>
     );
   }

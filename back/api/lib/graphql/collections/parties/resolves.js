@@ -55,7 +55,8 @@ module.exports = {
        'theme'
       ]
     }).then(function (reply){
-              if (reply.Item.startDateTimeUnix<Date.now()/1000){
+              //Set as PASSED and send offerUrl if datetime is 1 hour after the start of the party 
+              if (reply.Item.startDateTimeUnix+60*60<Date.now()/1000){
                 reply.Item.status = 'PASSED';
                 const offer = offerService.getOffer(reply.Item);
                 if(offer){

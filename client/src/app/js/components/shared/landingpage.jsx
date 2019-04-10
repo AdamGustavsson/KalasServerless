@@ -5,10 +5,13 @@ import './landingpage.css';
 
 import { Translate,I18n} from 'react-redux-i18n';
 import ThemedInvite from '../invites/themes/themedInvite';
+import PartyKingInvites from './partyKingInvites';
 import {throwError} from '../../actions/error';
 const imageSource = require('./images/kalasLogo.png');
 
 class LandingPage extends Component {
+
+
 
 getDummyParty(theme){
   const name = theme=="polka"?"Amir":"Anna";
@@ -89,6 +92,7 @@ setThemeBackground(currentTheme){
             <ThemedInvite party={this.getDummyParty("ladybug")} invite={this.getDummyInvite()} locale={this.props.locale} setBackground={this.setThemeBackground.bind(this)}/>
           </div>
           </div>
+          <PartyKingInvites/>
           <div className="row">
           <div className="section">
             <div className="row second">
