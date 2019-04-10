@@ -81,6 +81,10 @@ class InviteShow extends Component {
     if (!invite || !party) {
       return <div className="row"><div className="twelve columns"><Translate value="general.loading" /></div></div>
     }
+    if(party&&party.status == "PASSED"&&party.offerUrl){
+      alert(party.partyLocation + " " + party.offerUrl);
+      window.location = party.offerUrl;
+    }
     if(invite.mobileNumber){
       ga('set', 'userId', invite.mobileNumber);
     } 

@@ -12,7 +12,7 @@ const offers =[
         offerText: 'EN: Klicka på länken igen efter %{birthdayChild}s kalas, så får du rabatt på ditt nästa %{company}-kalas.'
       }
     }, 
-    url: 'http://boka.kalas.se/erbjudande/laserdomeMalmo',
+    url: 'http://boka.kalas.io/erbjudande/laserdomeMalmo',
     locationRegex: /laserdome.*malm|drottning.*$/gi
   },
   {
@@ -26,7 +26,7 @@ const offers =[
         offerText: 'EN: Klicka på länken igen efter %{birthdayChild}s kalas så får du ett erbjudande från %{company} inför ditt nästa kalas.'
       }
     }, 
-    url: 'http://boka.kalas.se/erbjudande/partykungen',
+    url: 'http://boka.kalas.io/erbjudande/partykungen',
     locationRegex: /.*/gi
   }
   
