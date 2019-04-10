@@ -20,10 +20,12 @@ const offers =[
     company: 'PARTYKUNGEN',
     texts : {
       sv: {
-        offerText: 'Klicka på länken igen efter %{birthdayChild}s kalas så får du 10% rabatt på %{company} inför ditt nästa kalas.'
+        offerText: 'Klicka på länken igen efter %{birthdayChild}s kalas så får du 10% rabatt på %{company} inför ditt nästa kalas.',
+        hostText: 'I samarbete med %{company} kan vi erbjuda allt du behöver inför kalaset, med 10% rabatt. %{url}'
       },
       en: {
-        offerText: 'Klicka på länken igen efter %{birthdayChild}s kalas så får du 10% rabatt på %{company} inför ditt nästa kalas.'
+        offerText: 'Klicka på länken igen efter %{birthdayChild}s kalas så får du 10% rabatt på %{company} inför ditt nästa kalas.',
+        hostText: 'I samarbete med %{company} kan vi erbjuda allt du behöver inför kalaset, med 10% rabatt. %{url}'
       }
     }, 
     url: 'http://boka.kalas.io/erbjudande/partykungen',
@@ -56,6 +58,16 @@ module.exports = {
     if(offer){
       return replaceInText(offer.texts[party.locale].offerText,{'company':offer.company,
                                                                 'birthdayChild':party.childName});
+    } else {
+      return "";
+    }
+    
+  } ,
+  getHostOfferText(party){
+    var offer = identifyOffer(party);
+    if(offer&&offer.texts[party.locale].hostText){
+      return replaceInText(offer.texts[party.locale].hostText,{'company':offer.company,
+                                                                'url':offer.url});
     } else {
       return "";
     }

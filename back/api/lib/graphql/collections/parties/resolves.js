@@ -27,7 +27,7 @@ module.exports = {
   create(party) {
     party.id = uuid.v1();
     I18n.setLocale(party.locale);
-    const linkText = I18n.t("SMSMessage.partyCreated",{birthdayChild: party.childName.trim(), url:baseURL + '/p/' + party.id})
+    const linkText = I18n.t("SMSMessage.partyCreated",{birthdayChild: party.childName.trim(), url:baseURL + '/p/' + party.id}) + " " + offerService.getHostOfferText(party);
     smsgateway.sendSMS(party.hostUser,linkText);
     return db('put', {
       TableName: partiesTable,
