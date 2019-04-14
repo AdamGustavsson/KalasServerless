@@ -1,11 +1,11 @@
 {
-  "name": "reminder",
-  "runtime": "nodejs4.3",
-  "description": "sends reminders to users",
+  "name": "serviceReminder",
+  "runtime": "nodejs8.10",
+  "description": "sends reminders to users about the service",
   "customName": false,
   "customRole": false,
-  "handler": "events/reminder/handler.handler",
-  "timeout": 6,
+  "handler": "events/reminder/service/handlerService.handler",
+  "timeout": 30,
   "memorySize": 1024,
   "authorizer": {},
   "custom": {
@@ -14,7 +14,7 @@
   "endpoints": [],
   "events": [
     {
-      "name" : "reminderSource",
+      "name" : "serviceReminderSource",
       "type": "schedule",
       "config": {
          "schedule": "cron(0 17 * * ? *)",

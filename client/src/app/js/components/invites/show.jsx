@@ -81,6 +81,9 @@ class InviteShow extends Component {
     if (!invite || !party) {
       return <div className="row"><div className="twelve columns"><Translate value="general.loading" /></div></div>
     }
+    if(party&&party.status == "PASSED"&&party.offerUrl){
+      window.location = party.offerUrl;
+    }
     if(invite.mobileNumber){
       ga('set', 'userId', invite.mobileNumber);
     } 
@@ -108,7 +111,7 @@ class InviteShow extends Component {
       </div>
       :''}
       {invite.inviteStatus=='ACCEPTED'?
-      <InvitesIndex/>
+      <InvitesIndex showPhone={false}/>
       :''}
       {invite.inviteStatus!='INVITED'?
       <div className={"twelve columns frame inviteFrame-"+(party.theme?party.theme:"polka")}>

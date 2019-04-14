@@ -4,6 +4,9 @@ const Promise = require('bluebird');
 const uuid = require('uuid');
 const bcryptjs = require('bcryptjs');
 const db = require('../../../dynamodb');
+
+
+const offerService = require('../offer/offerService');
 const invoke = require('../../../invoke')
 const _ = require('lodash');
 const smsgateway = require('../../../smsgateway');
@@ -24,7 +27,7 @@ module.exports = {
   create(party) {
     party.id = uuid.v1();
     I18n.setLocale(party.locale);
-    const linkText = I18n.t("SMSMessage.partyCreated",{birthdayChild: party.childName.trim(), url:baseURL + '/p/' + party.id})
+    const linkText = I18n.t("SMSMessage.partyCreated",{birthdayChild: party.childName.trim(), url:baseURL + '/p/' + party.id}) + " " + offerService.getHostOfferText(party);
     smsgateway.sendSMS(party.hostUser,linkText);
     return db('put', {
       TableName: partiesTable,
@@ -51,7 +54,17 @@ module.exports = {
        'locale',
        'theme'
       ]
-    }).then(reply => reply.Item);
+    }).then(function (reply){
+              //Set as PASSED and send offerUrl if datetime is 1 hour after the start of the party 
+              if (reply.Item.startDateTimeUnix+60*60<Date.now()/1000){
+                reply.Item.status = 'PASSED';
+                const offer = offerService.getOffer(reply.Item);
+                if(offer){
+                  reply.Item.offerUrl = offer.url;
+                }
+              }
+               return reply.Item
+    });
   },
 
   getAll() {

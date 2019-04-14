@@ -58,7 +58,9 @@ export function getParty(id) {
         endDateTime,
         partyLocation,
         hostUser,
-        theme
+        theme,
+        status,
+        offerUrl
       }
     }`
   };

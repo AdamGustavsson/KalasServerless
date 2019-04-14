@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { createParty } from '../../actions/parties';
+import PartyKingInvites from '../shared/partyKingInvites';
 import { Link } from 'react-router';
 
 import 'react-widgets/dist/css/react-widgets.css';
@@ -78,6 +79,7 @@ class PartiesNew extends Component {
         <div className="tweleve columns" style={{marginTop:'100px'}}>
           Tyvärr har vår SMS-leverantör tekniska problem för närvarande. Vi hoppas att de löser det inom kort så att vi kan vara i drift igen. 
         </div>
+      
       </div>
     );
   }

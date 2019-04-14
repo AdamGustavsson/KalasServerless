@@ -38,6 +38,12 @@ let validate = {
   },
   theme:(theme) => {
     return;
+  },
+  status:(status) => {
+    return;
+  },
+  offerUrl:(offerUrl) => {
+    return;
   }
 };
 

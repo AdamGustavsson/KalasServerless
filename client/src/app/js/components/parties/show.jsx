@@ -11,6 +11,7 @@ import FacebookProvider, { Like,Comments } from 'react-facebook';
 import Helmet from "react-helmet";
 import ThemedInvite from '../invites/themes/themedInvite';
 import DropDownList from 'react-widgets/lib/DropdownList';
+import Moment from 'moment';
 
 function fbReady(){
   window.FB.Event.subscribe('comment.create',
@@ -103,7 +104,7 @@ class PartiesShow extends Component {
           <DropDownList defaultValue={"polka"} value={party.theme} valueField='id' textField='name' data={themes}  onChange={value => this.setTheme(value.id)}/>
         </div>
         :''}
-        <InvitesIndex />
+        <InvitesIndex showPhone={true}/>
         {!invites||invites.length==0?
           (<div>
             <h2><Translate value="createPartyPage.step3" /></h2>
