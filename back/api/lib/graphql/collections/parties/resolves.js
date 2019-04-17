@@ -4,6 +4,7 @@ const Promise = require('bluebird');
 const uuid = require('uuid');
 const bcryptjs = require('bcryptjs');
 const db = require('../../../dynamodb');
+const MobileNumberValidation = require("../../../mobileNumberValidation");
 
 
 const offerService = require('../offer/offerService');
@@ -26,6 +27,7 @@ const baseURL = (stage=='prod'?'kalas.io':stage + '.kalas.io.s3-website-'+ regio
 module.exports = {
   create(party) {
     party.id = uuid.v1();
+    party.hostUser = MobileNumberValidation.standardiseNumber(party.hostUser);
     I18n.setLocale(party.locale);
     const linkText = I18n.t("SMSMessage.partyCreated",{birthdayChild: party.childName.trim(), url:baseURL + '/p/' + party.id}) + " " + offerService.getHostOfferText(party);
     smsgateway.sendSMS(party.hostUser,linkText);
