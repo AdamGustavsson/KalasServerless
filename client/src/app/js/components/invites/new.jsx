@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { createInvite } from '../../actions/invites';
 import { Translate,I18n} from 'react-redux-i18n';
 import ga from 'ga-react-router'
+import {MobileNumberValidation} from '../../mobileNumberValidation';
 
 class InvitesNew extends Component {
   static contextTypes = {
@@ -16,7 +17,7 @@ class InvitesNew extends Component {
     const childName = this.refs.childName.value;
 
 
-    if (mobileNumber.length !== 0 && childName.length !== 0) {
+    if (mobileNumber.length !== 0 && childName.length !== 0 && MobileNumberValidation.isValidSwedishMobileNumber(mobileNumber)) {
       const invite = {
         mobileNumber,
         childName
@@ -31,7 +32,7 @@ class InvitesNew extends Component {
       this.refs.mobileNumber.value = null;
       this.refs.childName.value = null;
     } else {
-      alert(I18n.t('createPartyPage.error'));
+      alert(I18n.t('createPartyPage.mobileError'));
     }
   }
 

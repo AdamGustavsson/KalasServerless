@@ -9,6 +9,7 @@ const _ = require('lodash');
 const smsgateway = require('../../../smsgateway');
 const partyResolve = require('../parties/resolves');
 const userResolve = require('../users/resolves');
+const MobileNumberValidation = require("../../../mobileNumberValidation");
 var I18n = require('react-i18nify').I18n;
 
 const translationsObject = require('../../translations/translations');
@@ -39,6 +40,7 @@ module.exports = {
 
   create(invite) {
     invite.id = uuid.v1();
+    invite.mobileNumber = MobileNumberValidation.standardiseNumber(invite.mobileNumber);
     return partyResolve.get(invite.partyId)
     .then(partyResponse => {
       I18n.setLocale(partyResponse.locale);

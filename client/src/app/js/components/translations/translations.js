@@ -47,6 +47,7 @@ export const translationsObject = {
     createPartyPage: {
       title: "Status of your party invite | kalas.io",
       error: "Please fill in all fields, before you can choose a theme",
+      mobileError: "Please enter a valid Swedish mobile number",
       createParty: "Create party",
       step1: "Step 1 of 3:",
       step1_description: "Enter details of the party",
@@ -204,6 +205,7 @@ export const translationsObject = {
     createPartyPage: {
       title: "Status på din kalasinbjudan | kalas.io",
       error: "Vänligen fyll i alla fält, innan du kan välja ett inbjudningskort",
+      mobileError: "Vänligen fyll i ett giltigt svenskt mobilnummer",
       createParty: "Skapa inbjudan",
       step1: "Steg 1 av 3:",
       step1_description: "Fyll i uppgifter om kalaset",

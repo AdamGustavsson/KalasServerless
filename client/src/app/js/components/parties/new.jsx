@@ -9,6 +9,8 @@ import './styles.css';
 
 import DateTimePicker from  'react-widgets/lib/DateTimePicker';
 
+import {MobileNumberValidation} from '../../mobileNumberValidation';
+
 import Moment from 'moment';
 
 var momentLocalizer = require('react-widgets/lib/localizers/moment');
@@ -43,7 +45,10 @@ class PartiesNew extends Component {
     const startDateTime = this.state.startDateTimeString;
     const endDateTime = this.state.endDateTimeString;
     const partyLocation = this.refs.partyLocation.value;
-
+    if(!MobileNumberValidation.isValidSwedishMobileNumber(hostUser)){
+      alert(I18n.t('createPartyPage.mobileError'));
+      return
+    }
     if (hostUser.length !== 0 && header.length !== 0 && description.length !== 0 && childName.length !== 0 && startDateTime && startDateTime.length !== 0 && endDateTime && endDateTime.length !== 0 && partyLocation.length !== 0) {
       const party = {
         hostUser,
