@@ -1,10 +1,15 @@
 'use strict';
-
+const MobileNumberValidation = require("../../../mobileNumberValidation");
 const Promise = require('bluebird');
 
 let validate = {
   hostUser: (hostUser) => {
-      return;
+    console.log("validating hostuser:" + hostUser)
+    if(!MobileNumberValidation.isValidSwedishMobileNumber(hostUser)) {
+      console.log("throwing error in hostuser validate")
+      throw "Not a Swedish mobile number";
+    } 
+    return;
   },
   id: (id) => {
     return;
