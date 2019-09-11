@@ -8,6 +8,7 @@ import { createReminder } from '../../actions/reminders';
 import DateTimePicker from  'react-widgets/lib/DateTimePicker';
 
 import Moment from 'moment';
+import withDataLayerPageView from './withDataLayerPageView';
 
 var momentLocalizer = require('react-widgets/lib/localizers/moment');
 momentLocalizer(Moment);
@@ -77,4 +78,4 @@ function mapStateToProps(state) {
   return {locale: state.i18n.locale,invite:state.invites.invite,reminderCreated:state.reminders.reminderCreated};
 }
 
-export default connect(mapStateToProps, { createReminder })(ReminderPage);
+export default connect(mapStateToProps, { createReminder })(withDataLayerPageView(ReminderPage));

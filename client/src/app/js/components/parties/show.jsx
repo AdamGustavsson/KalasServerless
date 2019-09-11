@@ -12,6 +12,7 @@ import Helmet from "react-helmet";
 import ThemedInvite from '../invites/themes/themedInvite';
 import DropDownList from 'react-widgets/lib/DropdownList';
 import Moment from 'moment';
+import withDataLayerPageView from '../shared/withDataLayerPageView';
 
 function fbReady(){
   window.FB.Event.subscribe('comment.create',
@@ -145,4 +146,4 @@ function mapStateToProps(state) {
   return { party: state.parties.party,invites: state.invites.all, currentUser: state.users.currentUser,locale: state.i18n.locale};
 }
 
-export default connect(mapStateToProps, { getParty,updateParty,setThemeOnParty})(PartiesShow);
+export default connect(mapStateToProps, { getParty,updateParty,setThemeOnParty})(withDataLayerPageView(PartiesShow));

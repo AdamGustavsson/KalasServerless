@@ -9,6 +9,7 @@ import FacebookProvider, { Like, Comments } from 'react-facebook';
 import Helmet from "react-helmet";
 import ThemedInvite from './themes/themedInvite';
 import InvitesIndex from './index';
+import withDataLayerPageView from '../shared/withDataLayerPageView';
 class InviteShow extends Component {
   componentWillMount() {
     this.props.getInvite(this.props.params.id).then(() => this.props.getParty(this.props.invite.partyId)).then(() => this.trackForRemarketing(this.props.party));
@@ -138,4 +139,4 @@ function mapStateToProps(state) {
   return { invite: state.invites.invite, party: state.parties.party, locale: state.i18n.locale};
 }
 
-export default connect(mapStateToProps, { getInvite, getParty, acceptInvite, rejectInvite })(InviteShow);
+export default connect(mapStateToProps, { getInvite, getParty, acceptInvite, rejectInvite })(withDataLayerPageView(InviteShow));

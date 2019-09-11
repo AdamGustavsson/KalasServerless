@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { createParty } from '../../actions/parties';
 import PartyKingInvites from '../shared/partyKingInvites';
 import { Link } from 'react-router';
+import withDataLayerPageView from '../shared/withDataLayerPageView';
 
 import 'react-widgets/dist/css/react-widgets.css';
 import './styles.css';
@@ -32,7 +33,6 @@ class PartiesNew extends Component {
                 endDateTimeString: null};
 
 }
-
 
   handleSubmit(event) {
     event.preventDefault();
@@ -119,4 +119,4 @@ function mapStateToProps(state) {
   return { locale: state.i18n.locale};
 }
 
-export default connect(mapStateToProps, { createParty })(PartiesNew);
+export default connect(mapStateToProps, { createParty })(withDataLayerPageView(PartiesNew));

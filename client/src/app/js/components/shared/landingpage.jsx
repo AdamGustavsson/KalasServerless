@@ -7,10 +7,10 @@ import { Translate,I18n} from 'react-redux-i18n';
 import ThemedInvite from '../invites/themes/themedInvite';
 import PartyKingInvites from './partyKingInvites';
 import {throwError} from '../../actions/error';
+import withDataLayerPageView from './withDataLayerPageView';
 const imageSource = require('./images/kalasLogo.png');
 
 class LandingPage extends Component {
-
 
 
 getDummyParty(theme){
@@ -112,4 +112,4 @@ function mapStateToProps(state) {
   return { currentUser: state.users.currentUser,locale: state.i18n.locale};
 }
 
-export default connect(mapStateToProps, {throwError})(LandingPage);
+export default connect(mapStateToProps, {throwError})(withDataLayerPageView(LandingPage));
