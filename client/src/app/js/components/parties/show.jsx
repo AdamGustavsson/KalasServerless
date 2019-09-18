@@ -85,7 +85,9 @@ class PartiesShow extends Component {
                   {id:'ladybug',
                   name:I18n.t('theme.ladybug')},
                   {id:'prison',
-                  name:I18n.t('theme.prison')}
+                  name:I18n.t('theme.prison')},
+                  {id:'cake',
+                  name:I18n.t('theme.cake')}
                 ];
        
     return (

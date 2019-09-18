@@ -6,6 +6,7 @@ import MusicTheme from './music/';
 import LaserTheme from './laser/';
 import LadybugTheme from './ladybug/';
 import PrisonTheme from './prison/';
+import CakeTheme from './paid/cake/';
 require('./index.css');
 
 export default class themedInvite extends Component {
@@ -38,6 +39,9 @@ export default class themedInvite extends Component {
       case 'prison':
           ThemeComponent = PrisonTheme;
           break;
+      case 'cake':
+          ThemeComponent = CakeTheme;
+          break;    
       default:
         party = Object.assign({}, party, {
           theme: "polka"

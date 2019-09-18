@@ -104,6 +104,24 @@ class InviteShow extends Component {
       <p><Translate value="invitePage.noReply" /></p>
       <h5><Translate value="invitePage.status" />: {statusText[invite.inviteStatus]}</h5>
       {invite.inviteStatus!='INVITED'?
+      <div className="row">
+        <div className={"twelve columns frame inviteFrame-"+(party.theme?party.theme:"polka")}>
+          <h4><Translate value="invitePage.whatIs" /></h4>
+          <h5><Translate value="invitePage.serviceDescription" /></h5>
+          <Link to={'/'} className="button button-primary"><Translate value="invitePage.moreInfo" /></Link>
+          <br/><Link to={'/integrityPolicy'} >
+          <Translate value="loginPage.integrityPolicy" /></Link>
+          <br/>&nbsp;
+          <h5><Translate value="invitePage.remindMe" /></h5>
+          <Link to={'/reminder'} className="button button-primary"><Translate value="invitePage.remindMeButton" /></Link>
+          <br/>&nbsp;
+          <FacebookProvider appID="1114268925305216" language={locale=='sv'?'sv_SE':'en_GB'}>
+            <Like reference="party" width="300" showFaces share href="http://kalas.io"/>
+          </FacebookProvider>        <br/>&nbsp;
+        </div>
+      </div>  
+      :''}
+      {invite.inviteStatus!='INVITED'?
       <div className={"frame inviteFrame-"+(party.theme?party.theme:"polka")}>
         <div><Translate value="invitePage.comments" /></div>
         <FacebookProvider onReady={this.fbReady} appID="1114268925305216" language={locale=='sv'?'sv_SE':'en_GB'}>
@@ -114,22 +132,7 @@ class InviteShow extends Component {
       {invite.inviteStatus=='ACCEPTED'?
       <InvitesIndex showPhone={false}/>
       :''}
-      {invite.inviteStatus!='INVITED'?
-      <div className={"twelve columns frame inviteFrame-"+(party.theme?party.theme:"polka")}>
-        <h4><Translate value="invitePage.whatIs" /></h4>
-        <h5><Translate value="invitePage.serviceDescription" /></h5>
-        <Link to={'/'} className="button button-primary"><Translate value="invitePage.moreInfo" /></Link>
-        <br/><Link to={'/integrityPolicy'} >
-        <Translate value="loginPage.integrityPolicy" /></Link>
-        <br/>&nbsp;
-        <h5><Translate value="invitePage.remindMe" /></h5>
-        <Link to={'/reminder'} className="button button-primary"><Translate value="invitePage.remindMeButton" /></Link>
-        <br/>&nbsp;
-        <FacebookProvider appID="1114268925305216" language={locale=='sv'?'sv_SE':'en_GB'}>
-          <Like reference="party" width="300" showFaces share href="http://kalas.io"/>
-        </FacebookProvider>        <br/>&nbsp;
-      </div>
-      :''}
+      
       </div>
     );
   }
