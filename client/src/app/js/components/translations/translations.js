@@ -54,6 +54,7 @@ export const translationsObject = {
       editChanges: "Does the text look ok? Tap to edit.",
       step2: "Step 2:",
       step2_description: "Chose a theme",
+      select: "Select",
       step3: "Step 3:",
       step3_description: "Invite the children",
       comments: "Here you can read comments from those invited and write your own. They will be visible on all invites.",
@@ -152,7 +153,7 @@ export const translationsObject = {
       ladybug: "Ladybug",
       ladybugPaid: "Ladybug Premium Price: %{price}SEK",
       prison: "Prison",
-      cake: "Cake",
+      cake: "Unicorn Cake (Premium Price: %{price}SEK)",
       dummyParty: {
         header1: "Welcome to celebrate %{name}'s 6th birthday",
         header2: "Welcome to %{name}'s birthday party",
@@ -219,6 +220,7 @@ export const translationsObject = {
       editChanges: "Ser texten bra ut? Klicka för att ändra.",
       step2: "Steg 2:",
       step2_description: "Välj ett inbjudningskort",
+      select: "Välj",
       step3: "Steg 3:",
       step3_description: "Bjud in barnen",
       comments: "Här kan du läsa kommentarer från de inbjudna och skriva egna. De syns på alla inbjudningar.",
@@ -317,7 +319,7 @@ export const translationsObject = {
       ladybug: "Ladybug",
       ladybugPaid: "Ladybug Premium, Pris %{price}kr",
       prison: "Prison",
-      cake: "Cake",
+      cake: "Unicorn Cake (Premium, Pris %{price}kr)",
       dummyParty: {
         header1: "Välkommen att fira %{name}s 6-årsdag",
         header2: "Välkommen på kalas",

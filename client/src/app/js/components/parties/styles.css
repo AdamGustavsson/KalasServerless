@@ -19,3 +19,6 @@ td, th {
   box-sizing: content-box;
   padding: 0px 0px;
 }
+.rw-dropdownlist .rw-list{
+  max-height: 260px;
+}

@@ -41,7 +41,7 @@ class InvitesIndex extends Component {
         return (
           <div className="row">
             <div className={"twelve columns frame inviteFrame-"+(party.theme?party.theme:"polka")}>
-              <h3><Translate value="createPartyPage.invitedGuests" /></h3>
+              <h4><Translate value="createPartyPage.invitedGuests" /></h4>
               {invites&&invites.length ? (
                 <table className="u-full-width">
                   <thead>

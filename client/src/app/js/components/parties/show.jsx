@@ -30,11 +30,11 @@ function fbReady(){
 
 }
 function getThemeABPrice(userNumber){
-  const lastDigit = userNumber.slice(-1);
-  if(lastDigit<5){
-    return 10;
+  const thirdLastDigit = userNumber.charAt(userNumber.length - 3);
+  if(thirdLastDigit<5){
+    return 9;
   } else {
-    return 30;
+    return 29;
   }
 }
 function getThemeABPaymentMethod(userNumber){
@@ -56,7 +56,19 @@ class PartiesShow extends Component {
     this.props.setThemeOnParty(this.props.party.id,theme.id);
     //do stuff if a paid theme is selected
     if(theme.paid){
-        console.log("A paid theme was selected");
+        ga('send', {
+          hitType: 'event',
+          eventCategory: 'Party',
+          eventAction: 'SelectPaidTheme',
+          label: theme
+        });
+    } else {
+      ga('send', {
+        hitType: 'event',
+        eventCategory: 'Party',
+        eventAction: 'SelectFreeTheme',
+        label: theme
+      });
     }
 
     ga('send', {
@@ -65,6 +77,12 @@ class PartiesShow extends Component {
       eventAction: 'SelectTheme',
       label: theme
     });
+    this.topFunction();
+  }
+  topFunction() {
+    window.scrollTo({top:0,behavior:'smooth'});
+    document.body.scrollTop = 0; // For Safari
+
   }
   updatePartyField(party){
     if(party.startDateTime){
@@ -120,16 +138,16 @@ class PartiesShow extends Component {
     }
     const themes={polka:{id:'polka',
                   name:I18n.t('theme.polka')},
-                  bowling:{id:'bowling',
-                  name:I18n.t('theme.bowling')},
-                  music:{id:'music',
-                  name:I18n.t('theme.music')},
-                  laser:{id:'laser',
-                  name:I18n.t('theme.laser')},
                   ladybug:{id:'ladybug',
                   name:I18n.t('theme.ladybug')},
                   cake: {id:'cake',
                   name:I18n.t('theme.cake',{price:themeABPrice}),paid:true,price:themeABPrice},
+                  laser:{id:'laser',
+                  name:I18n.t('theme.laser')},
+                  bowling:{id:'bowling',
+                  name:I18n.t('theme.bowling')},
+                  music:{id:'music',
+                  name:I18n.t('theme.music')},
                   prison:{id:'prison',
                   name:I18n.t('theme.prison')}
                 };
@@ -146,17 +164,17 @@ class PartiesShow extends Component {
         {!invites||invites.length==0?
         <div>
           <h5><Translate value="createPartyPage.editChanges" /></h5>
-          <h2><Translate value="createPartyPage.step2" /></h2>
-          <h3><Translate value="createPartyPage.step2_description" /></h3>
-          <DropDownList defaultValue={"polka"} value={party.theme} valueField='id' textField='name' data={Object.values(themes)}  onChange={value => this.setTheme(value)}/>
+          <h3><Translate value="createPartyPage.step2" /></h3>
+          <h5><Translate value="createPartyPage.step2_description" /></h5>
+          <DropDownList placeholder={I18n.t('createPartyPage.select')} defaultValue={"polka"} value={party.theme} valueField='id' textField='name' data={Object.values(themes)}  onChange={value => this.setTheme(value)}/>
           <PaymentModule theme={themes[(party.theme?party.theme:"polka")]}  paymentMethod={themeABPaymentMethod}/>
         </div>
         :''}
         <InvitesIndex showPhone={true}/>
         {!invites||invites.length==0?
           (<div>
-            <h2><Translate value="createPartyPage.step3" /></h2>
-            <h3><Translate value="createPartyPage.step3_description" /></h3>
+            <h3><Translate value="createPartyPage.step3" /></h3>
+            <h5><Translate value="createPartyPage.step3_description" /></h5>
           </div>)
           :
           (<div>
