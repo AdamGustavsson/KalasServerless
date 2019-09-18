@@ -4,7 +4,7 @@ import EditablePartyField from '../../editablePartyField';
 import  WebFont from 'webfontloader';
 import Moment from 'moment';
 require('./index.css');
-const imageSource = require('./cake.jpg');
+const imageSource = require('./cake.png');
 export default class CakeTheme extends Component {
 
   componentWillMount() {

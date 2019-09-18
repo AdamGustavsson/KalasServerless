@@ -42,12 +42,12 @@
 }
 
 .header-cake{
-  height: 11%;
-  margin: 1%;
-  width: 50%;
+  height: 9%;
+  padding: 2%;
+  width: 43%;
   position: absolute;
   top: 39%;
-  left: 23%;
+  left: 25%;
   font-size: 1.6em;
   line-height: 95%;
 
@@ -72,25 +72,23 @@
 }
 
 .description-cake{
- 
-  height: 13%;
-  margin: 3%;
-  margin-top: 4%;
-  width: 61%;
+  height: 10%;
+  padding: 3%;
+  padding-top: 4%;
+  width: 56%;
   position: absolute;
-  top: 51%;
-  left: 16%;
+  top: 50%;
+  left: 18%;
   line-height: 95%;
   text-align: justify;
 }
 .last-cake{
- 
   height: 14%;
-  margin: 2%;
-  width: 81%;
+  padding: 1%;
+  width: 77%;
   position: absolute;
   top: 64%;
-  left: 7%;
+  left: 9%;
 }
 .child-cake{
   font-size: 2.0em;
