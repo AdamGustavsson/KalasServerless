@@ -1,11 +1,13 @@
 
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var CompressionPlugin = require("compression-webpack-plugin");
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 var webpack = require('webpack')
 module.exports = {
   entry: {
     javascript: "./app/js/app.jsx",
-    html: "./app/index.html"
+    html: "./app/index.html",
+    html2: "./app/google326544d7d6c7e469.html"
 
   },
   output: {
@@ -62,6 +64,11 @@ module.exports = {
            algorithm: "gzip",
            test: /\.js$|\.css$/,
        }),
-        new webpack.DefinePlugin({GA_TRACKING_CODE: JSON.stringify('UA-3987274-10')})
+        new webpack.DefinePlugin({GA_TRACKING_CODE: JSON.stringify('UA-3987274-10')}),
+        new CopyWebpackPlugin([
+          // relative path is from src
+          { from: './app/favicon.ico' }, // <- your path to favicon
+        ])
+
     ]
 };

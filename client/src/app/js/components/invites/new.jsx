@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { createInvite } from '../../actions/invites';
 import { Translate,I18n} from 'react-redux-i18n';
 import ga from 'ga-react-router'
+import {MobileNumberValidation} from '../../mobileNumberValidation';
 
 class InvitesNew extends Component {
   static contextTypes = {
@@ -16,7 +17,7 @@ class InvitesNew extends Component {
     const childName = this.refs.childName.value;
 
 
-    if (mobileNumber.length !== 0 && childName.length !== 0) {
+    if (mobileNumber.length !== 0 && childName.length !== 0 && MobileNumberValidation.isValidSwedishMobileNumber(mobileNumber)) {
       const invite = {
         mobileNumber,
         childName
@@ -32,7 +33,7 @@ class InvitesNew extends Component {
       this.refs.childName.value = null;
       this.forceUpdate();
     } else {
-      alert(I18n.t('createPartyPage.error'));
+      alert(I18n.t('createPartyPage.mobileError'));
     }
   }
 
@@ -45,7 +46,7 @@ class InvitesNew extends Component {
             <input type="text" placeholder={I18n.t('createPartyPage.guestName_example')} className="u-full-width" ref="childName" />
             <Translate value="createPartyPage.mobileNumber" />:
             <input type="tel" placeholder={I18n.t('createPartyPage.mobileNumber_example')} className="u-full-width" ref="mobileNumber" />
-            <input type="submit" value={I18n.t('createPartyPage.invite')} className="button button-primary" />
+            <input type="submit" value={I18n.t('createPartyPage.invite')} className="u-pull-right button button-primary" />
           </form>
         </div>
       </div>

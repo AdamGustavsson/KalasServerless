@@ -1,0 +1,65 @@
+{
+  "name": "partyReminder",
+  "runtime": "nodejs8.10",
+  "description": "sends reminders to users about the party",
+  "customName": false,
+  "customRole": false,
+  "handler": "events/reminder/party/handlerParty.handler",
+  "timeout": 30,
+  "memorySize": 1024,
+  "authorizer": {},
+  "custom": {
+    "excludePatterns": []
+  },
+  "endpoints": [],
+  "events": [
+    {
+      "name" : "partyReminderSource17",
+      "type": "schedule",
+      "config": {
+         "schedule": "cron(0/4 17 * * ? *)",
+          "enabled": true
+      }
+    },
+    {
+      "name" : "partyReminderSource18",
+      "type": "schedule",
+      "config": {
+         "schedule": "cron(1/4 18 * * ? *)",
+          "enabled": true
+      }
+    }
+    ,
+    {
+      "name" : "partyReminderSource19",
+      "type": "schedule",
+      "config": {
+         "schedule": "cron(2/4 19 * * ? *)",
+          "enabled": true
+      }
+    }
+    ,
+    {
+      "name" : "partyReminderSource20",
+      "type": "schedule",
+      "config": {
+         "schedule": "cron(3/4 20 * * ? *)",
+          "enabled": true
+      }
+    }
+  ],
+  "environment": {
+    "SERVERLESS_PROJECT": "${project}",
+    "SERVERLESS_STAGE": "${stage}",
+    "SERVERLESS_REGION": "${region}",
+    "SMS_GATEWAY_DEVICE_ID": "${SMSGatewayDeviceId}",
+    "SMS_GATEWAY_TOKEN": "${SMSGatewayToken}",
+    "SMS_GATEWAY_SEMYSMS_DEVICE_ID": "${SMSGatewaySemySmsDeviceId}",
+    "SMS_GATEWAY_SEMYSMS_TOKEN": "${SMSGatewaySemySmsToken}",
+    "SMS_GATEWAY_SERVICE": "${SMSGatewayService}"
+  },
+  "vpc": {
+    "securityGroupIds": [],
+    "subnetIds": []
+  }
+}

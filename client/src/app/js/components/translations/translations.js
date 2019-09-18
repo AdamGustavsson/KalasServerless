@@ -6,8 +6,10 @@ export const translationsObject = {
       logOut: "Log out",
       login: "Login",
       register:"Register account",
+      integrityPolicy:"Integrity policy",
       myParties: "My parties",
       language:"Change language",
+      contact:"Contact",
       error: "Please fill out all fields"
     },
     user: {
@@ -24,7 +26,7 @@ export const translationsObject = {
       title: "Invites for your birthday party. Invite easily and get RSVPs via SMS | kalas.io",
       heading: "Birthday parties made simple",
       description: "Kalas.io helps you invite guest to your child's birthday party and keep track of RSVPs.",
-      newPartyButton: "Create your first party",
+      newPartyButton: "Create party invite",
       howItWorks: "How it works",
       howItWorksDetails1: "You enter the details of you birthday party, select a theme, and add the names of the invited children along with a mobile number of their parent.",
       howItWorksDetails2: "We then send the invite to each parent in an SMS with a link to RSVP.",
@@ -39,13 +41,15 @@ export const translationsObject = {
       registerInfo: "Registration is free of charge and completely voluntary. Registered users have access to more functionality. We recommend registering after you created your first party.",
       chosePassword: "Chose a password",
       verifyPassword: "Confirm password",
+      acceptPolicy: "By registering you accept our",
       error: "Please fill out all fields and ensure that you typed the chosen password twice"
     },
     createPartyPage: {
       title: "Status of your party invite | kalas.io",
-      error: "Please fill in all fields",
+      error: "Please fill in all fields, before you can choose a theme",
+      mobileError: "Please enter a valid Swedish mobile number",
       createParty: "Create party",
-      step1: "Step 1:",
+      step1: "Step 1 of 3:",
       step1_description: "Enter details of the party",
       editChanges: "Does the text look ok? Tap to edit.",
       step2: "Step 2:",
@@ -66,7 +70,7 @@ export const translationsObject = {
       endDateTime: "End time",
       location: "Location",
       location_example: "Laserdome, Grafiska vägen 32, Göteborg",
-      create: "Create",
+      create: "Chose a theme",
       invitedGuests: "Invited guests",
       guestName: "First name of the invited child",
       guestNameHeader: "Name",
@@ -86,12 +90,7 @@ export const translationsObject = {
       pleaseLogin: "Please login in to see the status of your party",
       youreDone: "When you invited all children,you're done.",
       youGetAText: "You will get a SMS whenever someone replies",
-      seeAllParties: "See all your parties",
-      paymentPremiumCard: "You have chosen a premium theme.",
-      paymentCostIs: "The price is ",
-      paymentMethod: "The payment method is ",
-      paymentIntegrationIsNotReady: "Our integration with %{paymentMethod} is not complete yet. In the meantime the premium themes are free of charge. Enjoy!",
-      pleasePay: "Please pay for your theme before you can invite children. Or chose a free theme."
+      seeAllParties: "See all your parties"
     },
     invitePage: {
       title: "You're invited to a party | kalas.io",
@@ -142,14 +141,17 @@ export const translationsObject = {
     theme: {
       polka: "Polka",
       bowling: "Bowling",
+      johnscott: "JohnScotts",
+      music: "Audio",
+      laser: "Laserdome",
       ladybug: "Ladybug",
-      ladybugPaid: "Ladybug Premium Price: 10SEK",
       prison: "Prison",
       dummyParty: {
         header1: "Welcome to celebrate %{name}'s 6th birthday",
         header2: "Welcome to %{name}'s birthday party",
         description1: "We meet up at the sports bar, eat some burgers and throw a few strikes. Bowling shoes can be borrowed.",
-        description2: "%{name} is turning 8. Lets celebrate with a party at our place. Bring warm clothes as we will also be outdoors."
+        description2: "%{name} is turning 8. Lets celebrate with a party at our place. Bring warm clothes as we will also be outdoors.",
+        description3: "%{name} has had her 10th birthday. We want you to join us in the celebration."
       }
     }
   },
@@ -162,8 +164,10 @@ export const translationsObject = {
       mobileNumber: "Mobilnummer",
       password: "Lösenord",
       register:"Registrera dig",
+      integrityPolicy:"Integritetspolicy",
       myParties: "Mina kalas",
       language:"Ändra språk",
+      contact:"Kontakt",
       error: "Vänligen fyll i alla fält"
     },
     user: {
@@ -177,10 +181,10 @@ export const translationsObject = {
       back: "Tillbaka"
     },
     landingPage: {
-      title: "Skicka inbjudningskort till barnkalas med SMS. Gratis kalasinbjudningar.| kalas.io",
-      heading: 'Skicka inbjudningskort med SMS',
+      title: "Skicka kalasinbjudan med SMS. Gratis inbjudningskort kalas online.| kalas.io",
+      heading: 'Skicka kalasinbjudan  med SMS',
       description: "Kalas.io hjälper dig att bjuda in till ditt barnkalas och hålla reda på vilka barn som kommer.",
-      newPartyButton: "Skapa din första kalasinbjudan",
+      newPartyButton: "Skapa kalasinbjudan",
       howItWorks: "Hur fungerar det?",
       howItWorksDetails1: "Du fyller i informationen om ditt kalas, väljer ett inbjudningskort, och sen lägger du till namnen på de inbjudna barnen tillsammans med förälderns mobilnummer.",
       howItWorksDetails2: "Därefter skickar vi, helt kostnadsfritt, ett SMS till varje förälder med en länk till inbjudan. Där kan de uppge om barnet kan komma eller inte.",
@@ -195,13 +199,15 @@ export const translationsObject = {
       registerInfo: "Registratering är gratis och helt frivillig. Du kan använda tjänsten utan att vara registrerad. Registrerade användare har tillgång till fler funktioner. Vi rekommenderar att du registrerar dig efter du har skapat din första kalas inbjudan.",
       chosePassword: "Välj ett lösenord",
       verifyPassword: "Bekräfta lösenord",
+      acceptPolicy: "Genom att registrera dig accepterar du vår",
       error: "Vänligen fyll i alla fält och se till att lösenordsfälten är lika"
     },
     createPartyPage: {
       title: "Status på din kalasinbjudan | kalas.io",
-      error: "Vänligen fyll i alla fält",
+      error: "Vänligen fyll i alla fält, innan du kan välja ett inbjudningskort",
+      mobileError: "Vänligen fyll i ett giltigt svenskt mobilnummer",
       createParty: "Skapa inbjudan",
-      step1: "Steg 1:",
+      step1: "Steg 1 av 3:",
       step1_description: "Fyll i uppgifter om kalaset",
       editChanges: "Ser texten bra ut? Klicka för att ändra.",
       step2: "Steg 2:",
@@ -222,7 +228,7 @@ export const translationsObject = {
       endDateTime: "Sluttid",
       location: "Plats",
       location_example: "Laserdome, Grafiska vägen 32, Göteborg",
-      create: "Skapa",
+      create: "Välj inbjudningskort",
       invitedGuests: "Inbjudna barn",
       guestName: "Inbjudna barnets förnamn",
       guestNameHeader: "Namn",
@@ -242,12 +248,7 @@ export const translationsObject = {
       pleaseLogin: "Logga in för att se statusen på ditt party",
       youreDone: "När du bjudit in alla barn är du klar.",
       youGetAText: "Du får ett SMS så fort någon svarar.",
-      seeAllParties: "Se alla dina kalas",
-      paymentPremiumCard: "Du har valt ett premium-inbjudningskort.",
-      paymentCostIs: "Kostnaden är ",
-      paymentMethod: "Betalning sker med ",
-      paymentIntegrationIsNotReady: "Vår integration med %{paymentMethod} är ännu inte klar. Under tiden bjuder vi på premium-inbjudningskorten. Var så god!",
-      pleasePay: "Vänligen betala ditt inbjudningskort innan du kan bjuda in barnen. Eller välj ett av våra gratis kort."
+      seeAllParties: "Se alla dina kalas"
     },
     invitePage: {
       title: "Du är bjuden på kalas | kalas.io",
@@ -298,14 +299,17 @@ export const translationsObject = {
     theme: {
       polka: "Polka",
       bowling: "Bowling",
+      johnscott: "JohnScotts",
+      music: "Audio",
+      laser: "Laserdome",
       ladybug: "Ladybug",
-      ladybugPaid: "Ladybug Premium, Pris %{price}kr",
       prison: "Prison",
       dummyParty: {
         header1: "Välkommen att fira %{name}s 6-årsdag",
-        header2: "Välkommen på %{name}s kalas",
+        header2: "Välkommen på kalas",
         description1: "Vi samlas på sportbaren, äter hamburgare och slår några strikes. Bowlingskor lånar vi.",
-        description2: "%{name} fyller 8 år. Det firar vi med stort tårtkalas hemma hos oss. Ta med varma kläder för vi kommer även att vara ute."
+        description2: "%{name} fyller 8 år. Det firar vi med stort tårtkalas hemma hos oss. Ta med varma kläder för vi kommer även att vara ute.",
+        description3: "%{name} har fyllt 10. Du är välkommen att fira det med henne."
       }
     }
   }

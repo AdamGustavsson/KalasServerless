@@ -19,6 +19,7 @@ class InvitesIndex extends Component {
   }
 
   render() {
+    const { showPhone } = this.props
     const { invites } = this.props;
     const { party } = this.props;
     const statusOrder = {ACCEPTED: 1,
@@ -47,7 +48,7 @@ class InvitesIndex extends Component {
                     <tr>
                       <th><Translate value="createPartyPage.guestNameHeader" /></th>
                       <th><Translate value="createPartyPage.inviteStatus" /></th>
-                      <th><Translate value="createPartyPage.mobileNumberHeader" /></th>
+                      {showPhone?<th><Translate value="createPartyPage.mobileNumberHeader" /></th>:''}
                     </tr>
                   </thead>
                   <tbody>
@@ -57,7 +58,7 @@ class InvitesIndex extends Component {
                       <tr key={'invite-' + invite.id}>
                         <td>{invite.childName}</td>
                         <td>{statusText[invite.inviteStatus]}</td>
-                        <td><a href={"tel:" + invite.mobileNumber}>{invite.mobileNumber}</a></td>
+                        {showPhone?<td><a href={"tel:" + invite.mobileNumber}>{invite.mobileNumber}</a></td>:''}
                       </tr>
                     )}
                   )}

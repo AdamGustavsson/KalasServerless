@@ -1,6 +1,7 @@
 
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var CompressionPlugin = require("compression-webpack-plugin");
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 var webpack = require('webpack')
 module.exports = {
   entry: {
@@ -63,6 +64,10 @@ module.exports = {
            algorithm: "gzip",
            test: /\.js$|\.css$/,
        }),
-        new webpack.DefinePlugin({GA_TRACKING_CODE: JSON.stringify('UA-3987274-11')})
+        new webpack.DefinePlugin({GA_TRACKING_CODE: JSON.stringify('UA-3987274-11')}),
+        new CopyWebpackPlugin([
+          // relative path is from src
+          { from: './app/favicon.ico' }, // <- your path to favicon
+        ])
     ]
 };

@@ -46,7 +46,7 @@ class UsersNew extends Component {
             <h1><Translate value="registerPage.register" /></h1>
             <hr />
             <h5><Translate value="registerPage.registerInfo" /></h5>
-            <Link to={ 'parties/new' } className="button button-primary"><Translate value="myPartiesPage.create" /></Link>
+            <Link to={ 'parties/new' } className="u-pull-right button button-primary"><Translate value="myPartiesPage.create" /></Link><br/>&nbsp;
             <div><Translate value="user.name" />:</div>
             <input type="text" placeholder={I18n.t('user.name')} className="u-full-width" ref="name" />
             <div><Translate value="user.mobileNumber" />:</div>
@@ -55,8 +55,10 @@ class UsersNew extends Component {
             <input type="password" placeholder={I18n.t('user.password')} className="u-full-width" ref="password" />
             <div><Translate value="registerPage.verifyPassword" />:</div>
             <input type="password" placeholder={I18n.t('user.password')} className="u-full-width" ref="password2" />
-            <input type="submit" className="button button-primary" value={I18n.t('registerPage.register')}/>
-            <Link to="/" className="u-pull-right button"><Translate value="general.cancel" /></Link>
+            <div><Translate value="registerPage.acceptPolicy" /> <Link to={'/integrityPolicy'} >
+            <Translate value="loginPage.integrityPolicy" /></Link><br/>&nbsp;</div>
+            <Link to="/" className="u-pull-left button"><Translate value="general.cancel" /></Link>
+            <input type="submit" className="u-pull-right button button-primary" value={I18n.t('registerPage.register')}/>
           </form>
 
         </div>

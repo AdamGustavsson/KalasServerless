@@ -1,12 +1,10 @@
-var SmsGateway = require('smsgateway');
-
-
-const gateway = new SmsGateway(process.env.SMS_GATEWAY_USERNAME,process.env.SMS_GATEWAY_PASSWORD)
-
+if(process.env.SMS_GATEWAY_SERVICE=='SEMYSMS'){
+  var smsgateway = require('./smsgatewaysemysms');
+} else{
+  var smsgateway = require('./smsgatewaysmsgateway');
+} 
 function sendSMS (number, message) {
-  console.log('Sending SMS to number:' + number + ' with message: ' + message);
-
-  return gateway.send(number, message,process.env.SMS_GATEWAY_DEVICE_ID)
+  return smsgateway.sendSMS(number,message);
 }
 
 

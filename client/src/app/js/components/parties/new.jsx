@@ -1,12 +1,16 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { createParty } from '../../actions/parties';
+import PartyKingInvites from '../shared/partyKingInvites';
 import { Link } from 'react-router';
+import withDataLayerPageView from '../shared/withDataLayerPageView';
 
 import 'react-widgets/dist/css/react-widgets.css';
 import './styles.css';
 
 import DateTimePicker from  'react-widgets/lib/DateTimePicker';
+
+import {MobileNumberValidation} from '../../mobileNumberValidation';
 
 import Moment from 'moment';
 
@@ -30,7 +34,6 @@ class PartiesNew extends Component {
 
 }
 
-
   handleSubmit(event) {
     event.preventDefault();
 
@@ -42,7 +45,10 @@ class PartiesNew extends Component {
     const startDateTime = this.state.startDateTimeString;
     const endDateTime = this.state.endDateTimeString;
     const partyLocation = this.refs.partyLocation.value;
-
+    if(!MobileNumberValidation.isValidSwedishMobileNumber(hostUser)){
+      alert(I18n.t('createPartyPage.mobileError'));
+      return
+    }
     if (hostUser.length !== 0 && header.length !== 0 && description.length !== 0 && childName.length !== 0 && startDateTime && startDateTime.length !== 0 && endDateTime && endDateTime.length !== 0 && partyLocation.length !== 0) {
       const party = {
         hostUser,
@@ -74,7 +80,7 @@ class PartiesNew extends Component {
       this.setState({[name]: date, [name + 'String']: Moment(date).format('HH:mm')});
     };
     return (
-      <div className="row">
+        <div className="row">
         <div className="tweleve columns">
           <form onSubmit={this.handleSubmit.bind(this)}>
             <h1><Translate value="createPartyPage.createParty" /></h1>
@@ -87,20 +93,23 @@ class PartiesNew extends Component {
 
             <Translate value="createPartyPage.childName" />:
             <input type="text" placeholder={I18n.t('createPartyPage.childName_example')} className="u-full-width" ref="childName" />
+            <Translate value="createPartyPage.location" />:
+            <input type="text" placeholder={I18n.t('createPartyPage.location_example')} className="u-full-width" ref="partyLocation" />
             <Translate value="createPartyPage.startDateTime" />:
             <DateTimePicker placeholder={I18n.t('createPartyPage.startDateTime')} value={this.state.startDateTime} defaultValue={null} onChange={changeStart.bind(null,'startDateTime')} format={"YYYY-MM-DD HH:mm"} step={15} finalView={"month"} timeFormat={"HH:mm"} time={true} className="u-full-width" />
             <Translate value="createPartyPage.endDateTime" />:
             <DateTimePicker placeholder={I18n.t('createPartyPage.endDateTime')} min={this.state.startDateTime} value={this.state.endDateTime} onChange={changeEnd.bind(null,'endDateTime')}  format={"HH:mm"} step={15} finalView={"month"} timeFormat={"HH:mm"} calendar={false} className="u-full-width" />
-            <Translate value="createPartyPage.location" />:
-            <input type="text" placeholder={I18n.t('createPartyPage.location_example')} className="u-full-width" ref="partyLocation" />
             <Translate value="createPartyPage.header" />:
             <input type="text" placeholder={I18n.t('createPartyPage.header_example')} className="u-full-width" ref="header" />
             <Translate value="createPartyPage.description" />:
             <textarea rows="5" placeholder={I18n.t('createPartyPage.description_example')} className="u-full-width" ref="description" />
-            <input type="submit" className="button button-primary" value={I18n.t('createPartyPage.create')}/>
-            <Link to="/" className="u-pull-right button"><Translate value="general.cancel" /></Link>
+            <Link to="/" className="u-pull-left button"><Translate value="general.cancel" /></Link>
+            <input type="submit" className="u-pull-right button button-primary" value={I18n.t('createPartyPage.create')}/>
+            
           </form>
+          <PartyKingInvites/> 
         </div>
+      
       </div>
     );
   }
@@ -110,4 +119,4 @@ function mapStateToProps(state) {
   return { locale: state.i18n.locale};
 }
 
-export default connect(mapStateToProps, { createParty })(PartiesNew);
+export default connect(mapStateToProps, { createParty })(withDataLayerPageView(PartiesNew));

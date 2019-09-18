@@ -12,6 +12,7 @@ import PartiesNew from './components/parties/new';
 import InvitesShow from './components/invites/show';
 import LandingPage from './components/shared/landingpage';
 import ReminderPage from './components/shared/reminderpage';
+import IntegrityPolicyPage from './components/shared/integritypolicy';
 
 export default (
   <Route path="/" component={App}>
@@ -28,6 +29,7 @@ export default (
     <Route path="users/new" component={UsersNew} />
     <Route path="reminder" component={ReminderPage} />
     <Route path="reminderLanding" component={LandingPage} />
+    <Route path="integrityPolicy" component={IntegrityPolicyPage} />
     <Route path="*" component={LandingPage}  />
   </Route>
 );

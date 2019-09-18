@@ -9,6 +9,7 @@ import FacebookProvider, { Like, Comments } from 'react-facebook';
 import Helmet from "react-helmet";
 import ThemedInvite from './themes/themedInvite';
 import InvitesIndex from './index';
+import withDataLayerPageView from '../shared/withDataLayerPageView';
 class InviteShow extends Component {
   componentWillMount() {
     this.props.getInvite(this.props.params.id).then(() => this.props.getParty(this.props.invite.partyId)).then(() => this.trackForRemarketing(this.props.party));
@@ -27,24 +28,31 @@ class InviteShow extends Component {
        });
   }
   onAcceptClick(event) {
+      if(this.props.invite.inviteStatus!='ACCEPTED'){
+        ga('send', {
+          hitType: 'event',
+          eventCategory: 'Invite',
+          eventAction: 'Accept'
+        });
+      }
       this.props.acceptInvite(this.props.invite.id);
       this.props.invite.inviteStatus="ACCEPTED";
       this.forceUpdate();
-      ga('send', {
-        hitType: 'event',
-        eventCategory: 'Invite',
-        eventAction: 'Accept'
-      });
+      
+      
   }
   onRejectClick(event) {
+      if(this.props.invite.inviteStatus!='REJECTED'){
+        ga('send', {
+          hitType: 'event',
+          eventCategory: 'Invite',
+          eventAction: 'Reject'
+        });
+      }
       this.props.rejectInvite(this.props.invite.id);
       this.props.invite.inviteStatus="REJECTED";
       this.forceUpdate();
-      ga('send', {
-        hitType: 'event',
-        eventCategory: 'Invite',
-        eventAction: 'Reject'
-      });
+      
   }
   fbReady(){
     window.FB.Event.subscribe('comment.create',
@@ -74,7 +82,12 @@ class InviteShow extends Component {
     if (!invite || !party) {
       return <div className="row"><div className="twelve columns"><Translate value="general.loading" /></div></div>
     }
-    ga('set', 'userId', invite.mobileNumber);
+    if(party&&party.status == "PASSED"&&party.offerUrl){
+      window.location = party.offerUrl;
+    }
+    if(invite.mobileNumber){
+      ga('set', 'userId', invite.mobileNumber);
+    } 
     return (
       <div className="row">
         <Helmet
@@ -99,13 +112,15 @@ class InviteShow extends Component {
       </div>
       :''}
       {invite.inviteStatus=='ACCEPTED'?
-      <InvitesIndex/>
+      <InvitesIndex showPhone={false}/>
       :''}
       {invite.inviteStatus!='INVITED'?
       <div className={"twelve columns frame inviteFrame-"+(party.theme?party.theme:"polka")}>
         <h4><Translate value="invitePage.whatIs" /></h4>
         <h5><Translate value="invitePage.serviceDescription" /></h5>
         <Link to={'/'} className="button button-primary"><Translate value="invitePage.moreInfo" /></Link>
+        <br/><Link to={'/integrityPolicy'} >
+        <Translate value="loginPage.integrityPolicy" /></Link>
         <br/>&nbsp;
         <h5><Translate value="invitePage.remindMe" /></h5>
         <Link to={'/reminder'} className="button button-primary"><Translate value="invitePage.remindMeButton" /></Link>
@@ -124,4 +139,4 @@ function mapStateToProps(state) {
   return { invite: state.invites.invite, party: state.parties.party, locale: state.i18n.locale};
 }
 
-export default connect(mapStateToProps, { getInvite, getParty, acceptInvite, rejectInvite })(InviteShow);
+export default connect(mapStateToProps, { getInvite, getParty, acceptInvite, rejectInvite })(withDataLayerPageView(InviteShow));

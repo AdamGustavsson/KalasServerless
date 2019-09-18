@@ -9,6 +9,7 @@ const _ = require('lodash');
 const smsgateway = require('../../../smsgateway');
 const partyResolve = require('../parties/resolves');
 const userResolve = require('../users/resolves');
+const MobileNumberValidation = require("../../../mobileNumberValidation");
 var I18n = require('react-i18nify').I18n;
 
 const translationsObject = require('../../translations/translations');
@@ -19,6 +20,8 @@ const stage = process.env.SERVERLESS_STAGE;
 const region = process.env.SERVERLESS_REGION;
 const projectName = process.env.SERVERLESS_PROJECT;
 const invitesTable = projectName + '-invites-' + stage;
+const partyIndex = 'partyId-index';
+const timeIndex= 'inviteStatus-partyDateTimeUnix-index';
 
 const baseURL = (stage=='prod'?'kalas.io':stage + '.kalas.io.s3-website-'+ region + '.amazonaws.com')
 
@@ -26,9 +29,10 @@ const baseURL = (stage=='prod'?'kalas.io':stage + '.kalas.io.s3-website-'+ regio
 module.exports = {
 
   getInvitesForParty(partyId) {
-    return db('scan', {
+    return db('query', {
       TableName: invitesTable,
-      FilterExpression: "partyId = :partyId",
+      IndexName:partyIndex,
+      KeyConditionExpression: "partyId = :partyId",
       ExpressionAttributeValues: {':partyId':partyId},
       ProjectionExpression: "id,childName,mobileNumber,inviteStatus"
     }).then(reply => reply.Items);
@@ -36,6 +40,7 @@ module.exports = {
 
   create(invite) {
     invite.id = uuid.v1();
+    invite.mobileNumber = MobileNumberValidation.standardiseNumber(invite.mobileNumber);
     return partyResolve.get(invite.partyId)
     .then(partyResponse => {
       I18n.setLocale(partyResponse.locale);
@@ -66,13 +71,13 @@ module.exports = {
       ]
     }).then(reply => reply.Item);
   },
-  getUnansweredInvites() {
-    const nowUnix = Math.round(new Date().getTime()/1000)
-    return db('scan', {
+  getAcceptedInvitesForUpcomingParties(intervalStart,intervalEnd) {
+    return db('query', {
       TableName: invitesTable,
-      FilterExpression: "inviteStatus = :statusValue and partyDateTimeUnix>=:dateTimeValue",
-      ExpressionAttributeValues: {':statusValue':'INVITED',':dateTimeValue':nowUnix},
-      ProjectionExpression: "id,childName,mobileNumber,inviteStatus"
+      IndexName:timeIndex,
+      KeyConditionExpression: "inviteStatus = :statusValue and partyDateTimeUnix BETWEEN :startValue and :endValue",
+      ExpressionAttributeValues: {':statusValue':'ACCEPTED',':startValue': intervalStart,':endValue': intervalEnd},
+      ProjectionExpression: "id,childName,mobileNumber,partyId,createDateTimeUnix"
     }).then(reply => reply.Items);
   },
   accept(inviteId) {

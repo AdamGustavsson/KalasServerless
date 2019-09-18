@@ -59,7 +59,35 @@
               "Action": [
                 "*"
               ],
+              "Resource": "arn:aws:dynamodb:${region}:*:table/${project}-parties-${stage}/index/hostUser-index"
+            },
+            {
+              "Effect": "Allow",
+              "Action": [
+                "*"
+              ],
               "Resource": "arn:aws:dynamodb:${region}:*:table/${project}-invites-${stage}"
+            },
+            {
+              "Effect": "Allow",
+              "Action": [
+                "*"
+              ],
+              "Resource": "arn:aws:dynamodb:${region}:*:table/${project}-invites-${stage}/index/partyId-index"
+            },
+            {
+              "Effect": "Allow",
+              "Action": [
+                "*"
+              ],
+              "Resource": "arn:aws:dynamodb:${region}:*:table/${project}-invites-${stage}/index/inviteStatus-partyDateTimeUnix-index"
+            },
+            {
+              "Effect": "Allow",
+              "Action": [
+                "*"
+              ],
+              "Resource": "arn:aws:dynamodb:${region}:*:table/${project}-invites-${stage}/index/partyId-createDateTimeUnix-index"
             },
             {
               "Effect": "Allow",
@@ -115,28 +143,9 @@
           {
             "AttributeName": "id",
             "AttributeType": "S"
-          }
-        ],
-        "KeySchema": [
+          },
           {
-            "AttributeName": "id",
-            "KeyType": "HASH"
-          }
-        ],
-        "ProvisionedThroughput": {
-          "ReadCapacityUnits": 1,
-          "WriteCapacityUnits": 1
-        },
-        "TableName": "${project}-parties-${stage}"
-      }
-    },
-    "DynamoDbInvitesTable": {
-      "Type": "AWS::DynamoDB::Table",
-      "DeletionPolicy": "Retain",
-      "Properties": {
-        "AttributeDefinitions": [
-          {
-            "AttributeName": "id",
+            "AttributeName": "hostUser",
             "AttributeType": "S"
           }
         ],
@@ -150,7 +159,90 @@
           "ReadCapacityUnits": 1,
           "WriteCapacityUnits": 1
         },
-        "TableName": "${project}-invites-${stage}"
+        "TableName": "${project}-parties-${stage}",
+        "GlobalSecondaryIndexes":[
+          {
+            "IndexName" : "hostUser-index",
+            "KeySchema" : [ 
+              {
+                "AttributeName": "hostUser",
+                "KeyType": "HASH"
+              }
+            ],
+            "Projection" : { 
+              "NonKeyAttributes" : ["childName","startDateTime","header"],
+              "ProjectionType": "INCLUDE" },
+            "ProvisionedThroughput" : { 
+              "ReadCapacityUnits": 1,
+              "WriteCapacityUnits": 1 
+            }
+          }
+        ]
+      }
+    },
+    "DynamoDbInvitesTable": {
+      "Type": "AWS::DynamoDB::Table",
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "AttributeDefinitions": [
+          {
+            "AttributeName": "id",
+            "AttributeType": "S"
+          },
+          {
+            "AttributeName": "partyId",
+            "AttributeType": "S"
+          }  
+        ],
+        "KeySchema": [
+          {
+            "AttributeName": "id",
+            "KeyType": "HASH"
+          }
+        ],
+        "ProvisionedThroughput": {
+          "ReadCapacityUnits": 3,
+          "WriteCapacityUnits": 3
+        },
+        "TableName": "${project}-invites-${stage}",
+        "GlobalSecondaryIndexes":[
+          {
+            "IndexName" : "partyId-index",
+            "KeySchema" : [ 
+              {
+                "AttributeName": "partyId",
+                "KeyType": "HASH"
+              }
+            ],
+            "Projection" : { 
+              "NonKeyAttributes" : ["childName","inviteStatus","mobileNumber"],
+              "ProjectionType": "INCLUDE" },
+            "ProvisionedThroughput" : { 
+              "ReadCapacityUnits": 3,
+              "WriteCapacityUnits": 3 
+            }
+          },
+          {
+            "IndexName" : "inviteStatus-partyDateTimeUnix-index",
+            "KeySchema" : [ 
+              {
+                "AttributeName": "inviteStatus",
+                "KeyType": "HASH"
+              },
+              {
+                "AttributeName": "partyDateTimeUnix",
+                "KeyType": "RANGE"
+              }
+            ],
+            "Projection" : { 
+              "NonKeyAttributes" : ["id","childName","mobileNumber","partyId","createDateTimeUnix"],
+              "ProjectionType": "INCLUDE" },
+              "ProvisionedThroughput" : { 
+              "ReadCapacityUnits": 1,
+              "WriteCapacityUnits": 3 
+            }
+          }
+        ]  
       }
     },
     "DynamoDbRemindersTable": {

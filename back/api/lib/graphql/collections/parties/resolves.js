@@ -4,6 +4,10 @@ const Promise = require('bluebird');
 const uuid = require('uuid');
 const bcryptjs = require('bcryptjs');
 const db = require('../../../dynamodb');
+const MobileNumberValidation = require("../../../mobileNumberValidation");
+
+
+const offerService = require('../offer/offerService');
 const invoke = require('../../../invoke')
 const _ = require('lodash');
 const smsgateway = require('../../../smsgateway');
@@ -17,13 +21,15 @@ const stage = process.env.SERVERLESS_STAGE;
 const region = process.env.SERVERLESS_REGION;
 const projectName = process.env.SERVERLESS_PROJECT;
 const partiesTable = projectName + '-parties-' + stage;
+const userIndex = 'hostUser-index';
 const baseURL = (stage=='prod'?'kalas.io':stage + '.kalas.io.s3-website-'+ region + '.amazonaws.com')
 
 module.exports = {
   create(party) {
     party.id = uuid.v1();
+    party.hostUser = MobileNumberValidation.standardiseNumber(party.hostUser);
     I18n.setLocale(party.locale);
-    const linkText = I18n.t("SMSMessage.partyCreated",{birthdayChild: party.childName.trim(), url:baseURL + '/p/' + party.id})
+    const linkText = I18n.t("SMSMessage.partyCreated",{birthdayChild: party.childName.trim(), url:baseURL + '/p/' + party.id}) + " " + offerService.getHostOfferText(party);
     smsgateway.sendSMS(party.hostUser,linkText);
     return db('put', {
       TableName: partiesTable,
@@ -50,7 +56,17 @@ module.exports = {
        'locale',
        'theme'
       ]
-    }).then(reply => reply.Item);
+    }).then(function (reply){
+              //Set as PASSED and send offerUrl if datetime is 1 hour after the start of the party 
+              if (reply.Item.startDateTimeUnix+60*60<Date.now()/1000){
+                reply.Item.status = 'PASSED';
+                const offer = offerService.getOffer(reply.Item);
+                if(offer){
+                  reply.Item.offerUrl = offer.url;
+                }
+              }
+               return reply.Item
+    });
   },
 
   getAll() {
@@ -71,11 +87,12 @@ module.exports = {
   },
 
   getAllForUser(userId) {
-    return db('scan', {
+    return db('query', {
       TableName: partiesTable,
-      FilterExpression: "hostUser = :userId",
+      IndexName: userIndex,
+      KeyConditionExpression: "hostUser = :userId",
       ExpressionAttributeValues: {':userId':userId},
-      ProjectionExpression: "id,description,header,hostUser,childName,startDateTime,endDateTime,partyLocation,locale"
+      ProjectionExpression: "id,header,childName,startDateTime"
     }).then(reply => reply.Items);
   },
 

@@ -1,0 +1,56 @@
+.music {
+  background-color: #595959;
+  color: #f7f0de;
+  font-family: "BenchNine","Arial Narrow",Arial,sans-serif;
+}
+.inline-edit-music{
+  color: #cc6633;
+  border-color: #cc6633;
+  background-color: #f7f0de;
+  font-family: "BenchNine","Arial Narrow",Arial,sans-serif;
+  width: 95%;
+}
+#themeImage-music{
+  display: block;
+  margin: auto;
+  width: 50%;
+  max-width: 300px;
+}
+#themeLogo-music{
+  display: block;
+  padding-top: 10px;
+  margin: auto;
+  width: 90%;
+  max-width: 300px;
+}
+.inviteFrame-music{
+    background-color: #f7f0de;
+    color: #cc6633;
+    font-weight: bold;
+    border-color: #cc6633;
+    border-width: 8px;
+    border-style: solid;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+.font-music{
+
+}
+
+.accept-music{
+  background-color: #8BC755;
+  color: #f7f0de;
+}
+.reject-music{
+  background-color: #cc6633;
+  color: #f7f0de;
+}
+
+.header-music{
+  text-align: center;
+  font-weight: bold;
+  color: #393939;
+  font-size: 2rem
+}

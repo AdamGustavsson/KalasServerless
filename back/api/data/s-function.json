@@ -82,8 +82,10 @@
     "AUTH_TOKEN_SECRET": "${authTokenSecret}",
     "LOCAL_DDB_ENDPOINT": "${localDynamoDbEndpoint}",
     "SMS_GATEWAY_DEVICE_ID": "${SMSGatewayDeviceId}",
-    "SMS_GATEWAY_PASSWORD": "${SMSGatewayPassword}",
-    "SMS_GATEWAY_USERNAME": "${SMSGatewayUsername}"
+    "SMS_GATEWAY_TOKEN": "${SMSGatewayToken}",
+    "SMS_GATEWAY_SEMYSMS_DEVICE_ID": "${SMSGatewaySemySmsDeviceId}",
+    "SMS_GATEWAY_SEMYSMS_TOKEN": "${SMSGatewaySemySmsToken}",
+    "SMS_GATEWAY_SERVICE": "${SMSGatewayService}"
   },
   "vpc": {
     "securityGroupIds": [],
