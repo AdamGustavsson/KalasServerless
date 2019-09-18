@@ -90,6 +90,11 @@ export const translationsObject = {
       pleaseLogin: "Please login in to see the status of your party",
       youreDone: "When you invited all children,you're done.",
       youGetAText: "You will get a SMS whenever someone replies",
+      paymentPremiumCard: "You have chosen a premium theme.",
+      paymentCostIs: "The price is ",
+      paymentMethod: "The payment method is ",
+      paymentIntegrationIsNotReady: "Our integration with %{paymentMethod} is not complete yet. In the meantime the premium themes are free of charge. Enjoy!",
+      pleasePay: "Please pay for your theme before you can invite children. Or chose a free theme.",
       seeAllParties: "See all your parties"
     },
     invitePage: {
@@ -145,6 +150,7 @@ export const translationsObject = {
       music: "Audio",
       laser: "Laserdome",
       ladybug: "Ladybug",
+      ladybugPaid: "Ladybug Premium Price: %{price}SEK",
       prison: "Prison",
       dummyParty: {
         header1: "Welcome to celebrate %{name}'s 6th birthday",
@@ -248,6 +254,11 @@ export const translationsObject = {
       pleaseLogin: "Logga in för att se statusen på ditt party",
       youreDone: "När du bjudit in alla barn är du klar.",
       youGetAText: "Du får ett SMS så fort någon svarar.",
+      paymentPremiumCard: "Du har valt ett premium-inbjudningskort.",
+      paymentCostIs: "Kostnaden är ",
+      paymentMethod: "Betalning sker med ",
+      paymentIntegrationIsNotReady: "Vår integration med %{paymentMethod} är ännu inte klar. Under tiden bjuder vi på premium-inbjudningskorten. Var så god!",
+      pleasePay: "Vänligen betala ditt inbjudningskort innan du kan bjuda in barnen. Eller välj ett av våra gratis kort.",
       seeAllParties: "Se alla dina kalas"
     },
     invitePage: {
@@ -303,6 +314,7 @@ export const translationsObject = {
       music: "Audio",
       laser: "Laserdome",
       ladybug: "Ladybug",
+      ladybugPaid: "Ladybug Premium, Pris %{price}kr",
       prison: "Prison",
       dummyParty: {
         header1: "Välkommen att fira %{name}s 6-årsdag",

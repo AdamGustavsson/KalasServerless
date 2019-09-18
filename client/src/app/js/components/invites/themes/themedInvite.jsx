@@ -5,6 +5,8 @@ import BowlingTheme from './bowling/';
 import MusicTheme from './music/';
 import LaserTheme from './laser/';
 import LadybugTheme from './ladybug/';
+import LadybugPaidTheme from './paid/ladybugpaid/';
+
 import PrisonTheme from './prison/';
 require('./index.css');
 
@@ -35,6 +37,10 @@ export default class themedInvite extends Component {
       case 'ladybug':
           ThemeComponent = LadybugTheme;
           break;
+      case 'ladybugPaid':
+          ThemeComponent = LadybugPaidTheme;
+          break;
+    
       case 'prison':
           ThemeComponent = PrisonTheme;
           break;

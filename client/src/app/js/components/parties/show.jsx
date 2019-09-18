@@ -10,6 +10,7 @@ import ga from 'ga-react-router';
 import FacebookProvider, { Like,Comments } from 'react-facebook';
 import Helmet from "react-helmet";
 import ThemedInvite from '../invites/themes/themedInvite';
+import PaymentModule from '../payment/paymentModule';
 import DropDownList from 'react-widgets/lib/DropdownList';
 import Moment from 'moment';
 import withDataLayerPageView from '../shared/withDataLayerPageView';
@@ -28,6 +29,23 @@ function fbReady(){
     );
 
 }
+function getThemeABPrice(userNumber){
+  const lastDigit = userNumber.slice(-1);
+  if(lastDigit<5){
+    return 10;
+  } else {
+    return 30;
+  }
+}
+function getThemeABPaymentMethod(userNumber){
+  const nextLastDigit = userNumber.charAt(userNumber.length - 2);
+  if(nextLastDigit<5){
+    return "Swish";
+  } else {
+    return "Klarna";
+  }
+}
+
 
 class PartiesShow extends Component {
   componentWillMount() {
@@ -35,13 +53,18 @@ class PartiesShow extends Component {
   }
 
   setTheme(theme){
+    this.props.setThemeOnParty(this.props.party.id,theme.id);
+    //do stuff if a paid theme is selected
+    if(theme.paid){
+        console.log("A paid theme was selected");
+    }
+
     ga('send', {
       hitType: 'event',
       eventCategory: 'Party',
       eventAction: 'SelectTheme',
       label: theme
     });
-    this.props.setThemeOnParty(this.props.party.id,theme);
   }
   updatePartyField(party){
     if(party.startDateTime){
@@ -61,6 +84,8 @@ class PartiesShow extends Component {
     const { currentUser } = this.props;
     const {invites } = this.props;
     const {locale} = this.props;
+    const {isThemePaidFor} = this.props;
+
     //Check if anyone has replied yet, used to know if the comments function should be shown
     var anyoneHasReplied = false;
     if(invites&&invites.length>0){
@@ -74,19 +99,40 @@ class PartiesShow extends Component {
       return <div className="row"><div className="twelve columns"><Translate value="general.loading" /></div></div>
     }
     ga('set', 'userId', party.hostUser);
-    const themes=[{id:'polka',
+
+    const themeABPrice = getThemeABPrice(party.hostUser);
+    const themeABPaymentMethod = getThemeABPaymentMethod(party.hostUser);
+    if(invites.length==1){
+      ga('send', {
+        hitType: 'event',
+        eventCategory: 'Party',
+        eventAction: 'ThemeChosenPaymentOffered',
+        eventLabel: themeABPaymentMethod,
+        eventValue: themeABPrice
+      });
+      ga('send', {
+        hitType: 'event',
+        eventCategory: 'Party',
+        eventAction: 'ThemeChosen',
+        eventLabel: (party.theme?party.theme:'polka'),
+        eventValue: themeABPrice
+      });
+    }
+    const themes={polka:{id:'polka',
                   name:I18n.t('theme.polka')},
-                  {id:'bowling',
+                  bowling:{id:'bowling',
                   name:I18n.t('theme.bowling')},
-                  {id:'music',
+                  music:{id:'music',
                   name:I18n.t('theme.music')},
-                  {id:'laser',
+                  laser:{id:'laser',
                   name:I18n.t('theme.laser')},
-                  {id:'ladybug',
+                  ladybug:{id:'ladybug',
                   name:I18n.t('theme.ladybug')},
-                  {id:'prison',
+                  ladybugPaid:{id:'ladybugPaid',
+                  name:I18n.t('theme.ladybugPaid',{price:themeABPrice}),paid:true,price:themeABPrice},
+                  prison:{id:'prison',
                   name:I18n.t('theme.prison')}
-                ];
+                };
        
     return (
       <div className="row">
@@ -102,7 +148,8 @@ class PartiesShow extends Component {
           <h5><Translate value="createPartyPage.editChanges" /></h5>
           <h2><Translate value="createPartyPage.step2" /></h2>
           <h3><Translate value="createPartyPage.step2_description" /></h3>
-          <DropDownList defaultValue={"polka"} value={party.theme} valueField='id' textField='name' data={themes}  onChange={value => this.setTheme(value.id)}/>
+          <DropDownList defaultValue={"polka"} value={party.theme} valueField='id' textField='name' data={Object.values(themes)}  onChange={value => this.setTheme(value)}/>
+          <PaymentModule theme={themes[(party.theme?party.theme:"polka")]}  paymentMethod={themeABPaymentMethod}/>
         </div>
         :''}
         <InvitesIndex showPhone={true}/>
@@ -125,8 +172,9 @@ class PartiesShow extends Component {
             <h3><Translate value="createPartyPage.inviteMoreChildren" /></h3>
           </div>)
         }
-
-        <InvitesNew/>
+        {party.theme&&themes[party.theme].paid&&!isThemePaidFor?
+          <div><Translate value="createPartyPage.pleasePay" /></div>
+        :<InvitesNew/>}
         <div className={"frame inviteFrame-"+(party.theme?party.theme:"polka")}>
           <h5><Translate value="createPartyPage.youreDone" /></h5>
           <h5><Translate value="createPartyPage.youGetAText" /></h5>
@@ -143,7 +191,7 @@ class PartiesShow extends Component {
 }
 
 function mapStateToProps(state) {
-  return { party: state.parties.party,invites: state.invites.all, currentUser: state.users.currentUser,locale: state.i18n.locale};
+  return { isThemePaidFor:state.payment.isThemePaidFor, party: state.parties.party,invites: state.invites.all, currentUser: state.users.currentUser,locale: state.i18n.locale};
 }
 
 export default connect(mapStateToProps, { getParty,updateParty,setThemeOnParty})(withDataLayerPageView(PartiesShow));
