@@ -5,6 +5,7 @@ import BowlingTheme from './bowling/';
 import MusicTheme from './music/';
 import LaserTheme from './laser/';
 import LadybugTheme from './ladybug/';
+
 import PrisonTheme from './prison/';
 import CakeTheme from './paid/cake/';
 require('./index.css');
