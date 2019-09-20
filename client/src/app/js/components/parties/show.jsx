@@ -60,14 +60,14 @@ class PartiesShow extends Component {
           hitType: 'event',
           eventCategory: 'Party',
           eventAction: 'SelectPaidTheme',
-          label: theme
+          label: theme.id
         });
     } else {
       ga('send', {
         hitType: 'event',
         eventCategory: 'Party',
         eventAction: 'SelectFreeTheme',
-        label: theme
+        label: theme.id
       });
     }
 
@@ -75,7 +75,7 @@ class PartiesShow extends Component {
       hitType: 'event',
       eventCategory: 'Party',
       eventAction: 'SelectTheme',
-      label: theme
+      label: theme.id
     });
     this.topFunction();
   }
