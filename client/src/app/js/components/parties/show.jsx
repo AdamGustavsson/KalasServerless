@@ -30,15 +30,25 @@ function fbReady(){
 
 }
 function getThemeABPrice(userNumber){
+  var a = 9;
+  var b = 29;
+  if(!userNumber){
+    return a;
+  }
   userNumber = userNumber + '';
   const thirdLastDigit = userNumber.charAt(userNumber.length - 3);
   if(thirdLastDigit<5){
-    return 9;
+    return a;
   } else {
-    return 29;
+    return b;
   }
 }
 function getThemeABPaymentMethod(userNumber){
+  var a = "Swish";
+  var b = "Klarna";
+  if(!userNumber){
+    return a;
+  }
   userNumber = userNumber + '';
   const nextLastDigit = userNumber.charAt(userNumber.length - 2);
   if(nextLastDigit<5){
