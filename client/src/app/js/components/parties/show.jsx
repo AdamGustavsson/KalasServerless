@@ -30,6 +30,7 @@ function fbReady(){
 
 }
 function getThemeABPrice(userNumber){
+  userNumber = userNumber + '';
   const thirdLastDigit = userNumber.charAt(userNumber.length - 3);
   if(thirdLastDigit<5){
     return 9;
@@ -38,6 +39,7 @@ function getThemeABPrice(userNumber){
   }
 }
 function getThemeABPaymentMethod(userNumber){
+  userNumber = userNumber + '';
   const nextLastDigit = userNumber.charAt(userNumber.length - 2);
   if(nextLastDigit<5){
     return "Swish";
