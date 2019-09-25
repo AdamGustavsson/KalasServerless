@@ -1,0 +1,120 @@
+.pirate {
+  background-color: #e2dcc6;
+}
+.inline-edit-pirate{
+  color: black;
+  border-color: #b3dcce;
+  background-color: #c5e7d6;
+  width: 40%;
+}
+.container-pirate{
+  position: relative;
+}
+.inviteFrame-pirate{
+    
+    color: black;
+    border-color: #aca284;
+    background-color: #c3b898;
+    border-width: 6px;
+    border-style: solid;
+    padding: 10px 10px 10px 5px;
+    margin-top: 40px;
+    margin-bottom: 10px;
+}
+.img-pirate{
+  width: 100%;
+}
+.content-pirate{
+  color: black;
+  text-align: center;
+  margin-left: -20px;
+  margin-right: -20px; 
+}
+.font-pirate{
+  font-family: 'Fondamento', cursive;
+}
+
+.accept-pirate{
+  background-color: #514c39;
+  color: #e2dcc2!important;
+}
+.inviteFrame-pirate .button.button-primary{
+  background-color: #514c39;
+  color: #e2dcc2;
+  border: none;
+}
+.reject-pirate{
+  background-color: #7d3b26;
+  color: black!important;
+}
+
+.header-pirate{
+  top: 29%;
+  padding: 5%;
+  width: 70%;
+  left: 20%;
+  position: absolute;
+  font-size: 2em;
+  line-height: 0.95;
+  background-image: radial-gradient(#e7e1c97d,#e7e1c900);
+
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  justify-content: center;
+
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  align-items: center;
+}
+
+.description-pirate{
+  top: 41%;
+  padding: 5%;
+  width: 70%;
+  left: 20%;
+  position: absolute;
+  line-height: 95%;
+  text-align: justify;
+  display: flex;
+  align-items: center;
+  font-size: 1.3em;
+  background-image: radial-gradient(#e7e1c97d,#e7e1c900);
+}
+.description-pirate span{
+  width: 100%;
+}
+.last-pirate{
+  height: 14%;
+  top: 60%;
+  padding: 5%;
+  width: 70%;
+  left: 20%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-evenly;
+  text-align: left;
+  font-size: 1.0em;
+  background-image: radial-gradient(#e7e1c97d,#e7e1c900);
+}
+.last-pirate *{
+  width: 100%;
+  line-height: 1.1;
+}
+.child-pirate{
+  font-size: 2.0em;
+  line-height: 95%;
+  margin-bottom: 0;
+}
