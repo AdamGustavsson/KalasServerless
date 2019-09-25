@@ -179,7 +179,7 @@ class PartiesShow extends Component {
           <h3><Translate value="createPartyPage.step2" /></h3>
           <h5><Translate value="createPartyPage.step2_description" /></h5>
           <DropDownList placeholder={I18n.t('createPartyPage.select')} defaultValue={"cake"} value={party.theme} valueField='id' textField='name' data={Object.values(themes)}  onChange={value => this.setTheme(value)}/>
-          <PaymentModule theme={themes[(party.theme?party.theme:"cake")]}  paymentMethod={themeABPaymentMethod}/>
+          <PaymentModule theme={themes[(party.theme?party.theme:"cake")]}  paymentMethod={themeABPaymentMethod} isDefault={party.theme===null}/>
         </div>
         :''}
         <InvitesIndex showPhone={true}/>
