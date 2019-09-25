@@ -35,7 +35,7 @@
 }
 
 .accept-cake{
-  background-color: #c6b565;
+  background-color: #a6dac1;
 }
 .reject-cake{
   background-color: #f0a069;
@@ -81,16 +81,30 @@
   left: 18%;
   line-height: 95%;
   text-align: justify;
+  display: flex;
+  align-items: center;
+}
+.description-cake span{
+  width: 100%;
 }
 .last-cake{
   height: 14%;
   padding: 1%;
   width: 77%;
   position: absolute;
-  top: 64%;
+  top: 65%;
   left: 9%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.last-cake *{
+  width: 100%;
+  line-height: 1.1;
 }
 .child-cake{
   font-size: 2.0em;
   line-height: 95%;
+  margin-bottom: 0;
 }

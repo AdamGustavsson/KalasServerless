@@ -99,13 +99,13 @@ class InviteShow extends Component {
       <ThemedInvite invite={invite} party={party} locale={locale}/>
 
 
-      <button onClick={this.onAcceptClick.bind(this)} className={"button u-full-width accept-"+ (party.theme?party.theme:"polka")}><Translate value="invitePage.accept" /></button>
-      <button onClick={this.onRejectClick.bind(this)} className={"button u-full-width reject-"+ (party.theme?party.theme:"polka")}><Translate value="invitePage.reject" /></button>
+      <button onClick={this.onAcceptClick.bind(this)} className={"button u-full-width accept-"+ (party.theme?party.theme:"cake")}><Translate value="invitePage.accept" /></button>
+      <button onClick={this.onRejectClick.bind(this)} className={"button u-full-width reject-"+ (party.theme?party.theme:"cake")}><Translate value="invitePage.reject" /></button>
       <p><Translate value="invitePage.noReply" /></p>
       <h5><Translate value="invitePage.status" />: {statusText[invite.inviteStatus]}</h5>
       {invite.inviteStatus!='INVITED'?
       <div className="row">
-        <div className={"twelve columns frame inviteFrame-"+(party.theme?party.theme:"polka")}>
+        <div className={"twelve columns frame inviteFrame-"+(party.theme?party.theme:"cake")}>
           <h4><Translate value="invitePage.whatIs" /></h4>
           <h5><Translate value="invitePage.serviceDescription" /></h5>
           <Link to={'/'} className="button button-primary"><Translate value="invitePage.moreInfo" /></Link>
@@ -122,7 +122,7 @@ class InviteShow extends Component {
       </div>  
       :''}
       {invite.inviteStatus!='INVITED'?
-      <div className={"frame inviteFrame-"+(party.theme?party.theme:"polka")}>
+      <div className={"frame inviteFrame-"+(party.theme?party.theme:"cake")}>
         <div><Translate value="invitePage.comments" /></div>
         <FacebookProvider onReady={this.fbReady} appID="1114268925305216" language={locale=='sv'?'sv_SE':'en_GB'}>
           <Comments href={"http://" + location.host + "/fromComments/" +party.id} orderBy="time" numPosts={10}/>

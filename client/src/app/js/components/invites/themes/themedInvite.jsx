@@ -45,9 +45,9 @@ export default class themedInvite extends Component {
           break;    
       default:
         party = Object.assign({}, party, {
-          theme: "polka"
+          theme: "cake"
         })
-        ThemeComponent = PolkaTheme;
+        ThemeComponent = CakeTheme;
         break;
        }
     return(

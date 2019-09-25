@@ -40,7 +40,7 @@ class InvitesIndex extends Component {
                         REJECTED: I18n.t('createPartyPage.rejected')};
         return (
           <div className="row">
-            <div className={"twelve columns frame inviteFrame-"+(party.theme?party.theme:"polka")}>
+            <div className={"twelve columns frame inviteFrame-"+(party.theme?party.theme:"cake")}>
               <h4><Translate value="createPartyPage.invitedGuests" /></h4>
               {invites&&invites.length ? (
                 <table className="u-full-width">

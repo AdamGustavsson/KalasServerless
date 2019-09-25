@@ -144,16 +144,16 @@ class PartiesShow extends Component {
         hitType: 'event',
         eventCategory: 'Party',
         eventAction: 'ThemeChosen',
-        eventLabel: (party.theme?party.theme:'polka'),
+        eventLabel: (party.theme?party.theme:'cake'),
         eventValue: themeABPrice
       });
     }
-    const themes={polka:{id:'polka',
+    const themes={cake: {id:'cake',
+                  name:I18n.t('theme.cake',{price:themeABPrice}),paid:true,price:themeABPrice},
+                  polka:{id:'polka',
                   name:I18n.t('theme.polka')},
                   ladybug:{id:'ladybug',
                   name:I18n.t('theme.ladybug')},
-                  cake: {id:'cake',
-                  name:I18n.t('theme.cake',{price:themeABPrice}),paid:true,price:themeABPrice},
                   laser:{id:'laser',
                   name:I18n.t('theme.laser')},
                   bowling:{id:'bowling',
@@ -178,8 +178,8 @@ class PartiesShow extends Component {
           <h5><Translate value="createPartyPage.editChanges" /></h5>
           <h3><Translate value="createPartyPage.step2" /></h3>
           <h5><Translate value="createPartyPage.step2_description" /></h5>
-          <DropDownList placeholder={I18n.t('createPartyPage.select')} defaultValue={"polka"} value={party.theme} valueField='id' textField='name' data={Object.values(themes)}  onChange={value => this.setTheme(value)}/>
-          <PaymentModule theme={themes[(party.theme?party.theme:"polka")]}  paymentMethod={themeABPaymentMethod}/>
+          <DropDownList placeholder={I18n.t('createPartyPage.select')} defaultValue={"cake"} value={party.theme} valueField='id' textField='name' data={Object.values(themes)}  onChange={value => this.setTheme(value)}/>
+          <PaymentModule theme={themes[(party.theme?party.theme:"cake")]}  paymentMethod={themeABPaymentMethod}/>
         </div>
         :''}
         <InvitesIndex showPhone={true}/>
@@ -191,7 +191,7 @@ class PartiesShow extends Component {
           :
           (<div>
             {anyoneHasReplied?
-            <div className={"frame inviteFrame-"+(party.theme?party.theme:"polka")}>
+            <div className={"frame inviteFrame-"+(party.theme?party.theme:"cake")}>
               <div><Translate value="createPartyPage.comments" /></div>
               <FacebookProvider onReady={fbReady} appID="1114268925305216" language={locale=='sv'?'sv_SE':'en_GB'}>
                 <Comments href={"http://" + location.host + "/fromComments/" +party.id} orderBy="time" numPosts={10}/>
@@ -205,7 +205,7 @@ class PartiesShow extends Component {
         {party.theme&&themes[party.theme].paid&&!isThemePaidFor?
           <div><Translate value="createPartyPage.pleasePay" /></div>
         :<InvitesNew/>}
-        <div className={"frame inviteFrame-"+(party.theme?party.theme:"polka")}>
+        <div className={"frame inviteFrame-"+(party.theme?party.theme:"cake")}>
           <h5><Translate value="createPartyPage.youreDone" /></h5>
           <h5><Translate value="createPartyPage.youGetAText" /></h5>
           <FacebookProvider appID="1114268925305216" language={locale=='sv'?'sv_SE':'en_GB'} >
