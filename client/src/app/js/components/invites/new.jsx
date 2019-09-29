@@ -24,10 +24,19 @@ class InvitesNew extends Component {
       };
 
       this.props.createInvite(invite, this.props.party.id, this.props.token);
+      if(this.props.invitesBefore&&this.props.invitesBefore.length==3){
+        ga('send', {
+          hitType: 'event',
+          eventCategory: 'Invite',
+          eventAction: 'Create4thInvite',
+          eventLabel: childName
+        });
+      }
       ga('send', {
         hitType: 'event',
         eventCategory: 'Invite',
-        eventAction: 'CreateInvite'
+        eventAction: 'CreateInvite',
+        eventLabel: childName
       });
       this.refs.mobileNumber.value = null;
       this.refs.childName.value = null;
@@ -56,9 +65,9 @@ class InvitesNew extends Component {
 
 function mapStateToProps(state) {
     if(state.users.currentUser){
-      return { token: state.users.currentUser.token, party: state.parties.party};
+      return { token: state.users.currentUser.token, party: state.parties.party, invitesBefore:state.invites.all};
     } else {
-      return { token: null, party: state.parties.party};
+      return { token: null, party: state.parties.party, invitesBefore:state.invites.all};
     }
 }
 
