@@ -73,20 +73,21 @@ setThemeBackground(currentTheme){
               </div>
             </div>
         </div>
-        <div className="row">
+        <div className="row themePreviewContainer">
           <div className="four columns laser themePreview" >
             <ThemedInvite party={this.getDummyParty("laser")} invite={this.getDummyInvite()} locale={this.props.locale} setBackground={this.setThemeBackground.bind(this)}/>
           </div>
-          <div className="four columns prison themePreview" >
-            <ThemedInvite party={this.getDummyParty("prison")} invite={this.getDummyInvite()} locale={this.props.locale} setBackground={this.setThemeBackground.bind(this)}/>
+          <div className="four columns bowling themePreview" >
+            <ThemedInvite party={this.getDummyParty("bowling")} invite={this.getDummyInvite()} locale={this.props.locale} setBackground={this.setThemeBackground.bind(this)}/>
           </div>
           <div className="four columns polka themePreview" >
             <ThemedInvite party={this.getDummyParty("polka")} invite={this.getDummyInvite()} locale={this.props.locale} setBackground={this.setThemeBackground.bind(this)}/>
           </div>
           </div>
-          <div className="row">
-          <div className="four columns bowling themePreview" >
-            <ThemedInvite party={this.getDummyParty("bowling")} invite={this.getDummyInvite()} locale={this.props.locale} setBackground={this.setThemeBackground.bind(this)}/>
+          <div className="row themePreviewContainer">
+          
+          <div className="four columns prison themePreview" >
+            <ThemedInvite party={this.getDummyParty("prison")} invite={this.getDummyInvite()} locale={this.props.locale} setBackground={this.setThemeBackground.bind(this)}/>
           </div>
           <div className="four columns ladybug themePreview" >
             <ThemedInvite party={this.getDummyParty("ladybug")} invite={this.getDummyInvite()} locale={this.props.locale} setBackground={this.setThemeBackground.bind(this)}/>

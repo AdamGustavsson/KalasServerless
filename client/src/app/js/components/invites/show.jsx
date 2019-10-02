@@ -10,11 +10,39 @@ import Helmet from "react-helmet";
 import ThemedInvite from './themes/themedInvite';
 import InvitesIndex from './index';
 import withDataLayerPageView from '../shared/withDataLayerPageView';
+import RsvpModal from './rsvpModal';
 class InviteShow extends Component {
-  componentWillMount() {
-    this.props.getInvite(this.props.params.id).then(() => this.props.getParty(this.props.invite.partyId)).then(() => this.trackForRemarketing(this.props.party));
+  constructor(props) {
+    super(props);
+
+    this.state = { modalIsOpen: false };
   }
 
+  componentWillMount() {
+    this.props.getInvite(this.props.params.id).then(() => this.props.getParty(this.props.invite.partyId)).then(() => this.onPartyLoaded());
+  }
+
+  toggleModal = () => {
+    this.setState({
+      modalIsOpen: !this.state.modalIsOpen
+    });
+  }
+  showModal = () => {
+    this.setState({
+      modalIsOpen: true
+    });
+  }
+  onPartyLoaded(){
+    const { invite } = this.props;
+    if(invite.mobileNumber){
+      ga('set', 'userId', invite.mobileNumber);
+    } 
+    //Show RSVP modal after 30 sec
+    if(invite.inviteStatus==='INVITED'){
+      setTimeout(this.showModal.bind(this),30000);
+    }
+    this.trackForRemarketing(this.props.party)
+  }
   trackForRemarketing(party){
       window.google_trackConversion({
         google_conversion_id: 982175048,
@@ -85,9 +113,6 @@ class InviteShow extends Component {
     if(party&&party.status == "PASSED"&&party.offerUrl){
       window.location = party.offerUrl;
     }
-    if(invite.mobileNumber){
-      ga('set', 'userId', invite.mobileNumber);
-    } 
     return (
       <div className="row">
         <Helmet
@@ -97,8 +122,14 @@ class InviteShow extends Component {
               ]}
         />
       <ThemedInvite invite={invite} party={party} locale={locale}/>
-
-
+      <RsvpModal show={invite.inviteStatus==='INVITED'&&this.state.modalIsOpen}
+      onClose={this.toggleModal}>
+        <p><Translate value="invitePage.mustReply" /></p>
+        <button onClick={this.onAcceptClick.bind(this)} style={{padding:0}} className={"button u-full-width accept-polka"}><Translate value="invitePage.accept" /></button>
+        <button onClick={this.onRejectClick.bind(this)} style={{padding:0}} className={"button u-full-width reject-polka"}><Translate value="invitePage.reject" /></button>
+        <p><Translate value="invitePage.replyLater" /></p>
+        <button onClick={this.toggleModal} style={{padding:0}} className={"button u-full-width "}><Translate value="invitePage.cantDecide" /></button>
+      </RsvpModal>
       <button onClick={this.onAcceptClick.bind(this)} className={"button u-full-width accept-"+ (party.theme?party.theme:"cake")}><Translate value="invitePage.accept" /></button>
       <button onClick={this.onRejectClick.bind(this)} className={"button u-full-width reject-"+ (party.theme?party.theme:"cake")}><Translate value="invitePage.reject" /></button>
       <p><Translate value="invitePage.noReply" /></p>

@@ -51,6 +51,12 @@
   .logo-heading {
     font-size: 3rem;
   }
+  .themePreviewContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: center;
+  }
 }
 
 /* Bigger than 750 */
