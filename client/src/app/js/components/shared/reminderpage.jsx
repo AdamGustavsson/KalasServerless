@@ -26,7 +26,7 @@ class ReminderPage extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const mobileNumber = this.props.invite&&this.props.invite.mobileNumber?this.props.invite.mobileNumber:this.refs.mobileNumber.value;
+    const mobileNumber = this.props.invite&&this.props.invite.mobileNumber&&this.props.invite.mobileNumberlength>3?this.props.invite.mobileNumber:this.refs.mobileNumber.value;
     const reminderDate = this.state.reminderDateString;
     if (mobileNumber.length !== 0 && reminderDate ) {
       const reminder = {
@@ -58,7 +58,7 @@ class ReminderPage extends Component {
           <h5><Translate value="reminderPage.reminderCreated" /></h5>
         :
         <form onSubmit={this.handleSubmit.bind(this)}>
-          {invite?
+          {invite&&invite.mobileNumber&&invite.mobileNumber.length>3?
             <p><Translate value="reminderPage.descriptionHaveNumber" mobileNumber={invite.mobileNumber} /></p>:
             <div>
               <p><Translate value="reminderPage.descriptionDontHaveNumber" />:</p>
