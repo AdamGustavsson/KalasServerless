@@ -31,7 +31,7 @@ function fbReady(){
 }
 function getThemeABPrice(userNumber){
   var a = 9;
-  var b = 29;
+  var b = 19;
   if(!userNumber){
     return a;
   }
@@ -45,7 +45,7 @@ function getThemeABPrice(userNumber){
 }
 function getThemeABPaymentMethod(userNumber){
   var a = "Swish";
-  var b = "Klarna";
+  var b = "Payson kreditkort/direktbetalning";
   if(!userNumber){
     return a;
   }
@@ -149,7 +149,7 @@ class PartiesShow extends Component {
       });
     }
     const themes={cake: {id:'cake',
-                  name:I18n.t('theme.cake',{price:themeABPrice}),paid:true,price:themeABPrice},
+                  name:I18n.t('theme.cake',{price:'2̶9̶k̶r̶, nu '+themeABPrice}),paid:true,price:themeABPrice},
                   pirate: {id:'pirate',
                   name:I18n.t('theme.pirate',{price:29}),paid:true,price:29},
                   polka:{id:'polka',
