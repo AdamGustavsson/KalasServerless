@@ -130,8 +130,8 @@ class InviteShow extends Component {
         <p><Translate value="invitePage.replyLater" /></p>
         <button onClick={this.toggleModal} style={{padding:0}} className={"button u-full-width "}><Translate value="invitePage.cantDecide" /></button>
       </RsvpModal>
-      <button onClick={this.onAcceptClick.bind(this)} className={"button u-full-width accept-"+ (party.theme?party.theme:"cake")}><Translate value="invitePage.accept" /></button>
-      <button onClick={this.onRejectClick.bind(this)} className={"button u-full-width reject-"+ (party.theme?party.theme:"cake")}><Translate value="invitePage.reject" /></button>
+            <button onClick={this.onAcceptClick.bind(this)} className={"button u-full-width accept-"+ (party.theme?party.theme:"cake")}>{invite.inviteStatus==='ACCEPTED'?<Translate value="invitePage.acceptedShort" />:<Translate value="invitePage.accept" />}</button>
+      <button onClick={this.onRejectClick.bind(this)} className={"button u-full-width reject-"+ (party.theme?party.theme:"cake")}>{invite.inviteStatus==='REJECTED'?<Translate value="invitePage.rejectedShort" />:<Translate value="invitePage.reject" />}</button>
       <p><Translate value="invitePage.noReply" /></p>
       <h5><Translate value="invitePage.status" />: {statusText[invite.inviteStatus]}</h5>
       {invite.inviteStatus!='INVITED'?
