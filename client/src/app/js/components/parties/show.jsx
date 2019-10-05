@@ -151,7 +151,7 @@ class PartiesShow extends Component {
     const themes={cake: {id:'cake',
                   name:I18n.t('theme.cake',{price:themeABPrice}),paid:true,price:themeABPrice},
                   pirate: {id:'pirate',
-                  name:I18n.t('theme.pirate',{price:themeABPrice}),paid:true,price:themeABPrice},
+                  name:I18n.t('theme.pirate',{price:29}),paid:true,price:29},
                   polka:{id:'polka',
                   name:I18n.t('theme.polka')},
                   ladybug:{id:'ladybug',
