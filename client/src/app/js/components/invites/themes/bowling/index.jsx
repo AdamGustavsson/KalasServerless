@@ -12,7 +12,7 @@ export default class BowlingTheme extends Component {
     const { locale } = this.props;
     this.props.setBackground(party.theme);
     return(
-      <div className={"frame font-"+ party.theme + " inviteFrame-"+party.theme} >
+      <div className={"frame content-" +party.theme+ " font-"+ party.theme + " inviteFrame-"+party.theme} >
           <img src={imageSource} id={"themeImage-"+party.theme}/>
           <div className={"header-"+party.theme} >
             <EditablePartyField

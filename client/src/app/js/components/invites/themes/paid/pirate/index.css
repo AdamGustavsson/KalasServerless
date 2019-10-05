@@ -29,6 +29,7 @@
   text-align: center;
   margin-left: -20px;
   margin-right: -20px; 
+  max-width: 414px;
 }
 .font-pirate{
   font-family: 'Fondamento', cursive;

@@ -37,7 +37,9 @@
     margin-bottom: 10px;
     font-family: "Acme";
 }
-
+.content-polka{
+  max-width: 414px;
+}
 .accept-polka{
   background-color: #8BC755;
 }

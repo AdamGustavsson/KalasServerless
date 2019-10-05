@@ -21,6 +21,10 @@
 .container-prison{
   min-height: 600px;
 }
+.content-prison{
+  max-width: 414px;
+}
+
 .logo-prison{
   float: right;
 }

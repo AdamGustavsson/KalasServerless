@@ -40,6 +40,9 @@
     margin-top: 10px;
     margin-bottom: 10px;
 }
+.content-laser{
+  max-width: 414px;
+}
 
 .accept-laser{
   background-color: #8BC755;

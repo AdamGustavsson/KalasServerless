@@ -13,7 +13,7 @@ export default class LaserTheme extends Component {
     const { locale } = this.props;
     this.props.setBackground(party.theme);
     return(
-      <div>
+      <div className={"content-" +party.theme}>
           <img src={imageSource} id={"themeImage-"+party.theme}/>
           <div className={"frame font-"+ party.theme + " inviteFrame-"+party.theme} >
               

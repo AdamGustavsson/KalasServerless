@@ -21,7 +21,7 @@ export default class PrisonTheme extends Component {
     //TODO change the react way
     this.props.setBackground(party.theme);
     return(
-    <div className={"frame font-"+ party.theme + " inviteFrame-"+party.theme} >
+    <div className={"frame content-" +party.theme+ "  font-"+ party.theme + " inviteFrame-"+party.theme} >
         <div id={"themeImage-"+party.theme}>
         &nbsp;
         </div>
