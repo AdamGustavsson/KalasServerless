@@ -52,9 +52,9 @@ function getThemeABPaymentMethod(userNumber){
   userNumber = userNumber + '';
   const nextLastDigit = userNumber.charAt(userNumber.length - 2);
   if(nextLastDigit<5){
-    return "Swish";
+    return a;
   } else {
-    return "Klarna";
+    return b;
   }
 }
 
