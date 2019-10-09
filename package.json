@@ -27,18 +27,19 @@
     "copy-webpack-plugin": "^4.5.4",
     "mocha": "^2.4.5"
   },
+  "config" : { "cloudFrontDistroId" : "ER9FXFSMJSD5C" },
   "scripts": {
     "test": "SERVERLESS_STAGE=test SERVERLESS_REGION=eu-west-1 ./node_modules/.bin/mocha tests/",
     "build-client": "cd ./client/src/ && npm run build",
     "build-client-prod": "cd ./client/src/ && npm run build-prod",
     "start-client": "cd ./client/src/ && npm start",
     "build-deploy-client": "npm run build-client && sls client deploy",
-    "build-deploy-client-prod": "npm run build-client-prod && sls client deploy -s prod -d kalas.io",
+    "build-deploy-client-prod": "npm run build-client-prod && sls client deploy -s prod -d kalas.io&&aws cloudfront create-invalidation --distribution-id %cloudFrontDistroId --paths '/*'",
     "deploy-client": "sls client deploy",
     "deploy-back": "sls function deploy",
     "deploy-back-resources": "sls resources deploy",
     "deploy-back-event": "sls event deploy",
-    "build-deploy-client-back-prod": "npm run build-client-prod && sls function deploy -s prod && sls client deploy -s prod -d kalas.io"
+    "build-deploy-client-back-prod": "npm run build-client-prod && sls function deploy -s prod && sls client deploy -s prod -d kalas.io&&aws cloudfront create-invalidation --distribution-id %cloudFrontDistroId --paths '/*'"
   },
   "homepage": "https://github.com/AdamGustavsson/KalasServerless",
   "license": "MIT",

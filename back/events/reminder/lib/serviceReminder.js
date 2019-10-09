@@ -5,17 +5,17 @@ const I18n = require('react-i18nify').I18n;
 const stage = process.env.SERVERLESS_STAGE;
 const region = process.env.SERVERLESS_REGION;
 const projectName = process.env.SERVERLESS_PROJECT;
-const baseURL = (stage=='prod'?'kalas.io':stage + '.kalas.io.s3-website-'+ region + '.amazonaws.com');
+const baseURL = (stage=='prod'?'https://kalas.io':'http://' + stage + '.kalas.io.s3-website-'+ region + '.amazonaws.com');
 
 const translationsObject = {
   en: {
     SMSMessage: {
-      reminder: "Some time ago you asked us to remind you to use our free invitation service. http://%{url} We hope that you will have a fantastic party!"
+      reminder: "Some time ago you asked us to remind you to use our free invitation service. %{url} We hope that you will have a fantastic party!"
     }
   },
   sv: {
     SMSMessage: {
-      reminder: "För en tid sedan bad du oss påminna dig att använda vår kostnadfria inbjudningstjänst. http://%{url} Vi hoppas ni får ett fantastiskt kalas!"
+      reminder: "För en tid sedan bad du oss påminna dig att använda vår kostnadfria inbjudningstjänst. %{url} Vi hoppas ni får ett fantastiskt kalas!"
     }
   }
 };
