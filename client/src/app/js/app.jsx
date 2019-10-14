@@ -2,7 +2,7 @@ import "babel-polyfill";
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { Router, hashHistory} from 'react-router';
+import { Router, browserHistory} from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import { translationsObject } from "./components/translations/translations";
 import ga from 'ga-react-router';
@@ -14,7 +14,11 @@ import { loadTranslations, setLocale, syncTranslationWithStore} from 'react-redu
 import store from './store';
 import routes from './routes';
 
-const history = syncHistoryWithStore(hashHistory, store);
+const history = syncHistoryWithStore(browserHistory, store);
+const path = (/#(\/.*)$/.exec(location.hash) || [])[1];
+if (path) {
+    history.replace(path);
+}
 
 // Listen for changes to the current location. The
 // listener is called once immediately.

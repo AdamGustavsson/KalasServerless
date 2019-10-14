@@ -33,12 +33,13 @@
     "build-client-prod": "cd ./client/src/ && npm run build-prod",
     "start-client": "cd ./client/src/ && npm start",
     "build-deploy-client": "npm run build-client && sls client deploy",
-    "build-deploy-client-prod": "npm run build-client-prod && sls client deploy -s prod -d kalas.io",
+    "build-deploy-client-prod": "npm run build-client-prod && sls client deploy -s prod -d kalas.io&&npm run invalidate-cache",
     "deploy-client": "sls client deploy",
     "deploy-back": "sls function deploy",
     "deploy-back-resources": "sls resources deploy",
     "deploy-back-event": "sls event deploy",
-    "build-deploy-client-back-prod": "npm run build-client-prod && sls function deploy -s prod && sls client deploy -s prod -d kalas.io"
+    "invalidate-cache": "aws cloudfront create-invalidation --distribution-id ER9FXFSMJSD5C --paths '/*'",
+    "build-deploy-client-back-prod": "npm run build-client-prod && sls function deploy -s prod && sls client deploy -s prod -d kalas.io&&npm run invalidate-cache"
   },
   "homepage": "https://github.com/AdamGustavsson/KalasServerless",
   "license": "MIT",

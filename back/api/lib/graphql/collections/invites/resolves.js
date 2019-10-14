@@ -23,7 +23,7 @@ const invitesTable = projectName + '-invites-' + stage;
 const partyIndex = 'partyId-index';
 const timeIndex= 'inviteStatus-partyDateTimeUnix-index';
 
-const baseURL = (stage=='prod'?'kalas.io':stage + '.kalas.io.s3-website-'+ region + '.amazonaws.com')
+const baseURL = (stage=='prod'?'https://kalas.io':'http://' + stage + '.kalas.io.s3-website-'+ region + '.amazonaws.com');
 
 
 module.exports = {

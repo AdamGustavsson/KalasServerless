@@ -22,7 +22,7 @@ const region = process.env.SERVERLESS_REGION;
 const projectName = process.env.SERVERLESS_PROJECT;
 const partiesTable = projectName + '-parties-' + stage;
 const userIndex = 'hostUser-index';
-const baseURL = (stage=='prod'?'kalas.io':stage + '.kalas.io.s3-website-'+ region + '.amazonaws.com')
+const baseURL = (stage=='prod'?'https://kalas.io':'http://' + stage + '.kalas.io.s3-website-'+ region + '.amazonaws.com');
 
 module.exports = {
   create(party) {

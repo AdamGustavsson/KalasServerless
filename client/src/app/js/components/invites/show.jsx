@@ -147,7 +147,7 @@ class InviteShow extends Component {
           <Link to={'/reminder'} className="button button-primary"><Translate value="invitePage.remindMeButton" /></Link>
           <br/>&nbsp;
           <FacebookProvider appID="1114268925305216" language={locale=='sv'?'sv_SE':'en_GB'}>
-            <Like reference="party" width="300" showFaces share href="http://kalas.io"/>
+            <Like reference="party" width="300" showFaces share href="https://kalas.io"/>
           </FacebookProvider>        <br/>&nbsp;
         </div>
       </div>  
@@ -156,7 +156,7 @@ class InviteShow extends Component {
       <div className={"frame inviteFrame-"+(party.theme?party.theme:"cake")}>
         <div><Translate value="invitePage.comments" /></div>
         <FacebookProvider onReady={this.fbReady} appID="1114268925305216" language={locale=='sv'?'sv_SE':'en_GB'}>
-          <Comments href={"http://" + location.host + "/fromComments/" +party.id} orderBy="time" numPosts={10}/>
+          <Comments href={"https://" + location.host + "/fromComments/" +party.id} orderBy="time" numPosts={10}/>
         </FacebookProvider>
       </div>
       :''}

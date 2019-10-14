@@ -1,6 +1,6 @@
 {
   "name": "data",
-  "runtime": "nodejs4.3",
+  "runtime": "nodejs8.10",
   "description": "Serverless Lambda function for project: serverless-boilerplate",
   "customName": false,
   "customRole": false,
