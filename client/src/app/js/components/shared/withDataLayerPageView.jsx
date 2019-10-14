@@ -6,10 +6,8 @@ const withDataLayerPageView = WrappedComponent =>
       super();
     }
     componentDidMount() {
-        const locationRegex = new RegExp(/#(.*)\?.*/) ;
-        const locationArray = locationRegex.exec(location.hash);
-        dataLayer.push({'page': locationArray[1]});
-        console.log("adding pageview to datalayer for page: " + locationArray[1]);
+        dataLayer.push({'page': window.location.pathname});
+        console.log("adding pageview to datalayer for page: " + window.location.pathname);
         dataLayer.push({'event': 'pageview'});
     }
 

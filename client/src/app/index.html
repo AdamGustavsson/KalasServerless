@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     <link href="https://cdn.jsdelivr.net/skeleton/2.0.4/css/skeleton.css" type="text/css" rel="stylesheet">
-    <link href="gzip/styles.css" type="text/css" rel="stylesheet">
+    <link href="/gzip/styles.css" type="text/css" rel="stylesheet">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <meta property="og:url"           content="https://kalas.io" />
@@ -54,12 +54,12 @@ gtag('config', 'UA-3987274-11', { 'optimize_id': 'GTM-MHHL9XQ','send_page_view':
   </head>
   <body >
     <div id="root"></div>
-    <script src="gzip/js/app.js"></script>
+    <script src="/gzip/js/app.js"></script>
     <script>
     const stage=window.location.host.split('.')[0];
     if(0==stage.indexOf('localhost')){
-      document.write(unescape("%3Cscript src='js/app.js' type='text/javascript'%3E%3C/script%3E"));
-      document.write(unescape("%3Clink href='styles.css' rel='stylesheet' %3E"));
+      document.write(unescape("%3Cscript src='/js/app.js' type='text/javascript'%3E%3C/script%3E"));
+      document.write(unescape("%3Clink href='/styles.css' rel='stylesheet' %3E"));
     }
     </script>
   </body>
