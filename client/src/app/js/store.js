@@ -1,11 +1,11 @@
 import { createStore, applyMiddleware, compose } from 'redux';
-import { hashHistory} from 'react-router';
+import { browserHistory} from 'react-router';
 import { routerMiddleware } from 'react-router-redux';
 import thunk from 'redux-thunk';
 import reducers from './reducers';
 
 const devTools = window.devToolsExtension ? window.devToolsExtension() : f => f;
-const middlewares = [thunk, routerMiddleware(hashHistory)];
+const middlewares = [thunk, routerMiddleware(browserHistory)];
 
 if (process.env.NODE_ENV === 'development') {
   const createLogger = require('redux-logger');
