@@ -10,9 +10,16 @@ module.exports = {
     html2: "./app/google326544d7d6c7e469.html"
 
   },
+  devServer: {
+    port: 3000,
+    historyApiFallback: {
+      index: '/'
+    }
+  },
   output: {
     path: __dirname + "/../dist",
-    filename: "/js/app.js"
+    filename: "/js/app.js",
+    publicPath: "/"
   },
   resolve: {
     extensions: ["", ".webpack.js", ".web.js", ".js", ".jsx"]

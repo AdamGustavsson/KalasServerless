@@ -15,7 +15,7 @@ import store from './store';
 import routes from './routes';
 
 const history = syncHistoryWithStore(browserHistory, store);
-const path = (/#(\/.*)$/.exec(location.hash) || [])[1];
+const path = (/#(.*)$/.exec(location.hash) || [])[1];
 if (path) {
     history.replace(path);
 }
