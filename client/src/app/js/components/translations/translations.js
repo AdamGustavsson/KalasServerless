@@ -290,8 +290,8 @@ export const translationsObject = {
       cantDecide:"Jag gör detta senare",
       comments: "Här kan du skriva en kommentar som syns på allas inbjudningar samt för den som bjudit dig. Här kan ni t.ex samordna skjuts till kalaset eller meddela varför ni inte kan komma.",
       whatIs: "Vad är kalas.io?",
-      serviceDescription: "Kalas.io är en gratistjänst som hjälper dig att bjuda in till ditt barnkalas och hålla reda på vilka barn som kommer. Prova du också!",
-      moreInfo: "Mer info",
+      serviceDescription: "En tjänst för att skicka inbjudningskort med SMS. Prova du också!",
+      moreInfo: "Se vilka inbjudningskort du kan använda",
       remindMe: "Vill du själv använda tjänsten så kan vi påminna dig via SMS när det är dags för ditt nästa kalas.",
       remindMeButton: "Ja tack"
 
