@@ -85,6 +85,10 @@
   display: flex;
   align-items: center;
 }
+
+.description-cake.long{
+font-size: 12px;
+}
 .description-cake span{
   width: 100%;
 }

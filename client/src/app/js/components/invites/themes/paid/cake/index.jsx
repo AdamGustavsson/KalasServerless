@@ -32,7 +32,7 @@ export default class CakeTheme extends Component {
             propName="header"
             theme={party.theme}/>
          </div>
-         <div className={"description-"+party.theme}>
+         <div className={"description-"+party.theme + (party.description&&party.description.length>167?" long":"")}>
          <EditablePartyField
             isTextArea={true}
             editEnabled={this.props.editEnabled}
