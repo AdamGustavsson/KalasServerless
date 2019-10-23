@@ -18,7 +18,7 @@ getDummyParty(theme){
   var description;
   if(theme=="bowling"){
     description = I18n.t('theme.dummyParty.description1',{name:name});
-  } else if(theme=="laser"||theme=="prison"){
+  } else if(theme=="laser"||theme=="prison"||theme=="cake"){
     description = I18n.t('theme.dummyParty.description3',{name:name});
   } else {
     description = I18n.t('theme.dummyParty.description2',{name:name});
@@ -74,25 +74,50 @@ setThemeBackground(currentTheme){
             </div>
         </div>
         <div className="row themePreviewContainer">
-          <div className="four columns laser themePreview" >
-            <ThemedInvite party={this.getDummyParty("laser")} invite={this.getDummyInvite()} locale={this.props.locale} setBackground={this.setThemeBackground.bind(this)}/>
-          </div>
-          <div className="four columns bowling themePreview" >
-            <ThemedInvite party={this.getDummyParty("bowling")} invite={this.getDummyInvite()} locale={this.props.locale} setBackground={this.setThemeBackground.bind(this)}/>
-          </div>
-          <div className="four columns polka themePreview" >
-            <ThemedInvite party={this.getDummyParty("polka")} invite={this.getDummyInvite()} locale={this.props.locale} setBackground={this.setThemeBackground.bind(this)}/>
-          </div>
-          </div>
+          <Link to={'/parties/new'}> 
+            <div className="four columns themePreview" >
+              <ThemedInvite party={this.getDummyParty("cake")} invite={this.getDummyInvite()} locale={this.props.locale} setBackground={this.setThemeBackground.bind(this)}/>
+            </div>
+          </Link> 
+          <Link to={'/parties/new'}>
+            <div className="four columns laser themePreview" >
+              <ThemedInvite party={this.getDummyParty("laser")} invite={this.getDummyInvite()} locale={this.props.locale} setBackground={this.setThemeBackground.bind(this)}/>
+            </div>
+          </Link> 
+          <Link to={'/parties/new'}>
+            <div className="four columns themePreview" >
+              <ThemedInvite party={this.getDummyParty("pirate")} invite={this.getDummyInvite()} locale={this.props.locale} setBackground={this.setThemeBackground.bind(this)}/>
+            </div>
+          </Link> 
+        </div>
           <div className="row themePreviewContainer">
-          
-          <div className="four columns prison themePreview" >
-            <ThemedInvite party={this.getDummyParty("prison")} invite={this.getDummyInvite()} locale={this.props.locale} setBackground={this.setThemeBackground.bind(this)}/>
+          <Link to={'/parties/new'}> 
+            <div className="four columns polka themePreview" >
+              <ThemedInvite party={this.getDummyParty("polka")} invite={this.getDummyInvite()} locale={this.props.locale} setBackground={this.setThemeBackground.bind(this)}/>
+            </div>
+          </Link> 
+          <Link to={'/parties/new'}>
+            <div className="four columns prison themePreview" >
+              <ThemedInvite party={this.getDummyParty("prison")} invite={this.getDummyInvite()} locale={this.props.locale} setBackground={this.setThemeBackground.bind(this)}/>
+            </div>
+          </Link> 
+          <Link to={'/parties/new'}>
+            <div className="four columns ladybug themePreview" >
+              <ThemedInvite party={this.getDummyParty("ladybug")} invite={this.getDummyInvite()} locale={this.props.locale} setBackground={this.setThemeBackground.bind(this)}/>
+            </div>
+          </Link>
+        </div>
+        <div className="row">
+          <div className="section">
+            <div className="row second">
+              <div className="twelve columns">
+                <p>
+                  <Link to={'/parties/new'} className="button button-primary"><Translate value="landingPage.newPartyButton" /></Link>
+                </p>
+              </div>
+            </div>
           </div>
-          <div className="four columns ladybug themePreview" >
-            <ThemedInvite party={this.getDummyParty("ladybug")} invite={this.getDummyInvite()} locale={this.props.locale} setBackground={this.setThemeBackground.bind(this)}/>
-          </div>
-          </div>
+        </div>
           <PartyKingInvites/>
           <div className="row">
           <div className="section">
