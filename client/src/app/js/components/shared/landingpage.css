@@ -36,8 +36,9 @@
   font-weight: 900;
   font-size: larger;
 }
-
-
+.themePreview > a{
+  text-decoration: none;
+}
 /* Bigger than 550 */
 @media (min-width: 550px) {
   .section {

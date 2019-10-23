@@ -74,38 +74,38 @@ setThemeBackground(currentTheme){
             </div>
         </div>
         <div className="row themePreviewContainer">
-          <Link to={'/parties/new'}> 
-            <div className="four columns themePreview" >
+          <div className="four columns themePreview" >
+            <Link to={'/parties/new'}>
               <ThemedInvite party={this.getDummyParty("cake")} invite={this.getDummyInvite()} locale={this.props.locale} setBackground={this.setThemeBackground.bind(this)}/>
-            </div>
-          </Link> 
-          <Link to={'/parties/new'}>
-            <div className="four columns laser themePreview" >
+            </Link>
+          </div>
+          <div className="four columns laser themePreview" >
+            <Link to={'/parties/new'}>
               <ThemedInvite party={this.getDummyParty("laser")} invite={this.getDummyInvite()} locale={this.props.locale} setBackground={this.setThemeBackground.bind(this)}/>
-            </div>
-          </Link> 
-          <Link to={'/parties/new'}>
-            <div className="four columns themePreview" >
+            </Link>
+          </div>
+          <div className="four columns themePreview" >
+            <Link to={'/parties/new'}>
               <ThemedInvite party={this.getDummyParty("pirate")} invite={this.getDummyInvite()} locale={this.props.locale} setBackground={this.setThemeBackground.bind(this)}/>
-            </div>
-          </Link> 
+            </Link> 
+          </div>
         </div>
           <div className="row themePreviewContainer">
-          <Link to={'/parties/new'}> 
-            <div className="four columns polka themePreview" >
+          <div className="four columns polka themePreview" >
+            <Link to={'/parties/new'}>
               <ThemedInvite party={this.getDummyParty("polka")} invite={this.getDummyInvite()} locale={this.props.locale} setBackground={this.setThemeBackground.bind(this)}/>
-            </div>
-          </Link> 
-          <Link to={'/parties/new'}>
-            <div className="four columns prison themePreview" >
+            </Link>
+          </div>
+          <div className="four columns prison themePreview" >
+            <Link to={'/parties/new'} >
               <ThemedInvite party={this.getDummyParty("prison")} invite={this.getDummyInvite()} locale={this.props.locale} setBackground={this.setThemeBackground.bind(this)}/>
-            </div>
-          </Link> 
-          <Link to={'/parties/new'}>
-            <div className="four columns ladybug themePreview" >
+            </Link> 
+          </div>
+          <div className="four columns ladybug themePreview" >
+            <Link to={'/parties/new'}>
               <ThemedInvite party={this.getDummyParty("ladybug")} invite={this.getDummyInvite()} locale={this.props.locale} setBackground={this.setThemeBackground.bind(this)}/>
-            </div>
-          </Link>
+            </Link>
+          </div> 
         </div>
         <div className="row">
           <div className="section">
