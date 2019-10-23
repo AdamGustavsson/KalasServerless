@@ -33,7 +33,7 @@ class PartiesIndex extends Component {
                     return (
                       <tr key={'party-' + party.id}>
                         <td>
-                          <Link to={ 'p/' + party.id }>{party.header}</Link>
+                          <Link to={ '/p/' + party.id }>{party.header}</Link>
                         </td>
                         <td>{party.childName}</td>
                         <td>{party.startDateTime}</td>
@@ -43,7 +43,7 @@ class PartiesIndex extends Component {
                   </tbody>
                 </table>
               ) : <div></div> }
-              <Link to={ 'parties/new' } className="u-pull-right button button-primary"><Translate value="myPartiesPage.create" /></Link>
+              <Link to={ '/parties/new' } className="u-pull-right button button-primary"><Translate value="myPartiesPage.create" /></Link>
             </div>
           </div>
       );
@@ -51,7 +51,7 @@ class PartiesIndex extends Component {
         return (<div className="row">
                     <div className="twelve columns">
                         <h4><br/><br/><Translate value="myPartiesPage.register" /></h4>
-                        <Link to={ 'users/new' } ><Translate value="loginPage.register" /></Link>
+                        <Link to={ '/users/new' } ><Translate value="loginPage.register" /></Link>
                     </div>
                 </div>
                );

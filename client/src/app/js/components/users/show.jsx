@@ -22,7 +22,7 @@ class UsersShow extends Component {
           <hr />
           <p>{user.mobileNumber}</p>
           <hr />
-          <Link to='users/all' className="button u-full-width">Back</Link>
+          <Link to='/users/all' className="button u-full-width">Back</Link>
         </div>
       </div>
     );

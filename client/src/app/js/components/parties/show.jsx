@@ -214,7 +214,7 @@ class PartiesShow extends Component {
             <Like reference="party" width="300" showFaces share href="https://kalas.io"/>
           </FacebookProvider>
           <br/>&nbsp;
-          <Link to='parties/my' className="u-pull-right button button-primary"><Translate value="createPartyPage.seeAllParties" /></Link><br/>&nbsp;
+          <Link to='/parties/my' className="u-pull-right button button-primary"><Translate value="createPartyPage.seeAllParties" /></Link><br/>&nbsp;
         </div>
       </div>
 

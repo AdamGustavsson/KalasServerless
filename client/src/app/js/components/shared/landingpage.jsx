@@ -100,7 +100,7 @@ setThemeBackground(currentTheme){
               <div className="twelve columns">
                 <h4 className="heading"><Translate value="landingPage.reminderHeader" /></h4>
                 <p className="description"><Translate value="landingPage.reminderDetails" /></p>
-                <Link to={'reminder'} className="button button-primary"><Translate value="invitePage.remindMeButton" /></Link>
+                <Link to={'/reminder'} className="button button-primary"><Translate value="invitePage.remindMeButton" /></Link>
               </div>
             </div>
           </div>

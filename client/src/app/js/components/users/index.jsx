@@ -30,11 +30,11 @@ class UsersIndex extends Component {
                 return (
                   <tr key={'user-' + user.mobileNumber}>
                     <td>
-                      <Link to={ 'users/' + user.mobileNumber + '/show' }>{user.mobileNumber}</Link>
+                      <Link to={ '/users/' + user.mobileNumber + '/show' }>{user.mobileNumber}</Link>
                     </td>
                     <td>{user.name}</td>
                     <td>
-                      <Link to={ 'parties/all' }>Parties</Link>
+                      <Link to={ '/parties/all' }>Parties</Link>
                     </td>
                   </tr>
                 )}
@@ -42,7 +42,7 @@ class UsersIndex extends Component {
               </tbody>
             </table>
           ) : <div>There are currently no users available to display<hr /></div> }
-          <Link to={ 'users/new' } className="button button-primary">Create New User</Link>
+          <Link to={ '/users/new' } className="button button-primary">Create New User</Link>
         </div>
       </div>
     );
