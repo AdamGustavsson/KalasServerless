@@ -48,6 +48,7 @@ function handleInvites(invites){
         .then(partyResponse => {
          // FIXME: I18n should not be used like this, locale is global so it will get mixed up when parties have different languages.
         I18n.setLocale(partyResponse.locale);
+        
         return I18n.t("SMSMessage.partyReminder",{guestName: invite.childName, birthdayChild: partyResponse.childName.trim(),startTime: partyResponse.startDateTime.split(' ')[1], url:baseURL + '/i/' + invite.id}) + ' ' + offerService.getOfferText(partyResponse)
       })
         .then(inviteText => smsgateway.sendSMS(invite.mobileNumber,inviteText))

@@ -42,7 +42,13 @@ function identifyOffer(party){
       console.log("offer match:" + offer.id + ' partyLocation: ' + party.partyLocation);
       return offer;
     }
+    else
+    {
+      console.log("offer did not match:" + offer.id + ' partyLocation: ' + party.partyLocation);
+    }
   }
+  console.log("No offers found. but returning default anyways");
+  return offers.pop();
 }
 
 function replaceInText(translation,replacements){
