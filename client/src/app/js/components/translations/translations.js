@@ -159,6 +159,7 @@ export const translationsObject = {
       ladybug: "Ladybug (free)",
       prison: "Prison (free)",
       cake: "Unicorn Cake (Premium Price: %{price}SEK)",
+      ticket: "Ticket (Premium, Price %{price}SEK)",
       pirate: "Pirate (Premium Price: %{price}SEK)",
       dummyParty: {
         header1: "Welcome to celebrate %{name}'s 6th birthday",
@@ -332,6 +333,7 @@ export const translationsObject = {
       ladybug: "Ladybug (gratis)",
       prison: "Prison (gratis)",
       cake: "Unicorn Cake (Premium, Pris %{price}kr)",
+      ticket: "Ticket (Premium, Pris %{price}kr)",
       pirate: "Pirat (Premium, Pris %{price}kr)",
       dummyParty: {
         header1: "Välkommen att fira %{name}s 6-årsdag",

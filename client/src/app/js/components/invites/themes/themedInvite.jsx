@@ -9,6 +9,7 @@ import LadybugTheme from './ladybug/';
 import PrisonTheme from './prison/';
 import CakeTheme from './paid/cake/';
 import PirateTheme from './paid/pirate/';
+import TicketTheme from './paid/ticket/';
 require('./index.css');
 
 export default class themedInvite extends Component {
@@ -46,7 +47,10 @@ export default class themedInvite extends Component {
           break;  
       case 'pirate':
           ThemeComponent = PirateTheme;
-          break;      
+          break;    
+      case 'ticket':
+          ThemeComponent = TicketTheme;
+          break;       
       default:
         party = Object.assign({}, party, {
           theme: "cake"

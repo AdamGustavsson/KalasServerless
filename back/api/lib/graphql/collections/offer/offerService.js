@@ -63,7 +63,7 @@ module.exports = {
     var offer = identifyOffer(party);
     if(offer){
       return replaceInText(offer.texts[party.locale].offerText,{'company':offer.company,
-                                                                'birthdayChild':party.childName});
+                                                                'birthdayChild':party.childName.trim()});
     } else {
       return "";
     }
