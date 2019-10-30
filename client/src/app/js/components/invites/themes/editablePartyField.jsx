@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import {RIEInput, RIETextArea} from 'riek';
+import {RIEInput, RIETextArea} from '../../shared/riek/src';
 export default class EditablePartyField extends Component {
 
   render() {
@@ -11,6 +11,7 @@ export default class EditablePartyField extends Component {
     const { isTextArea } = this.props;
     const { propName } = this.props;
     const { validate } = this.props;
+    const { children } = this.props;
        if(editEnabled){
           if(isTextArea) {
             return (<RIETextArea
@@ -26,10 +27,16 @@ export default class EditablePartyField extends Component {
              change={change}
              propName={propName}
              validate={validate}
-             classEditing={"inline-edit inline-edit-"+theme}/>)
+             classEditing={"inline-edit inline-edit-"+theme +"-" + propName}>
+               {children}
+             </RIEInput>)
           }
 
-      } else {
+      } else 
+      if(children){
+        return children;
+      } else
+      {
         const spans_and_brs = []
         let i = 0
         value.split("\n").map(line => {

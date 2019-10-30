@@ -6,7 +6,8 @@ import Moment from 'moment';
 import ReactArcText from '../../../../shared/arctext';
 require('./index.css');
 const imageSource = require('./ticket.png');
-const crownSource = require('./crown.jpg');
+const crownSource = require('./crown.png');
+const flowerSource = require('./fleur.png');
 export default class TicketTheme extends Component {
 
   constructor(props) {
@@ -19,11 +20,17 @@ export default class TicketTheme extends Component {
     console.log("fontsloaded")
     this.forceUpdate()
   }
+  onUpdate(object){
+    if(object.header){
+      this.forceUpdate()
+    }
+    this.props.updatePartyField(object)
+  }
 
   componentWillMount() {
     WebFont.load({
         google: {
-          families: ['Ewert']
+          families: ['Sancreek']
         },active: this.onFontsLoaded.bind(this)
       });
   }
@@ -36,23 +43,27 @@ export default class TicketTheme extends Component {
     return(
     <div className={"content-" + party.theme + " frame font-"+ party.theme} >
         <div className={"container-" + party.theme}>
-        <img src={imageSource} className={"img-" + party.theme}></img>
+        <img id={"img-" + party.theme} src={imageSource} className={"img-" + party.theme}></img>
         <img src={crownSource} className={"crown-img-" + party.theme}></img>
-        <div className="edit-ticket-header">
+        <img src={flowerSource} className={"flower-img-" + party.theme}></img>
+        <div className={"header-"+party.theme + (party.header&&party.header.trim().length>25?" long":"")}>
            <EditablePartyField
             editEnabled={this.props.editEnabled}
-            value={party.header}
-            change={this.props.updatePartyField}
+            value={this.props.party.header}
+            change={this.onUpdate.bind(this)}
             propName="header"
-            theme={party.theme}/>
+            theme={party.theme}
+           >
+              <ReactArcText
+                text={this.props.party.header}
+                direction={1}
+                arc={(document.getElementById("img-" + party.theme)?document.getElementById("img-" + party.theme).offsetWidth:window.innerWidth)/2*0.84}
+                fontsLoaded={this.state.fontsLoaded}
+                />
+            </EditablePartyField>
         </div>
     
-          <ReactArcText
-          text={party.header}
-          direction={1}
-          arc={window.innerWidth/2*0.84}
-          fontsLoaded={this.state.fontsLoaded}
-          class={"header-"+party.theme + (party.header&&party.header.length>15?" long":"")}/>
+          
           
          <div className={"description-"+party.theme + (party.description&&party.description.length>167?" long":"")}>
          <EditablePartyField
@@ -64,24 +75,26 @@ export default class TicketTheme extends Component {
             theme={party.theme}/>
           </div>
         <div className={"last-"+party.theme}>  
-          <div><Translate value="invitePage.when" />:&nbsp;
-            <EditablePartyField
-            editEnabled={this.props.editEnabled}
-            value={party.startDateTime}
-            change={this.props.updatePartyField}
-            validate={value => Moment(value, 'YYYY-MM-DD HH:mm').isValid()}
-            propName="startDateTime"
-            theme={party.theme}/>
+        <div className="container" ><div ><Translate value="invitePage.when" /></div>
+            <div>
+              <EditablePartyField
+              editEnabled={this.props.editEnabled}
+              value={party.startDateTime}
+              change={this.props.updatePartyField}
+              validate={value => Moment(value, 'YYYY-MM-DD HH:mm').isValid()}
+              propName="startDateTime"
+              theme={party.theme}/>
 
-            -
-            <EditablePartyField
-            editEnabled={this.props.editEnabled}
-            value={party.endDateTime}
-            change={this.props.updatePartyField}
-            propName="endDateTime"
-            theme={party.theme}/>
+              -
+              <EditablePartyField
+              editEnabled={this.props.editEnabled}
+              value={party.endDateTime}
+              change={this.props.updatePartyField}
+              propName="endDateTime"
+              theme={party.theme}/>
+              </div>
           </div>
-          <div><Translate value="invitePage.where" />:&nbsp;
+          <div className="container" ><div><Translate value="invitePage.where" /></div>
           <EditablePartyField
             editEnabled={this.props.editEnabled}
             value={party.partyLocation}

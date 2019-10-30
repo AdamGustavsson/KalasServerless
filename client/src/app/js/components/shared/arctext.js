@@ -20,24 +20,32 @@ export default class ReactArcText extends Component {
 
   arcLetters = () => {
     this.checkProps()
+    //console.log("first arcing letters " + this.text)
     if (this.container) {
       if (this.textCyrcle) {
         this.textCyrcle.destroy()
       }
-
+      console.log("arcing letters " + this.text)
       this.container.innerHTML = this.text
       this.textCyrcle = new ArcText(this.container)
       this.textCyrcle.arc(this.arc)
-      this.textCyrcle.direction(this.direction)
+      this.textCyrcle.direction(this.direction) 
     }
+   else
+   {
+     //console.log("not arcing letters " + this.text)
+   }
   }
 
   componentDidMount() {
+    //console.log("component did mount " +this.text)
     this.arcLetters()
   }
 
   render() {
+    //console.log("rendering arcing " +this.text)
     this.arcLetters()
+    //console.log("after arcing " +this.text)
     return (
       <div className={'react-arc-text ' + this.class} ref={(el) => { this.container = el }} />
     )

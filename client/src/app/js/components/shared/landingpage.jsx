@@ -91,9 +91,9 @@ setThemeBackground(currentTheme){
           </div>
         </div>
           <div className="row themePreviewContainer">
-          <div className="four columns polka themePreview" >
+          <div className="four columns themePreview" >
             <Link to={'/parties/new'}>
-              <ThemedInvite party={this.getDummyParty("polka")} invite={this.getDummyInvite()} locale={this.props.locale} setBackground={this.setThemeBackground.bind(this)}/>
+              <ThemedInvite party={this.getDummyParty("ticket")} invite={this.getDummyInvite()} locale={this.props.locale} setBackground={this.setThemeBackground.bind(this)}/>
             </Link>
           </div>
           <div className="four columns prison themePreview" >
