@@ -22,21 +22,21 @@ class InvitesNew extends Component {
         mobileNumber,
         childName
       };
-
+      
       this.props.createInvite(invite, this.props.party.id, this.props.token);
       if(this.props.invitesBefore&&this.props.invitesBefore.length==3){
         ga('send', {
           hitType: 'event',
           eventCategory: 'Invite',
           eventAction: 'Create4thInvite',
-          eventLabel: childName
+          eventLabel: this.props.theme
         });
       }
       ga('send', {
         hitType: 'event',
         eventCategory: 'Invite',
         eventAction: 'CreateInvite',
-        eventLabel: childName
+        eventLabel: this.props.theme
       });
       this.refs.mobileNumber.value = null;
       this.refs.childName.value = null;
