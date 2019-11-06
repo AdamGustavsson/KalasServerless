@@ -148,6 +148,15 @@ class PartiesShow extends Component {
         eventValue: themeABPrice
       });
     }
+    if(invites.length==0){
+      ga('send', {
+        hitType: 'event',
+        eventCategory: 'Party',
+        eventAction: 'PaymentOfferedFor'+themeABPrice,
+        eventLabel: themeABPaymentMethod,
+        eventValue: themeABPrice
+      });
+    }
     const themes={cake: {id:'cake',
                   name:I18n.t('theme.cake',{price:'2̶9̶k̶r̶, nu '+themeABPrice}),paid:true,price:themeABPrice},
                   ticket: {id:'ticket',

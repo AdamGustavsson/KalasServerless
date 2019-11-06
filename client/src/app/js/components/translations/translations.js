@@ -196,16 +196,16 @@ export const translationsObject = {
       back: "Tillbaka"
     },
     landingPage: {
-      title: "Skicka kalasinbjudan med SMS. Gratis inbjudningskort kalas online.| kalas.io",
-      heading: 'Skicka kalasinbjudan  med SMS',
-      description: "Kalas.io hjälper dig att bjuda in till ditt barnkalas och hålla reda på vilka barn som kommer.",
+      title: "Skicka inbjudningskort med SMS. Inbjudan till barnkalas.",
+      heading: 'Skicka inbjudningskort med SMS',
+      description: "Kalas.io är en tjänst för föräldrar som vill bjuda in till barnkalas med SMS.",
       newPartyButton: "Skapa kalasinbjudan",
       howItWorks: "Hur fungerar det?",
-      howItWorksDetails1: "Du fyller i informationen om ditt kalas, väljer ett inbjudningskort, och sen lägger du till namnen på de inbjudna barnen tillsammans med förälderns mobilnummer.",
-      howItWorksDetails2: "Därefter skickar vi, helt kostnadsfritt, ett SMS till varje förälder med en länk till inbjudan. Där kan de uppge om barnet kan komma eller inte.",
-      howItWorksDetails3: "Du får ett SMS varje gång någon ändrar status på inbjudan. Du kan hela tiden se en aktuell lista på alla inbjudna och hur de svarat.",
+      howItWorksDetails1: "Du skriver vad som skall stå på inbjudan, väljer ett inbjudningskort du gillar och fyller i föräldrarnas mobilnummer.",
+      howItWorksDetails2: 'Föräldrarna får ett SMS: "Kalasinbjudan: Kevin har blivit inbjuden till Jonnas kalas. https://kalas.io/i/feh7k000-fb43-11b9-b631 Klicka på länken för mer information och för att tacka ja eller nej"',
+      howItWorksDetails3: "När de klickat på länken ser de din inbjudan och tackar ja eller nej genom att klicka på en knapp. Du får ett SMS när någon svarar.",
       howItWorksDetails4: "Så enkelt är det! Nedan finns exempel på hur ditt inbjudningkort kan se ut.",
-      themes: "Här är några exempel på inbjudningskort. Vi lägger hela tiden in nya mallar som du kan använda.",
+      themes: " ",
       reminderHeader: "Är det ett tag kvar tills du skall ha kalas?",
       reminderDetails: "Inga problem! Vi kan påminna dig om kalas.io via SMS. Fyll bara i ett datum när du vill bli påmind så skickar vi dig ett SMS med länk till kalas.io så att du kan bjuda in till ditt nästa kalas."
     },
@@ -294,7 +294,7 @@ export const translationsObject = {
       serviceDescription: "Kalas.io är en gratistjänst som hjälper dig att bjuda in till ditt barnkalas och hålla reda på vilka barn som kommer. Prova du också!",
       moreInfo: "Mer info",
       remindMe: "Vill du själv använda tjänsten så kan vi påminna dig via SMS när det är dags för ditt nästa kalas.",
-      remindMeButton: "Ja tack"
+      remindMeButton: "Påminn mig"
 
     },
     reminderPage:{

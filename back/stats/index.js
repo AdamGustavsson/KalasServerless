@@ -11,6 +11,10 @@ var viralUsers = 0;
 var properParties = 0;
 var properPartiesThisMonth = 0;
 var properInvitesThisMonth =0;
+var zeroParties = 0;
+var oneParties=0;
+var twoParties=0;
+var threeParties=0;
 var months = process.argv.slice(2).pop();
 
 
@@ -116,6 +120,22 @@ function processParties(parties){
         } else if(party.viral===true){
             viralUsers--;
         }
+        if(party.startDateTimeUnix<unixEnd&&party.noOfInvites==0){
+            
+            zeroParties++;
+        } 
+        if(party.startDateTimeUnix<unixEnd&&party.noOfInvites==1){
+            
+            oneParties++;
+        }
+        if(party.startDateTimeUnix<unixEnd&&party.noOfInvites==2){
+            
+            twoParties++;
+        }
+        if(party.startDateTimeUnix<unixEnd&&party.noOfInvites==3){
+            
+            threeParties++;
+        }   
     });
     parties.Items.forEach(party => {
         if(party.proper&&party.startDateTimeUnix<unixEnd){
@@ -135,6 +155,10 @@ function processParties(parties){
     console.log("Proper Invites/proper party:" +properInvitesThisMonth/properPartiesThisMonth)
     console.log("Virality:" +virality)
     console.log("Each new proper party generates X new parties:" +viralUsers/properPartiesThisMonth)
+    console.log("ZeroParties this month: " +zeroParties)
+    console.log("OneParties this month: " +oneParties)
+    console.log("TwoParties this month: " +twoParties)
+    console.log("ThreeParties this month: " +threeParties)
 }
 
 getInvitesFromLastXMonths(months)
