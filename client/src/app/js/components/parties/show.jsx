@@ -161,6 +161,8 @@ class PartiesShow extends Component {
                   name:I18n.t('theme.cake',{price:'2̶9̶k̶r̶, nu '+themeABPrice}),paid:true,price:themeABPrice},
                   ticket: {id:'ticket',
                   name:I18n.t('theme.ticket',{price:'2̶9̶k̶r̶, nu '+themeABPrice}),paid:true,price:themeABPrice},
+                  banner: {id:'banner',
+                  name:I18n.t('theme.banner',{price:'2̶9̶k̶r̶, nu '+themeABPrice}),paid:true,price:themeABPrice},
                   pirate: {id:'pirate',
                   name:I18n.t('theme.pirate',{price:29}),paid:true,price:29},
                   polka:{id:'polka',

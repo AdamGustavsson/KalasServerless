@@ -10,6 +10,7 @@ import PrisonTheme from './prison/';
 import CakeTheme from './paid/cake/';
 import PirateTheme from './paid/pirate/';
 import TicketTheme from './paid/ticket/';
+import BannerTheme from './paid/banner/';
 require('./index.css');
 
 export default class themedInvite extends Component {
@@ -45,6 +46,9 @@ export default class themedInvite extends Component {
       case 'cake':
           ThemeComponent = CakeTheme;
           break;  
+      case 'banner':
+        ThemeComponent = BannerTheme;
+        break;            
       case 'pirate':
           ThemeComponent = PirateTheme;
           break;    
