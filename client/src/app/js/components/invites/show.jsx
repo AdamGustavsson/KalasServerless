@@ -60,7 +60,8 @@ class InviteShow extends Component {
         ga('send', {
           hitType: 'event',
           eventCategory: 'Invite',
-          eventAction: 'Accept'
+          eventAction: 'Accept',
+          eventLabel: this.props.party.theme
         });
       }
       this.props.acceptInvite(this.props.invite.id);
@@ -74,7 +75,8 @@ class InviteShow extends Component {
         ga('send', {
           hitType: 'event',
           eventCategory: 'Invite',
-          eventAction: 'Reject'
+          eventAction: 'Reject',
+          eventLabel: this.props.party.theme
         });
       }
       this.props.rejectInvite(this.props.invite.id);
