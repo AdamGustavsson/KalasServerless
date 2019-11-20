@@ -28,6 +28,7 @@ module.exports = {
   create(party) {
     party.id = uuid.v1();
     party.hostUser = MobileNumberValidation.standardiseNumber(party.hostUser);
+    party.childName = party.childName.replace(/\./g, " ");
     I18n.setLocale(party.locale);
     const linkText = I18n.t("SMSMessage.partyCreated",{birthdayChild: party.childName.trim(), url:baseURL + '/p/' + party.id}) + " " + offerService.getHostOfferText(party);
     smsgateway.sendSMS(party.hostUser,linkText);

@@ -41,10 +41,11 @@ module.exports = {
   create(invite) {
     invite.id = uuid.v1();
     invite.mobileNumber = MobileNumberValidation.standardiseNumber(invite.mobileNumber);
+    invite.childName = invite.childName.replace(/\./g, " ");
     return partyResolve.get(invite.partyId)
     .then(partyResponse => {
       I18n.setLocale(partyResponse.locale);
-      const inviteText = I18n.t("SMSMessage.invited",{guestName: invite.childName, birthdayChild: partyResponse.childName.trim(), url:baseURL + '/i/' + invite.id})
+      const inviteText = I18n.t("SMSMessage.invited",{guestName: invite.childName, birthdayChild: partyResponse.childName.trim().replace(/\./g, " "), url:baseURL + '/i/' + invite.id})
       smsgateway.sendSMS(invite.mobileNumber,inviteText);
       invite.createDateTimeUnix = Math.round(new Date().getTime()/1000);
       invite.partyDateTimeUnix = partyResponse.startDateTimeUnix;
