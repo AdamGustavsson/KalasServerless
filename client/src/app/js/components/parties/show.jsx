@@ -174,6 +174,8 @@ class PartiesShow extends Component {
                   name:I18n.t('theme.laser')},
                   bowling:{id:'bowling',
                   name:I18n.t('theme.bowling')},
+                  palace:{id:'palace',
+                  name:I18n.t('theme.palace')},
                   music:{id:'music',
                   name:I18n.t('theme.music')},
                   prison:{id:'prison',

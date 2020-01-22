@@ -113,7 +113,7 @@ class InviteShow extends Component {
       return <div className="row"><div className="twelve columns"><Translate value="general.loading" /></div></div>
     }
     if(party&&party.status == "PASSED"&&party.offerUrl){
-      window.location = party.offerUrl;
+      window.location = party.offerUrl + "?from=invite";
     }
     return (
       <div className="row">

@@ -1,0 +1,58 @@
+.palace {
+  background-color: #78b2e2;
+  color: #f7f0de;
+}
+.inline-edit-palace{
+  color:  #c01821;
+  border-color:  #c01821;
+  background-color: #f7f0de;
+  font-family: "Droid Serif";
+  width: 95%;
+}
+#themeImage-palace{
+  display: block;
+  margin: auto;
+  width: 100%;
+}
+.inviteFrame-palace{
+    background-color: white;
+    color: #c01821;
+    border-color: #c01821;
+    border-width: 3px;
+    border-style: solid;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-family: "Luckiest Guy";
+    background: linear-gradient(170deg, rgba(255,255,255,1) 50%, #8BC755 100%);
+
+}
+.content-palace{
+  max-width: 414px;
+}
+.font-palace{
+
+}
+
+.accept-palace{
+  background-color: #8BC755;
+  color: #f7f0de;
+}
+.reject-palace{
+  background-color: #c01821;
+  color: #f7f0de;
+}
+
+.header-palace{
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+  background-color: #78b2e2;
+  color: #c01821;
+  border-color: #1174bd;
+  border-width: 3px;
+  border-style: solid;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  vertical-align: middle;
+}

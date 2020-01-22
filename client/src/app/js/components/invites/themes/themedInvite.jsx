@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { Translate,I18n} from 'react-redux-i18n';
 import PolkaTheme from './polka/';
 import BowlingTheme from './bowling/';
+import PalaceTheme from './palace/';
 import MusicTheme from './music/';
 import LaserTheme from './laser/';
 import LadybugTheme from './ladybug/';
@@ -28,6 +29,9 @@ export default class themedInvite extends Component {
       case 'bowling':
         ThemeComponent = BowlingTheme;
         break;
+      case 'palace':
+        ThemeComponent = PalaceTheme;
+        break;  
       case 'music':
           ThemeComponent = MusicTheme;
           break;

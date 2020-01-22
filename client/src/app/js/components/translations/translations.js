@@ -154,6 +154,7 @@ export const translationsObject = {
     theme: {
       polka: "Polka (free)",
       bowling: "Bowling (free)",
+      palace: "Palace (free)",
       johnscott: "JohnScotts (free)",
       music: "Audio (free)",
       laser: "Laserdome (free)",
@@ -330,6 +331,7 @@ export const translationsObject = {
     theme: {
       polka: "Polka (gratis)",
       bowling: "Bowling (gratis)",
+      palace: "Palatset (gratis)",
       johnscott: "JohnScotts (gratis)",
       music: "Audio (gratis)",
       laser: "Laserdome (gratis)",

@@ -2,13 +2,15 @@ import React, { Component, PropTypes } from 'react';
 import { Translate,I18n} from 'react-redux-i18n';
 import EditablePartyField from '../editablePartyField';
 import Moment from 'moment';
-const imageSource = require('./bowling.png');
+import  WebFont from 'webfontloader';
+const imageSource = require('./palatsetTop.png');
 require('./index.css');
-export default class BowlingTheme extends Component {
+export default class PalaceTheme extends Component {
+
   componentWillMount() {
     WebFont.load({
         google: {
-          families: ['Sigmar One']
+          families: ['Luckiest Guy']
         }
       });
   }
