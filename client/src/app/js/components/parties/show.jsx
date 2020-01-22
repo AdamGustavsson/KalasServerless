@@ -30,8 +30,8 @@ function fbReady(){
 
 }
 function getThemeABPrice(userNumber){
-  var a = 9;
-  var b = 19;
+  var a = 19;
+  var b = 29;
   if(!userNumber){
     return a;
   }
@@ -44,7 +44,8 @@ function getThemeABPrice(userNumber){
   }
 }
 function getThemeABPaymentMethod(userNumber){
-  var a = "Swish";
+  return "Swish";
+  /* var a = "Swish";
   var b = "Payson kreditkort/direktbetalning";
   if(!userNumber){
     return a;
@@ -55,7 +56,7 @@ function getThemeABPaymentMethod(userNumber){
     return a;
   } else {
     return b;
-  }
+  } */
 }
 
 
@@ -158,13 +159,13 @@ class PartiesShow extends Component {
       });
     }
     const themes={cake: {id:'cake',
-                  name:I18n.t('theme.cake',{price:'2̶9̶k̶r̶, nu '+themeABPrice}),paid:true,price:themeABPrice},
+                  name:I18n.t('theme.cake',{price:'3̶9̶k̶r̶, nu '+themeABPrice}),paid:true,price:themeABPrice},
                   ticket: {id:'ticket',
-                  name:I18n.t('theme.ticket',{price:'2̶9̶k̶r̶, nu '+themeABPrice}),paid:true,price:themeABPrice},
+                  name:I18n.t('theme.ticket',{price:'3̶9̶k̶r̶, nu '+themeABPrice}),paid:true,price:themeABPrice},
                   banner: {id:'banner',
-                  name:I18n.t('theme.banner',{price:'2̶9̶k̶r̶, nu '+themeABPrice}),paid:true,price:themeABPrice},
+                  name:I18n.t('theme.banner',{price:'3̶9̶k̶r̶, nu '+themeABPrice}),paid:true,price:themeABPrice},
                   pirate: {id:'pirate',
-                  name:I18n.t('theme.pirate',{price:29}),paid:true,price:29},
+                  name:I18n.t('theme.pirate',{price:39}),paid:true,price:39},
                   polka:{id:'polka',
                   name:I18n.t('theme.polka')},
                   ladybug:{id:'ladybug',

@@ -26,7 +26,7 @@ class ReminderPage extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const mobileNumber = this.props.invite&&this.props.invite.mobileNumber&&this.props.invite.mobileNumberlength>3?this.props.invite.mobileNumber:this.refs.mobileNumber.value;
+    const mobileNumber = this.props.invite&&this.props.invite.mobileNumber&&this.props.invite.mobileNumber.length>3?this.props.invite.mobileNumber:this.refs.mobileNumber.value;
     const reminderDate = this.state.reminderDateString;
     if (mobileNumber.length !== 0 && reminderDate ) {
       const reminder = {

@@ -2,6 +2,7 @@ import React, { Component} from 'react';
 import { connect } from 'react-redux';
 import { Translate,I18n} from 'react-redux-i18n';
 import { payForTheme } from '../../actions/payment';
+const imageSource = require('./SwishLogo.png');
 require('./index.css');
 
 export default class PaymentModule extends Component {
@@ -30,13 +31,18 @@ export default class PaymentModule extends Component {
           <div style={{marginTop:'20px'}} className={"paymentModule frame inviteFrame-"+theme.id}>
             <Translate value="createPartyPage.paymentPremiumCard" /> <br/>
             <Translate value="createPartyPage.paymentCostIs" /><div className="paymentPrice">{theme.price}kr</div><br/>
-            <Translate value="createPartyPage.paymentMethod" /><div className="paymentMethod">{paymentMethod}</div><br/><br/>
+            <Translate value="createPartyPage.oneTimeCost" /><br/>
+            <Translate value="createPartyPage.paymentMethod" />
+            {paymentMethod=="Swish"?
+            <div><img src={imageSource} id="SwishLogo"/></div>
+            :<div className="paymentMethod">{paymentMethod}</div>
+            }<br/>
             {isThemePaidFor?
               <Translate value="createPartyPage.paymentIntegrationIsNotReady" paymentMethod={paymentMethod} />:
               <button onClick={this.onPurchaseClick.bind(this)} className="button button-primary">Köp</button>
             }
             <br/>
-            {isDefault?<Translate value="createPartyPage.freeAvailable" />:''}
+            {!isThemePaidFor&&isDefault?<Translate value="createPartyPage.freeAvailable" />:''}
           </div>
         </div>
       </div>
