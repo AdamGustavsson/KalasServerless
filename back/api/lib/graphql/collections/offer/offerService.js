@@ -22,12 +22,12 @@ function identifyOffer(party){
       company: 'PARTYKUNGEN',
       texts : {
         sv: {
-          offerText: 'Klicka på länken igen efter %{birthdayChild}s kalas så får du 10% rabatt på %{company} inför ditt nästa kalas.',
-          hostText: 'I samarbete med %{company} kan vi erbjuda allt du behöver inför kalaset, med 10% rabatt. %{url}'
+          offerText: 'Klicka på länken igen efter %{birthdayChild}s kalas så får du 20% rabatt på %{company} inför ditt nästa kalas.',
+          hostText: 'I samarbete med %{company} kan vi erbjuda allt du behöver inför kalaset, med 20% rabatt. %{url}'
         },
         en: {
-          offerText: 'Klicka på länken igen efter %{birthdayChild}s kalas så får du 10% rabatt på %{company} inför ditt nästa kalas.',
-          hostText: 'I samarbete med %{company} kan vi erbjuda allt du behöver inför kalaset, med 10% rabatt. %{url}'
+          offerText: 'Klicka på länken igen efter %{birthdayChild}s kalas så får du 20% rabatt på %{company} inför ditt nästa kalas.',
+          hostText: 'I samarbete med %{company} kan vi erbjuda allt du behöver inför kalaset, med 20% rabatt. %{url}'
         }
       }, 
       url: 'https://boka.kalas.io/erbjudande/partykungen',
