@@ -220,7 +220,7 @@ class PartiesShow extends Component {
             <h3><Translate value="createPartyPage.inviteMoreChildren" /></h3>
           </div>)
         }
-        {party.theme&&themes[party.theme].paid&&!isThemePaidFor?
+        {(!invites||invites.length==0)&&party.theme&&themes[party.theme].paid&&!isThemePaidFor?
           <div><Translate value="createPartyPage.pleasePay" /></div>
         :<InvitesNew theme={party.theme}/>}
         <div className={"frame inviteFrame-"+(party.theme?party.theme:"cake")}>
