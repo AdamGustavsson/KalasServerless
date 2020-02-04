@@ -5,13 +5,7 @@ import Moment from 'moment';
 const imageSource = require('./bowling.png');
 require('./index.css');
 export default class BowlingTheme extends Component {
-  componentWillMount() {
-    WebFont.load({
-        google: {
-          families: ['Sigmar One']
-        }
-      });
-  }
+
   render() {
     const  inviteMightBeNull  = this.props.invite;
     const { party } = this.props;
