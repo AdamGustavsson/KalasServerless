@@ -5,9 +5,9 @@ import  WebFont from 'webfontloader';
 import Moment from 'moment';
 import ReactArcText from '../../../../shared/arctext';
 require('./index.css');
-const imageSource = require('./ticket.png');
-const crownSource = require('./crown.png');
-const flowerSource = require('./fleur.png');
+const imageSource = require('./ticket.jpg');
+const crownSource = require('./crownSmall.png');
+const flowerSource = require('./fleurSmall.png');
 export default class TicketTheme extends Component {
 
   constructor(props) {

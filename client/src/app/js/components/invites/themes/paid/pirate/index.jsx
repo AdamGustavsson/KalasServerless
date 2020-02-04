@@ -4,7 +4,7 @@ import EditablePartyField from '../../editablePartyField';
 import  WebFont from 'webfontloader';
 import Moment from 'moment';
 require('./index.css');
-const imageSource = require('./pirateRedBG.jpg');
+const imageSource = require('./pirateRedBGSmall.jpg');
 export default class PirateTheme extends Component {
 
   componentWillMount() {

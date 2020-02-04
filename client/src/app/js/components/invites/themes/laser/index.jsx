@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { Translate,I18n} from 'react-redux-i18n';
 import EditablePartyField from '../editablePartyField';
 import Moment from 'moment';
-const imageSource = require('./laser.png');
+const imageSource = require('./laser.jpg');
 const logoSource = require('./laserlogo.png');
 require('./index.css');
 export default class LaserTheme extends Component {

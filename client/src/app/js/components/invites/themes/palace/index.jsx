@@ -3,7 +3,7 @@ import { Translate,I18n} from 'react-redux-i18n';
 import EditablePartyField from '../editablePartyField';
 import Moment from 'moment';
 import  WebFont from 'webfontloader';
-const imageSource = require('./palatsetTop.png');
+const imageSource = require('./palatsetTopSmall.png');
 require('./index.css');
 export default class PalaceTheme extends Component {
 

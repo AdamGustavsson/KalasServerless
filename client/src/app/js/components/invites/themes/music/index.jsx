@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { Translate,I18n} from 'react-redux-i18n';
 import EditablePartyField from '../editablePartyField';
 import Moment from 'moment';
-const imageSource = require('./face.png');
+const imageSource = require('./faceSmall.png');
 require('./index.css');
 export default class MusicTheme extends Component {
 
