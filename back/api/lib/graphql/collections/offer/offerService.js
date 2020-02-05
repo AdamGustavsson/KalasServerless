@@ -15,8 +15,22 @@ function identifyOffer(party){
     //     }
     //   }, 
     //   url: 'https://boka.kalas.io/erbjudande/laserdomeMalmo',
-    //   locationRegex: /laserdome.*malm|drottning.*$/gi
+    //   locationRegex: /.*laserdome.*malm|.*laserdome.*drottning.*/gi
     // },
+    {
+      id:'prisonIslandBorlange',
+      company: 'Prison Island',
+      texts : {
+        sv: {
+          offerText: 'Klicka på länken igen efter %{birthdayChild}s kalas, så får du 10% rabatt på ditt nästa kalas på Prison Island.'
+        },
+        en: {
+          offerText: 'Klicka på länken igen efter %{birthdayChild}s kalas, så får du 10% rabatt på ditt nästa kalas på Prison Island.'
+        }
+      }, 
+      url: 'https://boka.kalas.io/erbjudande/PrisonIslandBorlange',
+      locationRegex: /.*prison.*borlänge.*|.*prison.*borganäsv.*/gi
+    },
     {
       id: 'default',
       company: 'PARTYKUNGEN',
