@@ -27,7 +27,7 @@ const unlisten = history.listen(location => {
   if(state.users.currentUser){
       ga('set', 'userId', state.users.currentUser.mobileNumber);
   }
-  ga('set', 'page', location.pathname);
+  ga('set', 'page', location.pathname + location.search);
   ga('send', 'pageview');
 });
 

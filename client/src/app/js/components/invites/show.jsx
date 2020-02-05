@@ -132,25 +132,24 @@ class InviteShow extends Component {
         <p><Translate value="invitePage.replyLater" /></p>
         <button onClick={this.toggleModal} style={{padding:0}} className={"button u-full-width "}><Translate value="invitePage.cantDecide" /></button>
       </RsvpModal>
-            <button onClick={this.onAcceptClick.bind(this)} className={"button u-full-width accept-"+ (party.theme?party.theme:"cake")}>{invite.inviteStatus==='ACCEPTED'?<Translate value="invitePage.acceptedShort" />:<Translate value="invitePage.accept" />}</button>
+      {invite.inviteStatus!='INVITED'?<h5><Translate value="invitePage.status" />: {statusText[invite.inviteStatus]}</h5>:""}
+      <button onClick={this.onAcceptClick.bind(this)} className={"button u-full-width accept-"+ (party.theme?party.theme:"cake")}>{invite.inviteStatus==='ACCEPTED'?<Translate value="invitePage.acceptedShort" />:<Translate value="invitePage.accept" />}</button>
       <button onClick={this.onRejectClick.bind(this)} className={"button u-full-width reject-"+ (party.theme?party.theme:"cake")}>{invite.inviteStatus==='REJECTED'?<Translate value="invitePage.rejectedShort" />:<Translate value="invitePage.reject" />}</button>
-      <p><Translate value="invitePage.noReply" /></p>
-      <h5><Translate value="invitePage.status" />: {statusText[invite.inviteStatus]}</h5>
+      {invite.inviteStatus=='INVITED'?<div><p><Translate value="invitePage.noReply" /></p><h5><Translate value="invitePage.status" />: {statusText[invite.inviteStatus]}</h5></div>:""}
+      
       {invite.inviteStatus!='INVITED'?
       <div className="row">
         <div className={"twelve columns frame inviteFrame-"+(party.theme?party.theme:"cake")}>
           <h4><Translate value="invitePage.whatIs" /></h4>
           <h5><Translate value="invitePage.serviceDescription" /></h5>
-          <Link to={'/'} className="button button-primary"><Translate value="invitePage.moreInfo" /></Link>
-          <br/><Link to={'/integrityPolicy'} >
-          <Translate value="loginPage.integrityPolicy" /></Link>
-          <br/>&nbsp;
+          <Link to={'/#invites?from=invite'} className="button button-primary"><Translate value="invitePage.moreInfo" /></Link>
+          <br/><br/>
           <h5><Translate value="invitePage.remindMe" /></h5>
           <Link to={'/reminder'} className="button button-primary"><Translate value="invitePage.remindMeButton" /></Link>
+          <br/><br/>
+          <Link to={'/integrityPolicy'} >
+          <Translate value="loginPage.integrityPolicy" /></Link>
           <br/>&nbsp;
-          <FacebookProvider appID="1114268925305216" language={locale=='sv'?'sv_SE':'en_GB'}>
-            <Like reference="party" width="300" showFaces share href="https://kalas.io"/>
-          </FacebookProvider>        <br/>&nbsp;
         </div>
       </div>  
       :''}
