@@ -142,7 +142,7 @@ class InviteShow extends Component {
         <div className={"twelve columns frame inviteFrame-"+(party.theme?party.theme:"cake")}>
           <h4><Translate value="invitePage.whatIs" /></h4>
           <h5><Translate value="invitePage.serviceDescription" /></h5>
-          <Link to={'/#invites?from=invite'} className="button button-primary"><Translate value="invitePage.moreInfo" /></Link>
+          <Link to={'/?from=invite'} className="button button-primary"><Translate value="invitePage.moreInfo" /></Link>
           <br/><br/>
           <h5><Translate value="invitePage.remindMe" /></h5>
           <Link to={'/reminder'} className="button button-primary"><Translate value="invitePage.remindMeButton" /></Link>
