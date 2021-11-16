@@ -10,7 +10,7 @@
     "url": "https://github.com/AdamGustavsson/KalasServerless/issues"
   },
   "dependencies": {
-    "aws-sdk": "^2.3.0",
+    "aws-sdk": "^2.814.0",
     "bluebird": "^3.3.4",
     "jsonwebtoken": "^5.7.0",
     "lodash": "^4.6.1",
