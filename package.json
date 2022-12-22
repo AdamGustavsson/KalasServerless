@@ -12,7 +12,7 @@
   "dependencies": {
     "aws-sdk": "^2.3.0",
     "bluebird": "^3.3.4",
-    "jsonwebtoken": "^5.7.0",
+    "jsonwebtoken": "^9.0.0",
     "lodash": "^4.6.1",
     "serverless-client-s3": "https://github.com/AdamGustavsson/serverless-client-s3.git",
     "serverless-cors-plugin": "^0.4.1",
